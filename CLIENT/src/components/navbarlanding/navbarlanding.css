@@ -1,0 +1,19 @@
+.navbar {
+  background-color: rgba(0, 0, 0, 0.514);
+  border-radius: 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 24px;
+  padding: 0px 15px;
+}
+
+.navbar-brand img {
+  height: 150px;
+  margin-right: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
