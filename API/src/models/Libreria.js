@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize'); // Reemplaza './sequelize' con la ruta correcta a tu archivo de configuración de Sequelize
 
-const Libreria = sequelize.define('libreria', {
+
+const Libro = (sequelize) => sequelize.define('libro', {
   titulo: {
     type: DataTypes.STRING,
     allowNull: false
@@ -18,8 +18,8 @@ const Libreria = sequelize.define('libreria', {
     type: DataTypes.STRING,
     allowNull: false
   },
-  fecha: {
-    type: DataTypes.DATE,
+  fechaPublicacion: {
+    type: DataTypes.INTEGER,
     allowNull: false
   },
   paginas: {
@@ -30,7 +30,7 @@ const Libreria = sequelize.define('libreria', {
     type: DataTypes.ARRAY(DataTypes.STRING),
     allowNull: false
   },
-  img: {
+  imagen: {
     type: DataTypes.STRING,
     allowNull: false
   },
@@ -46,16 +46,12 @@ const Libreria = sequelize.define('libreria', {
     type: DataTypes.INTEGER,
     allowNull: false
   },
-  review: {
-    type: DataTypes.ARRAY(DataTypes.STRING),
-    allowNull: true
-  },
   id: {
     type: DataTypes.INTEGER,
     allowNull: false,
     primaryKey: true,
     autoIncrement: true
   }
-});
+}, { timestamps: false });
 
-module.exports = Libreria;
+module.exports = Libro;
