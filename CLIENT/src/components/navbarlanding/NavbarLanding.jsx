@@ -2,7 +2,7 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
-import logo_landing from "../../assets/image/logo/logo6.png";
+import logo_landing from "../../assets/image/logo6.png";
 import "./navbarlanding.css";
 import Deco_Text from "../Deco_Text/Deco_Text";
 
