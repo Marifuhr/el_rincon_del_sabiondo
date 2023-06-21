@@ -72,6 +72,18 @@ module.exports = function(database){
         payMethod:{
             type:DataTypes.TEXT,
             allowNull: true,
+        },
+        isActive:{
+            type: DataTypes.BOOLEAN,
+            defaultValue: true
+        },
+        role:{
+            type: DataTypes.STRING(20),
+            allowNull: false,
+            defaultValue: 'user',
+            validate:{
+                isIn: [['user', 'moderator', 'admin', 'superuser']]
+            }
         }
         //? Association with wichList in relationsModels.js N:N
         //? Association with sellings in relationsModels.js N:N
