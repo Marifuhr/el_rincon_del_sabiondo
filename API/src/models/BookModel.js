@@ -38,13 +38,6 @@ module.exports = function(database){
                 min:1
             }
         },
-        writers:{
-            type: DataTypes.ARRAY(DataTypes.STRING),
-            validate:{
-                notEmpty:true,
-                len:[2]
-            }
-        },
         datePublication:{
             type: DataTypes.DATE,
             allowNull: false,
@@ -90,5 +83,7 @@ module.exports = function(database){
         }
         //? Association with BookCategory in relationsModels.js N:N
         //? Association with BookReviews in relationsModels.js N:N
+        //? Association with Authors in relationsModels.js N:N
+
     },{timestamps: false});
 };

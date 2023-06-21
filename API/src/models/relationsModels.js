@@ -1,5 +1,5 @@
 module.exports = async function(database){
-    const {Book, Selling, SellingTotal, User, Category, Country, Review, Language} = database.models;
+    const {Book, Selling, SellingTotal, User, Category, Country, Review, Language, Author} = database.models;
 
     //! Book
     //? Book 1Countries -> Country NBooks
@@ -11,6 +11,11 @@ module.exports = async function(database){
     //* Book.addCategory(ARRAY[CategoryId's]])
     Book.belongsToMany(Category, {through: 'BookCategory',timestamps:false});
     Category.belongsToMany(Book,{through: 'BookCategory',timestamps:false});
+
+    //? Book NCategories -> Category NBooks
+    //* Book.addCategory(ARRAY[CategoryId's]])
+    Book.belongsToMany(Author, {through: 'BookAuthors',timestamps:false});
+    Author.belongsToMany(Book, {through: 'BookAuthors',timestamps:false});
 
     //? Book 1Language -> Language NBooks
     //* reference with languageBook attribute in Book model
