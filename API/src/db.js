@@ -1,4 +1,6 @@
-const libro = require("./models/Libreria.js")
+const fs = require('fs');
+const path = require('path');
+
 const Sequelize = require('sequelize');
 const {
     DB_HOST_CLOUD,
@@ -11,7 +13,13 @@ const {
 const gistUrlDB = `postgres://${DB_USER_CLOUD}:${DB_PASSWORD_CLOUD}@${DB_HOST_CLOUD}:${DB_PORT_CLOUD}/${DB_NAME_CLOUD}`;
 
 const db = new Sequelize(gistUrlDB,{logging:false});
-libro(db);
+
+//Executa todos los modelos en Modelo
+const pathModels = path.join(__dirname + '/models/');
+fs.readdirSync(pathModels).forEach(file => {
+    const pathFunctionModel = pathModels + file;
+    require(pathFunctionModel)(db);
+});
 
 module.exports = {
     db,
