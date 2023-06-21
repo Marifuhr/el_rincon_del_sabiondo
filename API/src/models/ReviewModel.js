@@ -43,7 +43,7 @@ module.exports = function(database){
                 len:[10,500]
             },
             set(value){
-                this.setDataValue('description', value.trim().toLowerCase())
+                this.setDataValue('description', value.trim())
             }
         }
     });
