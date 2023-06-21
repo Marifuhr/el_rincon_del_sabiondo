@@ -3,6 +3,7 @@ import logo from '../../assets/image/Logo historia.jpg'
 import SearchBar from '../SearchBar/SearchBar'
 import { Link } from 'react-router-dom';
 
+
 export default function NavBar() {
   return (
     <div>
@@ -18,9 +19,9 @@ export default function NavBar() {
                   Registrarse
               </Link>
               <div>
-                  <Link to='/carrito'>
-                      <img src={} alt="" />
-                  </Link>
+                  {/* <Link to='/carrito'>
+                      <img src={carrito} alt="Not Found" />
+                  </Link> */}
               </div>
           </div>
           <div>
