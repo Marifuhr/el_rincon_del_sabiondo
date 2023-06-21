@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from '../../assets/image/Logo historia.jpg'
 import SearchBar from '../SearchBar/SearchBar'
+import { Link } from 'react-router-dom';
 
 export default function NavBar() {
   return (
@@ -15,7 +16,12 @@ export default function NavBar() {
           <div>
               <Link to='/login'>
                   Registrarse
-          </Link>
+              </Link>
+              <div>
+                  <Link to='/carrito'>
+                      <img src={} alt="" />
+                  </Link>
+              </div>
           </div>
           <div>
 
