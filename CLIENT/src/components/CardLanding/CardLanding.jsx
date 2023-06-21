@@ -1,7 +1,7 @@
 import React from 'react'
-import img1 from '../../../Imagenes/images-libro.jpg'
-import img2 from '../../../Imagenes/libro-22.jpg'
-import img3 from '../../../Imagenes/libro-abierto.jpg'
+import img1 from '../../assets/image/images-libro.jpg'
+import img2 from '../../assets/image/libro-22.jpg'
+import img3 from '../../assets/image/libro-abierto.jpg'
 
 export default function CardLanding() {
   return (
