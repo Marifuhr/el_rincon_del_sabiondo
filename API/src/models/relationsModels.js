@@ -12,8 +12,8 @@ module.exports = async function(database){
     Book.belongsToMany(Category, {through: 'BookCategory',timestamps:false});
     Category.belongsToMany(Book,{through: 'BookCategory',timestamps:false});
 
-    //? Book NCategories -> Category NBooks
-    //* Book.addCategory(ARRAY[CategoryId's]])
+    //? Book NAuthors -> Author NBooks
+    //* Book.addAuthor(ARRAY[AuthorId's]])
     Book.belongsToMany(Author, {through: 'BookAuthors',timestamps:false});
     Author.belongsToMany(Book, {through: 'BookAuthors',timestamps:false});
 
