@@ -6,6 +6,7 @@ import { Router } from "react-router-dom";
 //import Detail from "./components/";
 //import Login from "./components/";
 //import  from "./components/";
+import { ChakraProvider } from '@chakra-ui/react'
 
 function App() {
   return (
