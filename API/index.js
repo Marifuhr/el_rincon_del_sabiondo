@@ -12,13 +12,14 @@ const host = process.env.HOST_SERVER || 'localhost';
 //Local Changes
 const server = require('./src/app.js');
 const {db} = require('./src/db.js');
+const rootRouter = require('./src/routes/index.js');
 
 server.use(morgan('dev'));
 server.use(express.json());
 server.use(cors());
 
 //! Añadir rutas
-//server.use(rootRouter)
+server.use(rootRouter);
 
 //sincronizando base de datos con la DB_CLOUD
 db.sync({force:true}).then(() => {
