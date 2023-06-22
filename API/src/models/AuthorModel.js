@@ -11,8 +11,7 @@ module.exports = function(database) {
       type: DataTypes.STRING,
       allowNull: false
     }
-  });
-
+  },{timestamps:false});
 
   return Author;
 };
