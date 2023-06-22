@@ -1,20 +1,21 @@
-const { Book, Category, Country,Language } = require('../models');
+const { Book, Category, Country,Language } = require('../db');
 
-const getLibros = async (req, res) => {
-  try {
+//Controller connect with database to realize sql query
+const getLibros = async () => {
     const libros = await Book.findAll({
-      include: [
-        { model: Category },
-        { model: Country },
-        { model: Language }
-      ]
+        include: [
+            {
+                model: Category
+            },
+            {
+                model: Country
+            },
+            {
+                model: Language
+            }
+        ]
     });
+    return libros;
+};
 
-    res.status(200).json({ libros });
-  } catch (error) {
-    console.error('Error al obtener los libros:', error);
-    res.status(500).json({ error: 'Error al obtener los libros' });
-  }
-}
-
-module.exports = { getLibros };
+module.exports = getLibros;
