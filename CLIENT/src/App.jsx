@@ -1,22 +1,24 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import { Router } from "react-router-dom";
-//import Landing from "./components/landing";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Landing from "./components/Landing/Landing";
 //import Home from "./components/";
 //import Detail from "./components/";
 //import Login from "./components/";
 //import  from "./components/";
-import { ChakraProvider } from '@chakra-ui/react'
+
 
 function App() {
   return (
-    <Router>
-      {/*  <Route exact path="/" Component={<Landing />} />
-      <Route path="/home" Component={<Home />} />
-      <Route path="/login" Component={<Login />} />
-      <Route path="/detail/:id" Component={<Detail/>}/>
-      <Route path="/admin" Component={</>}/> */}
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route exact path="/" element={<Landing />} />
+        {/*<Route path="/home" element={<Home />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/detail/:id" element={<Detail/>}/>
+      <Route path="/admin" element={</>}/> */}
+      </Routes>
+    </BrowserRouter>
   );
 }
 
