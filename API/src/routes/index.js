@@ -1,8 +1,9 @@
-const { Router } = require("express");
+const express = require("express");
+const routerBook = require("./routerBook");
 
-const { getLibros } = require("../controllers/index");
+const rootRouter = express.Router();
 
-const router = Router();
-router.get("/books", getLibros);
+//Routes and middlewares
+rootRouter.use("/books", routerBook);
 
-module.exports = router;
+module.exports = rootRouter;
