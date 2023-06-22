@@ -1,4 +1,4 @@
-const { getLibros } = require("../controllers/getLibros.js");
+const getLibros = require("../controllers/getLibros.js");
 
 async function routeBooksHandler(req,res){
     try {
