@@ -87,5 +87,6 @@ module.exports = function(database){
         }
         //? Association with wichList in relationsModels.js N:N
         //? Association with sellings in relationsModels.js N:N
+        //? Association with authors in relationsModels.js N:N
     })
 }
