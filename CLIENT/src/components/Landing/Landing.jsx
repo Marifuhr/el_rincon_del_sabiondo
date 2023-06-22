@@ -3,13 +3,16 @@ import React from "react";
 import styles from "./Landing.module.css";
 import CardLanding from "../CardLanding/CardLanding";
 import LandingCarrusel from "../LandingCarrusel/carrusel"
+import NavbarLanding from './../NavBarLanding/NavbarLanding';
 
 function Landing() {
   return (
     <div className={styles.landing}>
-      <h1>Welcome to my app!</h1>
-      <p>This is the landing page.</p>
-      <LandingCarrusel/>
+      <NavbarLanding />
+      
+      <div style={{ marginTop: "50px" }}>
+        <LandingCarrusel />
+      </div>
       <CardLanding />
     </div>
   );
