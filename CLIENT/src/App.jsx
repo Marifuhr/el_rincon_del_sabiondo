@@ -18,7 +18,14 @@ function App() {
         {/*<Route path="/home" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/detail/:id" element={<Detail/>}/>
-      <Route path="/admin" element={</>}/> */}
+      <Route path="/admin" element={</>}/> 
+      //rutas para carrusel Link
+      <Route path="/a" element={<CarruselLink />} />
+        <Route path="/ficcion" element={<BookPage category="Ficción" />} />
+        <Route path="/misterio" element={<BookPage category="Misterio" />} />
+        <Route path="/romance" element={<BookPage category="Romance" />} />
+        <Route path="/fantasia" element={<BookPage category="Fantasía" />} />
+      */}
       </Routes>
     </ChakraProvider>
     </BrowserRouter>
