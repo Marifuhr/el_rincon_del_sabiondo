@@ -5,7 +5,6 @@ module.exports = function(database){
         IdLanguage:{
             type: DataTypes.STRING(3),
             primaryKey: true,
-            autoIncrement: true
         },
         language:{
             type: DataTypes.STRING(40),

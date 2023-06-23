@@ -4,7 +4,6 @@ module.exports = function(database){
     database.define('Country',{
         IdCountry:{
             type: DataTypes.STRING(3),
-            autoIncrement: true,
             primaryKey: true
         },
         country:{

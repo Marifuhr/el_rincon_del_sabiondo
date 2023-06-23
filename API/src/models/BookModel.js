@@ -31,11 +31,11 @@ module.exports = function(database){
         },
         language:{
             //? Association with Language in relationsModels.js 1:N
-            type:DataTypes.INTEGER,
+            type:DataTypes.STRING(3),
             allowNull:false,
             validate:{
-                isNumeric: true,
-                min:1
+                isNumeric: false,
+                len:[2,3]
             }
         },
         datePublication:{
@@ -48,11 +48,11 @@ module.exports = function(database){
         },
         countryPublication:{
             //? Association with country in relationsModels.js 1:N
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(3),
             allowNull: false,
             validate:{
-                isNumeric: true,
-                min:1
+                isNumeric: false,
+                len:[2,3]
             }
         },
         publisher:{
