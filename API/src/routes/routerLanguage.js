@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const routeLanguagesHandler = require('../handlers/routeLanguagesHandler.js');
+const routeLanguagesHandler = require('../handlers/routeLanguageHandler');
 
 const routerLanguage = Router();
 
