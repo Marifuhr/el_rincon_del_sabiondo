@@ -1,8 +1,8 @@
 const { Category } = require('../db');
 
 const getCategory = async () => {
-  const category = await Category.findAll();
-  return category;
+  const response = await Category.findAll();
+  return response;
 };
 
 module.exports = getCategory;
