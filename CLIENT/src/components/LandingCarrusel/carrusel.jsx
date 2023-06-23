@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function CarouselFadeExample() {
   return (
-    <div style={{ width: "1200px", height: "400px" }}>
-      <Carousel variant="dark">
+    <div className="container-fluid">
+      <Carousel variant="dark" className="carousel">
         <Carousel.Item>
           <img
-            className="d-block w-100 fluid"
+            className="d-block w-100 "
             src="src\assets\image\pila-libros.jpg"
             alt="First slide"
           />

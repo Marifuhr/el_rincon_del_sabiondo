@@ -3,7 +3,7 @@ import "./App.css";
 import { ChakraProvider } from '@chakra-ui/react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Landing from "./components/Landing/Landing";
-//import Home from "./components/";
+import Home from "./components/Home/Home";
 //import Detail from "./components/";
 //import Login from "./components/";
 //import  from "./components/";
@@ -15,8 +15,8 @@ function App() {
       <ChakraProvider>
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        {/*<Route path="/home" element={<Home />} />
-      <Route path="/login" element={<Login />} />
+        <Route path="/home" element={<Home />} />
+      {/*<Route path="/login" element={<Login />} />
       <Route path="/detail/:id" element={<Detail/>}/>
       <Route path="/admin" element={</>}/> 
       //rutas para carrusel Link
