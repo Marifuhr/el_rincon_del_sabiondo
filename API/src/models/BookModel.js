@@ -23,7 +23,7 @@ module.exports = function(database){
             }
         },
         description:{
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1600),
             allowNull: false,
             validate:{
                 notEmpty: true,
@@ -34,7 +34,7 @@ module.exports = function(database){
             type:DataTypes.STRING(3),
             allowNull:false,
             validate:{
-                isNumeric: false,
+                // isNumeric: false,
                 len:[2,3]
             }
         },
@@ -51,7 +51,7 @@ module.exports = function(database){
             type: DataTypes.STRING(3),
             allowNull: false,
             validate:{
-                isNumeric: false,
+                // isNumeric: false,
                 len:[2,3]
             }
         },

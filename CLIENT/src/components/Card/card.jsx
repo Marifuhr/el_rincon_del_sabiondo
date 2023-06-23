@@ -10,16 +10,16 @@ import {
 } from "@chakra-ui/react";
 
 
-function Cards() {
+function Cards({title, description, publishedDate}= props) {
   return (
     <div>
       <Card maxW="sm">
         <CardBody>
           <Image src="src\assets\image\libro Card.webp" borderRadius="lg" />
           <Stack mt="6" spacing="3">
-            <Heading size="md">{`Title`}</Heading>
-            <Text>{`Description`}</Text>
-            <Text>{`Year of edition`}</Text>
+            <Heading size="md">{title}</Heading>
+            <Text>{description}</Text>
+            <Text>{publishedDate}</Text>
             <Text>{`Category`}</Text>
             <Text color="blue.600" fontSize="2xl">
               {`price: $`}
