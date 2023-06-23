@@ -4,16 +4,22 @@ import styles from "./Landing.module.css";
 import CardLanding from "../CardLanding/CardLanding";
 import LandingCarrusel from "../LandingCarrusel/carrusel"
 import NavbarLanding from './../NavBarLanding/NavbarLanding';
+import CarruselLink from "./../CarruselLink/CarruselLink"
 
 function Landing() {
   return (
     <div className={styles.landing}>
       <NavbarLanding />
-      
-      <div style={{ marginTop: "50px" }}>
+
+      <div style={{ marginTop: "20px" }}>
         <LandingCarrusel />
       </div>
+      <div style={{ marginTop: "20px" }}>
+        <CarruselLink />
+      </div>
+      <div style={{ marginTop: "20px" }}>
       <CardLanding />
+      </div>
     </div>
   );
 }
