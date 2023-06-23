@@ -1,4 +1,4 @@
-const getLanguages = require("../controllers/getLanguages.js");
+const getLanguages = require("../controllers/getLanguage.js");
 
 async function routeLanguagesHandler(req, res) {
   try {
