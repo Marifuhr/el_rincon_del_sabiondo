@@ -3,7 +3,7 @@ const { DataTypes } = require('sequelize');
 module.exports = function(database){
     database.define('Language', {
         IdLanguage:{
-            type: DataTypes.INTEGER,
+            type: DataTypes.STRING(3),
             primaryKey: true,
             autoIncrement: true
         },
