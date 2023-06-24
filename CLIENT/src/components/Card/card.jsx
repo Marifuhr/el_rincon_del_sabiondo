@@ -37,7 +37,7 @@ function Cards({ props }) {
               variant="ghost"
               colorScheme="blue"
               style={{
-                width: "120px",
+                width: "80px",
                 marginLeft: "8px",
                 marginRight: "5px",
               }}
@@ -52,7 +52,7 @@ function Cards({ props }) {
                 }}
               />
             </Button>
-         
+
             <Button
               variant="ghost"
               colorScheme="blue"
