@@ -2,6 +2,7 @@ const { Book, Author, Category, Language } = require('../db');
 const { Op } = require('sequelize');
 
 async function bulkCreateBooks(books) {
+  //console.log(books);
   try {
     // Verificar y crear los idiomas necesarios
     const languageCodes = books.map(book => book.language);
@@ -16,7 +17,11 @@ async function bulkCreateBooks(books) {
 
     // Asignar autores y categorías a los libros creados
     for (const book of createdBooks) {
-      const { authors, categories } = book;
+      let temp = books.find(raw => raw.title === book.title)
+
+      let authors = temp.authors;
+      let categories = temp.categories;
+      console.log({authors, categories});
 
       if (authors && authors.length > 0) {
         const foundAuthors = [];
@@ -66,6 +71,7 @@ async function bulkCreateBooks(books) {
     }
 
     console.log('Autores y categorías asignados a los libros.');
+    return createdBooks;
   } catch (error) {
     console.error('Error al crear los libros:', error);
   }
