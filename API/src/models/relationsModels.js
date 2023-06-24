@@ -4,8 +4,8 @@ module.exports = async function(database){
     //! Book
     //? Book 1Countries -> Country NBooks
     //* reference with countryPublication attribute in Book model
-    Country.hasOne(Book, {as:'countryPublicationData',foreignKey:'countryPublication'});
-    Book.belongsTo(Country, {as:'countryPublicationData',foreignKey:'countryPublication'});    
+    // Country.hasOne(Book, {as:'countryPublicationData',foreignKey:'countryPublication'});
+    // Book.belongsTo(Country, {as:'countryPublicationData',foreignKey:'countryPublication'});    
 
     //? Book NCategories -> Category NBooks
     //* Book.addCategory(ARRAY[CategoryId's]])
