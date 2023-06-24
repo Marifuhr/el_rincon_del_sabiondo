@@ -10,7 +10,11 @@ import {
 } from "@chakra-ui/react";
 
 
-function Cards({title, description, publishedDate}= props) {
+
+function Cards({ props }) {
+  const { title, description, datePublication } = props || {};
+
+
   return (
     <div>
       <Card maxW="sm">
@@ -19,10 +23,10 @@ function Cards({title, description, publishedDate}= props) {
           <Stack mt="6" spacing="3">
             <Heading size="md">{title}</Heading>
             <Text>{description}</Text>
-            <Text>{publishedDate}</Text>
+            <Text>{datePublication}</Text>
             <Text>{`Category`}</Text>
             <Text color="blue.600" fontSize="2xl">
-              {`price: $`}
+              {`price: $ lala`}
             </Text>
           </Stack>
         </CardBody>
@@ -48,6 +52,7 @@ function Cards({title, description, publishedDate}= props) {
                 }}
               />
             </Button>
+         
             <Button
               variant="ghost"
               colorScheme="blue"

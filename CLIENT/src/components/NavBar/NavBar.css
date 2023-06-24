@@ -1,0 +1,145 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 150px;
+    padding: 0 1rem;
+    background-color: #858181;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-logo {
+    height: 90px;
+}
+
+.navbar-title {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar-center {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #333333;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.navbar-button:hover {
+    background-color: #f2f2f2;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.navbar-action {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4caf50;
+    color: #ffffff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.navbar-cart {
+    position: relative;
+    padding: 0.5rem;
+    border: none;
+    background-color: transparent;
+    color: #333333;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.navbar-cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #ff0000;
+    color: #ffffff;
+    font-size: 0.75rem;
+}
+.navbar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-dropdown-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.navbar-dropdown-button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+.navbar-dropdown-icon {
+    margin-left: 0.5rem;
+}
+
+.navbar-dropdown-menu {
+    position: absolute;
+    display: none;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+}
+
+.navbar-dropdown-menu-item {
+    padding: 0.5rem;
+    font-size: 1rem;
+    color: #000;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-dropdown-menu-item:hover {
+    background-color: #f2f2f2;
+}
+
+.navbar-dropdown-menu-item:first-child {
+    margin-top: 0.5rem;
+}
