@@ -1,5 +1,6 @@
 const { Book, Author, Category, Language } = require('../db');
 const { Op } = require('sequelize');
+const checkAndCreateLanguage = require('../utils/checkAndCreateLanguage');
 
 async function bulkCreateBooks(books) {
   //console.log(books);
@@ -12,7 +13,23 @@ async function bulkCreateBooks(books) {
       await checkAndCreateLanguage(languageCode);
     }
 
-    const createdBooks = await Book.bulkCreate(books);
+    let filteredbooks = []
+
+    for (const book of books) {
+      const foundbook = await Book.findOne({
+        where: {
+          title: {
+            [Op.iLike]: book.title
+          }
+        }
+      });
+
+      if (!foundbook) {
+        filteredbooks.push(book)    
+      }
+    }
+
+    const createdBooks = await Book.bulkCreate(filteredbooks);
     console.log('Libros creados:', createdBooks);
 
     // Asignar autores y categorías a los libros creados
@@ -29,14 +46,14 @@ async function bulkCreateBooks(books) {
           const foundAuthor = await Author.findOne({
             where: {
               name: {
-                [Op.iLike]: authorName
+                [Op.iLike]: authorName.trim()
               }
             }
           });
 
           if (!foundAuthor) {
             // El autor no existe en la base de datos, crearlo
-            const newAuthor = await Author.create({ name: authorName });
+            const newAuthor = await Author.create({ name: authorName.trim() });
             foundAuthors.push(newAuthor);
           } else {
             foundAuthors.push(foundAuthor);
@@ -52,14 +69,14 @@ async function bulkCreateBooks(books) {
           const foundCategory = await Category.findOne({
             where: {
               name: {
-                [Op.iLike]: categoryName
+                [Op.iLike]: categoryName.trim()
               }
             }
           });
 
           if (!foundCategory) {
             // La categoría no existe en la base de datos, crearla
-            const newCategory = await Category.create({ name: categoryName });
+            const newCategory = await Category.create({ name: categoryName.trim() });
             foundCategories.push(newCategory);
           } else {
             foundCategories.push(foundCategory);
@@ -74,32 +91,6 @@ async function bulkCreateBooks(books) {
     return createdBooks;
   } catch (error) {
     console.error('Error al crear los libros:', error);
-  }
-}
-
-async function checkAndCreateLanguage(languageCode) {
-  let languageName;
-
-  switch (languageCode) {
-    case 'en':
-      languageName = 'english';
-      break;
-    case 'es':
-      languageName = 'español';
-      break;
-    case 'ru':
-      languageName = 'russian';
-      break;
-    default:
-      languageName = 'another';
-      break;
-  }
-
-  const language = await Language.findOne({ where: { IdLanguage: languageCode } });
-
-  if (!language) {
-    // El idioma no existe en la tabla, crearlo
-    await Language.create({ IdLanguage: languageCode, language: languageName });
   }
 }
 

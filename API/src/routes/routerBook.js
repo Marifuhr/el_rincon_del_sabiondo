@@ -1,11 +1,14 @@
 const { Router } = require('express');
 const routeBooksHandler = require('../handlers/routeBooksHandler.js');
+const createBookHandler = require('../handlers/createBookHandler.js')
 
-const routerBook = Router();
+
+const router = Router();
 
 //Routes
-routerBook.get("/", routeBooksHandler);
+router.get("/", routeBooksHandler);
+router.post('/', createBookHandler)
 
 // Middlewares
 
-module.exports = routerBook;
+module.exports = router;
