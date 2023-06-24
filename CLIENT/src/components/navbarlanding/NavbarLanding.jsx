@@ -6,12 +6,14 @@ import logo_landing from "../../assets/image/logo6.png";
 import "./navbarlanding.css";
 import Deco_Text from "../Deco_Text/Deco_Text";
 
+
+
 function NavbarLanding() {
   return (
     <div>
       <Navbar>
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="/home">
             <img
               alt=""
               src={logo_landing}

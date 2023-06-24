@@ -6,25 +6,12 @@ import LandingCarrusel from "../LandingCarrusel/carrusel"
 import NavbarLanding from './../NavBarLanding/NavbarLanding';
 import CarruselLink from "./../CarruselLink/CarruselLink"
 import Reviews from './../reviews/Reviews';
-import Card from '../../components/Card/card';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
+
 
 function Landing() {
 
-  const [books, setBooks] = useState([]);
 
-  useEffect(() => {
-    const getbooks = async () => {
-      //let card = [];
-      const response = await axios.get('http://localhost:3001/books');
-      console.log(response);
-      setBooks(await axios.get('http://localhost:3001/books'));
-      console.log(books)
-    }
-
-    getbooks()
-  }, []);
 
   return (
     <div className={styles.landing}>
@@ -48,7 +35,7 @@ function Landing() {
         <Reviews />
       </div>
       <div style={{ marginTop: "20px" }}>
-        <Card props={books[0]} />
+        <SubscriptionForm />
       </div>
     </div>
   );

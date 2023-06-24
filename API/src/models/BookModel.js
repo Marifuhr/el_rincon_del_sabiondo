@@ -23,18 +23,22 @@ module.exports = function(database){
             }
         },
         description:{
-            type: DataTypes.STRING(1600),
+            type: DataTypes.STRING(5000),
             allowNull: false,
             validate:{
                 notEmpty: true,
             }
+        },
+        image:{
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         language:{
             //? Association with Language in relationsModels.js 1:N
             type:DataTypes.STRING(3),
             allowNull:false,
             validate:{
-                // isNumeric: false,
+                //isNumeric: false,
                 len:[2,3]
             }
         },
@@ -46,15 +50,15 @@ module.exports = function(database){
                 //isBefore: new Date().toISOString()
             }
         },
-        countryPublication:{
-            //? Association with country in relationsModels.js 1:N
-            type: DataTypes.STRING(3),
-            allowNull: false,
-            validate:{
-                // isNumeric: false,
-                len:[2,3]
-            }
-        },
+        // countryPublication:{
+        //     //? Association with country in relationsModels.js 1:N
+        //     type: DataTypes.INTEGER(3),
+        //     allowNull: false,
+        //     validate:{
+        //         //isNumeric: false,
+        //         len:[2,3]
+        //     }
+        // },
         publisher:{
             type: DataTypes.STRING(50),
             allowNull: false,
