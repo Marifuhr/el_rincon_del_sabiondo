@@ -22,7 +22,8 @@ const getLibros = async () => {
             // },
             {
                 model: Language,
-                as:'language'
+                as:'languageBook',
+                attributes: ['language'],
             },
             {
                 model: Review
