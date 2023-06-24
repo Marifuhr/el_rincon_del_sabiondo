@@ -16,7 +16,7 @@ module.exports = function(database){
             type: DataTypes.STRING,
             allowNull: false,
             validate:{
-                len:[2-50],
+                len:[2-100],
                 notNull:{
                     msg:'The title cannot be empty'
                 }
@@ -60,10 +60,10 @@ module.exports = function(database){
         //     }
         // },
         publisher:{
-            type: DataTypes.STRING(50),
+            type: DataTypes.STRING(100),
             allowNull: false,
             validate:{
-                len:[2,50],
+                len:[2,100],
                 notEmpty: true,
             }
         },

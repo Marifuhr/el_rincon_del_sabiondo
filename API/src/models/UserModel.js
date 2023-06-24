@@ -62,11 +62,10 @@ module.exports = function(database){
         },
         countryUser:{
             //? Association with Country in relationsModels.js 1:N
-            type: DataTypes.STRING(3),
+            type: DataTypes.INTEGER,
             allowNull: false,
             validate:{
                 isNumeric: false,
-                len:[2,3]
             },
         },
         payMethod:{
