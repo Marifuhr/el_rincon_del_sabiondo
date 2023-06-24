@@ -23,7 +23,7 @@ module.exports = function(database){
             }
         },
         description:{
-            type: DataTypes.STRING(1600),
+            type: DataTypes.TEXT,
             allowNull: false,
             validate:{
                 notEmpty: true,
