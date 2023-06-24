@@ -2,17 +2,17 @@ const { DataTypes } = require("sequelize");
 
 module.exports = function(database){
     database.define('Category',{
-        IdCategory:{
+        id:{
             type: DataTypes.INTEGER,
             primaryKey: true,
             autoIncrement: true
         },
-        category:{
+        name:{
             type: DataTypes.STRING(50),
             unique: true,
             allowNull: false,
             set(value){
-                this.setDataValue('category',value ? value.trim().toLowerCase() : null);
+                this.setDataValue('name',value ? value.trim().toLowerCase() : null);
             },
         }
     },{timestamps:false});

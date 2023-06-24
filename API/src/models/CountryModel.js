@@ -2,19 +2,22 @@ const { DataTypes } = require("sequelize")
 
 module.exports = function(database){
     database.define('Country',{
-        IdCountry:{
-            type: DataTypes.STRING(3),
-            primaryKey: true
+        id:{
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true
         },
-        country:{
+        name:{
             type: DataTypes.STRING(50),
             allowNull: false,
+            defaultValue: 'ar',
             validate:{
                 notEmpty:true,
                 len: [4,30]
+
             },
             set(value){
-                this.setDataValue('country', value ? value.trim().toLowerCase() : null);
+                this.setDataValue('name', value ? value.trim().toLowerCase() : null);
             }
         }
     },{timestamps: false});
