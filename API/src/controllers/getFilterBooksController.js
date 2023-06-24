@@ -22,6 +22,8 @@ async function getFilterBooksController(dataFilter){
         })
     };
 
+    //Falta categorías
+
     const dataToFiltered = Object.entries(dataFilter);
     const objDataFiltered = dataToFiltered.filter(([key]) => (
         fieldToValidate[key]
