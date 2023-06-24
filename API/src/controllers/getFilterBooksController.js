@@ -5,21 +5,20 @@ async function getFilterBooksController(dataFilter){
     // Campos para validar
     const fieldToValidate = {
         limit:true, title:true, description:true,language:true,
-        country:true, category:true, author:true,
-        publisher:true
+        category:true, publisher:true
     };
     const objectValidators = {
         title: (val) => ({
-            [Op.iLike]: `%${val}`
+            [Op.iLike]: `%${val}%`
         }),
         description: val => ({
-            [Op.iLike]: `%${val}`
+            [Op.iLike]: `%${val}%`
         }),
         publisher: val => ({
-            [Op.like]: `%${val}`
+            [Op.like]: `%${val}%`
         }),
-        countryPublication: val => ({
-            [Op.iLike]: `%${val}`
+        language: val => ({
+            [Op.iLike]: val
         })
     };
 
@@ -31,7 +30,6 @@ async function getFilterBooksController(dataFilter){
         const objectValidator = objectValidators[key];
         if(objectValidator){
             const objOp = objectValidator(value);
-            console.log(objOp);
             return {
                 ...init,
                 [key]:objOp
@@ -40,11 +38,11 @@ async function getFilterBooksController(dataFilter){
         return {...init, [key]:value}
     },{});
 
-    const {limit, ...restObjValidators} = objDataFiltered;
-
+    const {limit = null, ...restObjValidators} = objDataFiltered;
+    console.log(restObjValidators);
     // Consulta el modelo
     const filteredBooks = await Book.findAll({
-        where: restObjValidators
+        where:restObjValidators
     });
 
     return filteredBooks;
