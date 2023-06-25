@@ -1,4 +1,4 @@
-const { Book, Author, Category, Language } = require("../db");
+const { Book } = require("../db");
 const { Op } = require("sequelize");
 const checkAndCreateLanguage = require("../utils/checkAndCreateLanguage");
 const checkAndCreateAuthors = require("../utils/checkAndCreateAuthors");
