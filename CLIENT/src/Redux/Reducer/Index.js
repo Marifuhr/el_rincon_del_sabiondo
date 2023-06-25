@@ -9,20 +9,24 @@ import {
 
 const initialState = {
   allBooks: [],
+  detailBooks: [],
   isLoading: false,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_BOOKS:
-      console.log(action.payload);
+      // console.log(action.payload);
       return {
         ...state,
         allBooks: action.payload,
         isLoading: false,
       };
     case GET_DETAIL_BOOKS:
-      return state;
+      return {
+        ...state,
+        detailBooks: action.payload,
+      };
     case FILTER_BY_CATEGORY:
       return {};
 
