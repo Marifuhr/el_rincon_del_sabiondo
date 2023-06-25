@@ -1,8 +1,6 @@
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { ChakraProvider } from '@chakra-ui/react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import store from './reducers';
+
+
+import { Routes, Route } from 'react-router-dom';
 import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 
@@ -13,14 +11,14 @@ import Home from './components/Home/Home';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-ReactDOM.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <ChakraProvider>
-        <Routes>
-          <Route exact path="/" element={<Landing />} />
-          <Route path="/home" element={<Home />} />
-          {/*<Route path="/login" element={<Login />} />
+export default function App() {
+  return (
+  <div>
+    
+    <Routes>
+      <Route exact path="/" element={<Landing />} />
+      <Route path="/home" element={<Home />} />
+      {/*<Route path="/login" element={<Login />} />
           <Route path="/detail/:id" element={<Detail/>}/>
           <Route path="/admin" element={</>}/> 
           //rutas para carrusel Link
@@ -29,10 +27,11 @@ ReactDOM.render(
           <Route path="/misterio" element={<BookPage category="Misterio" />} />
           <Route path="/romance" element={<BookPage category="Romance" />} />
           <Route path="/fantasia" element={<BookPage category="Fantasía" />} />
-          */}
-        </Routes>
-      </ChakraProvider>
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
-);
+        */}
+    </Routes>
+    </div >
+  )
+
+
+
+}
