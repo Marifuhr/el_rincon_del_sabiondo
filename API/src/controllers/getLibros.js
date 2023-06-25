@@ -2,7 +2,7 @@ const {Author, Selling, Review, Book, Category, Country,Language } = require('..
 
 //Controller connect with database to realize sql query
 const getLibros = async () => {
-    const libros = await Book.findAll({
+    const books = await Book.findAll({
         include: [
             {
                 model: Category,
@@ -16,13 +16,14 @@ const getLibros = async () => {
                     attributes:[]
                 }
             },
-            {
-                model: Country,
-                as:'countryPublicationData'
-            },
+            // {
+            //     model: Country,
+            //     as:'countryPublicationData'
+            // },
             {
                 model: Language,
-                as:'languageBook'
+                as:'languageBook',
+                attributes: ['language'],
             },
             {
                 model: Review
@@ -32,11 +33,11 @@ const getLibros = async () => {
                 as:"sellings"
             }
         ],
-        attributes:{
-            exclude:['language','countryPublication']
-        }
+        // attributes:{
+        //     exclude:['language','countryPublication']
+        // }
     });
-    return libros;
+    return books;
 };
 
 module.exports = getLibros;

@@ -1,35 +1,25 @@
-import React from 'react'
-import Card from '../../components/Card/card';
-import { useEffect, useState } from 'react';
-import axios from 'axios';
-import NavBar from '../../components/NavBar/NavBar'
+import React from "react";
+import Card from "../../components/Card/card";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import NavBar from "../../components/NavBar/NavBar";
+import { getAllBooks } from "../../Redux/Action/Index";
 
 export default function Home() {
+  const dispatch = useDispatch();
+  const allBooks = useSelector((state) => state.allBooks);
 
-  const [books, setBooks] = useState([]);
+  console.log(allBooks);
 
   useEffect(() => {
-    const getBooks = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/books');
-        console.log(response.data.libros); // Asegúrate de que la respuesta contenga los datos esperados
-        setBooks(response.data.libros);
-        console.log(books)
-        console.log(response.data.libros[0])
-      } catch (error) {
-        console.error('Error al obtener los libros:', error);
-      }
-    };
+    dispatch(getAllBooks());
+  }, [dispatch]);
 
-    getBooks();
-  }, []);
   return (
     <div>
       <NavBar />
-      
-      <div style={{ marginTop: "20px" }}>
-        <Card props={books[0]} />
-      </div>
+
+      <div style={{ marginTop: "20px" }}>{/* <Card props={books} /> */}</div>
     </div>
-  )
+  );
 }

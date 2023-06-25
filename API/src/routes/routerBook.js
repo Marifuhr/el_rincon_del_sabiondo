@@ -1,11 +1,15 @@
-const { Router } = require('express');
-const routeBooksHandler = require('../handlers/routeBooksHandler.js');
+const { Router } = require("express");
+const routeBooksHandler = require("../handlers/routeBooksHandler.js");
+const createBookHandler = require("../handlers/createBookHandler.js");
+const routeBooksXIdHandler = require("../handlers/routeBooksXIdHandler.js");
 
-const routerBook = Router();
+const router = Router();
 
 //Routes
-routerBook.get("/", routeBooksHandler);
+router.get("/", routeBooksHandler);
+router.get("/:id", routeBooksXIdHandler);
+router.post("/", createBookHandler);
 
 // Middlewares
 
-module.exports = routerBook;
+module.exports = router;
