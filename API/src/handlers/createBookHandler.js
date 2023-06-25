@@ -1,18 +1,11 @@
-const { Book } = require('../db');
-const { v4: uuidv4 } = require('uuid');
-const { checkAndCreateLanguage } = require('../utils/checkAndCreateLanguage')
+const createBook = require('../controllers/createBook')
 
 
 async function createBookHandler (req, res) {
   try {
     const { title, description, language, datePublication, publisher, numberPages, rate, categories, authors } = req.body;
-
-
-    // Realizar el bulk create de los libros
-    // await Book.bulkCreate(books);
-
-    newBook.save()
-
+    const newBook = createBook({ title, description, language, datePublication, publisher, numberPages, rate, categories, authors })
+    
     res.status(200).json({ newBook });
   } catch (error) {
     console.error('Error al crear los libros:', error);

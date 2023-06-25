@@ -23,7 +23,7 @@ async function checkAndCreateLanguage(languageCode) {
   if (!language) {
     // El idioma no existe en la tabla, crearlo
     const newLanguage = await Language.create({ IdLanguage: languageCode, language: languageName });
-    return newLanguage;
+    return newLanguage.IdLanguage;
   }
   
   return 'El lenguaje ' + languageName + ' ya existe';

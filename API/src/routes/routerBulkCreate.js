@@ -1,8 +1,8 @@
 const express = require('express');
-const bulkCreateBooksFromFile = require('../handlers/bulkCreateBooksFromFile');
+const bulkCreateBooksHandler = require('../handlers/bulkCreateBooksHandler');
 
 const router = express.Router();
 
-router.post('/', bulkCreateBooksFromFile);
+router.post('/', bulkCreateBooksHandler);
 
 module.exports = router;
