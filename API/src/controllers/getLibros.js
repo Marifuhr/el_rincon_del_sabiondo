@@ -1,8 +1,9 @@
 const {Author, Selling, Review, Book, Category, Country,Language } = require('../db');
 
 //Controller connect with database to realize sql query
-const getLibros = async () => {
-    const books = await Book.findAll({
+const getLibros = async (name = null) => {
+
+    const options = {
         include: [
             {
                 model: Category,
@@ -16,10 +17,6 @@ const getLibros = async () => {
                     attributes:[]
                 }
             },
-            // {
-            //     model: Country,
-            //     as:'countryPublicationData'
-            // },
             {
                 model: Language,
                 as:'languageBook',
@@ -33,10 +30,16 @@ const getLibros = async () => {
                 as:"sellings"
             }
         ],
-        // attributes:{
-        //     exclude:['language','countryPublication']
-        // }
-    });
+    }
+
+    if (name) {
+        options.where = {
+            name: {
+                [Op.iLike]: `%${name}%`
+            }
+        };
+    } 
+    const books = Book.findAll(options)
     return books;
 };
 
