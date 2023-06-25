@@ -13,11 +13,11 @@ const getLibros = require("../controllers/getLibros.js");
 // module.exports = routeBooksHandler;
 async function routeBooksHandler(req, res) {
 
-    const bookName = req.query;
+    const { title } = req.query;
 
-    if (bookName) {
+    if (name) {
         try {
-            const books = await getLibros(bookName);
+            const books = await getLibros(title);
             res.status(200).json({ books });
         } catch ({ message }) {
             res.status(500).json({ error: `Error al obtener los libros: ${message}` });

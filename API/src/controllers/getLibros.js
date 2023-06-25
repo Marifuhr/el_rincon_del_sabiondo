@@ -1,7 +1,8 @@
 const {Author, Selling, Review, Book, Category, Country,Language } = require('../db');
+const { Op } = require("sequelize");
 
 //Controller connect with database to realize sql query
-const getLibros = async (name = null) => {
+const getLibros = async (title = null) => {
 
     const options = {
         include: [
@@ -32,10 +33,10 @@ const getLibros = async (name = null) => {
         ],
     }
 
-    if (name) {
+    if (title) {
         options.where = {
             title: {
-                [Op.iLike]: `%${name}%`
+                [Op.iLike]: `%${title}%`
             }
         };
     } 
