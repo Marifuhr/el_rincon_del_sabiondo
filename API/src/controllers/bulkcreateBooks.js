@@ -1,6 +1,7 @@
 const { Book, Author, Category, Language } = require('../db');
 const { Op } = require('sequelize');
 const checkAndCreateLanguage = require('../utils/checkAndCreateLanguage');
+const checkAndCreateAuthors = require('../utils/checkAndCreateAuthors')
 
 async function bulkCreateBooks(books) {
   //console.log(books);
@@ -41,26 +42,10 @@ async function bulkCreateBooks(books) {
       console.log({authors, categories});
 
       if (authors && authors.length > 0) {
-        const foundAuthors = [];
-        for (const authorName of authors) {
-          const foundAuthor = await Author.findOne({
-            where: {
-              name: {
-                [Op.iLike]: authorName.trim()
-              }
-            }
-          });
-
-          if (!foundAuthor) {
-            // El autor no existe en la base de datos, crearlo
-            const newAuthor = await Author.create({ name: authorName.trim() });
-            foundAuthors.push(newAuthor);
-          } else {
-            foundAuthors.push(foundAuthor);
-          }
+        const filteredAuthors = await checkAndCreateAuthors();
+        if (filteredAuthors) {
+          await book.setAuthors(filteredAuthors);
         }
-
-        await book.setAuthors(foundAuthors);
       }
 
       if (categories && categories.length > 0) {
