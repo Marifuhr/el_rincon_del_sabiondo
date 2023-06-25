@@ -12,16 +12,28 @@ const getLibros = require("../controllers/getLibros.js");
 
 // module.exports = routeBooksHandler;
 async function routeBooksHandler(req, res) {
-    try {
-        // Este es el controlador
-        const books = await getLibros();
 
-        // Desactivar respuesta 304
-        res.set('Cache-Control', 'no-store');
+    const bookName = req.query;
 
-        res.status(200).json({ books });
-    } catch ({ message }) {
-        res.status(500).json({ error: `Error al obtener los libros: ${message}` });
+    if (bookName) {
+        try {
+            const books = await getLibros(bookName);
+            res.status(200).json({ books });
+        } catch ({ message }) {
+            res.status(500).json({ error: `Error al obtener los libros: ${message}` });
+        };
+    } else {
+        try {
+            // Este es el controlador
+            const books = await getLibros();
+    
+            // Desactivar respuesta 304
+            res.set('Cache-Control', 'no-store');
+    
+            res.status(200).json({ books });
+        } catch ({ message }) {
+            res.status(500).json({ error: `Error al obtener los libros: ${message}` });
+        }
     }
 }
 

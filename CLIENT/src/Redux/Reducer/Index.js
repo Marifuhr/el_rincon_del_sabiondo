@@ -29,7 +29,24 @@ const reducer = (state = initialState, action) => {
       };
     case FILTER_BY_CATEGORY:
       return {};
-
+    case FILTER_BY_PRICE:
+      return {};
+    case FILTER_BY_AUTOR:
+      return {};
+    case SEARCH_NAME_BOOK:
+      return {};
+    case "RESET":
+      return initialState;
+    case "LOADING":
+      return {
+        ...state,
+        isLoading: true,
+      }
+    case "ERROR":
+      return {
+        ...state,
+        isLoading: false,
+      }
     default:
       return { ...state };
   }
