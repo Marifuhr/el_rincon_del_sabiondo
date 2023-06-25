@@ -34,7 +34,7 @@ const getLibros = async (name = null) => {
 
     if (name) {
         options.where = {
-            name: {
+            title: {
                 [Op.iLike]: `%${name}%`
             }
         };
