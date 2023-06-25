@@ -12,21 +12,21 @@ import {
 
 
 function Cards({ props }) {
-  const { title, description, datePublication } = props || {};
-
+  // const { title, description, datePublication, categories } = props;
+  console.log(props.title);
 
   return (
     <div>
       <Card maxW="sm">
         <CardBody>
-          <Image src="src\assets\image\libro Card.webp" borderRadius="lg" />
+          <Image src={props.image} borderRadius="lg" />
           <Stack mt="6" spacing="3">
-            <Heading size="md">{title}</Heading>
-            <Text>{description}</Text>
-            <Text>{datePublication}</Text>
-            <Text>{`Category`}</Text>
+            <Heading size="md">{props.title}</Heading>
+            <Text>{props.description}</Text>
+            <Text>{props.datePublication}</Text>
+            <Text>{props.categories}</Text>
             <Text color="blue.600" fontSize="2xl">
-              {`price: $ lala`}
+              {`price: ${props.price}`}
             </Text>
           </Stack>
         </CardBody>
