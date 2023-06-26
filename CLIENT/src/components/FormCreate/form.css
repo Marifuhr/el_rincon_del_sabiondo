@@ -1,0 +1,100 @@
+.form-container{
+  background-image: url("/src\assets\image\356623-admin.jpg");
+   background-size: cover;
+     background-repeat: no-repeat;  
+    background-position: center;
+   background-attachment: fixed;
+  
+}
+@media screen and (max-width: 768px) {
+  .form-container {
+    /* Establecer el tamaño de la imagen a contain en pantallas más pequeñas */
+    background-size: contain;
+  }
+ 
+}
+.form{
+  background: rgba(192, 200, 206, 0);
+  padding: 0rem;
+}
+
+.book-form {
+  background: rgba(102, 117, 129, 0.767);
+  padding: 40px;
+  width: 300px;
+  margin: 40px auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+.book-form h1 {
+  text-align: center;
+  color: rgb(207, 136, 29);
+  font-weight: 200;
+  margin: 0 0 40px;
+}
+
+.book-form label {
+  display: block;
+  margin-bottom: 20px;
+  color: rgb(216, 175, 39);
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.book-form input,
+.book-form textarea {
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #fff;
+  border-radius: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-form input:focus,
+.book-form textarea:focus {
+  outline: 0;
+  border-color: #1ab188;
+}
+
+.book-form textarea {
+  border: 2px solid #a0b3b0;
+  resize: vertical;
+}
+
+.book-form .form-input {
+  height: 30px;
+}
+
+.book-form .form-button {
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgb(214, 166, 10);
+  color: #fff;
+  transition: all.5s ease;
+  
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.book-form .form-button:hover,
+.book-form .form-button:focus {
+  background: #0e8a6d;
+}
+
+.input-error {
+  color: red;
+  font-size: 0.8rem;
+}
