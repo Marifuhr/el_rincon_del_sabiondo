@@ -3,10 +3,28 @@ const checkAndCreateAuthors = require('../utils/checkAndCreateAuthors')
 const checkAndCreateCategories = require('../utils/checkAndCreateCategories')
 const { Book } = require('../db');
 const { v4: uuidv4 } = require('uuid');
+const validator = require('../utils/validator');
+const getLibros = require('./getLibros')
 
-async function createBook({ title, description, language, datePublication, publisher, numberPages, rate, categories, authors }) {
+async function createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN }) {
+  console.log(title)
+  const errors = await validator({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN });
+  console.log(errors);
+  if (errors?.length > 0) {
+    return { error : errors };
+  }
+  
+  const existingBook = await getLibros(title);
+  if (existingBook && existingBook.length > 0) {
+    return { error: 'Ya existe un libro con ese título' };
+  }
+
   try {
     const languageExists = await checkAndCreateLanguage(language);
+    const filteredAuthors = await checkAndCreateAuthors(authors);
+    const filteredCategories = await checkAndCreateCategories({ category });
+    console.log({ filteredAuthors, filteredCategories });
+
     if (languageExists) {
       const newBook = Book.build({
         id: uuidv4(),
@@ -16,21 +34,23 @@ async function createBook({ title, description, language, datePublication, publi
         datePublication,
         publisher,
         numberPages,
-        rate
+        rate,
+        image,
+        ISBN,
       });
-    }
+    
+  
     const createdBook = await newBook.save();
+    await createdBook.setAuthors(filteredAuthors);
+    await createdBook.setCategories(filteredCategories);
+    
 
-    const filteredAuthors = await checkAndCreateAuthors(authors);
-    const filteredCategories = await checkAndCreateCategories(categories);
-    if (filteredAuthors && filteredCategories) {
-      await createdBook.setAuthors(filteredAuthors);
-      await createdBook.setCategories(filteredCategories);
-    }
     return createdBook;
+    }
   } catch (error) {
     console.error({ error : error.message });
   }
 }
+
 
 module.exports = createBook;

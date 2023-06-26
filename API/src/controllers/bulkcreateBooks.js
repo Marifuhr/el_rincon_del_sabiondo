@@ -3,6 +3,7 @@ const { Op } = require("sequelize");
 const checkAndCreateLanguage = require("../utils/checkAndCreateLanguage");
 const checkAndCreateAuthors = require("../utils/checkAndCreateAuthors");
 const checkAndCreateCategories = require("../utils/checkAndCreateCategories");
+const validator = require("../utils/validator");
 
 
 async function bulkCreateBooks(books) {
@@ -17,7 +18,12 @@ async function bulkCreateBooks(books) {
     }
 
     let filteredbooks = [];
-
+    books.forEach(element => {
+      const { errors } = validator(element);
+      if (errors.length > 0) {
+        return errors;
+      }
+    });
     for (const book of books) {
       const foundbook = await Book.findOne({
         where: {
