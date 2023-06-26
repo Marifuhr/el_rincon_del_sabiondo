@@ -1,0 +1,24 @@
+.pageIndicator {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pageIndicator button {
+    background-color: #807878;
+    color: #fff;
+    border: none;
+    box-shadow: 2px 2px white;
+    border-radius: 10%;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+.pageIndicator button:hover {
+    background-color: #555;
+}
+
+.pageIndicator button.active {
+    background-color: #666;
+}

@@ -4,11 +4,10 @@ import './NavBar.css';
 import Deco_Text from '../Deco_Text/Deco_Text';
 import CartIcon from '../../assets/image/carrito.png';
 import SearchBar from '../SearchBar/SearchBar';
-
+import { Link } from 'react-router-dom';
 
 function Navbar() {
     const [showDropdown, setShowDropdown] = useState(false);
-    
 
     const toggleDropdown = () => {
         setShowDropdown(!showDropdown);
@@ -18,8 +17,6 @@ function Navbar() {
         event.stopPropagation();
     };
 
-   
-
     return (
         <nav className="navbar">
             <div className="navbar-left">
@@ -28,11 +25,11 @@ function Navbar() {
                 <SearchBar />
             </div>
             <div className="navbar-right">
-                <button className="navbar-action">Ingresar</button>
+                <Link to="/login" className="navbar-action">Ingresar</Link>
                 <button className="navbar-action">Registrarse</button>
                 <button className="navbar-cart">
                     <img src={CartIcon} alt="Carrito de compras" className="navbar-cart-icon" />
-                    <span className="navbar-cart-count" >0</span>
+                    <span className="navbar-cart-count">0</span>
                 </button>
             </div>
             <div className="navbar-center">
@@ -51,7 +48,6 @@ function Navbar() {
                 <button className="navbar-button">Nosotros</button>
                 <button className="navbar-button">Contacto</button>
             </div>
-      
         </nav>
     );
 }

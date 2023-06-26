@@ -19,10 +19,11 @@ function Cards({ props }) {
     <div>
       <Card maxW="sm">
         <CardBody>
-          <Image src={props.image} borderRadius="lg" />
+          <Link to="/">
+            <Image src={props.image} borderRadius="lg" /></Link>
           <Stack mt="6" spacing="3">
             <Heading size="md">{props.title}</Heading>
-            <Text>{props.description}</Text>
+            <Text>{props.description.slice(0, 90) + '...'}</Text>
             <Text>{props.datePublication}</Text>
             <Text>{props.categories}</Text>
             <Text color="blue.600" fontSize="2xl">
