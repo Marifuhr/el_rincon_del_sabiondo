@@ -1,21 +1,27 @@
-.form-container{
+.form-container {
+  display: flex;
+  position: static;
   background-image: url("/src\assets\image\356623-admin.jpg");
-   background-size: cover;
-     background-repeat: no-repeat;  
-    background-position: center;
-   background-attachment: fixed;
-  
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+
+
 }
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 240px) {
   .form-container {
     /* Establecer el tamaño de la imagen a contain en pantallas más pequeñas */
     background-size: contain;
   }
- 
+
 }
-.form{
+
+.form {
   background: rgba(192, 200, 206, 0);
-  padding: 0rem;
+  margin-right: 800px;
+  position: relative;
+  z-index: 1;
 }
 
 .book-form {
@@ -59,7 +65,7 @@
 .book-form input:focus,
 .book-form textarea:focus {
   outline: 0;
-  border-color: #1ab188;
+  border-color: #fcba06;
 }
 
 .book-form textarea {
@@ -83,7 +89,7 @@
   background: rgb(214, 166, 10);
   color: #fff;
   transition: all.5s ease;
-  
+
   display: block;
   width: 100%;
   margin-top: 20px;
@@ -91,10 +97,29 @@
 
 .book-form .form-button:hover,
 .book-form .form-button:focus {
-  background: #0e8a6d;
+  background: #e2c061;
 }
 
 .input-error {
   color: red;
   font-size: 0.8rem;
+}
+
+.form-button {
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+  padding: 4px;
+  font-size: 1rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: rgb(214, 166, 10);
+  color: #fff;
+  transition: all.5s ease;
+
+  display: block;
+  width: 30%;
+  margin-top: 10px;
+  margin-right: 12.5rem;
 }

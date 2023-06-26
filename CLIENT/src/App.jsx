@@ -5,6 +5,7 @@ import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 import Login from "./components/Login/Login";
 //import  from "./components/";
+import FormCreate from "./components/FormCreate/form";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -17,8 +18,9 @@ export default function App() {
     <Routes>
       <Route exact path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
-          <Route path="/detailBook/:id" element={<DetailBook />}/>
-          <Route path="/login" element={<Login />} />
+          <Route path="/detail/:id" element={<DetailBook />}/>
+        <Route path="/login" element={<Login />} />
+        <Route path="/create" element={<FormCreate />} />
           {/*<Route path="/admin" element={</>}/> 
           //rutas para carrusel Link
           <Route path="/a" element={<CarruselLink />} />
