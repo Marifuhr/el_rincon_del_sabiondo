@@ -3,7 +3,7 @@ import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import image from "./image-reviews.jpg";
 import userImage from "./user-image.png";
-import "./Reviews.css";
+import "./reviews.css";
 
 function Reviews() {
   return (

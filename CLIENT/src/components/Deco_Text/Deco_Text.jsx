@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
-import "./Deco_Text.css";
+import "./deco_text.css";
 
 function Deco_Text() {
   const [visibleLetters, setVisibleLetters] = useState(0);

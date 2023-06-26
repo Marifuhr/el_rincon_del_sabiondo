@@ -5,7 +5,7 @@ import {
   FILTER_BY_PRICE,
   FILTER_BY_AUTOR,
   SEARCH_NAME_BOOK,
-} from "../Action/actions.types";
+} from "../Action/Actions.types.js";
 
 const initialState = {
   allBooks: [],

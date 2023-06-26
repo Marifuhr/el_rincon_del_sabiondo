@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Landing.module.css";
 import CardLanding from "../CardLanding/CardLanding";
 import LandingCarrusel from "../LandingCarrusel/carrusel"
-import NavbarLanding from './../NavBarLanding/NavbarLanding';
+import NavbarLanding from './../navbarlanding/NavbarLanding';
 import CarruselLink from "./../CarruselLink/CarruselLink"
 import Reviews from './../reviews/Reviews';
 import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";

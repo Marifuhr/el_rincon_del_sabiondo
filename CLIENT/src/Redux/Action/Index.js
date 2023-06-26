@@ -6,7 +6,7 @@ import {
   //   FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
-} from "./actions.types";
+} from "./Actions.types.js";
 
 const endpoint = "http://localhost:3001";
 
