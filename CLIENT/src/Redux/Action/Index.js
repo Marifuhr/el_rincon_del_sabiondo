@@ -2,10 +2,10 @@ import axios from "axios";
 import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
+  SEARCH_NAME_BOOK,
   //   FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
-  //   SEARCH_NAME_BOOK,
 } from "./actions.types";
 
 const endpoint = "http://localhost:3001";
@@ -41,3 +41,19 @@ export const getDetailBooks = (id) => {
     }
   };
 };
+
+export const searchNameBooks = (title) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`${endpoint}/books?title=${title}`);
+      const books = response.data.books;
+      console.log(books);
+      return dispatch({
+        type: SEARCH_NAME_BOOK,
+        payload: books,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
