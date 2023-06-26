@@ -11,6 +11,7 @@ import Home from './components/Home/Home';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import DetailBook from './components/DetailBook/DetailBook';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
     <Routes>
       <Route exact path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
+     
       {/*<Route path="/login" element={<Login />} />
           <Route path="/detail/:id" element={<Detail/>}/>
           <Route path="/admin" element={</>}/> 
@@ -28,6 +30,7 @@ export default function App() {
           <Route path="/misterio" element={<BookPage category="Misterio" />} />
           <Route path="/romance" element={<BookPage category="Romance" />} />
           <Route path="/fantasia" element={<BookPage category="Fantasía" />} />
+           <Route path="/detail/:id" element={<DetailBook />} />
         */}
     </Routes>
     </div >
