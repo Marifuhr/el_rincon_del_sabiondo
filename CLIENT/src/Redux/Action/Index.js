@@ -30,8 +30,9 @@ export const getDetailBooks = (id) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(`${endpoint}/books/${id}`);
-      const books = response.data.books;
-      // console.log(books);
+      const books = response.data.finded;
+      //console.log('ingreso a getdetailbook')
+      //console.log(books.Authors)
       return dispatch({
         type: GET_DETAIL_BOOKS,
         payload: books,

@@ -35,9 +35,6 @@ const reducer = (state = initialState, action) => {
       };
     
     
-    
-    
-    
     case FILTER_BY_CATEGORY:
       return {};
     case FILTER_BY_PRICE:
