@@ -1,8 +1,10 @@
 const {Author, Selling, Review, Book, Category, Country,Language } = require('../db');
+const { Op } = require("sequelize");
 
 //Controller connect with database to realize sql query
-const getLibros = async () => {
-    const books = await Book.findAll({
+const getLibros = async (title = null) => {
+
+    const options = {
         include: [
             {
                 model: Category,
@@ -16,10 +18,6 @@ const getLibros = async () => {
                     attributes:[]
                 }
             },
-            // {
-            //     model: Country,
-            //     as:'countryPublicationData'
-            // },
             {
                 model: Language,
                 as:'languageBook',
@@ -33,10 +31,16 @@ const getLibros = async () => {
                 as:"sellings"
             }
         ],
-        // attributes:{
-        //     exclude:['language','countryPublication']
-        // }
-    });
+    }
+
+    if (title) {
+        options.where = {
+            title: {
+                [Op.iLike]: `%${title}%`
+            }
+        };
+    } 
+    const books = Book.findAll(options)
     return books;
 };
 
