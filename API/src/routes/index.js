@@ -2,7 +2,7 @@ const express = require("express");
 const routerBook = require("./routerBook");
 const routerCategory = require('./routerCategory');
 const routerLanguage = require("./routerLanguage");
-const bulkCreateBooksHandler = require('../handlers/bulkCreateBooksHandler')
+const bulkCreateBooksHandler = require('../handlers/BulkCreateBooksHandler')
 
 const rootRouter = express.Router();
 

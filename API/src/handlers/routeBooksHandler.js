@@ -1,3 +1,4 @@
+const getFilterBooksController = require("../controllers/getFilterBooksController.js");
 const getLibros = require("../controllers/getLibros.js");
 
 // async function routeBooksHandler(req,res){
@@ -12,28 +13,26 @@ const getLibros = require("../controllers/getLibros.js");
 
 // module.exports = routeBooksHandler;
 async function routeBooksHandler(req, res) {
-
-    const { title } = req.query;
-
-    if (title) {
-        try {
-            const books = await getLibros(title);
-            res.status(200).json({ books });
-        } catch ({ message }) {
-            res.status(500).json({ error: `Error al obtener los libros: ${message}` });
+    try {
+        let books;
+        
+        //Filter query params without value
+        const filterParams = Object.entries(req.query)
+                            .filter(([,value]) => value);
+        //Si existen campos válidos
+        if(filterParams.length){
+            books = await getFilterBooksController(Object.fromEntries(filterParams));
+            res.json({books});
+            return;
         };
-    } else {
-        try {
-            // Este es el controlador
-            const books = await getLibros();
-    
-            // Desactivar respuesta 304
-            res.set('Cache-Control', 'no-store');
-    
-            res.status(200).json({ books });
-        } catch ({ message }) {
-            res.status(500).json({ error: `Error al obtener los libros: ${message}` });
-        }
+
+        // Este es el controlador /books without queries
+        books = await getLibros();
+        // Desactivar respuesta 304
+        res.set('Cache-Control', 'no-store');
+        res.status(200).json({ books });
+    } catch ({ message }) {
+        res.status(500).json({ error: `Error al obtener los libros: ${message}` });
     }
 }
 
