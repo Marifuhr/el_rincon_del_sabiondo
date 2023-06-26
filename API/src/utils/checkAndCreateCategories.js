@@ -1,25 +1,28 @@
 const { Category } = require("../db");
 const { Op } = require("sequelize");
 
-const checkAndCreateCategories = async (categories) => {
+const checkAndCreateCategories = async ({ category }) => {
   try {
     const foundCategories = await Category.findAll({
       where: {
         name: {
-          [Op.in]: categories.map(categoryName => categoryName.trim()),
+          [Op.in]: category.map(categoryName => categoryName.trim().toLowerCase()),
         },
       },
     });
+    console.log(foundCategories);
 
     const existingCategoriesNames = foundCategories.map(category => category.name.toLowerCase());
     const newCategories = [];
+    console.log(existingCategoriesNames)
 
-    for (const categoryName of categories) {
+    for (const categoryName of category) {
       const trimmedCategoryName = categoryName.trim();
       if (!existingCategoriesNames.includes(trimmedCategoryName.toLowerCase())) {
         newCategories.push({ name: trimmedCategoryName });
       }
     }
+    console.log(newCategories)
 
     if (newCategories.length > 0) {
       await Category.bulkCreate(newCategories);
@@ -28,14 +31,14 @@ const checkAndCreateCategories = async (categories) => {
     const allCategories = await Category.findAll({
       where: {
         name: {
-          [Op.in]: categories.map(categoryName => categoryName.trim()),
+          [Op.in]: category.map(categoryName => categoryName.trim().toLowerCase()),
         },
       },
     });
-
+    console.log(allCategories);
     return allCategories;
   } catch (error) {
-    throw new Error('An error occurred while checking and creating categories.');
+    throw new Error(error);
   }
 }
 

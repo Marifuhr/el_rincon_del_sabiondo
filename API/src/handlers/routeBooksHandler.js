@@ -15,7 +15,7 @@ async function routeBooksHandler(req, res) {
 
     const { title } = req.query;
 
-    if (name) {
+    if (title) {
         try {
             const books = await getLibros(title);
             res.status(200).json({ books });
