@@ -3,6 +3,7 @@ import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
   SEARCH_NAME_BOOK,
+  FILTER_RESULTS,
   //   FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
@@ -56,5 +57,12 @@ export const searchNameBooks = (title) => {
     } catch (error) {
       console.log(error.message);
     }
+  };
+}
+
+export function filterResults(filters) {
+  return {
+    type: FILTER_RESULTS,
+    payload: filters,
   };
 }
