@@ -4,7 +4,7 @@ const checkAndCreateCategories = require('../utils/checkAndCreateCategories')
 const { Book } = require('../db');
 const { v4: uuidv4 } = require('uuid');
 const validator = require('../utils/validator');
-const getLibros = require('./getLibros')
+const getFilterBooksController = require('./getFilterBooksController')
 
 async function createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN }) {
   console.log(title)
@@ -14,7 +14,8 @@ async function createBook({ title, description, language, datePublication, publi
     return { error : errors };
   }
   
-  const existingBook = await getLibros(title);
+  const existingBook = await getFilterBooksController({ title });
+  console.log(existingBook)
   if (existingBook && existingBook.length > 0) {
     return { error: 'Ya existe un libro con ese título' };
   }
