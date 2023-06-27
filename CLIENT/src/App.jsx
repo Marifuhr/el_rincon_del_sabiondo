@@ -6,6 +6,8 @@ import Home from './components/Home/Home';
 import Login from "./components/Login/Login";
 //import  from "./components/";
 import FormCreate from "./components/FormCreate/form";
+import About from "./components/About/about";
+import Contacto from "./components/Contacto/contacto";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -20,6 +22,8 @@ export default function App() {
           <Route path="/detail/:id" element={<DetailBook />}/>
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<FormCreate />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contacto" element={<Contacto />} />
           {/*<Route path="/admin" element={</>}/> 
           //rutas para carrusel Link
           <Route path="/a" element={<CarruselLink />} />

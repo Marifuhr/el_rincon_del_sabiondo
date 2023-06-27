@@ -17,3 +17,10 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.btn-primary {
+  background-color: #48f55680;
+  border-color: #4caf50;
+  color: white;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

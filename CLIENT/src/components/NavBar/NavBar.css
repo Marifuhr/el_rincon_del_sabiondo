@@ -15,6 +15,17 @@
     }
 }
 
+.navbar-salir{
+    padding: 5px;
+        border: none;
+        border-radius: 5px;
+        background-color: #58ae5b;
+        color: #ffffff;
+        font-size: 1rem;
+        cursor: pointer;
+        
+}
+
 .navbar-left {
     width: 100%;
     display: grid;
@@ -63,6 +74,15 @@
     color: #333333;
     font-size: 1rem;
     cursor: pointer;
+}
+.navbar-crear{
+    padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(210, 133, 133);
+        color: #333333;
+        font-size: 0.8rem;
+        cursor: pointer;
 }
 
 .navbar-button:hover {

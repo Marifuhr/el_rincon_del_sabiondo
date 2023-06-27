@@ -10,8 +10,8 @@ function DetailBook() {
     }, [dispatch, id]);
     const book = useSelector((state) => state.detailBooks);
     //   console.log('***books blen')
-    console.log(book.Authors[0].name)
-    // console.log(book);
+    // console.log(book.Authors[0].name)
+    console.log(book);
     return (
         <div>
 

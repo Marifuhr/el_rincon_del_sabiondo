@@ -1,0 +1,26 @@
+.h1{
+    font-size: 1.8rem;
+    color: rgb(216, 81, 81);
+    justify-content: center;
+    float: center;
+    text-align: center;
+    
+
+}
+
+.resumen{
+    font-size: 1.2rem;
+    color: rgb(82, 75, 75);
+    justify-content: center;
+    float: center;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+
+.img-about{
+    width: 40rem;
+    height: 40rem;
+    margin: 8rem 23rem;
+}
+
