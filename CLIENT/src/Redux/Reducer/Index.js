@@ -12,6 +12,7 @@ const initialState = {
   detailBooks: [],
   isLoading: false,
   search: [],
+  category: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -33,27 +34,38 @@ const reducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
       };
-    
-    
+
+    // case FILTER_BY_CATEGORY:
+    //   return {
+    //     ...state,
+    //     category: action.payload,
+    //   };
     case FILTER_BY_CATEGORY:
-      return {};
+      const category = action.payload.category;
+      const filteredBooks = action.payload.books;
+      return {
+        ...state,
+        category: category,
+        allBooks: filteredBooks,
+      };
+
     case FILTER_BY_PRICE:
       return {};
     case FILTER_BY_AUTOR:
       return {};
-    
+
     case "RESET":
       return initialState;
     case "LOADING":
       return {
         ...state,
         isLoading: true,
-      }
+      };
     case "ERROR":
       return {
         ...state,
         isLoading: false,
-      }
+      };
     default:
       return { ...state };
   }
