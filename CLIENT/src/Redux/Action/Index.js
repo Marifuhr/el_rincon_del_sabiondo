@@ -3,7 +3,7 @@ import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
   SEARCH_NAME_BOOK,
-  //   FILTER_BY_CATEGORY,
+  FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
 } from "./Actions.types.js";
@@ -57,4 +57,36 @@ export const searchNameBooks = (title) => {
       console.log(error.message);
     }
   };
-}
+};
+
+// export const filterByCategory = (category) => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await axios.get(`${endpoint}/category`);
+//       const books = response.data.books;
+//       return dispatch({
+//         type: FILTER_BY_CATEGORY,
+//         payload: books,
+//       });
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+// };
+
+export const filterByCategory = (category) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(
+        `${endpoint}/books?category=${category}`
+      );
+      const books = response.data.books;
+      return dispatch({
+        type: FILTER_BY_CATEGORY,
+        payload: { category: category, books: books },
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+};
