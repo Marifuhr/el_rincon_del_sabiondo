@@ -65,7 +65,7 @@ function Cards({ props }) {
               marginRight: "40px",
             }}
           >
-            know more
+            Comprar
           </Button>
         </ButtonGroup>
       </CardFooter>

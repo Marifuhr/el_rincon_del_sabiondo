@@ -1,19 +1,17 @@
-// eslint-disable-next-line no-unused-vars
 import React from "react";
+import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import logo_landing from "../../assets/image/logo6.png";
 import "./navbarlanding.css";
 import Deco_Text from "../Deco_Text/Deco_Text";
 
-
-
 function NavbarLanding() {
   return (
     <div>
       <Navbar>
         <Container>
-          <Navbar.Brand href="/home">
+          <Navbar.Brand>
             <img
               alt=""
               src={logo_landing}
@@ -21,6 +19,9 @@ function NavbarLanding() {
             />{" "}
             <Deco_Text />
           </Navbar.Brand>
+          <Link to="/home" className="btn-primary">
+            Bienvenidos
+          </Link>
         </Container>
       </Navbar>
     </div>
