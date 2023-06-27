@@ -48,11 +48,11 @@ export default function Home() {
       <div>
         <NavBar />
         {/* Resto del código */}
-        <div className={styles.boxCardBooks}>
+        {/* <div className={styles.boxCardBooks}>
           {books.map((book) => (
             <Card key={book.IdBook} props={book} />
           ))}
-        </div>
+        </div> */}
         {/* Resto del código */}
       </div>
       <div className={styles.homePage}>
