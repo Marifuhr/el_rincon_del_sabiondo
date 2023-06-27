@@ -59,11 +59,11 @@ function FormCreate() {
   return (
     <div className="form-container">
       <div className="form">
-        <Link to="/home">
-          <div className="form-button">
+        <div className="form-button">
+          <Link to="/home">
             <button>Back</button>
-          </div>
-        </Link>
+          </Link>
+        </div>
 
         <form onSubmit={handleSubmit} className="book-form">
           <div>

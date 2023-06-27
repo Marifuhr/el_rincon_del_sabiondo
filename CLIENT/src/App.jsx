@@ -14,7 +14,6 @@ import DetailBook from './components/DetailBook/DetailBook';
 export default function App() {
   return (
   <div>
-    
     <Routes>
       <Route exact path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />

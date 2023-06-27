@@ -1,22 +1,47 @@
-.navbar {
+.header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    height: 150px;
-    padding: 0 1rem;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 10px 100px;
     background-color: #858181;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 900px ){
+    .header{
+        padding: 10px;
+    }
+}
+
 .navbar-left {
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: .2fr  .5fr .3fr;
     align-items: center;
-    gap: 1rem;
 }
 
 .navbar-logo {
-    height: 90px;
+    height: 120px;
 }
+
+@media (max-width: 900px ){
+    .navbar-left{
+        display: flex;
+        flex-direction: column;
+    }
+    .navbar-logo{
+        height: 90px;
+    }
+};
+
+@media (min-width: 1300px ){
+    .navbar-logo{
+        height: 120px;
+    }
+};
+
 
 .navbar-title {
     margin: 0;

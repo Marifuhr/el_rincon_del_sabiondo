@@ -42,34 +42,38 @@ export default function Home() {
   return (
     <div>
       <div><NavBar /></div>
-      <div>
-        {/* {/renderizar una Card por cada book/} */}
-        {books.map((book) => (
-          <Card key={book.IdBokk} props={book} />
-        ))}
-      </div>
-      <div className={styles.pageIndicator}>
-        <button
-          disabled={currentPage === 1}
-          onClick={() => handlePageChange(currentPage - 1)}
-        >
-          ⮜
-        </button>
-        {Array.from({ length: totalPages }, (_, index) => (
+      <div className={styles.homePage}>
+        <div className={styles.boxCardBooks}>
+          {/* {/renderizar una Card por cada book/} */}
+          {books && books.map((book) => (
+            <Card key={book.IdBook} props={book} />
+          ))}
+        </div>
+        <div className={styles.pageIndicator}>
           <button
-            key={index}
-            className={currentPage === index + 1 ? styles.active : ''}
-            onClick={() => handlePageChange(index + 1)}
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
           >
-            {index + 1}
+            ⮜
           </button>
-        ))}
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => handlePageChange(currentPage + 1)}
-        >
-          ⮞
-        </button>
+          {
+            new Array(totalPages).fill('').map( (_,index) => (
+              <button
+                className={currentPage === index + 1 ? styles.active : ''}
+                onClick={() => handlePageChange(index + 1)}
+                key={index}
+              >
+                {index + 1}
+              </button>
+            ))
+          }
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            ⮞
+          </button>
+        </div>
       </div>
       <div style={{ marginTop: "20px" }}>
         <Footer />

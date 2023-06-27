@@ -18,7 +18,7 @@ function Navbar() {
     };
 
     return (
-        <nav className="navbar">
+        <nav className="header">
             <div className="navbar-left">
                 <img src="src\assets\image\logo6.png" alt="Logo" className="navbar-logo" />
                 <Deco_Text />
