@@ -6,7 +6,7 @@ import LandingCarrusel from "../LandingCarrusel/carrusel"
 import NavbarLanding from './../navbarlanding/NavbarLanding';
 import CarruselLink from "./../CarruselLink/CarruselLink"
 import Reviews from './../reviews/Reviews';
-import SubscriptionForm from "../SubscriptionForm/SubscriptionForm";
+
 import Footer from "../Footer/Footer";
 
 
@@ -35,11 +35,11 @@ function Landing() {
       <div style={{ marginTop: "20px" }}>
         <Reviews />
       </div>
-      <div style={{ marginTop: "20px" }}>
-        <SubscriptionForm />
-      </div>
-      <div>
+
+      <div style={{marginTop: "20px"}}>
+        
         <Footer/>
+      
       </div>
     </div>
   );

@@ -8,6 +8,7 @@ import NavBar from "../../components/NavBar/NavBar";
 import { getAllBooks } from "../../Redux/Action/Index";
 //import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
+import Footer from "../../components/Footer/Footer";
 
 
 
@@ -70,6 +71,9 @@ export default function Home() {
           ⮞
         </button>
       </div>
+      <div style={{ marginTop: "20px" }}>
+        <Footer />
+        </div>
     </div>
   );
 }

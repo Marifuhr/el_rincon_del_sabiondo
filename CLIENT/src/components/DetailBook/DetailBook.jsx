@@ -1,19 +1,21 @@
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getDetailBooks } from '../../Redux/Action/Index';
-import { useParams} from "react-router-dom";
-function DetailBook(props) {
+import { useParams } from "react-router-dom";
+function DetailBook() {
     const { id } = useParams();
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(getDetailBooks(id));
-      }, [dispatch, id]);
-      const book = useSelector((state) => state.detailBooks);
-      console.log('***books blen')
-      console.log(book.Authors.name)
+    }, [dispatch, id]);
+    const book = useSelector((state) => state.detailBooks);
+    //   console.log('***books blen')
+    console.log(book.Authors[0].name)
+    // console.log(book);
     return (
         <div>
-        <div class="container">
+
+            <div class="container">
 <div class="row justify-content-center">
     <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
         <div class="card border-0 shadow">
@@ -22,7 +24,7 @@ function DetailBook(props) {
                 <div class="mb-4">
                     <h3 class="h4 mb-0">Autor: {book.Authors[0].name}</h3>
                     <br />
-                    <h3 class="h4 mb-0">Libro:{book.title}</h3>
+                                    <h3 class="h4 mb-0">Libro:{book.title}</h3>
                 </div>
                 
                
@@ -76,7 +78,7 @@ function DetailBook(props) {
     </div>
 </div>
 </div>
-    </div>
+        </div>
     );
 }
 
