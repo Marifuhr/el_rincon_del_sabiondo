@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { searchNameBooks } from "../../Redux/Action/Index";
+import styles from './SearchBar.module.css';
 
 export default function SearchBar() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export default function SearchBar() {
   };
 
   return (
-    <div>
+    <div className={styles.ctnSearchBar}>
       <input onChange={handleInputChange} type="text" />
       <button>Buscar</button>
     </div>

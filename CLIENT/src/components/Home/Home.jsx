@@ -45,8 +45,8 @@ export default function Home() {
       <div className={styles.homePage}>
         <div className={styles.boxCardBooks}>
           {/* {/renderizar una Card por cada book/} */}
-          {books.map((book) => (
-            <Card key={book.IdBokk} props={book} />
+          {books && books.map((book) => (
+            <Card key={book.IdBook} props={book} />
           ))}
         </div>
         <div className={styles.pageIndicator}>
@@ -56,15 +56,17 @@ export default function Home() {
           >
             ⮜
           </button>
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              className={currentPage === index + 1 ? styles.active : ''}
-              onClick={() => handlePageChange(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+          {
+            new Array(totalPages).fill('').map( (_,index) => (
+              <button
+                className={currentPage === index + 1 ? styles.active : ''}
+                onClick={() => handlePageChange(index + 1)}
+                key={index}
+              >
+                {index + 1}
+              </button>
+            ))
+          }
           <button
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}

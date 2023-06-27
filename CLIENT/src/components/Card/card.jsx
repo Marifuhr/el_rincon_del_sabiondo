@@ -37,19 +37,12 @@ function Cards({ props }) {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ButtonGroup style={{
-          display:"flex",
-          width:"100%",
-          justifyContent:"center"
-        }}>
+        <ButtonGroup>
           <Button
             variant="ghost"
             colorScheme="blue"
             style={{
-              width:"120px",
-              display:"flex",
-              alignItems:"center",
-              justifyContent:"space-between"
+              padding:"2px 10px"
             }}
           >
             {""}Favorito
@@ -57,7 +50,7 @@ function Cards({ props }) {
               src="src\assets\image\Star.png"
               style={{
                 width: "20px",
-                transform:"translateY(-2px)"
+                transform:"translateY(-1px)"
               }}
             />
           </Button>
