@@ -4,7 +4,7 @@ const validate = (book) => {
   if (!book.title) {
     errors.title = "El título es requerido";
   }
-  if (book.title.length < 30) {
+  if (book.title.length < 3) {
     errors.title = "El título no debe tener menos de 3 caracteres";
   }
   if (book.title.length > 30) {
@@ -40,6 +40,7 @@ const validate = (book) => {
     errors.price = "El precio es requerido";
   }
   return errors;
+  
 };
 
 export default validate;

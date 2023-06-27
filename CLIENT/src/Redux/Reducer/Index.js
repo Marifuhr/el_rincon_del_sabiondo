@@ -5,6 +5,7 @@ import {
   FILTER_BY_PRICE,
   FILTER_BY_AUTOR,
   SEARCH_NAME_BOOK,
+  CREATE_BOOK,
 } from "../Action/Actions.types.js";
 
 const initialState = {
@@ -33,27 +34,31 @@ const reducer = (state = initialState, action) => {
         ...state,
         search: action.payload,
       };
-    
-    
+
     case FILTER_BY_CATEGORY:
       return {};
     case FILTER_BY_PRICE:
       return {};
     case FILTER_BY_AUTOR:
       return {};
-    
+
     case "RESET":
       return initialState;
     case "LOADING":
       return {
         ...state,
         isLoading: true,
-      }
+      };
     case "ERROR":
       return {
         ...state,
         isLoading: false,
-      }
+      };
+    case CREATE_BOOK:
+      return {
+        ...state,
+        allBooks: [...state.allBooks, action.payload],
+      };
     default:
       return { ...state };
   }

@@ -3,6 +3,7 @@ import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
   SEARCH_NAME_BOOK,
+  CREATE_BOOK,
   //   FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
@@ -51,6 +52,22 @@ export const searchNameBooks = (title) => {
       console.log(books);
       return dispatch({
         type: SEARCH_NAME_BOOK,
+        payload: books,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export const createBook = (book) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${endpoint}/books`, book);
+      const books = response.data;
+      console.log(books);
+      return dispatch({
+        type: CREATE_BOOK,
         payload: books,
       });
     } catch (error) {

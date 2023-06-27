@@ -4,14 +4,13 @@
   background-image: url("/src\assets\image\356623-admin.jpg");
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
+  
 
 
 }
 
 @media screen and (max-width: 240px) {
   .form-container {
-    /* Establecer el tamaño de la imagen a contain en pantallas más pequeñas */
     background-size: contain;
   }
 
@@ -19,11 +18,17 @@
 
 .form {
   background: rgba(192, 200, 206, 0);
-  margin-right: 800px;
+  margin-right: 300px;
   position: relative;
   z-index: 1;
 }
+@media screen and (max-width: 240px) {
+  .form{
+    width: 100%;
+    max-width: none;
+  }
 
+}
 .book-form {
   background: rgba(102, 117, 129, 0.767);
   padding: 40px;
@@ -110,8 +115,8 @@
   outline: none;
   border-radius: 8px;
   padding: 4px;
-  font-size: 1rem;
-  font-weight: 100;
+  /* font-size: 1rem; 
+  font-weight: 100;*/
   text-transform: uppercase;
   letter-spacing: 0.1em;
   background: rgb(214, 166, 10);
@@ -121,5 +126,25 @@
   display: block;
   width: 30%;
   margin-top: 10px;
-  margin-right: 12.5rem;
+  margin-right: 13rem;
+}
+
+.form-button2 {
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+  padding: 4px;
+  background: rgb(214, 166, 10);
+  display: flex;
+  width: 20%;
+  margin-top: 10px;
+  margin-right: 13rem;
+  margin-left: 50px;
+}
+.star {
+  width: 20px;
+  background-color: none;
+  margin-top: 3px;
+  margin-left: 22.5px;
+  margin-right: 50px;
 }

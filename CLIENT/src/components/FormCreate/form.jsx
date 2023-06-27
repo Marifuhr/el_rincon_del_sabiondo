@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { createBook } from "../../Redux/Action/Index";
 import "./form.css";
 import validate from "./Validations/validation";
 
 function FormCreate() {
-  // const dispatch = useDispatch();
-  // const createBook = useSelector((state) => state.createBook);
-  // console.log(createBook);
+  const dispatch = useDispatch();
+  // const allBooks = useSelector((state) => state.allBooks);
+  // console.log(allBooks);
   const [errors, setErrors] = useState({});
   const [book, setBook] = useState({
     title: "",
@@ -17,13 +18,13 @@ function FormCreate() {
     numberPages: "",
     description: "",
     datePublication: "",
-    categories: "",
+    category: "",
     price: 0,
   });
 
   // useEffect(() => {
-  //   validate();
-  // }, [book]);
+  //   dispatch(allBooks);
+  // }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,23 +37,30 @@ function FormCreate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      const newBook = await createBook(book);
-      console.log(newBook);
-      setBook({
-        title: "",
-        author,
-        image: "",
-        lenguage: "",
-        numberPages: "",
-        description: "",
-        datePublication: "",
-        categories: "",
-        price: 0,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    if (
+      Object.keys(errors).length === 0 &&
+      book.title !== "" &&
+      book.author !== ""
+    )
+      try {
+        const newBook = await dispatch(createBook(book));
+        console.log(newBook);
+        setBook({
+          title: "",
+          author: "",
+          image: "",
+          lenguage: "",
+          numberPages: "",
+          description: "",
+          datePublication: "",
+          category: "",
+          price: 0,
+        });
+        alert("¡El libro se creó correctamente!");
+      } catch (error) {
+        console.log(error.message);
+        alert("check the fields");
+      }
     setErrors(validate(book));
   };
 
@@ -60,8 +68,14 @@ function FormCreate() {
     <div className="form-container">
       <div className="form">
         <Link to="/home">
-          <div className="form-button">
-            <button>Back</button>
+          <div className="form-button2">
+            <button>
+              <img
+                className="star"
+                src="src\assets\image\flecha.png"
+                alt="volver"
+              />
+            </button>
           </div>
         </Link>
 
