@@ -20,7 +20,7 @@ function Cards({ props }) {
 
   return (
 
-    <Card maxW="sm" display="inline-block" justifyContent="auto" flexDirection="column" marginBlock="5px" border="1px" borderColor="gray.200" bg="white" shadow="md" p="5" marginTop="20px" marginBottom="20px" marginLeft="1rem">
+    <Card border="1px" borderColor="gray.200" bg="white" shadow="md" p="5">
 
       <CardBody >
         <Link to={`/detail/${props.IdBook}`}>
@@ -37,14 +37,19 @@ function Cards({ props }) {
       </CardBody>
       <Divider />
       <CardFooter>
-        <ButtonGroup spacing="2">
+        <ButtonGroup style={{
+          display:"flex",
+          width:"100%",
+          justifyContent:"center"
+        }}>
           <Button
             variant="ghost"
             colorScheme="blue"
             style={{
-              width: "80px",
-              marginLeft: "8px",
-              marginRight: "5px",
+              width:"120px",
+              display:"flex",
+              alignItems:"center",
+              justifyContent:"space-between"
             }}
           >
             {""}Favorito
@@ -52,8 +57,7 @@ function Cards({ props }) {
               src="src\assets\image\Star.png"
               style={{
                 width: "20px",
-                backgroundColor: "none",
-                margin: "5px",
+                transform:"translateY(-2px)"
               }}
             />
           </Button>
