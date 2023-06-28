@@ -9,12 +9,10 @@ function DetailBook() {
         dispatch(getDetailBooks(id));
     }, [dispatch, id]);
     const book = useSelector((state) => state.detailBooks);
-    //   console.log('***books blen')
-    // console.log(book.Authors[0].name)
-    console.log(book);
+    const author = book.Authors && book.Authors.length > 0 ? book.Authors[0].name : "Unknown Author";
+    const category = book.Categories && book.Categories.length > 0 ? book.Categories[0].name : "Unknown Category";
     return (
         <div>
-
             <div class="container">
 <div class="row justify-content-center">
     <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
@@ -22,12 +20,10 @@ function DetailBook() {
             <img src={book.image} alt="..."/>
             <div class="card-body p-1-9 p-xl-5">
                 <div class="mb-4">
-                    <h3 class="h4 mb-0">Autor: {book.Authors[0].name}</h3>
+                    <h3 class="h4 mb-0">Autor: {author}</h3>
                     <br />
-                                    <h3 class="h4 mb-0">Libro:{book.title}</h3>
+                        <h3 class="h4 mb-0">Libro:{book.title}</h3>
                 </div>
-                
-               
             </div>
         </div>
     </div>
@@ -58,7 +54,7 @@ function DetailBook() {
                             <div class="card-body">
                                 <i class="ti-pencil-alt icon-box medium rounded-3 mb-4"></i>
                                 <h3 class="h5 mb-3">Numero de Paginas</h3>
-                                <p class="mb-0">{book.numberPages}</p>
+                                <p class="mb-0">10</p>
                             </div>
                         </div>
                     </div>
@@ -66,8 +62,8 @@ function DetailBook() {
                         <div class="card text-center border-0 rounded-3">
                             <div class="card-body">
                                 <i class="ti-medall-alt icon-box medium rounded-3 mb-4"></i>
-                                <h3 class="h5 mb-3">Categorias</h3>
-                                <p class="mb-0">{book.Categories[0].name}</p>
+                                <h3 class="h5 mb-3">Categorias {category}</h3>
+                                <p class="mb-0"></p>
                             </div>
                         </div>
                     </div>
@@ -78,6 +74,7 @@ function DetailBook() {
     </div>
 </div>
 </div>
+
         </div>
     );
 }
