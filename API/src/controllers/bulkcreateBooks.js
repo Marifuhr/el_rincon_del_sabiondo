@@ -7,7 +7,7 @@ const validator = require("../utils/validator");
 
 
 async function bulkCreateBooks(books) {
-  //console.log(books);
+  console.log(books);
   try {
     // Verificar y crear los idiomas necesarios
     const languageCodes = books.map((book) => book.language);

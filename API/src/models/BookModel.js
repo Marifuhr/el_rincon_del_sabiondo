@@ -77,7 +77,7 @@ module.exports = function(database){
             }
         },
         price:{
-            type: DataTypes.FLOAT,
+            type: DataTypes.DECIMAL,
             allowNull: false
         }
         //? Association with BookCategory in relationsModels.js N:N
