@@ -13,8 +13,8 @@ function CarouselFadeExample() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <button>entrar</button>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            {/* <button>entrar</button>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
