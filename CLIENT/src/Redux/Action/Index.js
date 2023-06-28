@@ -4,6 +4,7 @@ import {
   GET_DETAIL_BOOKS,
   SEARCH_NAME_BOOK,
   FILTER_BY_CATEGORY,
+  FILTER_RESULTS,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
 } from "./Actions.types.js";
@@ -90,3 +91,11 @@ export const filterByCategory = (category) => {
     }
   };
 };
+
+export function filterResults(filters) {
+  // console.log(filters);
+  return {
+    type: FILTER_RESULTS,
+    payload: filters,
+  };
+}
