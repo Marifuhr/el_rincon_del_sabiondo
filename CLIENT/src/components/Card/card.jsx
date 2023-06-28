@@ -26,7 +26,6 @@ function Cards({ props }) {
         <Link to={`/detail/${props.IdBook}`}>
         <Image src={props.image} borderRadius="lg" marginTop="-20px" marginLeft="auto" marginRight="auto" />
         </Link>
-
         <Stack mt="3" spacing="1">
           <Heading size="sm">{props.title}</Heading>
           <Text>{props.description.slice(0, 90) + '...'}</Text>
