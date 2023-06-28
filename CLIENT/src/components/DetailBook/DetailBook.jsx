@@ -54,7 +54,7 @@ function DetailBook() {
                             <div class="card-body">
                                 <i class="ti-pencil-alt icon-box medium rounded-3 mb-4"></i>
                                 <h3 class="h5 mb-3">Numero de Paginas</h3>
-                                <p class="mb-0">10</p>
+                                <p class="mb-0">{book.numberPages}</p>
                             </div>
                         </div>
                     </div>
