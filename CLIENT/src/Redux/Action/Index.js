@@ -6,6 +6,7 @@ import {
   FILTER_BY_CATEGORY,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
+    CREATE_BOOK
 } from "./Actions.types.js";
 
 const endpoint = "http://localhost:3001";
@@ -90,3 +91,18 @@ export const filterByCategory = (category) => {
     }
   };
 };
+
+export const createBook = (book) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${endpoint}/books`, book);
+      const newBook = response.data;
+      return dispatch({
+        type: CREATE_BOOK,
+        payload: newBook,
+      })
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+}

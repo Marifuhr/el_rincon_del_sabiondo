@@ -4,7 +4,7 @@ const validate = (book) => {
   if (!book.title) {
     errors.title = "El título es requerido";
   }
-  if (book.title.length < 30) {
+  if (book.title.length < 3) {
     errors.title = "El título no debe tener menos de 3 caracteres";
   }
   if (book.title.length > 30) {
@@ -13,6 +13,9 @@ const validate = (book) => {
 
   if (!book.author) {
     errors.author = "El author es requerido";
+  }
+  if (!book.publisher) {
+    errors.publisher = "La editorial es requerida";
   }
   if (!book.image) {
     errors.image = "La image es requerida";

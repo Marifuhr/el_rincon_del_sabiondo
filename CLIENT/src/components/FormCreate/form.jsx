@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { createBook } from "../../Redux/Action/Index";
 import { Link } from "react-router-dom";
 import "./form.css";
 import validate from "./Validations/validation";
 
 function FormCreate() {
-  // const dispatch = useDispatch();
-  // const createBook = useSelector((state) => state.createBook);
+  const dispatch = useDispatch();
+  // const createBook = useSelector((state) => state.allBooks);
   // console.log(createBook);
   const [errors, setErrors] = useState({});
   const [book, setBook] = useState({
@@ -17,13 +18,14 @@ function FormCreate() {
     numberPages: "",
     description: "",
     datePublication: "",
-    categories: "",
+    publisher: "",
+    category: "",
     price: 0,
   });
 
   // useEffect(() => {
-  //   validate();
-  // }, [book]);
+  //   setErrors(validate(book));
+  // }, []);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,24 +38,32 @@ function FormCreate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setErrors(validate(book));
+    if (Object.keys(errors).length === 0) {
+      alert("Falta completar campos");
+      return;
+    }
+
     try {
-      const newBook = await createBook(book);
+      const newBook = await dispatch(createBook(book));
       console.log(newBook);
+
       setBook({
         title: "",
-        author,
+        author: "",
         image: "",
         lenguage: "",
         numberPages: "",
         description: "",
         datePublication: "",
-        categories: "",
+        publisher: "",
+        category: "",
         price: 0,
       });
+      alert("Libro creado con éxito");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
-    setErrors(validate(book));
   };
 
   return (
@@ -107,6 +117,18 @@ function FormCreate() {
             </label>
             {!errors.datePublication ? null : (
               <p className="input-error">{errors.datePublication}</p>
+            )}
+            <label>
+              Editorial:
+              <input
+                name="publisher"
+                value={book.publisher}
+                onChange={handleChange}
+                className="form-input"
+              />
+            </label>
+            {!errors.publisher ? null : (
+              <p className="input-error">{errors.publisher}</p>
             )}
             <label>
               Descripción:
