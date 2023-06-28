@@ -1,49 +1,53 @@
 .form-container {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 1000px;
+  
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+
   background-image: url("src/assets/image/356623-admin.jpg");
   background-position: center;
   background-size: cover;
-  border-radius: 20px;
-}
-
-@media screen and (max-width: 240px) {
-  .form-container {
-    /* Establecer el tamaño de la imagen a contain en pantallas más pequeñas */
-    background-size: contain;
-  }
-
 }
 
 .form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
   background: rgba(192, 200, 206, 0);
-  margin-right: 800px;
-  position: relative;
-  z-index: 1;
 }
 
 .book-form {
-  background: rgba(102, 117, 129, 0.767);
-  padding: 40px;
-  width: 300px;
-  margin: 40px auto;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+  width: 100%;
+  max-width: 400px;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(102, 117, 129, 0.9);
 }
+
+@media (max-width: 1000px){
+  .book-form{
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+
 
 .book-form h1 {
   text-align: center;
   color: rgb(207, 136, 29);
-  font-weight: 200;
-  margin: 0 0 40px;
+  font-weight: 700;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 
 .book-form label {
   display: block;
-  margin-bottom: 20px;
   color: rgb(216, 175, 39);
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 500;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 
 .book-form input,
@@ -54,9 +58,9 @@
   padding: 5px 10px;
   background: none;
   background-image: none;
+  border-radius: 5px;
   border: 1px solid #a0b3b0;
   color: #fff;
-  border-radius: 0;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -68,11 +72,7 @@
 
 .book-form textarea {
   border: 2px solid #a0b3b0;
-  resize: vertical;
-}
-
-.book-form .form-input {
-  height: 30px;
+  resize: none;
 }
 
 .book-form .form-button {
