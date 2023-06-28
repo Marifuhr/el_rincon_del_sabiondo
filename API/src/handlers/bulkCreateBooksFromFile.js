@@ -26,7 +26,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "220.58"
       },
       {
         "title": "Cmo Utilizar Jmol Para Estudiar y Presentar Estructuras Moleculares",
@@ -45,7 +45,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "40.70"
       },
       {
         "title": "Aplicaciones Web",
@@ -65,7 +65,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "46.30"
       },
       {
         "title": "Circular CFP LI (51) – Junio de 2020",
@@ -84,7 +84,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "203.11"
       },
       {
         "title": "PIC CIRCULAR L",
@@ -104,7 +104,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "106.82"
       },
       {
         "title": "Circular CFP LII (52) – diciembre de 2020",
@@ -124,7 +124,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "78.00"
       },
       {
         "title": "Historia y prospectiva",
@@ -144,7 +144,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "190.15"
       },
       {
         "title": "Circular CFP LIV (54) – diciembre de 2021",
@@ -164,7 +164,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "279.90"
       },
       {
         "title": "Breve historia de la Lingüística estructural",
@@ -183,7 +183,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "179.98"
       },
       {
         "title": "Mejore su sitio Joomla!",
@@ -202,7 +202,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "52.89"
       },
       {
         "title": "Instalación y configuración del software de servidor web. IFCT0509",
@@ -221,7 +221,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "0.90"
       },
       {
         "title": "Cuadernillo JavaScript 2: Desarrollo Web en Entorno Cliente de una Calculadora",
@@ -240,7 +240,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "83.51"
       },
       {
         "title": "Domine Javascript 4a Edición",
@@ -259,7 +259,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "26.85"
       },
       {
         "title": "Domine JavaScript 4ª Edición",
@@ -278,7 +278,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "172.48"
       },
       {
         "title": "Utilización de las bases de datos relacionales en el sistema de gestión y almacenamiento de datos",
@@ -297,7 +297,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "182.12"
       },
       {
         "title": "Natural Language Processing with Java Cookbook",
@@ -316,7 +316,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "175.74"
       },
       {
         "title": "Diseñar y programar, todo es empezar.",
@@ -338,7 +338,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "181.10"
       },
       {
         "title": "APLICACIONES DE R EN ESTADÍSTICA BÁSICA Y TEXTUAL",
@@ -357,7 +357,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "260.59"
       },
       {
         "title": "Big Intelligence",
@@ -376,7 +376,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "174.40"
       },
       {
         "title": "La ciencia es eso que nos pasa mientras estamos ocupados haciendo otras cosas",
@@ -395,7 +395,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "75.27"
       },
       {
         "title": "Esto es Twitch. Guía práctica",
@@ -414,7 +414,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "296.79"
       },
       {
         "title": "Su gracia es mayor",
@@ -433,7 +433,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "89.77"
       },
       {
         "title": "Filosofía de la Restauración",
@@ -452,7 +452,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "87.57"
       },
       {
         "title": "Líderes humanos",
@@ -471,7 +471,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "218.42"
       },
       {
         "title": "Sistemas de telefonía fija y móvil",
@@ -490,7 +490,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "204.47"
       },
       {
         "title": "Ingeniería del software y bases de datos",
@@ -509,7 +509,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "51.26"
       },
       {
         "title": "Traducción y tecnologías",
@@ -530,7 +530,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "125.42"
       },
       {
         "title": "Tecnologías y programación integrativas",
@@ -549,7 +549,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "163.49"
       },
       {
         "title": "Del arte objetual al arte de concepto",
@@ -568,7 +568,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "34.17"
       },
       {
         "title": "Humanidades digitales y pedagogías culturales",
@@ -588,7 +588,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "185.29"
       },
       {
         "title": "La escuela de Nueva York",
@@ -607,7 +607,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "124.51"
       },
       {
         "title": "MF0492_3 Programación Web en el Entorno Servidor.",
@@ -626,7 +626,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "224.06"
       },
       {
         "title": "Intensive Exposure Experiences in Second Language Learning",
@@ -645,7 +645,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "210.02"
       },
       {
         "title": "Big Data and Hadoop",
@@ -664,7 +664,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "147.47"
       },
       {
         "title": "El acto de nombrar",
@@ -683,7 +683,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "170.81"
       },
       {
         "title": "Formalising Natural Languages with Nooj 2014",
@@ -704,7 +704,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "45.92"
       },
       {
         "title": "Construcción y diseño de páginas web con HTML, CSS y JavaScript. Edición 2023",
@@ -723,7 +723,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "37.66"
       },
       {
         "title": "III Congreso internacional de ingenierías",
@@ -743,7 +743,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "85.15"
       },
       {
         "title": "Gramática natural",
@@ -762,7 +762,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "165.97"
       },
       {
         "title": "Introducción a la ciencia de datos en R",
@@ -781,7 +781,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "72.44"
       },
       {
         "title": "Diseño de interfaces web (GRADO SUPERIOR)",
@@ -800,7 +800,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "89.57"
       },
       {
         "title": "Manual teórico-práctico para programar por competencias",
@@ -821,7 +821,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "246.14"
       },
       {
         "title": "Calidad del producto y proceso software",
@@ -842,7 +842,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "268.32"
       },
       {
         "title": "Recursos para atender a la diversidad en contextos educativos",
@@ -863,7 +863,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "104.09"
       },
       {
         "title": "Programación en Android",
@@ -883,7 +883,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "226.72"
       },
       {
         "title": "Elaboración de documentos web mediante lenguajes de marca",
@@ -902,7 +902,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "279.26"
       },
       {
         "title": "Edición en epub",
@@ -921,7 +921,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "189.01"
       },
       {
         "title": "Somos agua (Sin censura)",
@@ -940,7 +940,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "289.05"
       },
       {
         "title": "El derecho de compensación equitativa por copia privada, un debate abierto en la jurisprudencia",
@@ -959,7 +959,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "262.73"
       },
       {
         "title": "Aplicaciones microinformáticas e internet para consulta y generación de documentación. IFCT0310",
@@ -978,7 +978,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "88.18"
       },
       {
         "title": "Innovación docente: investigaciones y propuestas",
@@ -1011,7 +1011,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "45.76"
       },
       {
         "title": "Lenguajes de Marcas y sistemas de gestión de información (GRADO SUP.)",
@@ -1030,7 +1030,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "186.35"
       },
       {
         "title": "Mantenimiento de portales de la información",
@@ -1051,7 +1051,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "126.13"
       },
       {
         "title": "Las claves de la Cuarta Revolución Industrial",
@@ -1073,7 +1073,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "126.70"
       },
       {
         "title": "Datos abiertos enlazados de archivos, bibliotecas y museos en la web",
@@ -1092,7 +1092,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "98.96"
       },
       {
         "title": "Actas del VI Congreso Internacional de Historia de la Lengua Española",
@@ -1113,7 +1113,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "204.72"
       },
       {
         "title": "Lenguajes de programación y procesadores",
@@ -1134,7 +1134,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "292.61"
       },
       {
         "title": "Fábricas de Software: Experiencias, Tecnologías y Organización. 2ª Ed.",
@@ -1153,7 +1153,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "129.26"
       },
       {
         "title": "Administración de sistemas operativos en red",
@@ -1174,7 +1174,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "192.96"
       },
       {
         "title": "Integración de la funcionalidad en productos multimedia. ARGN0110",
@@ -1193,7 +1193,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "12.59"
       },
       {
         "title": "Prensa e internet, ¿dónde está el negocio?",
@@ -1212,7 +1212,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "203.60"
       },
       {
         "title": "El nuevo PHP. Conceptos avanzados.",
@@ -1231,7 +1231,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "298.99"
       },
       {
         "title": "Desarrollo de aplicaciones IoT en la nube para Arduino y ESP8266",
@@ -1250,7 +1250,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "14.56"
       },
       {
         "title": "Búsqueda de información en investigación clínica II",
@@ -1269,7 +1269,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "144.36"
       },
       {
         "title": "La suficiencia y la sostenibilidad de las pensiones desde una perspectiva internacional: especial atención a las personas mayores",
@@ -1289,7 +1289,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "52.67"
       },
       {
         "title": "Discriminación algorítmica en el ámbito laboral: perspectiva de género e intervención",
@@ -1308,7 +1308,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "94.94"
       },
       {
         "title": "Las organizaciones de consumidores y el derecho a una alimentación adecuada",
@@ -1327,7 +1327,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "114.29"
       },
       {
         "title": "El derecho a entender",
@@ -1347,7 +1347,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "71.13"
       },
       {
         "title": "Reingeniería y seguridad en el ciberespacio",
@@ -1367,7 +1367,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "232.91"
       },
       {
         "title": "A Companion to Ancient Near Eastern Languages",
@@ -1386,7 +1386,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "9.07"
       },
       {
         "title": "Aproximación a la ingeniería del software",
@@ -1406,7 +1406,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "40.62"
       },
       {
         "title": "Comunicación femenina inteligente",
@@ -1425,7 +1425,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "242.94"
       },
       {
         "title": "Curso de Programación con iOS: Apps iPhone",
@@ -1445,7 +1445,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "72.84"
       },
       {
         "title": "Curso de Introducción a la Administración de Bases de Datos",
@@ -1465,7 +1465,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "280.74"
       },
       {
         "title": "Curso de Programación y Análisis de Software",
@@ -1485,7 +1485,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "235.44"
       },
       {
         "title": "Cognición social y lenguaje",
@@ -1506,7 +1506,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "64.02"
       },
       {
         "title": "jQuery UI in Action",
@@ -1525,7 +1525,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "82.46"
       },
       {
         "title": "Nuevas tecnologías en el aula",
@@ -1544,7 +1544,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "165.12"
       },
       {
         "title": "The Meta-Analysis Research in Special Education",
@@ -1563,7 +1563,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "235.40"
       },
       {
         "title": "Android Programming",
@@ -1585,7 +1585,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "203.57"
       },
       {
         "title": "Estructura y diseño de computadores",
@@ -1605,7 +1605,7 @@ async function bulkCreateBooksFromFile() {
         "language": "es",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "274.93"
       },
       {
         "title": "XSLT",
@@ -1624,7 +1624,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "111.10"
       },
       {
         "title": "Goldman and His Critics",
@@ -1644,7 +1644,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "AR",
         "stock": 0,
-        "price": 0
+        "price": "174.16"
       },
       {
         "title": "The Spanish Language in the Digital Age",
@@ -1664,7 +1664,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "261.06"
       },
       {
         "title": "The Catalan Language in the Digital Age",
@@ -1684,7 +1684,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "122.63"
       },
       {
         "title": "The Swedish Language in the Digital Age",
@@ -1704,7 +1704,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "192.48"
       },
       {
         "title": "European Identities and Foreign Policy Discourses on Russia",
@@ -1723,7 +1723,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "43.40"
       },
       {
         "title": "Language in Cape Town's District Six",
@@ -1742,7 +1742,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "242.38"
       },
       {
         "title": "Asterisk: The Definitive Guide",
@@ -1763,7 +1763,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "83.80"
       },
       {
         "title": "The Fall of Language in the Age of English",
@@ -1782,7 +1782,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "104.89"
       },
       {
         "title": "Asterisk: The Definitive Guide",
@@ -1803,7 +1803,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "158.08"
       },
       {
         "title": "Early Language Learning Policy in the 21st Century",
@@ -1823,7 +1823,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "282.85"
       },
       {
         "title": "The Language of Colour in the Bible",
@@ -1846,7 +1846,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "219.48"
       },
       {
         "title": "Team Teaching and Team Learning in the Language Classroom",
@@ -1867,7 +1867,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "237.83"
       },
       {
         "title": "Multilingual Perspectives from Europe and Beyond on Language Policy and Practice",
@@ -1887,7 +1887,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "26.57"
       },
       {
         "title": "Sign Language in Action",
@@ -1907,7 +1907,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "159.64"
       },
       {
         "title": "International Handbook of English Language Teaching",
@@ -1927,8 +1927,8 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
-      },  
+        "price": "164.60"
+      },
       {
         "title": "Derrida on Exile and the Nation",
         "authors": [
@@ -1946,7 +1946,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "59.49"
       },
       {
         "title": "jQuery UI in Action",
@@ -1965,7 +1965,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "218.13"
       },
       {
         "title": "Controlling Language in Industry",
@@ -1984,7 +1984,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "97.23"
       },
       {
         "title": "Routledge Revivals: Language in Tanzania (1980)",
@@ -2004,7 +2004,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "235.75"
       },
       {
         "title": "Type Noun Constructions in Slavic, Germanic and Romance Languages",
@@ -2028,7 +2028,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "124.95"
       },
       {
         "title": "Internet Infrastructure",
@@ -2048,7 +2048,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "260.28"
       },
       {
         "title": "Early Language Learning in Context",
@@ -2067,7 +2067,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "213.31"
       },
       {
         "title": "Axis Diplomats in American Custody",
@@ -2087,7 +2087,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "187.90"
       },
       {
         "title": "English and Translation in the European Union",
@@ -2106,7 +2106,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "139.35"
       },
       {
         "title": "Quality and Equity in Education",
@@ -2127,7 +2127,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "101.14"
       },
       {
         "title": "RESTful Web Services Cookbook",
@@ -2146,7 +2146,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "198.87"
       },
       {
         "title": "Digital Libraries",
@@ -2165,7 +2165,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "297.10"
       },
       {
         "title": "Innovations in Applied Artificial Intelligence",
@@ -2186,7 +2186,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "206.79"
       },
       {
         "title": "PIC Circular LII (52) – December 2020",
@@ -2206,7 +2206,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "142.28"
       },
       {
         "title": "Present and Future Trends in TEFL",
@@ -2225,7 +2225,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "205.44"
       },
       {
         "title": "Complementary Therapies for Older People in Care",
@@ -2244,7 +2244,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "134.30"
       },
       {
         "title": "Theoretical and Applied Perspectives on Teaching Foreign Languages in Multilingual Settings",
@@ -2265,7 +2265,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "56.13"
       },
       {
         "title": "Xamarin.Forms Solutions",
@@ -2285,7 +2285,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "261.03"
       },
       {
         "title": "Community and Communication",
@@ -2304,7 +2304,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "112.04"
       },
       {
         "title": "Learning Joomla! 3 Extension Development-Third Edition",
@@ -2323,7 +2323,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "144.87"
       },
       {
         "title": "English in Inclusive Multilingual Preschools",
@@ -2342,7 +2342,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "167.75"
       },
       {
         "title": "Advances in Information Technologies",
@@ -2363,7 +2363,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "17.89"
       },
       {
         "title": "Linguistics of American Sign Language",
@@ -2383,7 +2383,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "8.50"
       },
       {
         "title": "TESOL Teacher Education in a Transnational World",
@@ -2403,7 +2403,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "0.78"
       },
       {
         "title": "Content Syndication with RSS",
@@ -2422,7 +2422,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "275.35"
       },
       {
         "title": "Equality and Non-Discrimination in the EU",
@@ -2441,7 +2441,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "24.63"
       },
       {
         "title": "Teacher Education in the 21st Century",
@@ -2460,7 +2460,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "54.68"
       },
       {
         "title": "Computer Performance Evaluation. Modelling Techniques and Tools",
@@ -2479,7 +2479,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "40.65"
       },
       {
         "title": "Build Talking Apps for Alexa",
@@ -2498,7 +2498,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "12.03"
       },
       {
         "title": "Handbook of Research on Promoting Sustainable Public Transportation Strategies in Urban Environments",
@@ -2519,7 +2519,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "72.42"
       },
       {
         "title": "Words in Space and Time",
@@ -2538,7 +2538,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "249.68"
       },
       {
         "title": "Cultural Diversity in Schools",
@@ -2560,7 +2560,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "172.32"
       },
       {
         "title": "An Introduction to Sociolinguistics",
@@ -2580,7 +2580,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "28.51"
       },
       {
         "title": "The Oxford History of the Novel in English",
@@ -2600,7 +2600,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "166.72"
       },
       {
         "title": "International Handbook of English Language Teaching",
@@ -2620,7 +2620,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "221.46"
       },
       {
         "title": "Language in Cognitive Development",
@@ -2639,7 +2639,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "192.90"
       },
       {
         "title": "Perl & LWP",
@@ -2658,7 +2658,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "288.70"
       },
       {
         "title": "PIC Circular LIV (54) – December 2021",
@@ -2678,7 +2678,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "268.15"
       },
       {
         "title": "Overcoming the Challenge of Structural Change in Research Organisations",
@@ -2698,7 +2698,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "89.75"
       },
       {
         "title": "HTTP Developer's Handbook",
@@ -2717,7 +2717,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "56.33"
       },
       {
         "title": "Handbook of Service Description",
@@ -2737,7 +2737,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "74.29"
       },
       {
         "title": "Discourses of Student Success",
@@ -2756,7 +2756,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "212.63"
       },
       {
         "title": "Agile Engagement",
@@ -2776,7 +2776,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "7.47"
       },
       {
         "title": "Mathematical Logic",
@@ -2795,7 +2795,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "52.78"
       },
       {
         "title": "The European Parliament and its International Relations",
@@ -2815,7 +2815,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "277.22"
       },
       {
         "title": "The Study of Language in 17th-Century England",
@@ -2834,7 +2834,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "22.47"
       },
       {
         "title": "Language in the Mind",
@@ -2853,7 +2853,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "21.51"
       },
       {
         "title": "Always On",
@@ -2873,7 +2873,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "294.65"
       },
       {
         "title": "Slam Dunks and No-brainers",
@@ -2892,7 +2892,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "219.85"
       },
       {
         "title": "Third language acquisition",
@@ -2912,7 +2912,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "111.04"
       },
       {
         "title": "Language Planning in Africa",
@@ -2933,7 +2933,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "48.91"
       },
       {
         "title": "Language Contact",
@@ -2952,7 +2952,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "242.54"
       },
       {
         "title": "Being and Meaning",
@@ -2971,7 +2971,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "264.28"
       },
       {
         "title": "Academic Language in Diverse Classrooms: English Language Arts, Grades K-2",
@@ -2991,7 +2991,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "229.28"
       },
       {
         "title": "Mothers of Invention",
@@ -3010,7 +3010,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "49.59"
       },
       {
         "title": "Sip",
@@ -3029,7 +3029,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "283.47"
       },
       {
         "title": "ENGLISH GRAMMAR THE ENGLISH LA",
@@ -3048,7 +3048,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "49.99"
       },
       {
         "title": "English as a Lingua Franca",
@@ -3067,7 +3067,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "187.79"
       },
       {
         "title": "The Revival of Classical Tongue",
@@ -3086,7 +3086,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "155.65"
       },
       {
         "title": "Linguistic Policies and the Survival of Regional Languages in France and Britain",
@@ -3105,7 +3105,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "227.27"
       },
       {
         "title": "Beginning RSS and Atom Programming",
@@ -3125,7 +3125,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "64.47"
       },
       {
         "title": "Speaking Chicana",
@@ -3145,7 +3145,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "15.24"
       },
       {
         "title": "Minerals Yearbook",
@@ -3166,7 +3166,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "193.47"
       },
       {
         "title": "Antiquities Beyond Humanism",
@@ -3187,7 +3187,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "206.30"
       },
       {
         "title": "The Politics of Language",
@@ -3206,7 +3206,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "187.19"
       },
       {
         "title": "The directory of EU information sources",
@@ -3225,7 +3225,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "31.95"
       },
       {
         "title": "English Medium Instruction in Multilingual and Multicultural Universities",
@@ -3246,7 +3246,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "54.76"
       },
       {
         "title": "Learn English Faster in Half the Time: How to Master the English Language in Rapid Time. Learn Common Mistakes in English, Pass English Examinations.",
@@ -3265,7 +3265,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "182.42"
       },
       {
         "title": "Language in Context",
@@ -3284,7 +3284,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "88.22"
       },
       {
         "title": "Emotive Language in Argumentation",
@@ -3304,7 +3304,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "270.07"
       },
       {
         "title": "Patterns in Language",
@@ -3324,7 +3324,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "85.86"
       },
       {
         "title": "Handbook of Early Literacy Research",
@@ -3344,7 +3344,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "198.61"
       },
       {
         "title": "Talk that Counts",
@@ -3363,7 +3363,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "249.25"
       },
       {
         "title": "Gayle",
@@ -3382,8 +3382,8 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
-      },  
+        "price": "10.37"
+      },
       {
         "title": "Language and Sustainable Development",
         "authors": [
@@ -3402,7 +3402,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "168.18"
       },
       {
         "title": "Theory in Social and Cultural Anthropology",
@@ -3422,7 +3422,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "231.53"
       },
       {
         "title": "The Impact of Global English on Cultural Identities in the United Arab Emirates",
@@ -3441,7 +3441,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "137.37"
       },
       {
         "title": "Narrating Stance, Morality, and Political Identity",
@@ -3460,7 +3460,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "291.97"
       },
       {
         "title": "Mappings in Thought and Language",
@@ -3479,7 +3479,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "182.46"
       },
       {
         "title": "The Spanish Language in the United States",
@@ -3501,7 +3501,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "60.72"
       },
       {
         "title": "Language Hacking Spanish",
@@ -3520,7 +3520,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "209.17"
       },
       {
         "title": "Teaching Korean as a Foreign Language",
@@ -3539,7 +3539,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "206.80"
       },
       {
         "title": "Jamieson's Dictionary of the Scottish Language",
@@ -3558,7 +3558,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "13.81"
       },
       {
         "title": "Investigating English in Europe",
@@ -3577,7 +3577,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "156.33"
       },
       {
         "title": "Buddhist Philosophy of Language in India",
@@ -3597,7 +3597,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "252.71"
       },
       {
         "title": "Logic and Language in the Middle Ages",
@@ -3618,7 +3618,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "144.54"
       },
       {
         "title": "Sociolinguistic Patterns",
@@ -3637,7 +3637,7 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "68.49"
       },
       {
         "title": "Otto Dempwolff's Grammar of the Jabem Language in New Guinea",
@@ -3656,9 +3656,10 @@ async function bulkCreateBooksFromFile() {
         "language": "en",
         "countryPublication": "USA",
         "stock": 0,
-        "price": 0
+        "price": "240.23"
       }
     ];
+    
     console.log(jsonData)
     console.log(books)
 
