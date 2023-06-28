@@ -50,15 +50,6 @@ module.exports = function(database){
                 //isBefore: new Date().toISOString()
             }
         },
-        // countryPublication:{
-        //     //? Association with country in relationsModels.js 1:N
-        //     type: DataTypes.INTEGER(3),
-        //     allowNull: false,
-        //     validate:{
-        //         //isNumeric: false,
-        //         len:[2,3]
-        //     }
-        // },
         publisher:{
             type: DataTypes.STRING(100),
             allowNull: false,
@@ -84,6 +75,10 @@ module.exports = function(database){
                 max:5.0,
                 notEmpty:true,
             }
+        },
+        price:{
+            type: DataTypes.DECIMAL,
+            allowNull: false
         }
         //? Association with BookCategory in relationsModels.js N:N
         //? Association with BookReviews in relationsModels.js N:N
