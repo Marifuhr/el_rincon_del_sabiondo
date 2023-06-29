@@ -24,7 +24,7 @@ server.use(rootRouter);
 //sincronizando base de datos con la DB_CLOUD
 db.sync({alter:true}).then(() => {
     //execute server
-    server.listen(port, host, () => {
+    server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
     })
 });

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-import NavBar from "../../components/NavBar/NavBar";
+
 import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
 //import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
@@ -9,13 +9,11 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
   const dispatch = useDispatch();
-  const allBooks = useSelector((state) => state.allBooks);
+  const bookss = useSelector((state) => state.search);
+  const allBooks = useSelector((state) => state.filtered);
   const selectedCategory = useSelector((state) => state.selectedCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 9;
-  //const totalPages = Math.ceil(allBooks.length / booksperPage);
-
-  //console.log(allBooks);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -29,7 +27,9 @@ export default function Home() {
     if (selectedCategory) {
       dispatch(filterByCategory(selectedCategory));
     }
-  }, [dispatch, selectedCategory]);
+  }, [dispatch, selectedCategory, bookss]);
+
+  
 
   const filteredBooks = selectedCategory
     ? allBooks.filter((book) => book.category === selectedCategory)
@@ -46,14 +46,6 @@ export default function Home() {
   return (
     <div>
       <div>
-        <NavBar />
-        {/* Resto del código */}
-        {/* <div className={styles.boxCardBooks}>
-          {books.map((book) => (
-            <Card key={book.IdBook} props={book} />
-          ))}
-        </div> */}
-        {/* Resto del código */}
       </div>
       <div className={styles.homePage}>
         <div className={styles.boxCardBooks}>

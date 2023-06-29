@@ -38,7 +38,7 @@ function Cards({ props }) {
           <Text>{props.datePublication}</Text>
           <Text>{props.categories}</Text>
           <Text color="blue.600" fontSize="2xl">
-            {`price: $ 2500`}
+            {`$ 2500`}
           </Text>
         </Stack>
       </CardBody>
