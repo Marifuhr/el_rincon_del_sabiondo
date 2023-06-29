@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-import NavBar from "../../components/NavBar/NavBar";
+
 import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
 //import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <div>
       <div>
-        <NavBar />
+       
         {/* Resto del código */}
         {/* <div className={styles.boxCardBooks}>
           {books.map((book) => (
