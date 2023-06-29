@@ -4,6 +4,8 @@ import CartIcon from "../../assets/image/carrito.png";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import styles from "./NavBar.module.css";
+
 
 
 import { useDispatch, useSelector } from "react-redux";
