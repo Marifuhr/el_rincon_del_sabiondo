@@ -3,8 +3,8 @@ const createBook = require('../controllers/createBook')
 
 async function createBookHandler (req, res) {
   try {
-    const { title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN } = req.body;
-    const newBook = await createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN });
+    const { title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN, price } = req.body;
+    const newBook = await createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN, price });
     if (newBook.error) {
       return res.status(418).json({ error: newBook.error });
     }
