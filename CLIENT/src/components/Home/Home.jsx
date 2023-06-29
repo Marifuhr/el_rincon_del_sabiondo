@@ -9,6 +9,7 @@ import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
   const dispatch = useDispatch();
+  const bookss = useSelector((state) => state.search);
   const allBooks = useSelector((state) => state.allBooks);
   const selectedCategory = useSelector((state) => state.selectedCategory);
   const [currentPage, setCurrentPage] = useState(1);
@@ -29,7 +30,9 @@ export default function Home() {
     if (selectedCategory) {
       dispatch(filterByCategory(selectedCategory));
     }
-  }, [dispatch, selectedCategory]);
+  }, [dispatch, selectedCategory, bookss]);
+
+  
 
   const filteredBooks = selectedCategory
     ? allBooks.filter((book) => book.category === selectedCategory)

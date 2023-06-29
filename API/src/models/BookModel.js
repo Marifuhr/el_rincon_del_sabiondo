@@ -16,7 +16,7 @@ module.exports = function(database){
             type: DataTypes.STRING,
             allowNull: false,
             validate:{
-                len:[2-100],
+                len:[2-120],
                 notNull:{
                     msg:'The title cannot be empty'
                 }
@@ -51,7 +51,7 @@ module.exports = function(database){
             }
         },
         publisher:{
-            type: DataTypes.STRING(100),
+            type: DataTypes.STRING(120),
             allowNull: false,
             validate:{
                 len:[2,100],
@@ -79,7 +79,16 @@ module.exports = function(database){
         price:{
             type: DataTypes.DECIMAL,
             allowNull: false
-        }
+        },
+        isbn: {
+            type: DataTypes.STRING(20),
+            allowNull: false,
+            unique: true,
+            validate: {
+              len: [10, 20],
+              notEmpty: true,
+            },
+          },
         //? Association with BookCategory in relationsModels.js N:N
         //? Association with BookReviews in relationsModels.js N:N
         //? Association with Authors in relationsModels.js N:N
