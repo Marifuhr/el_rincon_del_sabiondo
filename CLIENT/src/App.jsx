@@ -8,6 +8,7 @@ import Login from "./components/Login/Login";
 import FormCreate from "./components/FormCreate/form";
 import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
+import NavBar from "./components/NavBar/NavBar";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -15,7 +16,8 @@ import DetailBook from './components/DetailBook/DetailBook';
 
 export default function App() {
   return (
-  <div>
+    <div>
+      <NavBar />
     <Routes>
       <Route exact path="/" element={<Landing />} />
       <Route path="/home" element={<Home />} />
