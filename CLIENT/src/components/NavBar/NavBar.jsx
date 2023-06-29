@@ -7,56 +7,30 @@ import axios from "axios";
 
 
 import { useDispatch, useSelector } from "react-redux";
-// import { filterResults } from "../../Redux/Action/Index";
-const endpoint = "http://localhost:3001";
-
-
-const initialFilters = {
-  category: "",
-  price: "",
-};
+import { filterResults } from "../../Redux/Action/Index";
+const endpoint = "https://ser-back-sab.onrender.com";
 
 function Navbar() {
 
   const filters = useSelector((state) => state.filters);
-  const [selectedFilters, setSelectedFilters] = useState(initialFilters);
-  const [showDropdown, setShowDropdown] = useState(false);
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
 
-  const toggleDropdown = () => {
-    setShowDropdown(!showDropdown);
-  };
-
-  const stopPropagation = (event) => {
-    event.stopPropagation();
-  };
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(`${endpoint}/category`);
         const categories = response.data.categories;
         setOptions(categories);
-      } catch (error) {
-        console.log(error.message);
+      } catch ({ message }) {
+        console.log(message);
       }
     };
     fetchData();
   }, []);
 
-  const handleCategoryChange = (event) => {
-    const category = event.target.value;
-    dispatch(filterByCategory(category));
-  };
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(value);
-    console.log(name);
-
-    setSelectedFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value,
-    }));
 
     switch (name) {
       case "category":
@@ -87,7 +61,7 @@ function Navbar() {
       <button>
         <Link to="/" className="navbar-salir">
           Salir
-          </Link>
+        </Link>
         <div className="navbar-right">
           <Link to="/login" className="navbar-action">
             Ingresar
@@ -103,49 +77,41 @@ function Navbar() {
           </button>
         </div>
       </button>
-      <div className="navbar-left">
-        </div>
-        {/* <img
-          src="src\assets\image\logo6.png"
-          alt="Logo"
-          className="navbar-logo"
-        /> */}
-       
-        <SearchBar />
+      <SearchBar />
       <div className="navbar-center">
         <button className="navbar-button">
           <Link to="/home">Inicio</Link>
         </button>
-                  <button className="navbar-button">
-                    <Link to="/about">Nosotros</Link>
-                  </button>
-                  <button className="navbar-button">
-                    <Link to="/contacto">Contacto</Link>
-                  </button>
-                  <button className="navbar-crear">
-                    <Link to="/create">Agrega un libro</Link>
-                  </button>
-                </div>
-        <div className="navbar-dropdown" onClick={stopPropagation}>
-          <div>
-            <select name="category" onChange={handleChange}>
-              <option disabled defaultValue="">
-                Categories
-              </option>
-              {options.map((category) => (
-                <option key={category.id} value={category.name}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-      <select id="price" name="price" onChange={handleChange}>
-        <option value="lt100">Menos que 100</option>
-        <option value="101-200">De 101 a 200</option>
-        <option value="201-300">De 201 a 300</option>
-        <option value="gt300">Más de 300</option>
-      </select>
+        <button className="navbar-button">
+          <Link to="/about">Nosotros</Link>
+        </button>
+        <button className="navbar-button">
+          <Link to="/contacto">Contacto</Link>
+        </button>
+        <button className="navbar-crear">
+          <Link to="/create">Agrega un libro</Link>
+        </button>
+      </div>
+      <div className="filtros_posjqlk">
+        <select className="select_lkow" name="category" onChange={handleChange}>
+          <option value="">
+            Seleccionar
+          </option>
+          {options.map((category) => (
+            <option key={category.id} value={category.name}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+        <select className="select_lkow" id="price" name="price" onChange={handleChange}>
+          <option value="">todos</option>
+          <option value="lt100">Menos que 100</option>
+          <option value="101-200">De 101 a 200</option>
+          <option value="201-300">De 201 a 300</option>
+          <option value="gt300">Más de 300</option>
+        </select>
+      </div>
+
     </nav>
   );
 }
