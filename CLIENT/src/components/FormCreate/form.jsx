@@ -18,7 +18,7 @@ function FormCreate() {
     datePublication: "",
     publisher: "",
     category: "",
-    ISBN: "",
+    isbn: "",
     price: 0,
   });
 
@@ -68,7 +68,7 @@ function FormCreate() {
         datePublication: "",
         publisher: "",
         category: "",
-        ISBN: "",
+        isbn: "",
         price: 0,
       });
      // alert("Libro creado con éxito");
@@ -130,16 +130,16 @@ function FormCreate() {
               <p className="input-error">{errors.datePublication}</p>
             )}
             <label>
-              ISBN:
+              isbn:
               <input
-                name="ISBN"
-                value={book.ISBN}
+                name="isbn"
+                value={book.isbn}
                 onChange={handleChange}
                 className="form-input"
               />
             </label>
-            {!errors.ISBN ? null : (
-              <p className="input-error">{errors.ISBN}</p>
+            {!errors.isbn ? null : (
+              <p className="input-error">{errors.isbn}</p>
             )}
             <label>
               Editorial:
@@ -195,7 +195,7 @@ function FormCreate() {
             )}
 
             <label>
-              Lenguage:
+              Language:
               <input
                 name="language"
                 value={book.language}
