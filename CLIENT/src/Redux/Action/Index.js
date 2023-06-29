@@ -4,6 +4,7 @@ import {
   GET_DETAIL_BOOKS,
   SEARCH_NAME_BOOK,
   FILTER_BY_CATEGORY,
+  FILTER_RESULTS,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
     CREATE_BOOK
@@ -92,6 +93,13 @@ export const filterByCategory = (category) => {
   };
 };
 
+export function filterResults(filters) {
+  // console.log(filters);
+  return {
+    type: FILTER_RESULTS,
+    payload: filters,
+  };
+}
 export const createBook = (book) => {
   return async function (dispatch) {
     try {

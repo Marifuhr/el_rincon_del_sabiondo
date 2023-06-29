@@ -10,13 +10,10 @@ import Footer from "../../components/Footer/Footer";
 export default function Home() {
   const dispatch = useDispatch();
   const bookss = useSelector((state) => state.search);
-  const allBooks = useSelector((state) => state.allBooks);
+  const allBooks = useSelector((state) => state.filtered);
   const selectedCategory = useSelector((state) => state.selectedCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 9;
-  //const totalPages = Math.ceil(allBooks.length / booksperPage);
-
-  //console.log(allBooks);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -49,14 +46,6 @@ export default function Home() {
   return (
     <div>
       <div>
-       
-        {/* Resto del código */}
-        {/* <div className={styles.boxCardBooks}>
-          {books.map((book) => (
-            <Card key={book.IdBook} props={book} />
-          ))}
-        </div> */}
-        {/* Resto del código */}
       </div>
       <div className={styles.homePage}>
         <div className={styles.boxCardBooks}>

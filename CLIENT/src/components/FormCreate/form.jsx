@@ -130,7 +130,7 @@ function FormCreate() {
               <p className="input-error">{errors.datePublication}</p>
             )}
             <label>
-              Isbn:
+               isbn:
               <input
                 name="isbn"
                 value={book.isbn}
@@ -195,7 +195,7 @@ function FormCreate() {
             )}
 
             <label>
-              Lenguage:
+              Language:
               <input
                 name="language"
                 value={book.language}

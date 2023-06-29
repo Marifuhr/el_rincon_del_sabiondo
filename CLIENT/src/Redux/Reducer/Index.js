@@ -1,10 +1,10 @@
 import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
-  FILTER_BY_CATEGORY,
   FILTER_BY_PRICE,
   FILTER_BY_AUTOR,
   SEARCH_NAME_BOOK,
+  FILTER_RESULTS,
   CREATE_BOOK,
 } from "../Action/Actions.types.js";
 
@@ -14,6 +14,40 @@ const initialState = {
   isLoading: false,
   search: [],
   category: [],
+  filtered: [],
+  filters: {
+    category: "",
+    price: "",
+  },
+};
+
+const filterResultsByCriteria = (filters, resultsToFilter) => {
+  let filterResults = resultsToFilter;
+  if (filters.category) {
+    filterResults = filterResults.filter((book) => {
+      return book.Categories.some((category) =>
+        category.name.includes(filters.category)
+      );
+    });
+  }
+  if (filters.price) {
+    filterResults = filterResults.filter((book) => {
+      const price = parseFloat(book.price);
+
+      if (filters.price === "lt100") {
+        return price <= 100;
+      } else if (filters.price === "101-200") {
+        return price >= 101 && price <= 200;
+      } else if (filters.price === "201-300") {
+        return price >= 201 && price <= 300;
+      } else if (filters.price === "gt300") {
+        return price > 300;
+      }
+
+      return true; // Si no se especifica un valor de filtro válido, se devuelven todos los libros.
+    });
+  };
+  return filterResults;
 };
 
 const reducer = (state = initialState, action) => {
@@ -23,7 +57,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allBooks: action.payload,
-        isLoading: false,
+        filtered: action.payload,
       };
     case GET_DETAIL_BOOKS:
       return {
@@ -36,18 +70,12 @@ const reducer = (state = initialState, action) => {
         search: action.payload,
       };
 
-    // case FILTER_BY_CATEGORY:
-    //   return {
-    //     ...state,
-    //     category: action.payload,
-    //   };
-    case FILTER_BY_CATEGORY:
-      const category = action.payload.category;
-      const filteredBooks = action.payload.books;
+    case FILTER_RESULTS:
+      console.log(action.payload);
       return {
         ...state,
-        category: category,
-        allBooks: filteredBooks,
+        filtered: filterResultsByCriteria(action.payload, state.allBooks),
+        filters: action.payload,
       };
 
     case FILTER_BY_PRICE:

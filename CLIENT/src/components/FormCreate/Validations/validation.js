@@ -38,7 +38,15 @@ const validate = (book) => {
   if (!book.category) {
     errors.category = "Las categorías son requeridas";
   }
-
+  if(!book.isbn) {
+    errors.isbn = "El isbn es requerido";
+  }
+if (!book.isbn.length < 10) {
+    errors.isbn = "No debe tener menos de 10 caracteres";
+  }
+if (!book.isbn.length > 20) {
+    errors.isbn = "No debe excede los 20 caracteres";
+  }
   if (!book.price) {
     errors.price = "El precio es requerido";
   }
