@@ -6,9 +6,9 @@ const { v4: uuidv4 } = require('uuid');
 const validator = require('../utils/validator');
 const getFilterBooksController = require('./getFilterBooksController')
 
-async function createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN }) {
+async function createBook({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN, price }) {
   console.log(title)
-  const errors = await validator({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN });
+  const errors = await validator({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image, ISBN, price });
   console.log(errors);
   if (errors?.length > 0) {
     return { error : errors };
@@ -38,6 +38,7 @@ async function createBook({ title, description, language, datePublication, publi
         rate,
         image,
         ISBN,
+        price
       });
     
   

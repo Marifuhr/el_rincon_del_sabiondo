@@ -5,7 +5,7 @@ import { Card, Stack, Image, Heading, Text } from '@chakra-ui/react';
 export default function CardLanding() {
     return (
         <>
-            <Card direction={{ base: 'column', sm: 'row-reverse' }}
+            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }}
                 overflow='hidden'
                 variant='outline'>
                 <Stack direction={{ base: 'column', sm: 'row' }}>
@@ -25,7 +25,7 @@ export default function CardLanding() {
                     </Stack>
                 </Stack>
             </Card>
-            <Card direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' mt='40px'>
+            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' mt='40px'>
                 <Stack direction={{ base: 'column', sm: 'row-reverse' }}>
                     <Image
                         objectFit='cover'
@@ -41,7 +41,7 @@ export default function CardLanding() {
                     </Stack>
                 </Stack>
             </Card>
-            <Card direction={{ base: 'column', sm: 'row-reverse' }} overflow='hidden' variant='outline' mt='40px'>
+            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }} overflow='hidden' variant='outline' mt='40px'>
                 <Stack direction={{ base: 'column', sm: 'row' }}>
                     <Image
                         objectFit='cover'

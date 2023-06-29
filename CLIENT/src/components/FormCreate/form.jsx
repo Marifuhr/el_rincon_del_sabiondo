@@ -1,29 +1,25 @@
-import React, { useState, useEffect } from "react";
-// import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { createBook } from "../../Redux/Action/Index";
 import { Link } from "react-router-dom";
 import "./form.css";
 import validate from "./Validations/validation";
 
 function FormCreate() {
-  // const dispatch = useDispatch();
-  // const createBook = useSelector((state) => state.createBook);
-  // console.log(createBook);
+  const dispatch = useDispatch();
   const [errors, setErrors] = useState({});
   const [book, setBook] = useState({
     title: "",
-    author: "",
+    authors: "",
     image: "",
-    lenguage: "",
+    language: "",
     numberPages: "",
     description: "",
     datePublication: "",
-    categories: "",
+    publisher: "",
+    category: "",
     price: 0,
   });
-
-  // useEffect(() => {
-  //   validate();
-  // }, [book]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -36,24 +32,47 @@ function FormCreate() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+  //   const errorsForm = [...event.target].reduce((init, input) => {
+  //   const val = input.value;
+	// if(!val){
+	// 	return [...init, 'falta valor'];
+	// }
+	// return init; 
+  //   }, []);
+  //   if (errorsForm.length) {
+  //     alert("no puedes crear un libro");
+  //     return;
+  //   }
+    setErrors(validate(book));
+    if (Object.keys(errors).length === 0) {
+      alert("Falta completar campos");
+      return;
+    }
+
     try {
-      const newBook = await createBook(book);
-      console.log(newBook);
+      const { authors, category, ...res } = book;
+      const authorsArray = [authors];
+      const categoryArray = [category];
+      await dispatch(
+        createBook({ ...res, authors: authorsArray, category: categoryArray })
+      );
+
       setBook({
         title: "",
-        author,
+        authors: "",
         image: "",
-        lenguage: "",
+        language: "",
         numberPages: "",
         description: "",
         datePublication: "",
-        categories: "",
+        publisher: "",
+        category: "",
         price: 0,
       });
+     // alert("Libro creado con éxito");
     } catch (error) {
-      console.log(error);
+      console.log(error.message);
     }
-    setErrors(validate(book));
   };
 
   return (
@@ -86,14 +105,14 @@ function FormCreate() {
             <label>
               Author:
               <input
-                name="author"
-                value={book.author}
+                name="authors"
+                value={book.authors}
                 onChange={handleChange}
                 className="form-input"
               />
             </label>
-            {!errors.author ? null : (
-              <p className="input-error">{errors.author}</p>
+            {!errors.authors ? null : (
+              <p className="input-error">{errors.authors}</p>
             )}
             <label>
               Fecha de publicación:
@@ -107,6 +126,18 @@ function FormCreate() {
             </label>
             {!errors.datePublication ? null : (
               <p className="input-error">{errors.datePublication}</p>
+            )}
+            <label>
+              Editorial:
+              <input
+                name="publisher"
+                value={book.publisher}
+                onChange={handleChange}
+                className="form-input"
+              />
+            </label>
+            {!errors.publisher ? null : (
+              <p className="input-error">{errors.publisher}</p>
             )}
             <label>
               Descripción:
@@ -152,14 +183,14 @@ function FormCreate() {
             <label>
               Lenguage:
               <input
-                name="lenguage"
-                value={book.lenguage}
+                name="language"
+                value={book.language}
                 onChange={handleChange}
                 className="form-input"
               />
             </label>
-            {!errors.lenguage ? null : (
-              <p className="input-error">{errors.lenguage}</p>
+            {!errors.language ? null : (
+              <p className="input-error">{errors.language}</p>
             )}
 
             <label>
@@ -179,14 +210,14 @@ function FormCreate() {
               Categorías:
               <input
                 type="text"
-                name="categories"
-                value={book.categories}
+                name="category"
+                value={book.category}
                 onChange={handleChange}
                 className="form-input"
               />
             </label>
-            {!errors.categories ? null : (
-              <p className="input-error">{errors.categories}</p>
+            {!errors.category ? null : (
+              <p className="input-error">{errors.category}</p>
             )}
           </div>
 
