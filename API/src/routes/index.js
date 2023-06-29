@@ -4,6 +4,7 @@ const routerCategory = require('./routerCategory');
 const routerLanguage = require("./routerLanguage");
 const bulkCreateBooksHandler = require('../handlers/BulkCreateBooksHandler');
 const routerAuthor = require("./routerAuthor");
+const routerBulkCreate = require ('./routerBulkCreate')
 
 const rootRouter = express.Router();
 
@@ -12,6 +13,6 @@ rootRouter.use("/books", routerBook);
 rootRouter.use('/category', routerCategory);
 rootRouter.use('/language', routerLanguage);
 rootRouter.use('/authors', routerAuthor);
-rootRouter.post('/bulkcreate', bulkCreateBooksHandler)
+rootRouter.use('/bulkcreate', routerBulkCreate)
 
 module.exports = rootRouter;

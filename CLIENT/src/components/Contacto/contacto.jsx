@@ -1,18 +1,14 @@
-import React from 'react'
-import NavBar from '../NavBar/NavBar';
-import { Link } from'react-router-dom'
-import Footer from '../Footer/Footer';
+import React from "react";
+import { Link as ChakraLink, Button } from "@chakra-ui/react";
+import Footer from "../Footer/Footer";
 
 export default function contacto() {
   return (
     <div>
-          <NavBar />
-          <button className="btn-back">
-              <Link to="/home">
-                  Volver
-              </Link>
-          </button>
-          <Footer />
+      <Button as={ChakraLink} to="/home" className="btn-back">
+        Volver
+      </Button>
+      <Footer />
     </div>
-  )
+  );
 }
