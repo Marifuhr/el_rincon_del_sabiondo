@@ -13,14 +13,15 @@ import NavBar from "./components/NavBar/NavBar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import DetailBook from './components/DetailBook/DetailBook';
+import Footer from './components/Footer/Footer';
 
 export default function App() {
   return (
     <div>
-      <NavBar />
+      <NavBar /> 
     <Routes>
       <Route exact path="/" element={<Landing />} />
-      <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Home />} />
           <Route path="/detail/:id" element={<DetailBook />}/>
         <Route path="/login" element={<Login />} />
         <Route path="/create" element={<FormCreate />} />
@@ -33,7 +34,7 @@ export default function App() {
           <Route path="/misterio" element={<BookPage category="Misterio" />} />
           <Route path="/romance" element={<BookPage category="Romance" />} />
           <Route path="/fantasia" element={<BookPage category="Fantasía" />} />
-           <Route path="/detail/:id" element={<DetailBook />} />
+          <Route path="/detail/:id" element={<DetailBook />} />
         */}
     </Routes>
     </div >
