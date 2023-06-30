@@ -9,14 +9,15 @@ import FormCreate from "./components/FormCreate/form";
 import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { ChakraProvider } from '@chakra-ui/react';
+import Layout from './components/Layout/Layout';
 import DetailBook from './components/DetailBook/DetailBook';
-
 export default function App() {
   return (
-    <div>
+    <ChakraProvider>
+    <Layout>
       <NavBar />
     <Routes>
       <Route exact path="/" element={<Landing />} />
@@ -36,9 +37,7 @@ export default function App() {
            <Route path="/detail/:id" element={<DetailBook />} />
         */}
     </Routes>
-    </div >
+    </Layout>
+    </ChakraProvider>
   )
-
-
-
 }
