@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 
+
 import { useDispatch, useSelector } from "react-redux";
-import { filterResults } from "../../Redux/Action/Index";
+import { filterResults, orderPrice } from "../../Redux/Action/Index";
+
 const endpoint = "https://ser-back-sab.onrender.com";
 const initialFilters = {
   category: "",
@@ -20,6 +22,8 @@ function Navbar() {
   const [selectedFilters, setSelectedFilters] = useState(initialFilters);
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+  const [buttonText, setButtonText] = useState("Precios menor a mayor");
 
 
 
@@ -66,6 +70,16 @@ function Navbar() {
       default:
         break;
     }
+  };
+  const handleSortClick = () => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    const newButtonText =
+      sortOrder === "asc" ? "Precios mayor a menor" : "Precios menor a mayor";
+
+    setSortOrder(newSortOrder);
+    setButtonText(newButtonText);
+
+    dispatch(orderPrice(newSortOrder));
   };
 
   return (
@@ -128,6 +142,7 @@ function Navbar() {
           <option value="201-300">De 201 a 300</option>
           <option value="gt300">Más de 300</option>
         </select>
+        <button onClick={handleSortClick}>{buttonText}</button>
       </div>
 
     </nav>
