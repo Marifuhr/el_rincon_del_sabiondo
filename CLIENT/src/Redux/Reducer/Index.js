@@ -6,15 +6,16 @@ import {
   SEARCH_NAME_BOOK,
   FILTER_RESULTS,
   CREATE_BOOK,
+  ORDER_PRICE,
 } from "../Action/Actions.types.js";
 
 const initialState = {
   allBooks: [],
   detailBooks: [],
   isLoading: false,
-  search: [],
+  search: null,
   category: [],
-  filtered: [],
+  filtered: null,
   filters: {
     category: "",
     price: "",
@@ -57,7 +58,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allBooks: action.payload,
-        filtered: action.payload,
+        // filtered: action.payload,
       };
     case GET_DETAIL_BOOKS:
       return {
@@ -68,14 +69,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+        filtered: filterResultsByCriteria(state.filters, action.payload),
       };
 
     case FILTER_RESULTS:
       console.log(action.payload);
+      state.filters = action.payload;
+      if (state.search) {
+        return {
+          ...state,
+          filtered: filterResultsByCriteria(action.payload, state.search),
+        }
+      }
       return {
         ...state,
         filtered: filterResultsByCriteria(action.payload, state.allBooks),
-        filters: action.payload,
       };
 
     case FILTER_BY_PRICE:
@@ -98,11 +106,34 @@ const reducer = (state = initialState, action) => {
     case CREATE_BOOK:
       return {
         ...state,
-        allBooks:[...state.allBooks, action.payload],
+        allBooks: [...state.allBooks, action.payload],
       }
+
+  case ORDER_PRICE: {
+  let filterOrder = [];
+  state.filtered
+    ? (filterOrder = [...state.filtered])
+    : state.search
+      ? (filterOrder = [...state.search])
+      : (filterOrder = [...state.allBooks]);
+
+  filterOrder.sort((bookA, bookB) => {
+    const priceA = parseFloat(bookA.price);
+    const priceB = parseFloat(bookB.price);
+
+    if (priceA > priceB) {
+      return action.payload === "asc" ? 1 : -1;
+    } else if (priceA < priceB) {
+      return action.payload === "desc" ? 1 : -1;
+    } else {
+      return 0;
+    }
+  });
+  return { ...state, filtered: filterOrder };
+}
     default:
-      return { ...state };
-  }
+return { ...state };
+  };
 };
 
 export default reducer;
