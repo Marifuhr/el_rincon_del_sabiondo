@@ -1,56 +1,51 @@
+const dictionaryNamesToLanguage = {
+  title: "Titulo",
+  authors: "autor",
+  image: "imagen",
+  language: "lenguaje",
+  numberPages: "Número de páginas",
+  description: "Descripción",
+  datePublication: "Fecha de Publicación",
+  publisher: " Editorials",
+  category: "Categoría",
+  isbn: "Código ISBN",
+  price: "Precio",
+}
+
+const dictionaryErrorsInput = {
+  title: "El título no debe entre 3 y 30 caracteres",
+  isbn: `El ${dictionaryNamesToLanguage.isbn} debe tener entre 10 y 20 caracteres`
+};
+
+const validationsInput = {
+  title: val => val.length > 3 && val.length <= 30 ,
+  isbn: val => val.length > 10 && val.length <= 20,
+}
+
 const validate = (book) => {
-  let errors = {};
+  let error = "";
+  
+  for(let [key,val] in Object.entries(book)){
+    if(!val){
+      error = `El ${dictionaryNamesToLanguage(key)} es requerido`;
+      break;
+    }
+  };
 
-  if (!book.title) {
-    errors.title = "El título es requerido";
-  }
-  if (book.title.length < 3) {
-    errors.title = "El título no debe tener menos de 3 caracteres";
-  }
-  if (book.title.length > 30) {
-    errors.title = "El título no debe exceder los 30 caracteres";
-  }
-
-  if (!book.authors) {
-    errors.authors = "El author es requerido";
-  }
-  if (!book.publisher) {
-    errors.publisher = "La editorial es requerida";
-  }
-  if (!book.image) {
-    errors.image = "La image es requerida";
-  }
-
-  if (!book.language) {
-    errors.language = "El lenguaje es requerido";
-  }
-  if (!book.numberPages) {
-    errors.numberPages = "El numero de paginas es requerida";
-  }
-  if (!book.description) {
-    errors.description = "La descripción es requerida";
+  if(!error){
+    for(let [key,val] in Object.entries(book)){
+      const validationInput = validationsInput[key];
+      if(!validationInput) continue;
+      
+      const valueValidate = validationInput[key](val);
+      if(!valueValidate){
+        error = dictionaryErrorsInput[key];
+        break;
+      }
+    }
   }
 
-  if (!book.datePublication) {
-    errors.datePublication = "La fecha de publicación es requerida";
-  }
-
-  if (!book.category) {
-    errors.category = "Las categorías son requeridas";
-  }
-  if(!book.isbn) {
-    errors.isbn = "El isbn es requerido";
-  }
-if (!book.isbn.length < 10) {
-    errors.isbn = "No debe tener menos de 10 caracteres";
-  }
-if (!book.isbn.length > 20) {
-    errors.isbn = "No debe excede los 20 caracteres";
-  }
-  if (!book.price) {
-    errors.price = "El precio es requerido";
-  }
-  return errors;
+  return error;
 };
 
 export default validate;
