@@ -12,9 +12,9 @@ const initialState = {
   allBooks: [],
   detailBooks: [],
   isLoading: false,
-  search: [],
+  search: null,
   category: [],
-  filtered: [],
+  filtered: null,
   filters: {
     category: "",
     price: "",
@@ -57,7 +57,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allBooks: action.payload,
-        filtered: action.payload,
+        // filtered: action.payload,
       };
     case GET_DETAIL_BOOKS:
       return {
@@ -68,14 +68,21 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         search: action.payload,
+        filtered: filterResultsByCriteria(state.filters, action.payload),
       };
 
     case FILTER_RESULTS:
       console.log(action.payload);
+      state.filters = action.payload;
+      if (state.search) {
+        return {
+          ...state,
+          filtered: filterResultsByCriteria(action.payload, state.search),
+        }
+      }
       return {
         ...state,
         filtered: filterResultsByCriteria(action.payload, state.allBooks),
-        filters: action.payload,
       };
 
     case FILTER_BY_PRICE:
@@ -98,7 +105,7 @@ const reducer = (state = initialState, action) => {
     case CREATE_BOOK:
       return {
         ...state,
-        allBooks:[...state.allBooks, action.payload],
+        allBooks: [...state.allBooks, action.payload],
       }
     default:
       return { ...state };

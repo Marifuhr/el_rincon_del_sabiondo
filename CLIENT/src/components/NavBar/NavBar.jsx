@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./NavBar.css";
 import CartIcon from "../../assets/image/carrito.png";
-import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -9,13 +8,26 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { filterResults } from "../../Redux/Action/Index";
 const endpoint = "https://ser-back-sab.onrender.com";
-
+const initialFilters = {
+  category: "",
+  price: "",
+};
 function Navbar() {
 
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
+  const [selectedFilters, setSelectedFilters] = useState(initialFilters);
+  const [categoryValue, setCategoryValue] = useState("");
+  const [priceValue, setPriceValue] = useState("");
 
+
+
+  const handleReset = () => {
+    dispatch(filterResults(initialFilters));
+    setCategoryValue("");
+    setPriceValue("");
+  }
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,6 +46,7 @@ function Navbar() {
 
     switch (name) {
       case "category":
+        setCategoryValue(value)
         return dispatch(
           filterResults({
             ...filters,
@@ -42,6 +55,7 @@ function Navbar() {
         );
 
       case "price":
+        setPriceValue(value)
         return dispatch(
           filterResults({
             ...filters,
@@ -53,6 +67,7 @@ function Navbar() {
         break;
     }
   };
+
   return (
     <nav className="header">
       <div className="hola">
@@ -91,9 +106,11 @@ function Navbar() {
         <button className="navbar-crear">
           <Link to="/create">Agrega un libro</Link>
         </button>
+        <button onClick={handleReset}>Limpiar</button>
       </div>
       <div className="filtros_posjqlk">
-        <select className="select_lkow" name="category" onChange={handleChange}>
+        <select className="select_lkow" name="category" onChange={handleChange}
+          value={categoryValue}>
           <option value="">
             Seleccionar
           </option>
@@ -103,7 +120,8 @@ function Navbar() {
             </option>
           ))}
         </select>
-        <select className="select_lkow" id="price" name="price" onChange={handleChange}>
+        <select className="select_lkow" id="price" name="price" onChange={handleChange}
+          value={priceValue}>
           <option value="">todos</option>
           <option value="lt100">Menos que 100</option>
           <option value="101-200">De 101 a 200</option>
