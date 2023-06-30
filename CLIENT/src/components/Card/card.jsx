@@ -10,6 +10,7 @@ import {
 const IMAGE =
   'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
 import { Link } from "react-router-dom";
+import formatDate from '../../utils/formatDate';
 
 function Cards({ props }) {
   return (
@@ -71,6 +72,14 @@ function Cards({ props }) {
           >
           {props.title}
           </Heading>
+          <Stack direction={'row'} align={'center'}>
+            <Text fontWeight={500} background={'red'} color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              {props.languageBook.language}
+            </Text>
+            <Text fontWeight={500} background="#000" color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              {formatDate(props.datePublication)}
+            </Text>
+          </Stack>
           <Stack direction={'row'} align={'center'}>
             <Text fontWeight={800} fontSize={'xl'}>
             ${props.price}
