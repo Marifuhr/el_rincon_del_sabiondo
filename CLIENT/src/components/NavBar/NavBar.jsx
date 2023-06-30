@@ -77,7 +77,7 @@ function Navbar() {
           </button>
         </div>
       </button>
-      <SearchBar />
+      {/* <SearchBar /> */}
       <div className="navbar-center">
         <button className="navbar-button">
           <Link to="/home">Inicio</Link>

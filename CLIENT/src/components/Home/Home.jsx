@@ -1,14 +1,16 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-
+import SearchBar from "../SearchBar/SearchBar";
 import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
 //import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 
 export default function Home() {
+  const resultados = useSelector((state) => state.search);
   const dispatch = useDispatch();
+  let filteredBooks = [];
   const bookss = useSelector((state) => state.search);
   const allBooks = useSelector((state) => state.filtered);
   const selectedCategory = useSelector((state) => state.selectedCategory);
@@ -27,13 +29,25 @@ export default function Home() {
     if (selectedCategory) {
       dispatch(filterByCategory(selectedCategory));
     }
-  }, [dispatch, selectedCategory, bookss]);
+    setCurrentPage(1);
+  }, [dispatch, selectedCategory, bookss, resultados]);
 
-  
 
-  const filteredBooks = selectedCategory
-    ? allBooks.filter((book) => book.category === selectedCategory)
-    : allBooks;
+  // if (resultados && resultados.length > 0) {
+  //   filteredBooks = selectedCategory
+  //     ? resultados.filter((book) => book.category === selectedCategory)
+  //     : resultados;
+
+  // } else {
+  //   filteredBooks = selectedCategory
+  //     ? allBooks.filter((book) => book.category === selectedCategory)
+  //     : allBooks;
+  // }
+  if (resultados && resultados.length > 0) {
+    filteredBooks = resultados;
+  } else {
+    filteredBooks = allBooks;
+  }
 
   const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
   const books = filteredBooks.slice(
@@ -46,6 +60,7 @@ export default function Home() {
   return (
     <div>
       <div>
+        <SearchBar />
       </div>
       <div className={styles.homePage}>
         <div className={styles.boxCardBooks}>
