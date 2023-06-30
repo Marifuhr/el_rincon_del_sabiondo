@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBook } from "../../Redux/Action/Index";
 import { Link } from "react-router-dom";
@@ -6,25 +6,39 @@ import { Link } from "react-router-dom";
 import InputForm from './InputForm';
 import "./form.css";
 import validate from "./Validations/validation";
+import AlertComponent from "../Alert/AlertComponent";
 
 const initialStateBook = {
     title: "",
     authors: "",
+    datePublication: "",
+    isbn: "",
+    publisher: "",
+    description: "",
+    price: 0,
     image: "",
     language: "",
     numberPages: "",
-    description: "",
-    datePublication: "",
-    publisher: "",
     category: "",
-    isbn: "",
-    price: 0,
 }
 
 function FormCreate() {
     const dispatch = useDispatch();
-    const [errors, setErrors] = useState({});
+    const [message, setMessage] = useState({type:'',messageValue:''});
+    const refIndicator = useRef(false);
     const [book, setBook] = useState(initialStateBook);
+
+    const changeMessage = (type, messageValue) => {
+        setMessage({type,messageValue});
+        
+        if(!refIndicator.current){
+            refIndicator.current = true;
+            setTimeout(() => {
+                setMessage(values => ({...values, messageValue:""}));
+                refIndicator.current = false;
+            }, 4000);
+        }
+    };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -33,19 +47,18 @@ function FormCreate() {
                 ...prevState,
                 [name]: value,
             };
-            setErrors(validate(propsBook));
+            changeMessage('error', validate(propsBook));
             return propsBook;
         });
     };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        setErrors(validate(book));
 
-        if (Object.keys(errors).length === 0) {
-            alert("Falta completar campos");
-            return;
-        }
+        const errorLocalForm = validate(book);
+        changeMessage('error', errorLocalForm);
+        
+        if(errorLocalForm) return;
 
         //Envía la data por medio de la Action para crear un Libro
         const { authors, category, ...res } = book;
@@ -54,6 +67,7 @@ function FormCreate() {
         dispatch(createBook({ ...res, authors: authorsArray, category: categoryArray }));
 
         //Reset form
+        changeMessage('success', `El libro ${book.title} ha sido creado con exito`);
         setBook(initialStateBook);
     };
 
@@ -149,6 +163,9 @@ function FormCreate() {
                         onChange={handleChange}
                         classStyles="form-input"
                     />
+                    {
+                        message.messageValue && <AlertComponent {...message}/>
+                    }
                     <button type="submit" className="form-button">Crear libro</button>
                 </form>
             </div>
