@@ -1,247 +1,176 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBook } from "../../Redux/Action/Index";
 import { Link } from "react-router-dom";
+
+import InputForm from './InputForm';
 import "./form.css";
 import validate from "./Validations/validation";
+import AlertComponent from "../Alert/AlertComponent";
 
-function FormCreate() {
-  const dispatch = useDispatch();
-  const [errors, setErrors] = useState({});
-  const [book, setBook] = useState({
+const initialStateBook = {
     title: "",
     authors: "",
+    datePublication: "",
+    isbn: "",
+    publisher: "",
+    description: "",
+    price: 0,
     image: "",
     language: "",
     numberPages: "",
-    description: "",
-    datePublication: "",
-    publisher: "",
     category: "",
-    isbn: "",
-    price: 0,
-  });
+}
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setBook((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-    setErrors(validate(book));
-  };
+function FormCreate() {
+    const dispatch = useDispatch();
+    const [message, setMessage] = useState({type:'',messageValue:''});
+    const refIndicator = useRef(false);
+    const [book, setBook] = useState(initialStateBook);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-  //   const errorsForm = [...event.target].reduce((init, input) => {
-  //   const val = input.value;
-	// if(!val){
-	// 	return [...init, 'falta valor'];
-	// }
-	// return init; 
-  //   }, []);
-  //   if (errorsForm.length) {
-  //     alert("no puedes crear un libro");
-  //     return;
-  //   }
-    setErrors(validate(book));
-    if (Object.keys(errors).length === 0) {
-      alert("Falta completar campos");
-      return;
-    }
+    const changeMessage = (type, messageValue) => {
+        setMessage({type,messageValue});
+        
+        if(!refIndicator.current){
+            refIndicator.current = true;
+            setTimeout(() => {
+                setMessage(values => ({...values, messageValue:""}));
+                refIndicator.current = false;
+            }, 4000);
+        }
+    };
 
-    try {
-      const { authors, category, ...res } = book;
-      const authorsArray = [authors];
-      const categoryArray = [category];
-      await dispatch(
-        createBook({ ...res, authors: authorsArray, category: categoryArray })
-      );
+    const handleChange = (event) => {
+        const { name, value } = event.target;
+        setBook((prevState) => {
+            const propsBook = {
+                ...prevState,
+                [name]: value,
+            };
+            changeMessage('error', validate(propsBook));
+            return propsBook;
+        });
+    };
 
-      setBook({
-        title: "",
-        authors: "",
-        image: "",
-        language: "",
-        numberPages: "",
-        description: "",
-        datePublication: "",
-        publisher: "",
-        category: "",
-        isbn: "",
-        price: 0,
-      });
-     // alert("Libro creado con éxito");
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-  return (
-    <div className="form-container">
-      <div className="form">
-        <div className="form-button">
-          <Link to="/home">
-            <button>Back</button>
-          </Link>
+        const errorLocalForm = validate(book);
+        changeMessage('error', errorLocalForm);
+        
+        if(errorLocalForm) return;
+
+        //Envía la data por medio de la Action para crear un Libro
+        const { authors, category, ...res } = book;
+        const authorsArray = [authors];
+        const categoryArray = [category];
+        dispatch(createBook({ ...res, authors: authorsArray, category: categoryArray }));
+
+        //Reset form
+        changeMessage('success', `El libro ${book.title} ha sido creado con exito`);
+        setBook(initialStateBook);
+    };
+
+    return (
+        <div className="form-container">
+            <div className="form">
+                <div className="form-button">
+                    <Link to="/home">
+                        <button>Back</button>
+                    </Link>
+                </div>
+
+                <form onSubmit={handleSubmit} className="book-form">
+                    <h1>Add Book</h1>
+                    <InputForm
+                        title="Titulo:"
+                        name="title"
+                        value={book.title}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Autor:"
+                        name="authors"
+                        value={book.authors}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Fecha de publicación:"
+                        type="date"
+                        name="datePublication"
+                        value={book.datePublication}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="ISBN:"
+                        type="number"
+                        name="isbn"
+                        value={book.isbn}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Editorial:"
+                        name="publisher"
+                        value={book.publisher}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        mode="textarea"
+                        title="Descripción:"
+                        name="description"
+                        value={book.description}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Precio:"
+                        name="price"
+                        value={book.price}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="image:"
+                        name="image"
+                        value={book.image}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Idioma (es,en):"
+                        name="language"
+                        value={book.language}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Número de Páginas:"
+                        type="number"
+                        name="numberPages"
+                        value={book.numberPages}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    <InputForm
+                        title="Categorías:"
+                        name="category"
+                        value={book.category}
+                        onChange={handleChange}
+                        classStyles="form-input"
+                    />
+                    {
+                        message.messageValue && <AlertComponent {...message}/>
+                    }
+                    <button type="submit" className="form-button">Crear libro</button>
+                </form>
+            </div>
         </div>
-
-        <form onSubmit={handleSubmit} className="book-form">
-          <div>
-            <h1>Add Book</h1>
-          </div>
-          <div className="divF">
-            <label>
-              Título:
-              <input
-                type="text"
-                name="title"
-                value={book.title}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.title ? null : (
-              <p className="input-error">{errors.title}</p>
-            )}
-            <label>
-              Author:
-              <input
-                name="authors"
-                value={book.authors}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.authors ? null : (
-              <p className="input-error">{errors.authors}</p>
-            )}
-            <label>
-              Fecha de publicación:
-              <input
-                type="date"
-                name="datePublication"
-                value={book.datePublication}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.datePublication ? null : (
-              <p className="input-error">{errors.datePublication}</p>
-            )}
-            <label>
-               isbn:
-              <input
-                name="isbn"
-                value={book.isbn}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.isbn ? null : (
-              <p className="input-error">{errors.isbn}</p>
-            )}
-            <label>
-              Editorial:
-              <input
-                name="publisher"
-                value={book.publisher}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.publisher ? null : (
-              <p className="input-error">{errors.publisher}</p>
-            )}
-            <label>
-              Descripción:
-              <textarea
-                name="description"
-                value={book.description}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.description ? null : (
-              <p className="input-error">{errors.description}</p>
-            )}
-            <label>
-              Precio:
-              <input
-                type="number"
-                name="price"
-                value={book.price}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.price ? null : (
-              <p className="input-error">{errors.price}</p>
-            )}
-          </div>
-
-          <div className="div2">
-            <label>
-              image:
-              <input
-                name="image"
-                value={book.image}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.image ? null : (
-              <p className="input-error">{errors.image}</p>
-            )}
-
-            <label>
-              Language:
-              <input
-                name="language"
-                value={book.language}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.language ? null : (
-              <p className="input-error">{errors.language}</p>
-            )}
-
-            <label>
-              Number Pages:
-              <input
-                name="numberPages"
-                value={book.numberPages}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.numberPages ? null : (
-              <p className="input-error">{errors.numberPages}</p>
-            )}
-
-            <label>
-              Categorías:
-              <input
-                type="text"
-                name="category"
-                value={book.category}
-                onChange={handleChange}
-                className="form-input"
-              />
-            </label>
-            {!errors.category ? null : (
-              <p className="input-error">{errors.category}</p>
-            )}
-          </div>
-
-          <button type="submit" className="form-button">
-            Crear libro
-          </button>
-        </form>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default FormCreate;

@@ -1,7 +1,7 @@
 .form-container {
   width: 100%;
   max-width: 1000px;
-  
+
   margin: 10px auto 0 auto;
   border-radius: 2px;
 
@@ -22,6 +22,7 @@
 .book-form {
   width: 100%;
   max-width: 400px;
+  position: relative;
   padding: 10px;
   border-radius: 10px;
   background: rgba(102, 117, 129, 0.9);
