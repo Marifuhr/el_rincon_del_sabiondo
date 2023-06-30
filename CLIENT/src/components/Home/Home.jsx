@@ -10,10 +10,10 @@ import Footer from "../../components/Footer/Footer";
 export default function Home() {
   const resultados = useSelector((state) => state.search);
   const dispatch = useDispatch();
-  let filteredBooks = [];
-  const bookss = useSelector((state) => state.search);
-  const allBooks = useSelector((state) => state.filtered);
-  const selectedCategory = useSelector((state) => state.selectedCategory);
+
+  const allBooks = useSelector((state) => state.allBooks);
+  const filteredBooks = useSelector((state) => state.filtered);
+  // const selectedCategory = useSelector((state) => state.selectedCategory);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 9;
 
@@ -23,14 +23,35 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch, currentPage]);
+    // if (selectedCategory) {
+    //   dispatch(filterByCategory(selectedCategory));
+    // }
+
+  }, [dispatch, currentPage, resultados, /*selectedCategory*/]);
+
 
   useEffect(() => {
-    if (selectedCategory) {
-      dispatch(filterByCategory(selectedCategory));
-    }
-    setCurrentPage(1);
-  }, [dispatch, selectedCategory, bookss, resultados]);
+    setCurrentPage(1)
+  }, [resultados, filteredBooks]);
+
+
+  let renderBooks = [];
+  filteredBooks ? renderBooks = filteredBooks : resultados ? renderBooks = resultados : renderBooks = allBooks;
+
+
+  // if (filteredBooks && filteredBooks >= 0) {
+  //   renderBooks = filteredBooks;
+  // } else {
+  //   renderBooks = allBooks;
+  // }
+  //   if (resultados && resultados.length >= 0) {
+  //     renderBooks = resultados;
+  //   } else {
+  //     renderBooks = allBooks;
+  //   }
+  // }
+
+
 
 
   // if (resultados && resultados.length > 0) {
@@ -43,14 +64,9 @@ export default function Home() {
   //     ? allBooks.filter((book) => book.category === selectedCategory)
   //     : allBooks;
   // }
-  if (resultados && resultados.length > 0) {
-    filteredBooks = resultados;
-  } else {
-    filteredBooks = allBooks;
-  }
 
-  const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
-  const books = filteredBooks.slice(
+  const totalPages = Math.ceil(renderBooks.length / booksPerPage);
+  const books = renderBooks.slice(
     (currentPage - 1) * booksPerPage,
     currentPage * booksPerPage
   );

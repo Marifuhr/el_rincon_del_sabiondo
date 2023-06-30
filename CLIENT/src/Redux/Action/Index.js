@@ -5,6 +5,7 @@ import {
   SEARCH_NAME_BOOK,
   FILTER_BY_CATEGORY,
   FILTER_RESULTS,
+  ORDER_PRICE,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
     CREATE_BOOK
@@ -115,3 +116,11 @@ export const createBook = (book) => {
     }
   }
 }
+  export function orderPrice(order) {
+    return {
+      type: ORDER_PRICE,
+      payload: order,
+    };
+  }
+
+

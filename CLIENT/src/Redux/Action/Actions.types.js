@@ -6,3 +6,4 @@ export const FILTER_BY_AUTOR = "FILTER_BY_AUTOR";
 export const SEARCH_NAME_BOOK = "SEARCH_NAME_BOOK";
 export const FILTER_RESULTS = "FILTER_RESULTS";
 export const CREATE_BOOK = "CREATE_BOOK";
+export const ORDER_PRICE = "ORDER_PRICE";
