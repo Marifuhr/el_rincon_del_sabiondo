@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
 import SearchBar from "../SearchBar/SearchBar";
 import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
-//import Pagination from "../Pagination/Pagination";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 
@@ -13,9 +12,8 @@ export default function Home() {
 
   const allBooks = useSelector((state) => state.allBooks);
   const filteredBooks = useSelector((state) => state.filtered);
-  // const selectedCategory = useSelector((state) => state.selectedCategory);
   const [currentPage, setCurrentPage] = useState(1);
-  const booksPerPage = 9;
+  const booksPerPage = 12;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -23,47 +21,18 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllBooks());
-    // if (selectedCategory) {
-    //   dispatch(filterByCategory(selectedCategory));
-    // }
-
-  }, [dispatch, currentPage, resultados, /*selectedCategory*/]);
-
+  }, [dispatch, currentPage, resultados]);
 
   useEffect(() => {
-    setCurrentPage(1)
+    setCurrentPage(1);
   }, [resultados, filteredBooks]);
 
-
   let renderBooks = [];
-  filteredBooks ? renderBooks = filteredBooks : resultados ? renderBooks = resultados : renderBooks = allBooks;
-
-
-  // if (filteredBooks && filteredBooks >= 0) {
-  //   renderBooks = filteredBooks;
-  // } else {
-  //   renderBooks = allBooks;
-  // }
-  //   if (resultados && resultados.length >= 0) {
-  //     renderBooks = resultados;
-  //   } else {
-  //     renderBooks = allBooks;
-  //   }
-  // }
-
-
-
-
-  // if (resultados && resultados.length > 0) {
-  //   filteredBooks = selectedCategory
-  //     ? resultados.filter((book) => book.category === selectedCategory)
-  //     : resultados;
-
-  // } else {
-  //   filteredBooks = selectedCategory
-  //     ? allBooks.filter((book) => book.category === selectedCategory)
-  //     : allBooks;
-  // }
+  filteredBooks
+    ? (renderBooks = filteredBooks)
+    : resultados
+    ? (renderBooks = resultados)
+    : (renderBooks = allBooks);
 
   const totalPages = Math.ceil(renderBooks.length / booksPerPage);
   const books = renderBooks.slice(
@@ -71,7 +40,12 @@ export default function Home() {
     currentPage * booksPerPage
   );
 
-  //console.log(books);
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <div>
@@ -79,11 +53,6 @@ export default function Home() {
         <SearchBar />
       </div>
       <div className={styles.homePage}>
-        <div className={styles.boxCardBooks}>
-          {/* {/renderizar una Card por cada book/} */}
-          {books &&
-            books.map((book) => <Card key={book.IdBook} props={book} />)}
-        </div>
         <div className={styles.pageIndicator}>
           <button
             disabled={currentPage === 1}
@@ -107,6 +76,14 @@ export default function Home() {
             ⮞
           </button>
         </div>
+        <div className={styles.boxCardBooks}>
+          {books &&
+            books.map((book) => <Card key={book.IdBook} props={book} />)}
+        </div>
+        
+        <div className={styles.scrollToTopButton} onClick={handleScrollToTop}>
+          Subir
+        </div>
       </div>
       <div style={{ marginTop: "20px" }}>
         <Footer />
@@ -115,25 +92,22 @@ export default function Home() {
   );
 }
 
-// import Card from "../../components/Card/card";
 // import { useEffect, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
-// import NavBar from "../../components/NavBar/NavBar";
-// import { getAllBooks } from "../../Redux/Action/Index";
-// //import Pagination from "../Pagination/Pagination";
+// import Card from "../../components/Card/card";
+// import SearchBar from "../SearchBar/SearchBar";
+// import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
 // import styles from "./Home.module.css";
 // import Footer from "../../components/Footer/Footer";
 
 // export default function Home() {
-
+//   const resultados = useSelector((state) => state.search);
 //   const dispatch = useDispatch();
+
 //   const allBooks = useSelector((state) => state.allBooks);
+//   const filteredBooks = useSelector((state) => state.filtered);
 //   const [currentPage, setCurrentPage] = useState(1);
-
-//   const booksperPage = 9;
-//   const totalPages = Math.ceil(allBooks.length / booksperPage);
-
-//   //console.log(allBooks);
+//   const booksPerPage = 9;
 
 //   const handlePageChange = (pageNumber) => {
 //     setCurrentPage(pageNumber);
@@ -141,22 +115,31 @@ export default function Home() {
 
 //   useEffect(() => {
 //     dispatch(getAllBooks());
-//   }, [dispatch, currentPage]);
+//   }, [dispatch, currentPage, resultados]);
 
-//   const books = allBooks.slice((currentPage - 1) * booksperPage, currentPage * booksperPage);
+//   useEffect(() => {
+//     setCurrentPage(1);
+//   }, [resultados, filteredBooks]);
 
-//   //console.log(books);
+//   let renderBooks = [];
+//   filteredBooks
+//     ? (renderBooks = filteredBooks)
+//     : resultados
+//     ? (renderBooks = resultados)
+//     : (renderBooks = allBooks);
+
+//   const totalPages = Math.ceil(renderBooks.length / booksPerPage);
+//   const books = renderBooks.slice(
+//     (currentPage - 1) * booksPerPage,
+//     currentPage * booksPerPage
+//   );
 
 //   return (
 //     <div>
-//       <div><NavBar /></div>
+//       <div>
+//         <SearchBar />
+//       </div>
 //       <div className={styles.homePage}>
-//         <div className={styles.boxCardBooks}>
-//           {/* {/renderizar una Card por cada book/} */}
-//           {books && books.map((book) => (
-//             <Card key={book.IdBook} props={book} />
-//           ))}
-//         </div>
 //         <div className={styles.pageIndicator}>
 //           <button
 //             disabled={currentPage === 1}
@@ -164,17 +147,15 @@ export default function Home() {
 //           >
 //             ⮜
 //           </button>
-//           {
-//             new Array(totalPages).fill('').map( (_,index) => (
-//               <button
-//                 className={currentPage === index + 1 ? styles.active : ''}
-//                 onClick={() => handlePageChange(index + 1)}
-//                 key={index}
-//               >
-//                 {index + 1}
-//               </button>
-//             ))
-//           }
+//           {new Array(totalPages).fill("").map((_, index) => (
+//             <button
+//               className={currentPage === index + 1 ? styles.active : ""}
+//               onClick={() => handlePageChange(index + 1)}
+//               key={index}
+//             >
+//               {index + 1}
+//             </button>
+//           ))}
 //           <button
 //             disabled={currentPage === totalPages}
 //             onClick={() => handlePageChange(currentPage + 1)}
@@ -182,10 +163,14 @@ export default function Home() {
 //             ⮞
 //           </button>
 //         </div>
+//         <div className={styles.boxCardBooks}>
+//           {books &&
+//             books.map((book) => <Card key={book.IdBook} props={book} />)}
+//         </div>
 //       </div>
 //       <div style={{ marginTop: "20px" }}>
 //         <Footer />
-//         </div>
+//       </div>
 //     </div>
 //   );
 // }

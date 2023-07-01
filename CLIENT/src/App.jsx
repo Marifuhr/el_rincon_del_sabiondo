@@ -4,11 +4,12 @@ import Landing from './components/Landing/Landing';
 import Home from './components/Home/Home';
 import { LoginButton } from "./components/Login/Login";
 import LogoutButton from './components/Login/Logout.jsx';
-import FormCreate from './components/FormCreate/Form';
-import About from './components/About/About';
-import Contacto from './components/Contacto/Contacto';
+import FormCreate from './components/FormCreate/form';
+import About from './components/About/about';
+import Contacto from './components/Contacto/contacto';
 import NavBar from './components/NavBar/NavBar';
 import { Profile } from "./components/Login/Profile";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import DetailBook from './components/DetailBook/DetailBook';

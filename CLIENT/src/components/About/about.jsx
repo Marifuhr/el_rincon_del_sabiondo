@@ -1,15 +1,14 @@
 import React from "react";
-import { Link as ChakraLink, Button, Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import "./about.css";
 import Footer from "../Footer/Footer";
+import ButtonVolver from "../../elements/ButtonVolver";
 
 export default function About() {
   return (
     <Box textAlign="center" mt={4}>
       <Box display="flex" justifyContent="flex-start" mb={4}>
-        <Button as={ChakraLink} to="/home" className="btn-back">
-          Volver
-        </Button>
+        <ButtonVolver />
       </Box>
       <Box mt={6}> {/* Ajusta el valor de mt aquí */}
         <Heading as="h1" size="xl" mb={4}>

@@ -3,9 +3,17 @@ import "./NavBar.css";
 import CartIcon from "../../assets/image/carrito.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+
+import {
+  Box,
+  useColorModeValue,
+} from "@chakra-ui/react";
+
+
 import { useDispatch, useSelector } from "react-redux";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import { LoginButton } from "../../components/Login/Login";
+import Logo from "../../elements/Logo";
 
 
 const endpoint = "https://ser-back-sab.onrender.com";
@@ -14,7 +22,6 @@ const initialFilters = {
   price: "",
 };
 function Navbar() {
-
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
   const dispatch = useDispatch();
@@ -24,13 +31,11 @@ function Navbar() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
 
-
-
   const handleReset = () => {
     dispatch(filterResults(initialFilters));
     setCategoryValue("");
     setPriceValue("");
-  }
+  };
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -49,7 +54,7 @@ function Navbar() {
 
     switch (name) {
       case "category":
-        setCategoryValue(value)
+        setCategoryValue(value);
         return dispatch(
           filterResults({
             ...filters,
@@ -58,7 +63,7 @@ function Navbar() {
         );
 
       case "price":
-        setPriceValue(value)
+        setPriceValue(value);
         return dispatch(
           filterResults({
             ...filters,
@@ -84,7 +89,9 @@ function Navbar() {
   return (
     <nav className="header">
       <div className="hola">
-        <h3>El Rincón del sabiondo</h3>
+        <Box mt={4}>
+          <Logo color={useColorModeValue("gray.700", "white")} />
+        </Box>
       </div>
       <button>
         <Link to="/" className="navbar-salir">
@@ -124,19 +131,26 @@ function Navbar() {
         <button onClick={handleReset}>Limpiar</button>
       </div>
       <div className="filtros_posjqlk">
-        <select className="select_lkow" name="category" onChange={handleChange}
-          value={categoryValue}>
-          <option value="">
-            Seleccionar
-          </option>
+        <select
+          className="select_lkow"
+          name="category"
+          onChange={handleChange}
+          value={categoryValue}
+        >
+          <option value="">Seleccionar</option>
           {options.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}
             </option>
           ))}
         </select>
-        <select className="select_lkow" id="price" name="price" onChange={handleChange}
-          value={priceValue}>
+        <select
+          className="select_lkow"
+          id="price"
+          name="price"
+          onChange={handleChange}
+          value={priceValue}
+        >
           <option value="">todos</option>
           <option value="lt100">Menos que 100</option>
           <option value="101-200">De 101 a 200</option>
@@ -145,13 +159,8 @@ function Navbar() {
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
       </div>
-
     </nav>
   );
 }
 
 export default Navbar;
-
-
-
-

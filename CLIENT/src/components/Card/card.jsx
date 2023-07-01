@@ -1,90 +1,94 @@
-import { Card, CardHeader, CardBody, CardFooter, Flex } from "@chakra-ui/react";
 import {
-  Stack,
+  Box,
+  Center,
+  useColorModeValue,
   Heading,
-  Button,
-  Image,
   Text,
-  Divider,
-  ButtonGroup,
-} from "@chakra-ui/react";
-
+  Stack,
+  Image,
+} from '@chakra-ui/react';
+const IMAGE =
+  'https://images.unsplash.com/photo-1518051870910-a46e30d9db16?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1350&q=80';
 import { Link } from "react-router-dom";
+import formatDate from '../../utils/formatDate';
 
 function Cards({ props }) {
   return (
-    <>
-      
-        <Card
-          key={props.IdBook}
-          border="1px"
-          borderColor="gray.200"
-          bg="white"
-          shadow="md"
-          p="5"
-        >
-          <CardBody>
-            <Flex align="center">
-              <Image
-                src={props.image}
-                borderRadius="lg"
-                marginTop="-20px"
-                marginLeft="auto"
-                marginRight="auto"
-              />
-              <Link to={`/detail/${props.IdBook}`}>
-                <Button colorScheme="green" mt="3" size="sm">
-                  Más info
-                </Button>
-              </Link>
-            </Flex>
-            <Stack mt="3" spacing="1">
-              <Heading size="sm">{props.title}</Heading>
-              <Text>{props.description.slice(0, 90) + "..."}</Text>
-              <Text>{props.datePublication}</Text>
-              <Text>{props.categories}</Text>
-              <Text color="blue.600" fontSize="2xl">
-                {`$ 2500`}
-              </Text>
-            </Stack>
-          </CardBody>
-          <Divider />
-          <CardFooter>
-            <ButtonGroup>
-              <Button
-                variant="ghost"
-                colorScheme="blue"
-                style={{
-                  padding: "2px 10px",
-                }}
-              >
-                {""}Favorito
-                <Image
-                  src="src\assets\image\Star.png"
-                  style={{
-                    width: "20px",
-                    transform: "translateY(-1px)",
-                  }}
-                />
-              </Button>
-
-              <Button
-                variant="ghost"
-                colorScheme="blue"
-                style={{
-                  width: "120px",
-                  backgroundColor: "none",
-                  marginLeft: "80px",
-                  marginRight: "40px",
-                }}
-              >
-                Comprar
-              </Button>
-            </ButtonGroup>
-          </CardFooter>
-        </Card>
-      
-    </>
+    <Link to={`/detail/${props.IdBook}`}>
+    <Center py={12}>
+      <Box
+        role={'group'}
+        p={6}
+        maxW={'250px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'2xl'}
+        rounded={'lg'}
+        pos={'relative'}
+        zIndex={1}>
+        <Box
+          rounded={'lg'}
+          mt={-12}
+          pos={'relative'}
+          height={'230px'}
+          _after={{
+            transition: 'all .3s ease',
+            content: '""',
+            w: '180px',
+            h: '200px',
+            pos: 'absolute',
+            top: 5,
+            left:10,
+            backgroundImage: `url(${props.image})`,
+            filter: 'blur(25px)',
+            zIndex: -1,
+          }}
+          _groupHover={{
+            _after: {
+              filter: 'blur(10px)',
+            },
+          }}>
+          <Image
+            rounded="lg"
+            width="100%" // Ajusta el ancho al 100% del contenedor
+            height="100%" // Ajusta la altura al 100% del contenedor
+            objectFit="contain" // Ajusta la imagen para que quepa dentro del contenedor sin recortarse ni deformarse
+            src={props.image}
+            alt="Book Cover"
+          />
+        </Box>
+        <Stack pt={10} align={'center'}>
+          <Text color={'gray.500'} fontSize={'sm'} textTransform={'uppercase'}>
+            {props.Authors[0].name}
+          </Text>
+          <Heading
+            fontSize={'md'}
+            fontFamily={'body'}
+            fontWeight={500}
+            overflow="hidden"
+            whiteSpace="nowrap"
+            textOverflow="ellipsis"
+            maxWidth="100%" // Aplica un ancho máximo del 100% del contenedor
+          >
+          {props.title}
+          </Heading>
+          <Stack direction={'row'} align={'center'}>
+            <Text fontWeight={500} background={'red'} color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              {props.languageBook.language}
+            </Text>
+            <Text fontWeight={500} background="#000" color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              {formatDate(props.datePublication)}
+            </Text>
+          </Stack>
+          <Stack direction={'row'} align={'center'}>
+            <Text fontWeight={800} fontSize={'xl'} mb={0}>
+            ${props.price}
+            </Text>
+          </Stack>
+        </Stack>
+      </Box>
+    </Center>
+    </Link>
   );
 }
 

@@ -4,8 +4,10 @@
     flex-direction: column;
     gap: 5px;
 
-    background-color: #70a57b5d;
+    background-color: #70a57b;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    margin: 0px 5px 5px 5px ;
 
     position: relative;
 }
