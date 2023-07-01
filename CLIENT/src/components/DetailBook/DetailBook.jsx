@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetailBooks } from "../../Redux/Action/Index";
 import { useParams } from "react-router-dom";
-import { Link } from 'react-router-dom';
+import ButtonVolver from "../../elements/ButtonVolver";
 
 function DetailBook() {
   const { id } = useParams();
@@ -22,7 +22,7 @@ function DetailBook() {
   return (
     <div>
       <button className="btn-back">
-        <Link to="/home">Volver</Link>
+        <ButtonVolver />
       </button>
       <div class="container">
         <div class="row justify-content-center">

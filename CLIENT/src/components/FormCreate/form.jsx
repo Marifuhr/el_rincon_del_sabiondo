@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { createBook } from "../../Redux/Action/Index";
-import { Link } from "react-router-dom";
 
 import InputForm from './InputForm';
 import "./form.css";
 import validate from "./Validations/validation";
 import AlertComponent from "../Alert/AlertComponent";
+import ButtonVolver from "../../elements/ButtonVolver";
 
 const initialStateBook = {
     title: "",
@@ -75,9 +75,7 @@ function FormCreate() {
         <div className="form-container">
             <div className="form">
                 <div className="form-button">
-                    <Link to="/home">
-                        <button>Back</button>
-                    </Link>
+                    <ButtonVolver />
                 </div>
 
                 <form onSubmit={handleSubmit} className="book-form">

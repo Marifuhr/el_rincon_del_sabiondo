@@ -1,13 +1,11 @@
 import React from "react";
-import { Link as ChakraLink, Button } from "@chakra-ui/react";
 import Footer from "../Footer/Footer";
+import ButtonVolver from "../../elements/ButtonVolver";
 
 export default function contacto() {
   return (
     <div>
-      <Button as={ChakraLink} to="/home" className="btn-back">
-        Volver
-      </Button>
+      <ButtonVolver />
       <Footer />
     </div>
   );
