@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import "./NavBar.css";
 import CartIcon from "../../assets/image/carrito.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
-
-
-
 import { useDispatch, useSelector } from "react-redux";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
+import { LoginButton } from "../../components/Login/Login";
+
 
 const endpoint = "https://ser-back-sab.onrender.com";
 const initialFilters = {
@@ -92,9 +91,11 @@ function Navbar() {
           Salir
         </Link>
         <div className="navbar-right">
-          <Link to="/login" className="navbar-action">
+          {/* <Link to="/login" className="navbar-action">
             Ingresar
-          </Link>
+          </Link> */}
+          <LoginButton/>
+          
           <button className="navbar-action">Registrarse</button>
           <button className="navbar-cart">
             <img
