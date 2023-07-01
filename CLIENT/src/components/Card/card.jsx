@@ -81,7 +81,7 @@ function Cards({ props }) {
             </Text>
           </Stack>
           <Stack direction={'row'} align={'center'}>
-            <Text fontWeight={800} fontSize={'xl'}>
+            <Text fontWeight={800} fontSize={'xl'} mb={0}>
             ${props.price}
             </Text>
           </Stack>
