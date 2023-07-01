@@ -1,5 +1,7 @@
 .ctnSearchBar{
     display: flex;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
 }
 .ctnSearchBar input{
@@ -7,9 +9,10 @@
     outline: none;
     padding: 5px 10px;
     border-radius: 10px;
-    width: 100%;
-
+    width: 25%;
+    background-color: rgba(240, 248, 255, 0.419);
     box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+    text-align: left;
 }
 .ctnSearchBar button{
     background-color: rgba(240, 248, 255, 0.419);
