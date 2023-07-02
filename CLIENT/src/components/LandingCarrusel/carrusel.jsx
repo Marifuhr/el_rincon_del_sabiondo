@@ -4,11 +4,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function CarouselFadeExample() {
   return (
-    <div className="container-fluid">
+    <div className="container-xxl">
       <Carousel variant="dark" className="carousel">
         <Carousel.Item>
           <img
-            className="d-block w-100 "
+            className="image_size_asjdlasj w-80 "
             src="src\assets\image\pila-libros.jpg"
             alt="First slide"
           />
@@ -19,7 +19,7 @@ function CarouselFadeExample() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="image_size_asjdlasj w-80"
             src="src\assets\image\Education process.jpeg"
             alt="Second slide"
           />
@@ -30,7 +30,7 @@ function CarouselFadeExample() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="image_size_asjdlasj w-80"
             src="src\assets\image\buenos-libros-biblioteca.jpg"
             alt="Third slide"
           />
@@ -43,7 +43,7 @@ function CarouselFadeExample() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="image_size_asjdlasj w-80"
             src="src\assets\image\book club.jpg"
             alt="Third slide"
           />
@@ -56,7 +56,7 @@ function CarouselFadeExample() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="image_size_asjdlasj w-80"
             src="src\assets\image\libros.jpeg"
             alt="Third slide"
           />
