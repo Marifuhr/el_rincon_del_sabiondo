@@ -1,14 +1,16 @@
 .profile_zlksadaskj{
     display: flex;
     gap: 5px;
-    width: 130px;
+
+    max-height: 40px;
     padding: 5px 10px;
+    
     background: white;
     border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
 .profile_zlksadaskj img:nth-child(1){
-    width: 100%;
+    width: 30px;
     border-radius: 50%;
     aspect-ratio: 1;
     object-fit: cover;
@@ -16,5 +18,7 @@
 .profile_zlksadaskj p:nth-child(2){
     font-size: 1rem;
     white-space: nowrap;
+
+    padding: 0;
     margin: auto 0;
 }

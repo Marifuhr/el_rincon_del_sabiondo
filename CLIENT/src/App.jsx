@@ -13,22 +13,10 @@ import { Profile } from "./components/Login/Profile";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import DetailBook from './components/DetailBook/DetailBook';
-import { useAuth0 } from '@auth0/auth0-react';
 
 export default function App() {
-  const { isAuthenticated } = useAuth0();
-
   return (
     <div className='App'>
-      <header className='App-header' />
-      {isAuthenticated ? (
-        <>
-          <Profile />
-          <LogoutButton />
-        </>
-      ) : (
-        <LoginButton />
-      )}
       <NavBar />
       <Routes>
         <Route exact path='/' element={<Landing />} />

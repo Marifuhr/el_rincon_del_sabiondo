@@ -6,6 +6,7 @@ import axios from "axios";
 
 import {
   Box,
+  Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -14,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import { LoginButton } from "../../components/Login/Login";
 import Logo from "../../elements/Logo";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "../Login/Profile";
+import LogoutButton from "../Login/Logout";
 
 
 const endpoint = "https://ser-back-sab.onrender.com";
@@ -22,10 +26,12 @@ const initialFilters = {
   price: "",
 };
 function Navbar() {
+  const {isAuthenticated} = useAuth0();
+
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
+  
   const dispatch = useDispatch();
-  const [selectedFilters, setSelectedFilters] = useState(initialFilters);
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -94,19 +100,14 @@ function Navbar() {
       <Link to="/" className="navbar-salir">
         Salir
       </Link>
-      <div className="navbar-right">
-        <LoginButton/>
-        <button className="navbar-action">Registrarse</button>
-        <button className="navbar-cart">
-          <img
-            src={CartIcon}
-            alt="Carrito de compras"
-            className="navbar-cart-icon"
-          />
-          <span className="navbar-cart-count">0</span>
-        </button>
-      </div>
-      {/* <SearchBar /> */}
+      {isAuthenticated ? (
+        <Flex alignItems="center" gap="5px">
+          <Profile />
+          <LogoutButton />
+        </Flex>
+      ) : (
+        <LoginButton />
+      )}
       <div className="navbar-center">
         <ul>
           <Link to="/home">
