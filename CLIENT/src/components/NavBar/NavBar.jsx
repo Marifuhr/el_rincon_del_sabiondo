@@ -88,47 +88,40 @@ function Navbar() {
 
   return (
     <nav className="header">
-      <div className="hola">
-        <Box mt={4}>
-          <Logo color={useColorModeValue("gray.700", "white")} />
-        </Box>
+      <Box mt={2}>
+        <Logo color={useColorModeValue("gray.700", "white")} />
+      </Box>
+      <Link to="/" className="navbar-salir">
+        Salir
+      </Link>
+      <div className="navbar-right">
+        <LoginButton/>
+        <button className="navbar-action">Registrarse</button>
+        <button className="navbar-cart">
+          <img
+            src={CartIcon}
+            alt="Carrito de compras"
+            className="navbar-cart-icon"
+          />
+          <span className="navbar-cart-count">0</span>
+        </button>
       </div>
-      <button>
-        <Link to="/" className="navbar-salir">
-          Salir
-        </Link>
-        <div className="navbar-right">
-          {/* <Link to="/login" className="navbar-action">
-            Ingresar
-          </Link> */}
-          <LoginButton/>
-          
-          <button className="navbar-action">Registrarse</button>
-          <button className="navbar-cart">
-            <img
-              src={CartIcon}
-              alt="Carrito de compras"
-              className="navbar-cart-icon"
-            />
-            <span className="navbar-cart-count">0</span>
-          </button>
-        </div>
-      </button>
       {/* <SearchBar /> */}
       <div className="navbar-center">
-        <button className="navbar-button">
-          <Link to="/home">Inicio</Link>
-        </button>
-        <button className="navbar-button">
-          <Link to="/about">Nosotros</Link>
-        </button>
-        <button className="navbar-button">
-          <Link to="/contacto">Contacto</Link>
-        </button>
-        <button className="navbar-crear">
-          <Link to="/create">Agrega un libro</Link>
-        </button>
-        <button onClick={handleReset}>Limpiar</button>
+        <ul>
+          <Link to="/home">
+              <li>Inicio</li>
+          </Link>
+          <Link to="/about">
+              <li>Nosotros</li>
+          </Link>
+          <Link to="/contacto">
+              <li>Contacto</li>
+          </Link>
+          <Link to="/create">
+            <li>Agrega un libro</li>
+          </Link>
+        </ul>
       </div>
       <div className="filtros_posjqlk">
         <select
@@ -158,6 +151,7 @@ function Navbar() {
           <option value="gt300">Más de 300</option>
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
+        <button className="clear_button" onClick={handleReset}>Limpiar</button>
       </div>
     </nav>
   );

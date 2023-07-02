@@ -60,6 +60,26 @@
     width: 100%;
 }
 
+.filtros_posjqlk select{
+    max-width: 150px;
+}
+
+.filtros_posjqlk button{
+    background: white;
+    border-radius: 10px;
+    
+    padding: 5px 10px;
+    transition: all .1s ease;
+    font-size: .8rem;
+}
+.filtros_posjqlk button:hover{
+    box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+    transform: scale(1.02);
+}
+.filtros_posjqlk .clear_button{
+    background: #4df76f;
+}
+
 @media (min-width: 200px) {
     .navbar-logo {
         height: 120px;
@@ -75,8 +95,50 @@
 .navbar-center {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 1rem;
+    gap: 10px;
+}
+.navbar-center ul{
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.navbar-center ul a:hover{
+    text-decoration: none;
+    color: inherit;
+}
+.navbar-center ul a li{
+    position: relative;
+    list-style: none;
+    
+    padding: none;
+    margin: none;
+    text-align: center;
+
+    padding: 2px 10px;
+    transition: all .3s ease;
+}
+.navbar-center ul a li::before{
+    background: #21612e;
+    position: absolute;
+    content: "";
+    
+    width: 0%;
+    height: 2px;
+    border-radius: 2px;
+    
+    bottom: 0;
+    left: 0;
+    transition: width .3s ease;
+}
+.navbar-center ul a li:hover{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+}
+.navbar-center ul a li:hover::before{
+    width: 100%;
 }
 
 .navbar-button {
@@ -104,15 +166,12 @@
 
 .navbar-right {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-left: 62rem;
-color: #7e7a7a;
+    flex-wrap: nowrap;
+    gap: 5px;
+
 }
 
 .navbar-action {
-   
-    
     color: #7e7a7a;
     font-size: 1rem;
     cursor: pointer;
@@ -166,10 +225,6 @@ color: #7e7a7a;
     .navbar-center *{
         font-size: .8rem;
     }
-    .navbar-right {
-        display: none;
-    }
-    
 }
 
 @media only screen and (max-width: 420px) {
@@ -196,10 +251,6 @@ color: #7e7a7a;
         height: 90px;
         margin-bottom: 10px;
     }
-
-    .navbar-right {
-        display: none;
-    }
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1299px) {
@@ -215,10 +266,6 @@ color: #7e7a7a;
     .navbar-logo {
         height: 100px;
         margin-bottom: 10px;
-    }
-
-    .navbar-right {
-        display: none;
     }
 }
 

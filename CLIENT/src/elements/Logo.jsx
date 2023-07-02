@@ -8,7 +8,7 @@ import {
 const Logo = () => {
     return (
         <Box display="flex" alignItems="center">
-            <Image src={logoImage} alt="Logo" boxSize="100px" mb={"-2rem"} />
+            <Image src={logoImage} alt="Logo" boxSize="100px" />
             <div>
                 <Text
                     fontSize="lg"
