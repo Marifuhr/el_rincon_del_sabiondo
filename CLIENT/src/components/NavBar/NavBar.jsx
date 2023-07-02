@@ -6,6 +6,7 @@ import axios from "axios";
 
 import {
   Box,
+  Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -14,6 +15,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import { LoginButton } from "../../components/Login/Login";
 import Logo from "../../elements/Logo";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Profile } from "../Login/Profile";
+import LogoutButton from "../Login/Logout";
 
 
 const endpoint = "https://ser-back-sab.onrender.com";
@@ -22,10 +26,12 @@ const initialFilters = {
   price: "",
 };
 function Navbar() {
+  const {isAuthenticated} = useAuth0();
+
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
+  
   const dispatch = useDispatch();
-  const [selectedFilters, setSelectedFilters] = useState(initialFilters);
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -88,47 +94,35 @@ function Navbar() {
 
   return (
     <nav className="header">
-      <div className="hola">
-        <Box mt={4}>
-          <Logo color={useColorModeValue("gray.700", "white")} />
-        </Box>
-      </div>
-      <button>
-        <Link to="/" className="navbar-salir">
-          Salir
-        </Link>
-        <div className="navbar-right">
-          {/* <Link to="/login" className="navbar-action">
-            Ingresar
-          </Link> */}
-          <LoginButton/>
-          
-          <button className="navbar-action">Registrarse</button>
-          <button className="navbar-cart">
-            <img
-              src={CartIcon}
-              alt="Carrito de compras"
-              className="navbar-cart-icon"
-            />
-            <span className="navbar-cart-count">0</span>
-          </button>
-        </div>
-      </button>
-      {/* <SearchBar /> */}
+      <Box mt={2}>
+        <Logo color={useColorModeValue("gray.700", "white")} />
+      </Box>
+      <Link to="/" className="navbar-salir">
+        Salir
+      </Link>
+      {isAuthenticated ? (
+        <Flex alignItems="center" gap="5px">
+          <Profile />
+          <LogoutButton />
+        </Flex>
+      ) : (
+        <LoginButton />
+      )}
       <div className="navbar-center">
-        <button className="navbar-button">
-          <Link to="/home">Inicio</Link>
-        </button>
-        <button className="navbar-button">
-          <Link to="/about">Nosotros</Link>
-        </button>
-        <button className="navbar-button">
-          <Link to="/contacto">Contacto</Link>
-        </button>
-        <button className="navbar-crear">
-          <Link to="/create">Agrega un libro</Link>
-        </button>
-        <button onClick={handleReset}>Limpiar</button>
+        <ul>
+          <Link to="/home">
+              <li>Inicio</li>
+          </Link>
+          <Link to="/about">
+              <li>Nosotros</li>
+          </Link>
+          <Link to="/contacto">
+              <li>Contacto</li>
+          </Link>
+          <Link to="/create">
+            <li className="create_book_aosdhas">Agrega un libro</li>
+          </Link>
+        </ul>
       </div>
       <div className="filtros_posjqlk">
         <select
@@ -158,6 +152,7 @@ function Navbar() {
           <option value="gt300">Más de 300</option>
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
+        <button className="clear_button" onClick={handleReset}>Limpiar</button>
       </div>
     </nav>
   );
