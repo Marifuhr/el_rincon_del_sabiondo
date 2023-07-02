@@ -100,14 +100,17 @@ function Navbar() {
       <Link to="/" className="navbar-salir">
         Salir
       </Link>
-      {isAuthenticated ? (
-        <Flex alignItems="center" gap="5px">
-          <Profile />
-          <LogoutButton />
-        </Flex>
-      ) : (
-        <LoginButton />
-      )}
+      <Flex alignItems="center" gap="5px">
+        {
+          isAuthenticated ?
+            <>
+              <Profile />
+              <LogoutButton />
+            </>
+            :
+            <LoginButton />  
+        }
+      </Flex>
       <div className="navbar-center">
         <ul>
           <Link to="/home">

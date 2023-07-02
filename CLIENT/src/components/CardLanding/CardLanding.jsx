@@ -4,8 +4,8 @@ import { Card, Stack, Image, Heading, Text } from '@chakra-ui/react';
 
 export default function CardLanding() {
     return (
-        <>
-            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }}
+        <Stack maxW="6xl" mx="auto" px={5}>
+            <Card boxShadow="0 1px 15px rgba(0,0,0,0.3)" style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }}
                 overflow='hidden'
                 variant='outline'>
                 <Stack direction={{ base: 'column', sm: 'row' }}>
@@ -25,7 +25,7 @@ export default function CardLanding() {
                     </Stack>
                 </Stack>
             </Card>
-            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' mt='40px'>
+            <Card boxShadow="0 1px 15px rgba(0,0,0,0.3)" style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row' }} overflow='hidden' variant='outline' mt='40px'>
                 <Stack direction={{ base: 'column', sm: 'row-reverse' }}>
                     <Image
                         objectFit='cover'
@@ -41,7 +41,7 @@ export default function CardLanding() {
                     </Stack>
                 </Stack>
             </Card>
-            <Card style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }} overflow='hidden' variant='outline' mt='40px'>
+            <Card boxShadow="0 1px 15px rgba(0,0,0,0.3)" style={{ backgroundColor: " #9685855f" }} direction={{ base: 'column', sm: 'row-reverse' }} overflow='hidden' variant='outline' mt='40px'>
                 <Stack direction={{ base: 'column', sm: 'row' }}>
                     <Image
                         objectFit='cover'
@@ -57,6 +57,6 @@ export default function CardLanding() {
                     </Stack>
                 </Stack>
             </Card>
-        </>
+        </Stack>
     );
 }
