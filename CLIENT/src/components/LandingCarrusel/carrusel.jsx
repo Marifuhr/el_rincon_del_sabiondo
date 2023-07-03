@@ -4,13 +4,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function CarouselFadeExample() {
   return (
-    <div className="container-xxl">
+    <div className="container-xxl" >
       <Carousel variant="dark" className="carousel">
         <Carousel.Item>
           <img
-            className="image_size_asjdlasj w-80 "
-            src="src\assets\image\pila-libros.jpg"
-            alt="First slide"
+            className="image_size_asjdlasj w-80 img-fluid "
+            src="src\assets\image\El Rincon del Sabiondo.jpg"
+            alt="El rincon del sabiondo"
           />
           <Carousel.Caption>
             {/* <button>entrar</button>
@@ -19,53 +19,27 @@ function CarouselFadeExample() {
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="image_size_asjdlasj w-80"
-            src="src\assets\image\Education process.jpeg"
+            className="image_size_asjdlasj w-80 img-fluid"
+            src="src\assets\image\seleccion de libros.jpg"
             alt="Second slide"
           />
-          <Carousel.Caption>
-            <h5>Second slide label</h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="image_size_asjdlasj w-80"
-            src="src\assets\image\buenos-libros-biblioteca.jpg"
-            alt="Third slide"
+            className="image_size_asjdlasj w-80 img-fluid"
+            src="src\assets\image\carousel2.jpeg"
+            alt="3x2"
           />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
           <img
-            className="image_size_asjdlasj w-80"
-            src="src\assets\image\book club.jpg"
-            alt="Third slide"
+            className="image_size_asjdlasj w-80 img-fluid"
+            src="src\assets\image\Descubre un mundo.jpg"
+            alt="Descubre un mundo"
           />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
-        </Carousel.Item>
-        <Carousel.Item>
-          <img
-            className="image_size_asjdlasj w-80"
-            src="src\assets\image\libros.jpeg"
-            alt="Third slide"
-          />
-          <Carousel.Caption>
-            <h5>Third slide label</h5>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-          </Carousel.Caption>
+          <Carousel.Caption></Carousel.Caption>
         </Carousel.Item>
       </Carousel>
     </div>
