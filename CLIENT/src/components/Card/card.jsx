@@ -73,10 +73,10 @@ function Cards({ props }) {
           {props.title}
           </Heading>
           <Stack direction={'row'} align={'center'}>
-            <Text fontWeight={500} background={'red'} color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              <Text fontWeight={500} background={'#70a57b'} color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
               {props.languageBook.language}
             </Text>
-            <Text fontWeight={500} background="#000" color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
+              <Text fontWeight={500} background="#bfbfbf" color={'white'} py={1} px={2} borderRadius={5} fontSize={'sm'}>
               {formatDate(props.datePublication)}
             </Text>
           </Stack>

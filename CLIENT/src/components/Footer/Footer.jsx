@@ -23,7 +23,7 @@ const Logo = (props) => {
       <Image src={logoImage} alt="Logo" boxSize="80px" />
       <div>
         <Text fontSize="lg" fontFamily="Roboto" mb="-0.5rem">
-          El Rincon del
+          El Rincón del
         </Text>
         <Text fontSize="2xl" fontFamily="Roboto" mt="-0.5rem">
           Sabiondo

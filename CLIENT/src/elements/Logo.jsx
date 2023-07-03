@@ -16,7 +16,7 @@ const Logo = () => {
                     fontFamily="Roboto"
                     mb="-0.5rem"
                 >
-                    El Rincon del
+                    El Rincón del
                 </Text>
                 <Text
                     fontSize="2xl"

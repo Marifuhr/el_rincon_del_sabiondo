@@ -105,11 +105,10 @@ function Navbar() {
         }
       </Flex>
       <Box mt={2}>
-        <Logo color={useColorModeValue("gray.700", "white")} />
+      <Link to="/" >
+        <Logo color={useColorModeValue("gray.700", "white")} />  
+      </Link>
       </Box>
-      {/* <Link to="/" className="navbar-salir">
-        Salir
-      </Link> */}
       <div className="navbar-center">
         <ul>
           <Link to="/home">
