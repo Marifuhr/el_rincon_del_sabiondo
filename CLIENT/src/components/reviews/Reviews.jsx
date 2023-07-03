@@ -1,20 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import image from "./image-reviews.jpg";
 import userImage from "./user-image.png";
 import "./reviews.css";
-import axios from "axios";
 
 function Reviews() {
-  useEffect(() => {
-    
-    axios({
-      method:'GET',
-      url:`${import.meta.env.VITE_URL_ENDPOINT}/books?limit=3`
-    }).then(console.log);
-
-  },[]);
   return (
     <CardGroup>
       <Card>
