@@ -7,9 +7,9 @@ const { auth } = require('express-openid-connect');
 const mercadopago = require("mercadopago");
 
 mercadopago.configure({
-    access_token:
-      process.env.TOKEN_ACCESS_MERCADO_PAGO,
+    access_token: process.env.TOKEN_ACCESS_MERCADO_PAGO,
 });
+
 //Info local enviroments
 const port = process.env.PORT_SERVER || 3001;
 

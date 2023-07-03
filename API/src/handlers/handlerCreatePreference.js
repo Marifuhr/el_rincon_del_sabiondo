@@ -1,5 +1,5 @@
 const createPayMercadoPago = require("../controllers/createPayMercadoPago");
-const { createPreferences } = require('../utils/MercadoPago');
+const { createPreferences, defaultImageProduct } = require('../utils/MercadoPago');
 module.exports = async (req, res) => {
     try {
         const {products} = req.body;
@@ -8,15 +8,26 @@ module.exports = async (req, res) => {
         let lastProducts = [];
         for(let p of products){
             const { title, description, picture_url, quantity, unit_price} = p;
-            if(!title || description || quantity || unit_price){
-                throw new Error('Los productos no tienen todas las propiedades solicitadas')
-            }
-        }
+            
+            if(!title || !description || !quantity || !unit_price){
+                throw new Error('Los productos no tienen todas las propiedades solicitadas');
+            };
+
+            const product = {
+                title,
+                description,
+                picture_url: picture_url || defaultImageProduct,
+                quantity: Number(quantity),
+                unit_price: Number(unit_price)
+            };
+            lastProducts = [...lastProducts, product];
+        };
 
         //Filter products
         const preference = createPreferences(lastProducts);
         const data = await createPayMercadoPago(preference)
         res.json(data);
+
     } catch ({message}) {
         res.json({error:message});
     };
