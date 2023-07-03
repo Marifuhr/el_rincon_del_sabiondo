@@ -1,6 +1,10 @@
 const createPayMercadoPago = require("../controllers/createPayMercadoPago");
 const { createPreferences, defaultImageProduct } = require('../utils/MercadoPago');
 module.exports = async (req, res) => {
+    //! ===========================================================================
+    //! Realizar integración de User para relacionar una venta con la Base de Datos
+    //! ===========================================================================
+
     try {
         const {products} = req.body;
         if(!products) throw new Error('Debes agregar una lista de productos');
