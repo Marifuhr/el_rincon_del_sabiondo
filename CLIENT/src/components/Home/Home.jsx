@@ -5,6 +5,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
+import success from './pngwing.png';
 
 export default function Home() {
   const resultados = useSelector((state) => state.search);
@@ -47,6 +48,10 @@ export default function Home() {
     });
   };
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const paymentId = urlParams.get("payment_id");
+  const status = urlParams.get("status");
+
   return (
     <div>
       <div>
@@ -75,6 +80,18 @@ export default function Home() {
           >
             ⮞
           </button>
+        </div>
+        <div style={{ marginTop: "20px" }}>
+        {paymentId !== null && status === "approved" ? (
+          <div style={{ textAlign: "center" }}>
+            <img
+              src={success}
+              alt="Purchase Success"
+              style={{ width: "300px", height: "300px", margin: "0 auto" }}
+            />
+            <p>Su compra se procesó correctamente. Si lo desea, puede seguir navegando por nuestro catálogo.</p>
+          </div>
+        ) : null}
         </div>
         <div className={styles.boxCardBooks}>
           {books &&
