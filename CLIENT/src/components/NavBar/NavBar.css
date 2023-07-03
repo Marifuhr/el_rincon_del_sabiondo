@@ -22,9 +22,9 @@
     position: absolute;
     right: 2%;
     top: 5%;
-    padding: 5px 15px;
-    border-radius: 4px;
-    background: white;
+    padding: 3px 7px;
+    border-radius: 2rem;
+    background: rgba(255, 255, 255, 0.358);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,7 +65,7 @@
 }
 
 .filtros_posjqlk button{
-    background: white;
+    background: rgba(255, 255, 255, 0.218);
     border-radius: 10px;
     
     padding: 5px 10px;
@@ -162,7 +162,7 @@
     border-radius: 5px;
     white-space:nowrap;
  
-    color: white;
+    color: rgb(235, 226, 226);
     font-size: 0.8rem;
     cursor: pointer;
 
