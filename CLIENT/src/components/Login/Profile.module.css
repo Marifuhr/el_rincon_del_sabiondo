@@ -1,11 +1,11 @@
 .profile_zlksadaskj{
     display: flex;
-    gap: 5px;
+gap:  0.5rem;
 
-    max-height: 40px;
-    padding: 5px 10px;
+    /* max-height: 20px;
+    padding: 7px 10px; */
     
-    background: white;
+    background: rgba(139, 171, 140, 0.34);
     border-radius: 10px;
     box-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
@@ -16,7 +16,7 @@
     object-fit: cover;
 }
 .profile_zlksadaskj p:nth-child(2){
-    font-size: 1rem;
+    font-size: 0.9rem;
     white-space: nowrap;
 
     padding: 0;

@@ -94,7 +94,7 @@ function Navbar() {
 
   return (
     <nav className="header">
-<Flex display="flex"  gap="5px">
+      <Flex className="navbar-salir">
         {
           isAuthenticated ?
             <>
@@ -108,9 +108,9 @@ function Navbar() {
       <Box mt={2}>
         <Logo color={useColorModeValue("gray.700", "white")} />
       </Box>
-      <Link to="/" className="navbar-salir">
+      {/* <Link to="/" className="navbar-salir">
         Salir
-      </Link>
+      </Link> */}
       <div className="navbar-center">
         <ul>
           <Link to="/home">
