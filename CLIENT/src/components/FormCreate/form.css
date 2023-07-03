@@ -5,7 +5,7 @@
   margin: 10px auto 0 auto;
   border-radius: 2px;
 
-  background-image: url("src/assets/image/356623-admin.jpg");
+  /* background-image: url("src/assets/image/356623-admin.jpg"); */
   background-position: center;
   background-size: cover;
 }
@@ -38,14 +38,14 @@
 
 .book-form h1 {
   text-align: center;
-  color: rgb(207, 136, 29);
+  color: #70a57b;
   font-weight: 700;
   text-shadow: 0 1px 8px rgba(0,0,0,0.3);
 }
 
 .book-form label {
   display: block;
-  color: rgb(216, 175, 39);
+  color: #70a57b;
   font-size: 18px;
   font-weight: 500;
   text-shadow: 0 1px 8px rgba(0,0,0,0.3);
@@ -68,7 +68,7 @@
 .book-form input:focus,
 .book-form textarea:focus {
   outline: 0;
-  border-color: #fcba06;
+  border-color: #70a57b;
 }
 
 .book-form textarea {
@@ -85,7 +85,7 @@
   font-weight: 100;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background: rgb(214, 166, 10);
+  background: #70a57b;
   color: #fff;
   transition: all.5s ease;
 
@@ -96,7 +96,7 @@
 
 .book-form .form-button:hover,
 .book-form .form-button:focus {
-  background: #e2c061;
+  background: #5b7c62;
 }
 
 .input-error {
@@ -118,7 +118,7 @@
   display: block;
   width: 30%;
   margin-top: 10px;
-  background: rgb(214, 166, 10);
+  background: #70a57b;
   color: #fff;
   margin-right: 12.5rem;
 }
