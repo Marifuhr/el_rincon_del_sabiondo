@@ -41,12 +41,14 @@ async function getFilterBooksController(dataFilter){
         return init;
     },{});
 
-    const {limit = null, ...restObjValidators} = objDataFiltered;
+    const {limit, ...restObjValidators} = objDataFiltered;
+    
     // Consulta el modelo
     const filteredBooksDB = await Book.findAll({
         where:{
             ...restObjValidators
         },
+        limit: filteredQueriesAttributes.limit || null,
         include: [
             {
                 model: Category,
