@@ -94,13 +94,7 @@ function Navbar() {
 
   return (
     <nav className="header">
-      <Box mt={2}>
-        <Logo color={useColorModeValue("gray.700", "white")} />
-      </Box>
-      <Link to="/" className="navbar-salir">
-        Salir
-      </Link>
-      <Flex alignItems="center" gap="5px">
+<Flex display="flex"  gap="5px">
         {
           isAuthenticated ?
             <>
@@ -111,6 +105,12 @@ function Navbar() {
             <LoginButton />  
         }
       </Flex>
+      <Box mt={2}>
+        <Logo color={useColorModeValue("gray.700", "white")} />
+      </Box>
+      <Link to="/" className="navbar-salir">
+        Salir
+      </Link>
       <div className="navbar-center">
         <ul>
           <Link to="/home">
