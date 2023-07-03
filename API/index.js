@@ -24,7 +24,7 @@ server.use(
         issuerBaseURL: 'https://YOUR_AUTH0_DOMAIN',
         baseURL: process.env.HOST_FRONT_URL,
         clientID: process.env.AUTH0_CLIENT_ID,
-        secret: '-OVdWrqmPDOF-0SPFpwybF1QTfe3mUOSuHW3Xqn2SitSPLRK0zpLI_1K-Wn41mrL',
+        secret: process.env.SECRET_TOKEN_AUTH0
     })
 );
 server.use(morgan('dev'));

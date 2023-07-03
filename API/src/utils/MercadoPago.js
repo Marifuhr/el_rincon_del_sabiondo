@@ -1,5 +1,7 @@
+//URL para definir una imágen de producto por defecto en caso de que esta no exista
 const defaultImageProduct = 'https://odoo-community.org/web/image/product.product/19823/image_1024/Default%20Product%20Images?unique=5da5e69';
 
+//Genera un Objeto para realizar las ventas de productos
 const createPreferences = function(items){
     let preference = {
         items,
@@ -9,23 +11,37 @@ const createPreferences = function(items){
             pending: "",
         },
         auto_return: "approved",
-        binary_mode: true,
         statement_descriptor: "El rincón del sabiondo",
-        payer: {
-            name: "user-name",
-            surname: "user-surname",
-            email: "user@email.com",
-            date_created: "2015-06-02T12:58:41.425-04:00",
-            phone: {
-                area_code: "57",
-                number: 44444444
-            }
-        },
+        binary_mode: true,
     };
     return preference;
 };
 
+//Valida y parsea la Información obtenida desde el objeto Post
+const parsedValidateProducts = function(products){
+    let lastProducts = [];
+    for(let p of products){
+        const { title, description, picture_url, quantity, unit_price} = p;
+        
+        if(!title || !description || !quantity || !unit_price){
+            throw new Error('Los productos no tienen todas las propiedades solicitadas');
+        };
+
+        const product = {
+            title,
+            description,
+            picture_url: picture_url || defaultImageProduct,
+            quantity: Number(quantity),
+            unit_price: Number(unit_price)
+        };
+        lastProducts = [...lastProducts, product];
+    };
+    return lastProducts;
+}
+
+
 module.exports = {
     createPreferences,
-    defaultImageProduct
+    defaultImageProduct,
+    parsedValidateProducts
 }
