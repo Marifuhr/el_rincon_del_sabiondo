@@ -5,7 +5,7 @@ const routerLanguage = require("./routerLanguage");
 const bulkCreateBooksHandler = require('../handlers/BulkCreateBooksHandler');
 const routerAuthor = require("./routerAuthor");
 const routerBulkCreate = require ('./routerBulkCreate')
-const logoutRouter = require('./routes/logout');
+const logoutRouter = require('./routerLogout');
 const rootRouter = express.Router();
 
 //Routes and middlewares
@@ -13,7 +13,8 @@ rootRouter.use("/books", routerBook);
 rootRouter.use('/category', routerCategory);
 rootRouter.use('/language', routerLanguage);
 rootRouter.use('/authors', routerAuthor);
-rootRouter.use('/bulkcreate', routerBulkCreate)
+rootRouter.use('/bulkcreate', routerBulkCreate);
+rootRouter.use('/logout', logoutRouter);
 
 
 module.exports = rootRouter;
