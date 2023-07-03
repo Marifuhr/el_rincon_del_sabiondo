@@ -4,6 +4,12 @@ const morgan = require('morgan');
 const express = require('express');
 const cors = require('cors');
 const { auth } = require('express-openid-connect');
+const mercadopago = require("mercadopago");
+
+mercadopago.configure({
+    access_token: process.env.TOKEN_ACCESS_MERCADO_PAGO,
+});
+
 //Info local enviroments
 const port = process.env.PORT_SERVER || 3001;
 
@@ -18,7 +24,7 @@ server.use(
         issuerBaseURL: 'https://YOUR_AUTH0_DOMAIN',
         baseURL: process.env.HOST_FRONT_URL,
         clientID: process.env.AUTH0_CLIENT_ID,
-        secret: '-OVdWrqmPDOF-0SPFpwybF1QTfe3mUOSuHW3Xqn2SitSPLRK0zpLI_1K-Wn41mrL',
+        secret: process.env.SECRET_TOKEN_AUTH0
     })
 );
 server.use(morgan('dev'));
