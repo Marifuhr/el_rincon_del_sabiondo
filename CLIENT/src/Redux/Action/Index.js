@@ -8,10 +8,10 @@ import {
   ORDER_PRICE,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
-    CREATE_BOOK
+  CREATE_BOOK
 } from "./Actions.types.js";
 
-const endpoint = "https://ser-back-sab.onrender.com";
+const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 
 export const getAllBooks = () => {
   return async function (dispatch) {
@@ -62,21 +62,6 @@ export const searchNameBooks = (title) => {
   };
 };
 
-// export const filterByCategory = (category) => {
-//   return async function (dispatch) {
-//     try {
-//       const response = await axios.get(`${endpoint}/category`);
-//       const books = response.data.books;
-//       return dispatch({
-//         type: FILTER_BY_CATEGORY,
-//         payload: books,
-//       });
-//     } catch (error) {
-//       console.log(error.message);
-//     }
-//   };
-// };
-
 export const filterByCategory = (category) => {
   return async function (dispatch) {
     try {
@@ -101,6 +86,7 @@ export function filterResults(filters) {
     payload: filters,
   };
 }
+
 export const createBook = (book) => {
   return async function (dispatch) {
     try {
@@ -116,11 +102,10 @@ export const createBook = (book) => {
     }
   }
 }
-  export function orderPrice(order) {
-    return {
-      type: ORDER_PRICE,
-      payload: order,
-    };
-  }
 
-
+export function orderPrice(order) {
+  return {
+    type: ORDER_PRICE,
+    payload: order,
+  };
+}

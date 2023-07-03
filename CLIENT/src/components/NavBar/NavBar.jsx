@@ -1,6 +1,5 @@
 import  { useState, useEffect } from "react";
 import "./NavBar.css";
-import CartIcon from "../../assets/image/carrito.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
@@ -20,7 +19,7 @@ import { Profile } from "../Login/Profile";
 import LogoutButton from "../Login/Logout";
 
 
-const endpoint = "https://ser-back-sab.onrender.com";
+const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
   category: "",
   price: "",
