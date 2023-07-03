@@ -7,6 +7,7 @@ import {
   FILTER_RESULTS,
   CREATE_BOOK,
   ORDER_PRICE,
+  ADD_TO_CART,
 } from "../Action/Actions.types.js";
 
 const initialState = {
@@ -20,6 +21,7 @@ const initialState = {
     category: "",
     price: "",
   },
+  cartItems: [],
 };
 
 const filterResultsByCriteria = (filters, resultsToFilter) => {
@@ -47,7 +49,7 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
 
       return true; // Si no se especifica un valor de filtro válido, se devuelven todos los libros.
     });
-  };
+  }
   return filterResults;
 };
 
@@ -79,7 +81,7 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           filtered: filterResultsByCriteria(action.payload, state.search),
-        }
+        };
       }
       return {
         ...state,
@@ -107,33 +109,69 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allBooks: [...state.allBooks, action.payload],
-      }
+      };
 
-  case ORDER_PRICE: {
-  let filterOrder = [];
-  state.filtered
-    ? (filterOrder = [...state.filtered])
-    : state.search
-      ? (filterOrder = [...state.search])
-      : (filterOrder = [...state.allBooks]);
+    case ORDER_PRICE: {
+      let filterOrder = [];
+      state.filtered
+        ? (filterOrder = [...state.filtered])
+        : state.search
+        ? (filterOrder = [...state.search])
+        : (filterOrder = [...state.allBooks]);
 
-  filterOrder.sort((bookA, bookB) => {
-    const priceA = parseFloat(bookA.price);
-    const priceB = parseFloat(bookB.price);
+      filterOrder.sort((bookA, bookB) => {
+        const priceA = parseFloat(bookA.price);
+        const priceB = parseFloat(bookB.price);
 
-    if (priceA > priceB) {
-      return action.payload === "asc" ? 1 : -1;
-    } else if (priceA < priceB) {
-      return action.payload === "desc" ? 1 : -1;
-    } else {
-      return 0;
+        if (priceA > priceB) {
+          return action.payload === "asc" ? 1 : -1;
+        } else if (priceA < priceB) {
+          return action.payload === "desc" ? 1 : -1;
+        } else {
+          return 0;
+        }
+      });
+      return { ...state, filtered: filterOrder };
     }
-  });
-  return { ...state, filtered: filterOrder };
-}
+
+    case ADD_TO_CART: {
+      const { book } = action.payload;
+      const existingItemIndex = state.cartItems.findIndex(
+        (cartItem) => cartItem.id === book.id
+      );
+
+      if (existingItemIndex !== -1) {
+        // Item already exists in cart, update the quantity
+        const updatedItems = [...state.cartItems];
+        updatedItems[existingItemIndex].quantity += 1;
+        console.log('sumo un item')
+        console.log(state.cartItems)
+
+        return {
+          ...state,
+          cartItems: updatedItems,
+        };
+      } else {
+        // Item does not exist in cart, add it
+        const newItem = {
+          id: book.id,
+          title: book.title,
+          price: book.price,
+          quantity: 1,
+        };
+        console.log('creo un item')
+        console.log(state.cartItems)
+
+        return {
+          ...state,
+          cartItems: [...state.cartItems, newItem],
+        };
+      }
+    }
+
     default:
-return { ...state };
-  };
+      return { ...state };
+  }
 };
 
 export default reducer;

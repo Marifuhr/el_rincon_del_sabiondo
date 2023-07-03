@@ -6,12 +6,20 @@ import {
   FILTER_BY_CATEGORY,
   FILTER_RESULTS,
   ORDER_PRICE,
+  ADD_TO_CART,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
   CREATE_BOOK
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
+
+export const addToCart = (book) => {
+  return {
+    type: ADD_TO_CART,
+    payload: { book }
+  };
+};
 
 export const getAllBooks = () => {
   return async function (dispatch) {

@@ -1,14 +1,9 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-import {
-  Box,
-  Flex,
-  useColorModeValue,
-} from "@chakra-ui/react";
-
+import { Box, Flex, useColorModeValue, Badge } from "@chakra-ui/react";
 
 import { useDispatch, useSelector } from "react-redux";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
@@ -17,6 +12,7 @@ import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import LogoutButton from "../Login/Logout";
+import { FaShoppingCart } from 'react-icons/fa';
 
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -25,11 +21,13 @@ const initialFilters = {
   price: "",
 };
 function Navbar() {
-  const {isAuthenticated} = useAuth0();
+  const { isAuthenticated } = useAuth0();
+  const cartItems = useSelector(state => state.cartItems);
+  const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
-  
+
   const dispatch = useDispatch();
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
@@ -52,7 +50,9 @@ function Navbar() {
       }
     };
     fetchData();
-  }, []);
+  }, []);  
+  
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -94,15 +94,14 @@ function Navbar() {
   return (
     <nav className="header">
       <Flex className="navbar-salir">
-        {
-          isAuthenticated ?
-            <>
-              <Profile />
-              <LogoutButton />
-            </>
-            :
-            <LoginButton />  
-        }
+        {isAuthenticated ? (
+          <>
+            <Profile />
+            <LogoutButton />
+          </>
+        ) : (
+          <LoginButton />
+        )}
       </Flex>
       <Box mt={2}>
         <Logo color={useColorModeValue("gray.700", "white")} />
@@ -113,19 +112,31 @@ function Navbar() {
       <div className="navbar-center">
         <ul>
           <Link to="/home">
-              <li>Inicio</li>
+            <li>Inicio</li>
           </Link>
           <Link to="/about">
-              <li>Nosotros</li>
+            <li>Nosotros</li>
           </Link>
           <Link to="/contacto">
-              <li>Contacto</li>
+            <li>Contacto</li>
           </Link>
           <Link to="/create">
             <li className="create_book_aosdhas">Agrega un libro</li>
           </Link>
         </ul>
       </div>
+      <Box>
+        <FaShoppingCart />
+        <Badge
+          colorScheme="red"
+          variant="subtle"
+          fontSize="0.8em"
+          ml="1"
+          mt="-2"
+        >
+          {totalItems}
+        </Badge>
+      </Box>
       <div className="filtros_posjqlk">
         <select
           className="select_lkow"
@@ -154,7 +165,9 @@ function Navbar() {
           <option value="gt300">Más de 300</option>
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
-        <button className="clear_button" onClick={handleReset}>Limpiar</button>
+        <button className="clear_button" onClick={handleReset}>
+          Limpiar
+        </button>
       </div>
     </nav>
   );

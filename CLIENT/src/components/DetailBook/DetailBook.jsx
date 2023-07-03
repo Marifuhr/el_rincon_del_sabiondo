@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getDetailBooks } from "../../Redux/Action/Index";
+import { getDetailBooks, addToCart } from "../../Redux/Action/Index";
 import { useParams } from "react-router-dom";
 
 import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
+import { Button } from "@chakra-ui/react";
 
 function DetailBook() {
   const { id } = useParams();
@@ -20,17 +21,15 @@ function DetailBook() {
 
   useEffect(() => {
     if (book?.title) {
-      setProducts(
-        [
-          {
-            title: book.title,
-            description: book.description.slice(0, 120),
-            unit_price: Number(book.price),
-            quantity: 1,
-            picture_url: book.image
-          }
-        ]
-      )
+      setProducts([
+        {
+          title: book.title,
+          description: book.description.slice(0, 120),
+          unit_price: Number(book.price),
+          quantity: 1,
+          picture_url: book.image,
+        },
+      ]);
     }
   }, [book]);
 
@@ -42,6 +41,11 @@ function DetailBook() {
     book.Categories && book.Categories.length > 0
       ? book.Categories[0].name
       : "Unknown Category";
+
+  const handleAddToCart = () => {
+    console.log(book)
+    dispatch(addToCart(book, 1));
+  };
 
   return (
     <div>
@@ -57,9 +61,12 @@ function DetailBook() {
                 <div class="mb-4">
                   <h3 class="h4 mb-0">Autor: {author}</h3>
                   <br />
-                  <h3 class="h4 mb-0">Libro:{book.title}</h3>
+                  <h3 class="h4 mb-0">Título: {book.title}</h3>
                 </div>
                 <WalletMercadoPago products={products} />
+                <Button mt={4} colorScheme="teal" onClick={handleAddToCart}>
+                  Agregar al carrito
+                </Button>
               </div>
             </div>
           </div>
@@ -67,7 +74,7 @@ function DetailBook() {
             <div class="ps-lg-1-6 ps-xl-5">
               <div class="mb-5 wow fadeIn">
                 <div class="text-start mb-1-6 wow fadeIn">
-                  <h2 class="mb-0 text-primary">Descripcion Libro</h2>
+                  <h2 class="mb-0 text-primary">Descripcion</h2>
                 </div>
                 <p>{book.description}</p>
               </div>
