@@ -4,6 +4,7 @@ import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 // import success from './pngwing.png';
+import PopUp from "../../components/PopUp/PopUp";
 
 
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
@@ -198,6 +199,11 @@ export default function Home() {
           </div>
         ) : null}
         </div> */}
+        <div>
+          {paymentId !== null && status === "approved" ? (
+           <PopUp/>
+          ) : null}
+        </div>
         <div className={styles.boxCardBooks}>
           {books &&
             books.map((book) => <Card key={book.IdBook} props={book} />)}
