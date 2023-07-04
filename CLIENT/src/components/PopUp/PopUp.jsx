@@ -21,7 +21,7 @@ export default function Success() {
       {isOpen && (
         <Center>
           <Box
-            p={-6}
+            p={6}
             maxW={"300px"}
             maxH={"500px"} // Ajusta este valor para reducir la altura máxima
             boxShadow={"2xl"}
