@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -26,6 +26,7 @@ const initialFilters = {
 };
 function Navbar({ filtersSection }) {
   const { isAuthenticated } = useAuth0();
+  const homeMatch = useMatch('/home');
 
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
@@ -126,7 +127,7 @@ function Navbar({ filtersSection }) {
         </ul>
       </div>
       {
-        filtersSection &&
+        homeMatch &&
         <div className="filtros_posjqlk">
           <select
             className="select_lkow"
