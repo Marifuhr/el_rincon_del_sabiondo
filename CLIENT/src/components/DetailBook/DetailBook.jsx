@@ -69,7 +69,7 @@ function DetailBook() {
             <div className="ps-lg-1-6 ps-xl-5">
               <div className="mb-5 wow fadeIn">
                 <div className="text-start mb-1-6 wow fadeIn">
-                  <h2 className="mb-0 text-primary">Descripcion Libro</h2>
+                  <h2 className="mb-0 text-primary">Descripción del Libro</h2>
                 </div>
                 <p>{book.description}</p>
               </div>

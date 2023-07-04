@@ -23,6 +23,7 @@ function Cards({ props }) {
   return (
     <Center py={5}>
       <Box
+      marginTop={28}
         role={'group'}
         p={6}
         maxW={'250px'}
