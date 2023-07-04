@@ -1,7 +1,7 @@
-import  { useState, useEffect } from "react";
+// import  { useState, useEffect } from "react";
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 import {
   Box,
@@ -10,87 +10,93 @@ import {
 } from "@chakra-ui/react";
 
 
-import { useDispatch, useSelector } from "react-redux";
-import { filterResults, orderPrice } from "../../Redux/Action/Index";
+// import { useDispatch, useSelector } from "react-redux";
+// import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import { LoginButton } from "../../components/Login/Login";
 import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import LogoutButton from "../Login/Logout";
+import SearchBar from '../SearchBar/SearchBar'
 
 
-const endpoint = import.meta.env.VITE_URL_ENDPOINT;
-const initialFilters = {
-  category: "",
-  price: "",
-};
+// const endpoint = import.meta.env.VITE_URL_ENDPOINT;
+// const initialFilters = {
+//   category: "",
+//   price: "",
+// };
+
+
+
 function Navbar() {
   const {isAuthenticated} = useAuth0();
 
-  const filters = useSelector((state) => state.filters);
-  const [options, setOptions] = useState([]);
+  // const filters = useSelector((state) => state.filters);
+  // const [options, setOptions] = useState([]);
   
-  const dispatch = useDispatch();
-  const [categoryValue, setCategoryValue] = useState("");
-  const [priceValue, setPriceValue] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
-  const [buttonText, setButtonText] = useState("Precios menor a mayor");
+  // const dispatch = useDispatch();
+  // const [categoryValue, setCategoryValue] = useState("");
+  // const [priceValue, setPriceValue] = useState("");
+  // const [sortOrder, setSortOrder] = useState("asc");
+  // const [buttonText, setButtonText] = useState("Precios menor a mayor");
 
-  const handleReset = () => {
-    dispatch(filterResults(initialFilters));
-    setCategoryValue("");
-    setPriceValue("");
-  };
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`${endpoint}/category`);
-        const categories = response.data.categories;
-        setOptions(categories);
-      } catch ({ message }) {
-        console.log(message);
-      }
-    };
-    fetchData();
-  }, []);
+  // const handleReset = () => {
+  //   dispatch(filterResults(initialFilters));
+  //   setCategoryValue("");
+  //   setPriceValue("");
+  // };
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get(`${endpoint}/category`);
+  //       const categories = response.data.categories;
+  //       setOptions(categories);
+  //     } catch ({ message }) {
+  //       console.log(message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
 
-    switch (name) {
-      case "category":
-        setCategoryValue(value);
-        return dispatch(
-          filterResults({
-            ...filters,
-            category: value,
-          })
-        );
+  //   switch (name) {
+  //     case "category":
+  //       setCategoryValue(value);
+  //       return dispatch(
+  //         filterResults({
+  //           ...filters,
+  //           category: value,
+  //         })
+  //       );
 
-      case "price":
-        setPriceValue(value);
-        return dispatch(
-          filterResults({
-            ...filters,
-            price: value,
-          })
-        );
+  //     case "price":
+  //       setPriceValue(value);
+  //       return dispatch(
+  //         filterResults({
+  //           ...filters,
+  //           price: value,
+  //         })
+  //       );
 
-      default:
-        break;
-    }
-  };
-  const handleSortClick = () => {
-    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
-    const newButtonText =
-      sortOrder === "asc" ? "Precios mayor a menor" : "Precios menor a mayor";
+  //     default:
+  //       break;
+  //   }
+  // };
+  // const handleSortClick = () => {
+  //   const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+  //   const newButtonText =
+  //     sortOrder === "asc" ? "Precios mayor a menor" : "Precios menor a mayor";
 
-    setSortOrder(newSortOrder);
-    setButtonText(newButtonText);
+  //   setSortOrder(newSortOrder);
+  //   setButtonText(newButtonText);
 
-    dispatch(orderPrice(newSortOrder));
-  };
+  //   dispatch(orderPrice(newSortOrder));
+  // };
 
+
+  
   return (
     <nav className="header">
       <Flex className="navbar-salir">
@@ -104,28 +110,26 @@ function Navbar() {
             <LoginButton />  
         }
       </Flex>
-      <Box mt={2}>
+     
       <Link to="/" >
         <Logo color={useColorModeValue("gray.700", "white")} />  
       </Link>
-      </Box>
+    
       <div className="navbar-center">
         <ul>
           <Link to="/home">
               <li>Inicio</li>
           </Link>
-          <Link to="/about">
-              <li>Nosotros</li>
-          </Link>
-          <Link to="/contacto">
-              <li>Contacto</li>
-          </Link>
+          
           <Link to="/create">
             <li className="create_book_aosdhas">Agrega un libro</li>
           </Link>
+          <div>
+        <SearchBar />
+      </div>
         </ul>
       </div>
-      <div className="filtros_posjqlk">
+      {/* <div className="filtros_posjqlk">
         <select
           className="select_lkow"
           name="category"
@@ -154,7 +158,7 @@ function Navbar() {
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
         <button className="clear_button" onClick={handleReset}>Limpiar</button>
-      </div>
+      </div> */}
     </nav>
   );
 }
