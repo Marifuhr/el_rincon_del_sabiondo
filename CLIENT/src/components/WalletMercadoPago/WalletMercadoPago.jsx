@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { Button, Text } from "@chakra-ui/react";
 import { Wallet, initMercadoPago } from "@mercadopago/sdk-react";
 import { useState } from "react";
-import { createPreference } from "../../mercadoPago";
+import { createPreference } from "../../utils/mercadoPago";
 
 function WalletMercadoPago({products}) {
     const [preferenceId, setPreferenceId] = useState(null);

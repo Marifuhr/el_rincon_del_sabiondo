@@ -1,6 +1,6 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 import axios from "axios";
 
 import {
@@ -24,12 +24,13 @@ const initialFilters = {
   category: "",
   price: "",
 };
-function Navbar() {
-  const {isAuthenticated} = useAuth0();
+function Navbar({ filtersSection }) {
+  const { isAuthenticated } = useAuth0();
+  const homeMatch = useMatch('/home');
 
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
-  
+
   const dispatch = useDispatch();
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
@@ -101,60 +102,63 @@ function Navbar() {
               <LogoutButton />
             </>
             :
-            <LoginButton />  
+            <LoginButton />
         }
       </Flex>
       <Box mt={2}>
-      <Link to="/" >
-        <Logo color={useColorModeValue("gray.700", "white")} />  
-      </Link>
+        <Link to="/" >
+          <Logo color={useColorModeValue("gray.700", "white")} />
+        </Link>
       </Box>
       <div className="navbar-center">
         <ul>
           <Link to="/home">
-              <li>Inicio</li>
+            <li>Inicio</li>
           </Link>
           <Link to="/about">
-              <li>Nosotros</li>
+            <li>Nosotros</li>
           </Link>
           <Link to="/contacto">
-              <li>Contacto</li>
+            <li>Contacto</li>
           </Link>
           <Link to="/create">
             <li className="create_book_aosdhas">Agrega un libro</li>
           </Link>
         </ul>
       </div>
-      <div className="filtros_posjqlk">
-        <select
-          className="select_lkow"
-          name="category"
-          onChange={handleChange}
-          value={categoryValue}
-        >
-          <option value="">Seleccionar</option>
-          {options.map((category) => (
-            <option key={category.id} value={category.name}>
-              {category.name}
-            </option>
-          ))}
-        </select>
-        <select
-          className="select_lkow"
-          id="price"
-          name="price"
-          onChange={handleChange}
-          value={priceValue}
-        >
-          <option value="">todos</option>
-          <option value="lt100">Menos que 100</option>
-          <option value="101-200">De 101 a 200</option>
-          <option value="201-300">De 201 a 300</option>
-          <option value="gt300">Más de 300</option>
-        </select>
-        <button onClick={handleSortClick}>{buttonText}</button>
-        <button className="clear_button" onClick={handleReset}>Limpiar</button>
-      </div>
+      {
+        homeMatch &&
+        <div className="filtros_posjqlk">
+          <select
+            className="select_lkow"
+            name="category"
+            onChange={handleChange}
+            value={categoryValue}
+          >
+            <option value="">Seleccionar</option>
+            {options.map((category) => (
+              <option key={category.id} value={category.name}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+          <select
+            className="select_lkow"
+            id="price"
+            name="price"
+            onChange={handleChange}
+            value={priceValue}
+          >
+            <option value="">todos</option>
+            <option value="lt100">Menos que 100</option>
+            <option value="101-200">De 101 a 200</option>
+            <option value="201-300">De 201 a 300</option>
+            <option value="gt300">Más de 300</option>
+          </select>
+          <button onClick={handleSortClick}>{buttonText}</button>
+          <button className="clear_button" onClick={handleReset}>Limpiar</button>
+        </div>
+      }
     </nav>
   );
 }
