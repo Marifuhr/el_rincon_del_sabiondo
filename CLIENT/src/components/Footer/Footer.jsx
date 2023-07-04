@@ -2,7 +2,6 @@ import {
   Box,
   chakra,
   Container,
-  Link,
   SimpleGrid,
   Stack,
   Text,
@@ -11,13 +10,13 @@ import {
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { ReactNode } from "react";
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import logoImage from "../../assets/image/Logo.png";
 import { Image } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
-const Logo = (props) => {
+const Logo = () => {
   return (
     <Box display="flex" alignItems="center">
       <Image src={logoImage} alt="Logo" boxSize="80px" />
@@ -103,7 +102,7 @@ export default function Footer() {
           <Stack align={"flex-start"}>
             <ListHeader>Proyecto Grupal</ListHeader>
             <Link to="/about">Nosotros</Link>
-            <Link to="/">Contacto</Link>
+            <Link to="/contacto">Contacto</Link>
             <Link to="/">Testimonios</Link>
           </Stack>
           <Stack align={"flex-start"}>

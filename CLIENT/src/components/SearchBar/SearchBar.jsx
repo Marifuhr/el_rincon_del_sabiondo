@@ -57,7 +57,7 @@ export default function SearchBar() {
  
   let handleInputChange = (e) => {
     e.preventDefault();
-dispatch(searchNameBooks(e.target.value));
+    dispatch(searchNameBooks(e.target.value));
   };
     
 

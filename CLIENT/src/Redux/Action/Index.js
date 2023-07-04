@@ -6,8 +6,6 @@ import {
   FILTER_BY_CATEGORY,
   FILTER_RESULTS,
   ORDER_PRICE,
-  //   FILTER_BY_PRICE,
-  //   FILTER_BY_AUTOR,
   CREATE_BOOK,
   TOKEN_STORAGE_CART,
   ADD_BOOK_SHOPPING_CART,
@@ -21,7 +19,6 @@ export const getAllBooks = () => {
     try {
       const response = await axios.get(`${endpoint}/books`);
       const books = response.data.books;
-      // console.log(books);
       return dispatch({
         type: GET_ALL_BOOKS,
         payload: books,
@@ -37,8 +34,6 @@ export const getDetailBooks = (id) => {
     try {
       const response = await axios.get(`${endpoint}/books/${id}`);
       const books = response.data.finded;
-      //console.log('ingreso a getdetailbook')
-      //console.log(books.Authors)
       return dispatch({
         type: GET_DETAIL_BOOKS,
         payload: books,
@@ -54,7 +49,6 @@ export const searchNameBooks = (title) => {
     try {
       const response = await axios.get(`${endpoint}/books?title=${title}`);
       const books = response.data.books;
-      console.log(books);
       return dispatch({
         type: SEARCH_NAME_BOOK,
         payload: books,
@@ -83,7 +77,6 @@ export const filterByCategory = (category) => {
 };
 
 export function filterResults(filters) {
-  // console.log(filters);
   return {
     type: FILTER_RESULTS,
     payload: filters,
@@ -93,7 +86,6 @@ export function filterResults(filters) {
 export const createBook = (book) => {
   return async function (dispatch) {
     try {
-      console.log(book);
       const response = await axios.post(`${endpoint}/books`, book);
       const newBook = response.data;
       return dispatch({
