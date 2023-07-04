@@ -1,30 +1,19 @@
 import {
   Box,
   Center,
-  useColorModeValue,
   Heading,
   Text,
   Stack,
   Image,
-  Button,
+  Flex
 } from "@chakra-ui/react";
 
 import { Link } from "react-router-dom";
-import formatDate from "../../utils/formatDate";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import fontStyle from "../../assets/fonts/Atma/Atma-SemiBold.ttf";
-import { transform } from "framer-motion";
+import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 
 function Cards({ props }) {
-  // const buttonStyles = {
-  //   zIndex: 1,
-  //   top: -8,
-  //   right: -2,
-  //   position: "absolute",
-  // };
-
-  const primaryColor = useColorModeValue("brand.primary", "brand.secondary");
-
   return (
     <Center py={10}>
       <Box
@@ -100,11 +89,11 @@ function Cards({ props }) {
           justify={"center"}
           mt={"5px"}
         >
-          <ButtonAddBookCart book={props} />
+          <Flex gap={2} alignItems="center" m={0}>
+            <ButtonAddBookCart book={props} />
+            <WalletMercadoPago />
+          </Flex>
 
-          <Button colorScheme="teal" variant="solid">
-            Comprar
-          </Button>
 
           {/* <Button
             style={{

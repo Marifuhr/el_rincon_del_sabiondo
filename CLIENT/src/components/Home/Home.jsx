@@ -3,13 +3,12 @@ import Card from "../../components/Card/card";
 import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
-// import success from './pngwing.png';
 import PopUp from "../../components/PopUp/PopUp";
-
-
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
+
 import axios from "axios";
 import  { useState, useEffect } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 
 
 
@@ -169,7 +168,7 @@ export default function Home() {
             disabled={currentPage === 1}
             onClick={() => handlePageChange(currentPage - 1)}
           >
-            ⮜
+            <BsArrowLeftCircleFill />
           </button>
           {new Array(totalPages).fill("").map((_, index) => (
             <button
@@ -184,7 +183,7 @@ export default function Home() {
             disabled={currentPage === totalPages}
             onClick={() => handlePageChange(currentPage + 1)}
           >
-            ⮞
+            <BsArrowRightCircleFill />
           </button>
         </div>
         {/* <div style={{ marginTop: "20px" }}>
