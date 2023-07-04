@@ -86,38 +86,32 @@ export default function Footer() {
             </Box>
             <Stack direction={"row"} spacing={6} mt={8} mb={2}>
               <SocialButton label={"Twitter"} href={"https://twitter.com/"}>
-                <a target="_blank" rel="noopener noreferrer">
-                  <FaTwitter />
-                </a>
+                <FaTwitter />
               </SocialButton>
               <SocialButton label={"YouTube"} href={"https://www.youtube.com/"}>
-                <a target="_blank" rel="noopener noreferrer">
-                  <FaYoutube />
-                </a>
+                <FaYoutube />
               </SocialButton>
               <SocialButton
                 label={"Instagram"}
                 href={"https://www.instagram.com/"}
               >
-                <a target="_blank" rel="noopener noreferrer">
-                  <FaInstagram />
-                </a>
+                <FaInstagram />
               </SocialButton>
             </Stack>
           </Stack>
 
           <Stack align={"flex-start"}>
             <ListHeader>Proyecto Grupal</ListHeader>
-            <Link href="/about">Nosotros</Link>
-            <Link href={"#"}>Contacto</Link>
-            <Link href={"#"}>Testimonios</Link>
+            <Link to="/about">Nosotros</Link>
+            <Link to="/">Contacto</Link>
+            <Link to="/">Testimonios</Link>
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Servicios</ListHeader>
-            <Link href={"#"}>Vende con Nosotros</Link>
-            <Link href={"#"}>Terminos y Reglas</Link>
-            <Link href={"#"}>Venta a Instituciones</Link>
-            <Link href={"#"}>Programa de Afiliados</Link>
+            <Link to="/">Vende con Nosotros</Link>
+            <Link to="/">Terminos y Reglas</Link>
+            <Link to="/">Venta a Instituciones</Link>
+            <Link to="/">Programa de Afiliados</Link>
           </Stack>
           <Stack spacing={6} align={"flex-start"}>
             <ListHeader>Mantengase al Día</ListHeader>
