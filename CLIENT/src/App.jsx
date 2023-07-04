@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
+import NotFound from "./components/Error404/NotFound";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
