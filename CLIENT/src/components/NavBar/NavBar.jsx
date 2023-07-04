@@ -17,6 +17,7 @@ import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import LogoutButton from "../Login/Logout";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -24,7 +25,7 @@ const initialFilters = {
   category: "",
   price: "",
 };
-function Navbar({ filtersSection }) {
+function Navbar() {
   const { isAuthenticated } = useAuth0();
   const homeMatch = useMatch('/home');
 
@@ -105,11 +106,12 @@ function Navbar({ filtersSection }) {
             <LoginButton />
         }
       </Flex>
-      <Box mt={2}>
+      <Flex alignItems="center" gap={3} mt={2}>
         <Link to="/" >
           <Logo color={useColorModeValue("gray.700", "white")} />
         </Link>
-      </Box>
+        <ShoppingCart />
+      </Flex>
       <div className="navbar-center">
         <ul>
           <Link to="/home">

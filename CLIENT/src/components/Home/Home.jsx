@@ -48,6 +48,10 @@ export default function Home() {
     });
   };
 
+  const addBookCartShopping = () => {
+    console.log('Agregando Carrito');
+  };
+
   const urlParams = new URLSearchParams(window.location.search);
   const paymentId = urlParams.get("payment_id");
   const status = urlParams.get("status");
@@ -95,7 +99,7 @@ export default function Home() {
         </div>
         <div className={styles.boxCardBooks}>
           {books &&
-            books.map((book) => <Card key={book.IdBook} props={book} />)}
+            books.map((book) => <Card addBookCartShopping={addBookCartShopping} key={book.IdBook} props={book} />)}
         </div>
         
         <div className={styles.scrollToTopButton} onClick={handleScrollToTop}>

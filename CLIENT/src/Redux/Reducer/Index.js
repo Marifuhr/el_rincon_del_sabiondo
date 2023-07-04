@@ -7,6 +7,8 @@ import {
   FILTER_RESULTS,
   CREATE_BOOK,
   ORDER_PRICE,
+  TOKEN_STORAGE_CART,
+  ADD_BOOK_SHOPPING_CART
 } from "../Action/Actions.types.js";
 
 const initialState = {
@@ -20,6 +22,7 @@ const initialState = {
     category: "",
     price: "",
   },
+  cart_shopping: localStorage.getItem(TOKEN_STORAGE_CART) || []
 };
 
 const filterResultsByCriteria = (filters, resultsToFilter) => {
@@ -85,12 +88,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         filtered: filterResultsByCriteria(action.payload, state.allBooks),
       };
-
-    case FILTER_BY_PRICE:
-      return {};
-    case FILTER_BY_AUTOR:
-      return {};
-
     case "RESET":
       return initialState;
     case "LOADING":
@@ -130,6 +127,28 @@ const reducer = (state = initialState, action) => {
         }
       });
       return { ...state, filtered: filterOrder };
+    }
+    case ADD_BOOK_SHOPPING_CART: {
+      const bookPayload = action.payload;
+      const validateIfExistBook = state.cart_shopping.some(({ IdBook }) => IdBook === bookPayload.IdBook);
+
+      if (validateIfExistBook) {
+        return {
+          ...state,
+          cart_shopping: state.cart_shopping.map((book) => {
+            const finalBook = book;
+            if (book.IdBook === bookPayload.IdBook) {
+              finalBook.quantity += 1;
+            };
+            return book;
+          })
+        };
+      };
+
+      return {
+        ...state,
+        cart_shopping: [...state.cart_shopping, bookPayload]
+      }
     }
     default:
       return { ...state };

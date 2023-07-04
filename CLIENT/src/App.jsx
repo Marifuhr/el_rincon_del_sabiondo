@@ -13,7 +13,7 @@ import { Profile } from "./components/Login/Profile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
-// import Buy from "./components/Buy/Buy";
+import CartPayPage from "./components/CartPayPage/CartPayPage";
 
 export default function App() {
   return (
@@ -30,6 +30,7 @@ export default function App() {
         <Route path="/create" element={<FormCreate />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/cart_pay" element={<CartPayPage />} />
       </Routes>
     </div>
   );
