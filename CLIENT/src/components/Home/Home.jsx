@@ -1,7 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-
-import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
+import { getAllBooks } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import success from './pngwing.png';

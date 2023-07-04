@@ -1,30 +1,22 @@
 
 import "./NavBar.css";
 import { Link } from "react-router-dom";
-
-
 import {
-  Box,
   Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
-
 
 import { LoginButton } from "../../components/Login/Login";
 import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import LogoutButton from "../Login/Logout";
-import SearchBar from '../SearchBar/SearchBar'
-
-
-
-
-
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import SearchBar from "../SearchBar/SearchBar";
 
 function Navbar() {
-  const {isAuthenticated} = useAuth0();
-  
+  const { isAuthenticated } = useAuth0();
+
   return (
     <nav className="header">
       <Flex className="navbar-salir">
@@ -38,11 +30,12 @@ function Navbar() {
             <LoginButton />  
         }
       </Flex>
-     
-      <Link to="/" >
-        <Logo color={useColorModeValue("gray.700", "white")} />  
-      </Link>
-    
+      <Flex alignItems="center" gap={3} mt={2}>
+        <Link to="/" >
+          <Logo color={useColorModeValue("gray.700", "white")} />
+        </Link>
+        <ShoppingCart />
+      </Flex>
       <div className="navbar-center">
         <ul>
           <Link to="/home">
