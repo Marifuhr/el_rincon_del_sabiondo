@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-import { getAllBooks } from "../../Redux/Action/Index";
+import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import success from './pngwing.png';
+
 
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import axios from "axios";
@@ -25,6 +26,7 @@ export default function Home() {
   const filteredBooks = useSelector((state) => state.filtered);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 12;
+
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -122,6 +124,10 @@ export default function Home() {
   const urlParams = new URLSearchParams(window.location.search);
   const paymentId = urlParams.get("payment_id");
   const status = urlParams.get("status");
+  if (paymentId !== null && status === "approved") {
+    dispatch(clearShoppingCart());
+  }
+
 
   return (
     <div>

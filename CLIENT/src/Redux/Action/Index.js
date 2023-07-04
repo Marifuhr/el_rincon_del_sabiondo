@@ -9,7 +9,8 @@ import {
   CREATE_BOOK,
   TOKEN_STORAGE_CART,
   ADD_BOOK_SHOPPING_CART,
-  REMOVE_BOOK_SHOPPING_CART
+  REMOVE_BOOK_SHOPPING_CART,
+  CLEAR_SHOPPING_CART
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -118,6 +119,13 @@ export function remoteBookCart(Id){
     payload:Id
   }
 };
+
+export function clearShoppingCart(){
+  return {
+    type: CLEAR_SHOPPING_CART
+  }
+}
+
 
 export function addShoopingCartStorage(cart){
   localStorage.setItem(TOKEN_STORAGE_CART, JSON.stringify(cart));
