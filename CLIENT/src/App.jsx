@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Landing from "./components/Landing/Landing";
 import Home from "./components/Home/Home";
 import { LoginButton } from "./components/Login/Login";
-import LogoutButton from "./components/Login/Logout.jsx";
+// import LogoutButton from "./components/Login/Logout.jsx";
 import FormCreate from "./components/FormCreate/form";
 import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/detail/:id" element={<DetailBook />} />
         {/* <Route path="/buy/:id" element={<Buy />} /> */}
         <Route path="/login" element={<LoginButton />} />
-        <Route path="/logout" element={<LogoutButton />} />
+        {/* <Route path="/logout" element={<LogoutButton />} /> */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/create" element={<FormCreate />} />
         <Route path="/about" element={<About />} />

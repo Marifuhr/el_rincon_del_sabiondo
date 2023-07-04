@@ -10,7 +10,6 @@ import { LoginButton } from "../../components/Login/Login";
 import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
-import LogoutButton from "../Login/Logout";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 import SearchBar from "../SearchBar/SearchBar";
 
@@ -24,7 +23,7 @@ function Navbar() {
           isAuthenticated ?
             <>
               <Profile />
-              <LogoutButton />
+             
             </>
             :
             <LoginButton />  

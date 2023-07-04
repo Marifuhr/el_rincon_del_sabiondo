@@ -1,5 +1,6 @@
 .btn{
-    position: absolute;
+    position: relative;
+   
         right: 0.5%;
         top: 5%;
         padding: 1px 6px;

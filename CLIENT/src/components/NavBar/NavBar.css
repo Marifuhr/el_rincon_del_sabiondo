@@ -18,18 +18,15 @@
     }
 }
 
-/* .navbar-salir {
+.navbar-salir {
     position: absolute;
-    right: 9%;
+    right: 1%;
     top: 5%;
-    padding: 3px 10px;
     border-radius: 2rem;
-    background: rgba(255, 255, 255, 0.358);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-} */
+   
+}
 
 .navbar-left {
-    /* width: 100%; */
     display: grid;
     grid-template-columns: .2fr .5fr .3fr;
     align-items: center;
