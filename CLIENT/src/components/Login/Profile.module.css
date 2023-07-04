@@ -1,22 +1,8 @@
 .profile_zlksadaskj{
-        position: absolute;
+       
         display: flex;
-            right: 6%;
+            right: 2%;
             top: 5%;
-            padding: 1px 6px;
-            border-radius: 2rem;
+           
          
-}
-.profile_zlksadaskj img:nth-child(1){
-    width: 30px;
-    border-radius: 50%;
-    aspect-ratio: 1;
-    object-fit: cover;
-}
-.profile_zlksadaskj p:nth-child(2){
-    font-size: 0.9rem;
-    white-space: nowrap;
-
-    padding: 0;
-    margin: auto 0;
 }

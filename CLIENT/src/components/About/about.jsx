@@ -1,35 +1,4 @@
-// import React from "react";
-// import { Box, Heading, Text } from "@chakra-ui/react";
-// import "./about.css";
-// import Footer from "../Footer/Footer";
-// import ButtonVolver from "../../elements/ButtonVolver";
 
-// export default function About() {
-//   return (
-//     <Box textAlign="center" mt={4}>
-//       <Box display="flex" justifyContent="flex-start" mb={4}>
-//         <ButtonVolver />
-//       </Box>
-//       <Box mt={6}> {/* Ajusta el valor de mt aquí */}
-//         <Heading as="h1" size="xl" mb={4}>
-//           Sobre Nosotros
-//         </Heading>
-//         <Text className="resumen" width="70%" margin="0 auto">
-//           "En El Rincón del Sabiondo, somos un grupo de apasionados estudiantes de HENRY que comparten un amor por la lectura y la programación. Nos hemos unido para crear una experiencia de compra en línea única para los amantes de los libros de todo el mundo. Desde los clásicos atemporales hasta los éxitos de ventas más recientes, nuestra selección de títulos es curada cuidadosamente para ofrecer algo para todos los gustos. Nos esforzamos por brindar un excelente servicio al cliente y una experiencia de compra sin problemas. ¡Gracias por elegirnos para satisfacer sus necesidades de lectura!"
-//         </Text>
-//         {/* <Box display="flex" justifyContent="center" mt={4}>
-//           <img
-//             src="https://d2qc4bb64nav1a.cloudfront.net/cdn/13/images/libreriagrande01.jpg"
-//             className="img-about"
-//             alt=""
-//           />
-//         </Box> */}
-
-//       </Box>
-//       <Footer />
-//     </Box>
-//   );
-// }
 import React from 'react';
 import {
   Box,
@@ -157,9 +126,11 @@ const ArticleList = () => {
           {/* <BlogAuthor name="María R. Fuhr" date={new Date('3/7/2023')} /> */}
         </Box>
       </Box>
-      <Heading as="h2" marginTop="8">
-        Nuestra Visión
-      </Heading>
+      <Heading marginTop="1">
+            <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
+              Nuestra Visión
+            </Link>
+          </Heading>
       <Divider marginTop="4" />
       <Wrap spacing="1rem" marginTop="8">
         <WrapItem width={{ base: '80%', sm: '70%', md: '70%', lg: '50%' }}>
@@ -211,17 +182,10 @@ const ArticleList = () => {
             p="2"
             borderRadius="md"
           />
-          <Heading as="h2" position="relative">
-            <Text
-              as="span"
-              bgClip="text"
-              bgGradient="linear(to-r, orange.400, red.500)"
-              fontSize="2xl"
-              fontWeight="bold"
-              color="orange.400"
-            >
+           <Heading marginTop="1">
+            <Link textDecoration="none" _hover={{ textDecoration: 'none' }}>
               Nuestros Valores
-            </Text>
+            </Link>
           </Heading>
         <Text as="p" fontSize="xl" >
           <strong>Pasión por la lectura:</strong> valoramos la lectura y creemos en su poder para enriquecer la vida de las personas.
