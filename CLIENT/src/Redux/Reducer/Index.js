@@ -179,6 +179,7 @@ const reducer = (state = initialState, action) => {
     }
 
     case CLEAR_SHOPPING_CART: {
+      addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
     default:
