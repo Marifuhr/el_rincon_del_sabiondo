@@ -7,7 +7,8 @@ import {
   ORDER_PRICE,
   TOKEN_STORAGE_CART,
   ADD_BOOK_SHOPPING_CART,
-  REMOVE_BOOK_SHOPPING_CART
+  REMOVE_BOOK_SHOPPING_CART,
+  CLEAR_SHOPPING_CART
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -175,6 +176,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         cart_shopping: lastCart
       }
+    }
+
+    case CLEAR_SHOPPING_CART: {
+      return { ...state, cart_shopping: [] };
     }
     default:
       return { ...state };

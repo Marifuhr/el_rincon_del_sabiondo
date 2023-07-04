@@ -80,11 +80,11 @@ function FormCreate() {
       try {
         const formData = new FormData();
         formData.append("file", file);
-        formData.append("upload_preset", "srpd9jzh"); 
+        formData.append("upload_preset", 'srpd9jzh');
   
         const response = await axios.post(
-          "https://api.cloudinary.com/v1_1/djbpbygx4/image/upload",
-          formData
+            `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
+            formData
         );
   
         const imageUrl = response.data.secure_url;
