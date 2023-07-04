@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
+import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 
 function DetailBook() {
   const { id } = useParams();
@@ -50,7 +51,7 @@ function DetailBook() {
       </button>
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
+          <div style={{position:'relative'}} class="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
             <div class="card border-0 shadow">
               <img src={book.image} alt="..." />
               <div class="card-body p-1-9 p-xl-5">
@@ -62,6 +63,7 @@ function DetailBook() {
                 <WalletMercadoPago products={products} />
               </div>
             </div>
+            <ButtonAddBookCart book={book} attributesStyles={{position:"absolute", top:"-3", right:"4"}} />
           </div>
           <div class="col-lg-8">
             <div class="ps-lg-1-6 ps-xl-5">

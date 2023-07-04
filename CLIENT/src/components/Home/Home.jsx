@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
 import SearchBar from "../SearchBar/SearchBar";
-import { getAllBooks, filterByCategory } from "../../Redux/Action/Index";
+import { getAllBooks, filterByCategory, addBookCart } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import success from './pngwing.png';
@@ -46,10 +46,6 @@ export default function Home() {
       top: 0,
       behavior: "smooth",
     });
-  };
-
-  const addBookCartShopping = () => {
-    console.log('Agregando Carrito');
   };
 
   const urlParams = new URLSearchParams(window.location.search);
@@ -99,7 +95,7 @@ export default function Home() {
         </div>
         <div className={styles.boxCardBooks}>
           {books &&
-            books.map((book) => <Card addBookCartShopping={addBookCartShopping} key={book.IdBook} props={book} />)}
+            books.map((book) => <Card key={book.IdBook} props={book} />)}
         </div>
         
         <div className={styles.scrollToTopButton} onClick={handleScrollToTop}>

@@ -1,15 +1,15 @@
 import {
   GET_ALL_BOOKS,
   GET_DETAIL_BOOKS,
-  FILTER_BY_PRICE,
-  FILTER_BY_AUTOR,
   SEARCH_NAME_BOOK,
   FILTER_RESULTS,
   CREATE_BOOK,
   ORDER_PRICE,
   TOKEN_STORAGE_CART,
-  ADD_BOOK_SHOPPING_CART
+  ADD_BOOK_SHOPPING_CART,
+  REMOVE_BOOK_SHOPPING_CART
 } from "../Action/Actions.types.js";
+import { addShoopingCartStorage } from "../Action/Index.js";
 
 const initialState = {
   allBooks: [],
@@ -22,7 +22,7 @@ const initialState = {
     category: "",
     price: "",
   },
-  cart_shopping: localStorage.getItem(TOKEN_STORAGE_CART) || []
+  cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || []
 };
 
 const filterResultsByCriteria = (filters, resultsToFilter) => {
@@ -133,21 +133,47 @@ const reducer = (state = initialState, action) => {
       const validateIfExistBook = state.cart_shopping.some(({ IdBook }) => IdBook === bookPayload.IdBook);
 
       if (validateIfExistBook) {
+        const mapedBooks = state.cart_shopping.map((book) => {
+          const finalBook = book;
+          if (book.IdBook === bookPayload.IdBook) {
+            finalBook.quantity += 1;
+          };
+          return book;
+        });
+
+        addShoopingCartStorage(mapedBooks);
+
         return {
           ...state,
-          cart_shopping: state.cart_shopping.map((book) => {
-            const finalBook = book;
-            if (book.IdBook === bookPayload.IdBook) {
-              finalBook.quantity += 1;
-            };
-            return book;
-          })
+          cart_shopping: mapedBooks
         };
       };
 
+      const parsedBook = {
+        IdBook: bookPayload.IdBook,
+        title: bookPayload.title,
+        description: bookPayload.description.slice(0,255),
+        picture_url: bookPayload.image,
+        unit_price: Number(bookPayload.price),
+        quantity: 1
+      };
+
+      const cart_shopping = [...state.cart_shopping, parsedBook];
+      addShoopingCartStorage(cart_shopping);
+
       return {
         ...state,
-        cart_shopping: [...state.cart_shopping, bookPayload]
+        cart_shopping
+      }
+    }
+    case REMOVE_BOOK_SHOPPING_CART:{
+      const IdBookToRemove = action.payload;
+      const lastCart = state.cart_shopping.filter(({IdBook}) =>  IdBook !== IdBookToRemove);
+      addShoopingCartStorage(lastCart);
+      
+      return {
+        ...state,
+        cart_shopping: lastCart
       }
     }
     default:

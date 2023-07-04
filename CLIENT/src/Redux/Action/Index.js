@@ -8,7 +8,10 @@ import {
   ORDER_PRICE,
   //   FILTER_BY_PRICE,
   //   FILTER_BY_AUTOR,
-  CREATE_BOOK
+  CREATE_BOOK,
+  TOKEN_STORAGE_CART,
+  ADD_BOOK_SHOPPING_CART,
+  REMOVE_BOOK_SHOPPING_CART
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -108,4 +111,26 @@ export function orderPrice(order) {
     type: ORDER_PRICE,
     payload: order,
   };
+}
+
+export function addBookCart(book){
+  return {
+    type: ADD_BOOK_SHOPPING_CART,
+    payload:book
+  }
+};
+
+export function remoteBookCart(Id){
+  return {
+    type: REMOVE_BOOK_SHOPPING_CART,
+    payload:Id
+  }
+};
+
+export function addShoopingCartStorage(cart){
+  localStorage.setItem(TOKEN_STORAGE_CART, JSON.stringify(cart));
+}
+
+export function clearStorageCart(){
+  localStorage.removeItem(TOKEN_STORAGE_CART);
 }
