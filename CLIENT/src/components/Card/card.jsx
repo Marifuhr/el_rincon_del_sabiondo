@@ -1,19 +1,45 @@
 import {
   Box,
   Center,
+  useColorModeValue,
   Heading,
   Text,
   Stack,
   Image,
-  Flex
+  Button,
 } from "@chakra-ui/react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import formatDate from "../../utils/formatDate";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import fontStyle from "../../assets/fonts/Atma/Atma-SemiBold.ttf";
-import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
+import { transform } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { addBookCart } from "../../Redux/Action/Index";
 
 function Cards({ props }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddCartBook = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (props) {
+      dispatch(addBookCart(props));
+      navigate("/cart_pay");
+    }
+  };
+
+  // const buttonStyles = {
+  //   zIndex: 1,
+  //   top: -8,
+  //   right: -2,
+  //   position: "absolute",
+  // };
+
+  const primaryColor = useColorModeValue("brand.primary", "brand.secondary");
+
   return (
     <Center py={10}>
       <Box
@@ -89,11 +115,16 @@ function Cards({ props }) {
           justify={"center"}
           mt={"5px"}
         >
-          <Flex gap={2} alignItems="center" m={0}>
-            <ButtonAddBookCart book={props} />
-            <WalletMercadoPago />
-          </Flex>
+          <ButtonAddBookCart book={props} />
 
+          {/* <Link to={`/cart_pay`}> */}
+          <Button
+            onClick={handleAddCartBook}
+            colorScheme="teal"
+            variant="solid"
+          >
+            Comprar
+          </Button>
 
           {/* <Button
             style={{
