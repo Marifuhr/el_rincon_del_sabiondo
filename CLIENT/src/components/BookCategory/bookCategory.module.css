@@ -1,0 +1,22 @@
+.linkContainer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .linkContainer a {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #2196f3;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  
+  .linkContainer a:hover {
+    background-color: #1976d2;
+  }
+  
+  .linkContainer a:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #2196f3;
+  }

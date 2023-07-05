@@ -1,0 +1,124 @@
+.form-container {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+
+  /* background-image: url("src/assets/image/356623-admin.jpg"); */
+  background-position: center;
+  background-size: cover;
+}
+
+.form {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background: rgba(192, 200, 206, 0);
+}
+
+.book-form {
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(102, 117, 129, 0.9);
+}
+
+@media (max-width: 1000px){
+  .book-form{
+    margin: 0 auto;
+    max-width: 700px;
+  }
+}
+
+
+.book-form h1 {
+  text-align: center;
+  color: #70a57b;
+  font-weight: 700;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+.book-form label {
+  display: block;
+  color: #70a57b;
+  font-size: 18px;
+  font-weight: 500;
+  text-shadow: 0 1px 8px rgba(0,0,0,0.3);
+}
+
+.book-form input,
+.book-form textarea {
+  font-size: 18px;
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border-radius: 5px;
+  border: 1px solid #a0b3b0;
+  color: #fff;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.book-form input:focus,
+.book-form textarea:focus {
+  outline: 0;
+  border-color: #70a57b;
+}
+
+.book-form textarea {
+  border: 2px solid #a0b3b0;
+  resize: none;
+}
+
+.book-form .form-button {
+  border: 0;
+  outline: none;
+  border-radius: 5px;
+  padding: 6px;
+  font-size: 1.5rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #70a57b;
+  color: #fff;
+  transition: all.5s ease;
+
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.book-form .form-button:hover,
+.book-form .form-button:focus {
+  background: #5b7c62;
+}
+
+.input-error {
+  color: red;
+  font-size: 0.8rem;
+}
+
+.form-button {
+  border: 0;
+  outline: none;
+  border-radius: 8px;
+  padding: 4px;
+  font-size: 1rem;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all.5s ease;
+  
+  display: block;
+  width: 30%;
+  margin-top: 10px;
+  background: #70a57b;
+  color: #fff;
+  margin-right: 12.5rem;
+}

@@ -1,0 +1,59 @@
+
+.homePage {
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto; /* Agrega margen superior e inferior de 20px */
+}
+
+
+
+.boxCardBooks {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 5px;
+}
+
+.pageIndicator {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2px;
+  margin: 20px 0; /* Agrega margen superior e inferior de 20px */
+}
+
+.pageIndicator button {
+  background-color: #70a57b; /* Color oscuro */
+  color: #fff;
+  border: none;
+  box-shadow: 2px 2px white;
+  border-radius: 10%;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.pageIndicator button:hover {
+  background-color: #dfece2; /* Color claro en el hover */
+}
+
+.pageIndicator button.active {
+  background-color: #1d4928;
+}
+
+.scrollToTopButton {
+  position: static;
+  bottom: 20px;
+  left: 20px;
+  transform: translateX(calc(100% - 80px)); /* Mueve el botón al lado contrario */
+  background-color: #70a57b; /* Color oscuro */
+  color: #fff;
+  border: none;
+  box-shadow: 2px 2px white;
+  border-radius: 10%;
+  width: 60px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

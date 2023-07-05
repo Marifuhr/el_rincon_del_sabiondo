@@ -1,0 +1,28 @@
+.ctnSearchBar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.ctnSearchBar input{
+    border: none;
+    outline: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    width: 55%;
+    background-color: rgba(240, 248, 255, 0.514);
+    box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+    text-align: left;
+}
+.ctnSearchBar button{
+    background-color: rgba(240, 248, 255, 0.419);
+    padding: 2px 7px;
+    color: #7e7a7a;
+    font-weight: 600;
+    border-radius: 20px;
+    transition: all .3s ease;
+    text-rendering:optimizeSpeed;
+}
+.ctnSearchBar button:hover{
+    transform: scale(1.03);
+}
