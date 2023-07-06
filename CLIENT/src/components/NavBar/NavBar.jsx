@@ -11,7 +11,7 @@ import Logo from "../../elements/Logo";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Profile } from "../Login/Profile";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
-import SearchBar from "../SearchBar/SearchBar";
+
 
 function Navbar() {
   const { isAuthenticated } = useAuth0();
@@ -45,7 +45,7 @@ function Navbar() {
             <li className="create_book_aosdhas">Agrega un libro</li>
           </Link>
           <div>
-        <SearchBar />
+       
       </div>
         </ul>
       </div>
