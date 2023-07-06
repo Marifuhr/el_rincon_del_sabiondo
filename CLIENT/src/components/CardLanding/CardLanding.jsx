@@ -12,7 +12,7 @@ export default function CardLanding() {
                     <Image
                         objectFit='cover'
                         maxW={{ base: '100%', sm: '200px' }}
-                        src='src\assets\image\libro-abierto.jpg'
+                        src='https://res.cloudinary.com/djbpbygx4/image/upload/v1688491847/x5cuqkkkgpl69bq4ufmy.jpg'
                         alt='Caffe Latte'
                     />
                     <Stack textAlign='center'
@@ -30,7 +30,7 @@ export default function CardLanding() {
                     <Image
                         objectFit='cover'
                         maxW={{ base: '100%', sm: '200px' }}
-                        src='src\assets\image\libros.jpeg'
+                        src='https://res.cloudinary.com/djbpbygx4/image/upload/v1688491891/rjvmb8ptbisl31b3ubgv.jpg'
                         alt='Caffe Latte'
                     />
                     <Stack textAlign='center' py={{ base: '20px', sm: 0 }} mt={{ base: '20px', sm: 0 }}>
@@ -46,7 +46,7 @@ export default function CardLanding() {
                     <Image
                         objectFit='cover'
                         maxW={{ base: '100%', sm: '200px' }}
-                        src='src\assets\image\libro.secreto.jpeg'
+                        src='https://res.cloudinary.com/djbpbygx4/image/upload/v1688491910/crtdc2wk8uiew8grqslc.jpg'
                         alt='Mujer leyendo'
                     />
                     <Stack textAlign='center' py={{ base: '20px', sm: 0 }} mt={{ base: '20px', sm: 0 }}>
