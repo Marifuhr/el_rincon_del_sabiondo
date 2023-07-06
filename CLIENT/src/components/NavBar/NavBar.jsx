@@ -45,7 +45,6 @@ function Navbar() {
             <li className="create_book_aosdhas">Agrega un libro</li>
           </Link>
           <div>
-        
       </div>
         </ul>
       </div>
