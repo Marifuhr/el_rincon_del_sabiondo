@@ -22,10 +22,10 @@ function WalletMercadoPago({products}) {
             {
                 isAuthenticated ? (
                     <>
-                        <Button w="100%" fontSize="1.2rem" p={6} onClick={handleBuy}>Comprar</Button>
+                        <Button title="Agregar al Carrito" colorScheme="teal" variant="solid" w="100%" fontSize="1.1rem" p={4} onClick={handleBuy}>Comprar</Button>
                         {preferenceId && <Wallet initialization={{ preferenceId }} />}
                     </>
-                ) : <Text textAlign="center" background="rgba(0,0,0,0.03)" p={1} borderRadius={3}>Debes iniciar sesión</Text>
+                ) : <Text m={0} textAlign="center" whiteSpace="nowrap" background="rgba(0,0,0,0.03)" p={1} borderRadius={3}>Debes iniciar sesión</Text>
             }
         </>
     );
