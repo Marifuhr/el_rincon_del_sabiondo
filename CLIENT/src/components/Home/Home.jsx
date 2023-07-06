@@ -5,7 +5,7 @@ import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 // import success from './pngwing.png';
 import PopUp from "../../components/PopUp/PopUp";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import axios from "axios";
@@ -132,7 +132,7 @@ export default function Home() {
 
   return (
     <div>
-     
+     <SearchBar />
       <div className="filtros_posjqlk">
         <select
           className="select_lkow"
