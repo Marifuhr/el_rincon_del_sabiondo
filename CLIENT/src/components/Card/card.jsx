@@ -9,13 +9,28 @@ import {
   Button,
 } from "@chakra-ui/react";
 
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import formatDate from "../../utils/formatDate";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import fontStyle from "../../assets/fonts/Atma/Atma-SemiBold.ttf";
 import { transform } from "framer-motion";
+import { useDispatch } from "react-redux";
+import { addBookCart } from "../../Redux/Action/Index";
 
 function Cards({ props }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddCartBook = (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    if (props) {
+      dispatch(addBookCart(props));
+      navigate("/cart_pay");
+    }
+  };
+
   // const buttonStyles = {
   //   zIndex: 1,
   //   top: -8,
@@ -102,7 +117,12 @@ function Cards({ props }) {
         >
           <ButtonAddBookCart book={props} />
 
-          <Button colorScheme="teal" variant="solid">
+          {/* <Link to={`/cart_pay`}> */}
+          <Button
+            onClick={handleAddCartBook}
+            colorScheme="teal"
+            variant="solid"
+          >
             Comprar
           </Button>
 
