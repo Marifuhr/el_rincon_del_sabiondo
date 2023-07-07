@@ -3,9 +3,8 @@ import Card from "../../components/Card/card";
 import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
-import PopUp from "../../components/PopUp/PopUp";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
-
+import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 import  { useState, useEffect } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
@@ -131,7 +130,7 @@ export default function Home() {
 
   return (
     <div>
-     
+     <SearchBar />
       <div className="filtros_posjqlk">
         <select
           className="select_lkow"
