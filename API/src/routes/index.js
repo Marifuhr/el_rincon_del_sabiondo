@@ -6,6 +6,7 @@ const routerAuthor = require("./routerAuthor");
 const routerBulkCreate = require ('./routerBulkCreate')
 const logoutRouter = require('./routerLogout');
 const routerMercadoPago = require('./routerMercadoPago');
+const routerUsers = require("./routerUsers");
 
 const bulkCreateBooksHandler = require('../handlers/BulkCreateBooksHandler');
 
@@ -18,6 +19,6 @@ rootRouter.use('/authors', routerAuthor);
 rootRouter.use('/bulkcreate', routerBulkCreate);
 rootRouter.use('/logout', logoutRouter);
 rootRouter.use('/', routerMercadoPago);
-
+rootRouter.use('/users', routerUsers);
 
 module.exports = rootRouter;
