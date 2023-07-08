@@ -40,7 +40,7 @@ const ProviderUser = ({ children }) => {
         <contextUser.Provider value={userDB}>
             {
                 isLoading ?
-                    <Loader />
+                    <Loader mode="full"/>
                 : children
             }
         </contextUser.Provider>
