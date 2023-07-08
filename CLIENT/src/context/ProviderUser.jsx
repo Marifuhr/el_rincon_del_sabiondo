@@ -1,6 +1,8 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { createContext, useEffect } from "react";
+import axios from "axios";
+import { createContext, useEffect, useState } from "react";
 import { useContext } from "react";
+import Loader from "../components/Loader/Loader";
 
 //Create context
 const contextUser = createContext();
@@ -12,18 +14,34 @@ export const useUserInfo = () => {
 
 //Provider context para Acceder a los usuarios 
 const ProviderUser = ({ children }) => {
+    const [userDB, setUserDB] = useState({});
+    const [isLoading, setIsLoading ] = useState(true);
     const { user, isAuthenticated } = useAuth0();
     
     useEffect(() => {
         if(isAuthenticated){
-            
+            axios.post(
+                `${import.meta.env.VITE_URL_ENDPOINT}/users`, user
+            ).then(data => {
+                if(data.data.error){
+                    setIsLoading(false);
+                    return
+                };
+
+                setUserDB(data.data)
+                setIsLoading(false);
+            });
+            return;
         }
+        setIsLoading(false);
     },[user]);
 
     return (
-        <contextUser.Provider value={'eso'}>
+        <contextUser.Provider value={userDB}>
             {
-                children
+                isLoading ?
+                    <Loader />
+                : children
             }
         </contextUser.Provider>
     );

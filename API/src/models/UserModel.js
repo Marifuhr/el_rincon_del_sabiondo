@@ -4,7 +4,7 @@ const generateIdUUID = require("../utils/generateIdUUID");
 module.exports = function(database){
     database.define('User',{
         IdUser:{
-            type: DataTypes.STRING(50),
+            type: DataTypes.TEXT,
             primaryKey:true,
             set(value){
                 //! Clear THIS validation
