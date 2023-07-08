@@ -7,6 +7,7 @@ import store from "./Redux/Store";
 import { Auth0Provider } from "@auth0/auth0-react";
 import App from "./App";
 import theme from "./components/Resourse/theme/theme.js";
+import ProviderUser from "./context/ProviderUser";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
           cacheLocation="localstorage"
         >
           <Provider store={store}>
-            <App />
+            <ProviderUser>
+              <App />
+            </ProviderUser>
           </Provider>
         </Auth0Provider>
       </ChakraProvider>
