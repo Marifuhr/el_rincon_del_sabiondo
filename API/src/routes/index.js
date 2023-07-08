@@ -9,8 +9,7 @@ const logoutRouter = require('./routerLogout');
 const routerMercadoPago = require('./routerMercadoPago');
 const routerUsers = require("./routerUsers");
 const routeMail = require("./routeMail");
-
-
+const routerReviews = require("./routerReviews");
 const bulkCreateBooksHandler = require("../handlers/BulkCreateBooksHandler");
 
 const rootRouter = express.Router();
@@ -23,7 +22,7 @@ rootRouter.use('/bulkcreate', routerBulkCreate);
 rootRouter.use('/logout', logoutRouter);
 rootRouter.use('/', routerMercadoPago);
 rootRouter.use('/users', routerUsers);
+rootRouter.use('/reviews', routerReviews)
 rootRouter.use("/mail", routeMail);
-
 
 module.exports = rootRouter;
