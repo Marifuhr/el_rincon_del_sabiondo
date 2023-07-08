@@ -13,11 +13,8 @@ module.exports = function(database){
             }
         },
         IdUser:{
-            type: DataTypes.UUID,
+            type: DataTypes.STRING(50),
             allowNull: false,
-            validate:{
-                isUUID: 4
-            }
         },
         IdBook:{
             type: DataTypes.UUID,

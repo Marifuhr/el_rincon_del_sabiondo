@@ -9,7 +9,7 @@ function CarouselFadeExample() {
         <Carousel.Item>
           <img
             className="image_size_asjdlasj w-80 img-fluid "
-            src="src\assets\image\El Rincon del Sabiondo.jpg"
+            src="https://res.cloudinary.com/djbpbygx4/image/upload/v1688490992/kxvlhzi2yiptzxzaz9ko.jpg"
             alt="El rincon del sabiondo"
           />
           <Carousel.Caption>
@@ -20,7 +20,7 @@ function CarouselFadeExample() {
         <Carousel.Item>
           <img
             className="image_size_asjdlasj w-80 img-fluid"
-            src="src\assets\image\seleccion de libros.jpg"
+            src="https://res.cloudinary.com/djbpbygx4/image/upload/v1688491407/xoqigykoqdjkbnn8mwxc.jpg"
             alt="Second slide"
           />
           <Carousel.Caption></Carousel.Caption>
@@ -28,7 +28,7 @@ function CarouselFadeExample() {
         <Carousel.Item>
           <img
             className="image_size_asjdlasj w-80 img-fluid"
-            src="src\assets\image\carousel2.jpeg"
+            src="https://res.cloudinary.com/djbpbygx4/image/upload/v1688491461/jsf9h0nrwrie08xz8ylt.jpg"
             alt="3x2"
           />
           <Carousel.Caption></Carousel.Caption>
@@ -36,7 +36,7 @@ function CarouselFadeExample() {
         <Carousel.Item>
           <img
             className="image_size_asjdlasj w-80 img-fluid"
-            src="src\assets\image\Descubre un mundo.jpg"
+            src="https://res.cloudinary.com/djbpbygx4/image/upload/v1688491487/tnfam7cmzlfsnqnnjntu.jpg"
             alt="Descubre un mundo"
           />
           <Carousel.Caption></Carousel.Caption>

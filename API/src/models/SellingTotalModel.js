@@ -13,8 +13,7 @@ module.exports = function(database){
             }
         },
         IdUser:{
-            type: DataTypes.UUID,
-            defaultValue: DataTypes.UUIDV4,
+            type: DataTypes.STRING(50),
             allowNull: false
         }
     },{

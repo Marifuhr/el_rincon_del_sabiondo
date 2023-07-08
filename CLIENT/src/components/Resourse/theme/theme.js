@@ -1,14 +1,19 @@
-
 import { extendTheme } from "@chakra-ui/react";
 
-
-const colors = {
-  brand: {
-    primary: "#dfece2",
-    secondary: "#70a57b",
+const theme = extendTheme({
+  colors: {
+    brand: {
+      primary: "#dfece2",
+      secondary: "#70a57b",
+    },
   },
-};
+  styles: {
+    global: {
+      body: {
+        bg: "#dfece2",
+      },
+    },
+  },
+});
 
-
-
-export const theme = extendTheme({ colors });
+export default theme;

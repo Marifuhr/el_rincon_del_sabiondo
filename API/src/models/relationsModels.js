@@ -28,10 +28,6 @@ module.exports = async function(database){
     Review.belongsTo(Book,{foreignKey:'IdBook'});
 
     //!User
-    //* reference with countryUser attribute in User model
-    Country.hasOne(User,{as:'countryUserData',foreignKey: 'countryUser'});
-    User.belongsTo(Country,{as:'countryUserData',foreignKey: 'countryUser'});
-
     //? User NBooks -> Book NUsers
     //* User.addWichListBook(ARRAY[bookId's]])
     User.belongsToMany(Book,{as:'wichListBook',through:'wichList', timestamps: false});
