@@ -58,8 +58,6 @@ module.exports = function(database){
                 isIn: [['user', 'moderator', 'admin', 'superuser']]
             }
         }
-        //? Association with wichList in relationsModels.js N:N
-        //? Association with sellings in relationsModels.js N:N
-        //? Association with Reviews in relationsModels.js N:1
+        
     })
 }
