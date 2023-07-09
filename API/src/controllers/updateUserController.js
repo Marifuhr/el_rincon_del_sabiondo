@@ -29,11 +29,11 @@ const validationsAttributes = {
 module.exports = async function({id_user, dataToUpdate}){
     //Validate query values
     for(let [fieldKey,fieldValue] of Object.entries(dataToUpdate)){
-        //Get function to validate field
+        //Get function to field validate
         const validationForField = validationsAttributes[fieldKey]
         if(!validationForField) continue;
 
-        //Execute function to validate field
+        //Execute function to field validate
         const validateValueField = validationForField(fieldValue);
         if(!validateValueField){
             throw new Error(errorFieldsToUpdate[fieldKey]);
@@ -45,8 +45,11 @@ module.exports = async function({id_user, dataToUpdate}){
         where:{ IdUser: id_user}
     });
     
-    console.log(findUser);
+    //Si el usuario no existe
+    if(!findUser) throw new Error(`El usuario que intentas actualizar no existe`);
 
+    //Si ya existe lo actualiza
+    const user = await findUser.update(dataToUpdate);
 
-    return {id_user, dataToUpdate};
+    return user;
 };
