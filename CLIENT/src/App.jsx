@@ -9,7 +9,7 @@ import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
 import { Profile } from "./components/Login/Profile";
-
+import PerfilUser from "./components/PerfilUser/PerfilUser";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
@@ -33,6 +33,7 @@ export default function App() {
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/perfil_user" element={<PerfilUser/>} />
       </Routes>
     </div>
   );

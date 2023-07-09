@@ -16,6 +16,7 @@ const Loader = ({mode="basic"}) => {
             justifyContent:"center",
         }
     }
+   
 
     return (
         <Box {...modePropsLoader[mode]}>
