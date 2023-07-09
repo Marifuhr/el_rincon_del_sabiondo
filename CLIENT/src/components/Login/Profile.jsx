@@ -39,7 +39,7 @@ import { Box, Button, Image, Menu, MenuButton, MenuList, MenuItem } from "@chakr
 import { FiLogOut } from "react-icons/fi";
 import styles from './Profile.module.css';
 import { clearStorageCart } from "../../Redux/Action/Index";
-
+import { Link } from "react-router-dom";
 
 
 export const Profile = () => {
@@ -61,6 +61,7 @@ export const Profile = () => {
             <Image src={user.picture} alt={`profile_${user.name}`} borderRadius="full" boxSize={8} objectFit="cover" />
           </MenuButton>
           <MenuList>
+            <MenuItem as={Link} to="/profile">Perfil</MenuItem>
             <MenuItem onClick={handleLogout} icon={<FiLogOut />} command="⌘L">
               Cerrar sesión
             </MenuItem>
