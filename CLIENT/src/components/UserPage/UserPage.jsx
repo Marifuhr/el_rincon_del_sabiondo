@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../assets/image/logo.png";
-import {Profile} from "../Login/Profile"
+import { Profile } from "../Login/Profile";
+import { useAuth0 } from "@auth0/auth0-react";
+import { clearStorageCart } from "../../Redux/Action/Index";
 import {
   IconButton,
   Avatar,
@@ -32,12 +34,11 @@ import {
   FiSettings,
   FiMenu,
   FiBell,
-  FiChevronDown,
 } from "react-icons/fi";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, route: "/home" },
-  { name: "My profile", icon: FiUser, route: "/myProfile" },
+  { name: "Edit profile", icon: FiUser, route: "/myProfile" },
   { name: "My shopping", icon: FiShoppingCart, route: "/myShopping" },
   { name: "My reviews", icon: FiMessageSquare, route: "/myReviews" },
   { name: "Settings", icon: FiSettings, route: "/settings" },
@@ -144,6 +145,15 @@ const NavItem = ({ icon, children,route, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  const {logout}  = useAuth0();
+
+  const handleLogout = () => {
+    clearStorageCart();
+    console.log("Realizando acciones antes de hacer logout...");
+
+    // Hacer logout
+    logout({ returnTo: window.location.origin });
+  };
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -187,9 +197,9 @@ const MobileNav = ({ onOpen, ...rest }) => {
               transition="all 0.3s"
               _focus={{ boxShadow: "none" }}
             >
-               <HStack>
-                <Profile/>
-              {/*  <VStack
+              <Profile onClick={handleLogout} />
+              {/* <HStack>
+                  <VStack
                   display={{ base: "none", md: "flex" }}
                   alignItems="flex-start"
                   spacing="1px"
@@ -202,18 +212,20 @@ const MobileNav = ({ onOpen, ...rest }) => {
                 </VStack>
                 <Box display={{ base: "none", md: "flex" }}>
                   <FiChevronDown />
-                </Box>*/}
-              </HStack>
-            </MenuButton> 
+                </Box>
+              </HStack>*/}
+            </MenuButton>
             <MenuList
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
               {/* <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>
-              <MenuItem>Billing</MenuItem>
-              <MenuDivider /> */}
-              <MenuItem >Sign out</MenuItem>
+              <MenuItem>Settings</MenuItem>*/}
+              <MenuItem as={Link} to="/profile">
+                Perfil
+              </MenuItem>
+              <MenuDivider />
+              <MenuItem onClick={handleLogout}>Sign out</MenuItem>
             </MenuList>
           </Menu>
         </Flex>

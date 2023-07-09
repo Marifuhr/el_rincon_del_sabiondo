@@ -31,10 +31,11 @@ export default function App() {
         <Route path="/login" element={<LoginButton />} />
         {/* <Route path="/logout" element={<LogoutButton />} /> */}
         <Route path="/profile" element={<UserPage />} />
-        <Route path="/myProfile" element={<UserPage />} />
-        <Route path="/myProfile" element={<UserPage />} />
-        <Route path="/myProfile" element={<UserPage />} />
-        {/* <Route path="/userPage" element={<UserPage />} /> */}
+       {/* <Route path="/myProfile" element={< />} />
+        <Route path="/myShopping" element={< />} />
+        <Route path="/myReviews" element={< />} />
+        <Route path="/settings" element={< />} /> */}
+
         <Route path="/create" element={<FormCreate />} />
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
