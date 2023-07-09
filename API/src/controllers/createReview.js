@@ -1,4 +1,4 @@
-const { Book, User, Review } = require('../models');
+const { Book, User, Review } = require('../db');
 
 module.exports = async function ({ IdUser, IdBook, rate, description }) {
   try {
