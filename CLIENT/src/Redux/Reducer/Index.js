@@ -8,11 +8,13 @@ import {
   TOKEN_STORAGE_CART,
   ADD_BOOK_SHOPPING_CART,
   REMOVE_BOOK_SHOPPING_CART,
-  CLEAR_SHOPPING_CART
+  CLEAR_SHOPPING_CART,
+  CREATE_USER,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
 const initialState = {
+  users: [],
   allBooks: [],
   detailBooks: [],
   isLoading: false,
@@ -184,7 +186,20 @@ const reducer = (state = initialState, action) => {
     }
     default:
       return { ...state };
-  };
+    };
 };
+    const createUser = (state = initialState, action) => {
+      switch (action.type) {
+        case CREATE_USER:
+          return {
+            ...state,
+            users: [...state.users, action.payload],
+          };
+        default:
+          return state;
+      }
+    };
+
+  
 
 export default reducer;
