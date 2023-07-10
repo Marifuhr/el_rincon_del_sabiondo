@@ -82,12 +82,18 @@ import {
   Box
 } from '@chakra-ui/react';
 import { SmallCloseIcon } from '@chakra-ui/icons';
+import useUserInfo from "../../hooks/useUserInfo";
+
 
 export default function EditProfile() {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { user } = useUserInfo();
+  console.log(user);
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,7 +107,25 @@ export default function EditProfile() {
     setEmail("");
     setPassword("");
   };
+//   const [perfil, setPerfil] = useState([]);
 
+//   useEffect(() => {
+//     const obtenerPerfil = async () => {
+//       try {
+//         // Realizar la solicitud a la base de datos para obtener el perfil del cliente
+//         const response = await axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/perfil?customerId=${customerId}`);
+//         setPerfil(
+// response.data
+// ); // Actualizar el estado con el perfil del cliente
+//       } catch (error) {
+//         console.error('Error al obtener perfil:', error);
+//       }
+//     };
+
+//      if (customerId) {
+//       obtenerPerfil();
+//      }
+//   }, [customerId]);
   return (
     <Box >
           <UserPage />
@@ -125,7 +149,7 @@ export default function EditProfile() {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
             Edit Profile
           </Heading>
-          <FormControl id="userName">
+          <FormControl id={user.icon}>
           <FormLabel>User Icon</FormLabel>
           <Stack direction={['column', 'row']} spacing={6}>
             <Center>
@@ -146,7 +170,7 @@ export default function EditProfile() {
             </Center>
           </Stack>
         </FormControl>
-          <FormControl id="userName" isRequired>
+          <FormControl id={user.name} isRequired>
             <FormLabel>User Name</FormLabel>
             <Input
               placeholder="User Name"
@@ -156,7 +180,7 @@ export default function EditProfile() {
               onChange={(e) => setName(e.target.value)}
             />
           </FormControl>
-          <FormControl id="email" isRequired>
+          <FormControl id={user.email} isRequired>
             <FormLabel>Email Address</FormLabel>
             <Input
               placeholder="your-email@example.com"
@@ -166,7 +190,7 @@ export default function EditProfile() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </FormControl>
-          <FormControl id="password" isRequired>
+          <FormControl id={user.password} isRequired>
             <FormLabel>Password</FormLabel>
             <Input
               placeholder="Password"
