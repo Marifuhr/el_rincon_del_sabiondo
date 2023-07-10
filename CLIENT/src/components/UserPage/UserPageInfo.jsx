@@ -70,6 +70,9 @@ export default function Simple() {
                   color={useColorModeValue("gray.900", "gray.400")}
                   fontWeight={300}
                   fontSize={"2xl"}
+                  bg="white"
+                  textAlign="center"
+                  borderRadius={5}
                 >
                   {user.role}
                 </Text>
@@ -115,8 +118,8 @@ export default function Simple() {
                       <ListItem>
                         <Text as={"span"} fontWeight={"bold"}>
                           Email:
-                        </Text>{" "}
-                        {user.email}
+                        </Text>
+                        <Text whiteSpace="nowrap">{user.email}</Text>
                       </ListItem>
                       {/* <ListItem>Master Chronometer Certified</ListItem>{" "}
                     <ListItem>Tachymeter</ListItem>
