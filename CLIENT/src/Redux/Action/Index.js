@@ -12,6 +12,7 @@ import {
   REMOVE_BOOK_SHOPPING_CART,
   CLEAR_SHOPPING_CART,
   CREATE_USER,
+  SAVE_PROFILE_CHANGES
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -141,5 +142,15 @@ export function createUser(userData) {
   return {
     type: CREATE_USER,
     payload: userData,
+  };
+};
+
+
+// actions.js
+
+export function saveProfileChanges(profileData){
+  return {
+    type: SAVE_PROFILE_CHANGES,
+    payload: profileData,
   };
 };

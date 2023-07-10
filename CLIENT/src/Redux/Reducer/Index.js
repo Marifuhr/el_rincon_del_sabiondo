@@ -10,10 +10,16 @@ import {
   REMOVE_BOOK_SHOPPING_CART,
   CLEAR_SHOPPING_CART,
   CREATE_USER,
+  SAVE_PROFILE_CHANGES
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
 const initialState = {
+  profile: {
+    name: "",
+    email: "",
+    password: "",
+  },
   users: [],
   allBooks: [],
   detailBooks: [],
@@ -160,10 +166,10 @@ const reducer = (state = initialState, action) => {
         unit_price: Number(bookPayload.price),
         quantity: 1
       };
-
+      
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-
+      
       return {
         ...state,
         cart_shopping
@@ -179,26 +185,27 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart
       }
     }
-
+    
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
+    case CREATE_USER:
+      return {
+        ...state,
+        users: [...state.users, action.payload],
+      };
+      case SAVE_PROFILE_CHANGES:
+        return {
+          ...state,
+          profile: action.payload,
+        };
+  
     default:
       return { ...state };
     };
-};
-    const createUser = (state = initialState, action) => {
-      switch (action.type) {
-        case CREATE_USER:
-          return {
-            ...state,
-            users: [...state.users, action.payload],
-          };
-        default:
-          return state;
-      }
-    };
+  };
+    
 
   
 
