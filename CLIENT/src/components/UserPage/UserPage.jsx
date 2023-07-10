@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, Outlet } from "react-router-dom";
-import logo from "../../assets/image/logo.png";
+import logo from "../../assets/image/Logo.png";
 import { Profile } from "../Login/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import { clearStorageCart } from "../../Redux/Action/Index";
