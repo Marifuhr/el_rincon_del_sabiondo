@@ -9,9 +9,9 @@ import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
 
-
-
 import UserPage from "./components/UserPage/UserPage";
+import UserPageInfo from "./components/UserPage/UserPageInfo";
+//import EditProfile from "./components/EditProfile";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
@@ -20,9 +20,16 @@ import NotFound from "./components/Error404/NotFound";
 
 export default function App() {
   const location = useLocation();
+  const hideNavBarRoutes = [
+    "/profile",
+    "/profile/myProfile",
+    "/profile/myShopping",
+    "/profile/myReviews",
+    "/profile/billing",
+  ];
   return (
     <div className="App">
-      {location.pathname !== "/profile" && <NavBar />}
+      {!hideNavBarRoutes.includes(location.pathname) && <NavBar />}
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
@@ -30,11 +37,14 @@ export default function App() {
         {/* <Route path="/buy/:id" element={<Buy />} /> */}
         <Route path="/login" element={<LoginButton />} />
         {/* <Route path="/logout" element={<LogoutButton />} /> */}
-        <Route path="/profile" element={<UserPage />} />
-       {/* <Route path="/myProfile" element={< />} />
-        <Route path="/myShopping" element={< />} />
-        <Route path="/myReviews" element={< />} />
-        <Route path="/settings" element={< />} /> */}
+
+        <Route path="/profile" element={<UserPage />}>
+          <Route path="" element={<UserPageInfo />} />
+          <Route path="myProfile" element={<p>Mi perfil</p>} />
+          {/* <Route path="myShopping" element={< />} />
+        <Route path="myReviews" element={< />} />
+        <Route path="billing" element={< />} />  */}
+        </Route>
 
         <Route path="/create" element={<FormCreate />} />
         <Route path="/about" element={<About />} />

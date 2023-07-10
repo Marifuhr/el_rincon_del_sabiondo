@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import logo from "../../assets/image/logo.png";
 import { Profile } from "../Login/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import { clearStorageCart } from "../../Redux/Action/Index";
+import Simple from "./UserPageInfo";
 import {
   IconButton,
   Avatar,
@@ -31,23 +32,24 @@ import {
   FiUser,
   FiShoppingCart,
   FiMessageSquare,
-  FiSettings,
+  FiCheckCircle,
   FiMenu,
   FiBell,
 } from "react-icons/fi";
 
 const LinkItems = [
   { name: "Home", icon: FiHome, route: "/home" },
-  { name: "Edit profile", icon: FiUser, route: "/myProfile" },
-  { name: "My shopping", icon: FiShoppingCart, route: "/myShopping" },
-  { name: "My reviews", icon: FiMessageSquare, route: "/myReviews" },
-  { name: "Settings", icon: FiSettings, route: "/settings" },
+  { name: "Edit profile", icon: FiUser, route: "/profile/myProfile" },
+  { name: "My shopping", icon: FiShoppingCart, route: "/profile/myShopping" },
+  { name: "My reviews", icon: FiMessageSquare, route: "/profile/myReviews" },
+  { name: "Billing", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
 export default function SidebarWithHeader({ children }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box>
       <SidebarContent
         onClose={() => onClose}
         display={{ base: "none", md: "block" }}
@@ -68,8 +70,8 @@ export default function SidebarWithHeader({ children }) {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
-      </Box>
+        {<Outlet />}
+     </Box>
     </Box>
   );
 }
@@ -107,7 +109,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
   );
 };
 
-const NavItem = ({ icon, children,route, ...rest }) => {
+const NavItem = ({ icon, children, route, ...rest }) => {
   return (
     <Link
       href="#"
@@ -145,7 +147,7 @@ const NavItem = ({ icon, children,route, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  const {logout}  = useAuth0();
+  const { logout } = useAuth0();
 
   const handleLogout = () => {
     clearStorageCart();
