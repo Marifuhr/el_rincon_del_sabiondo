@@ -161,10 +161,7 @@ const ArticleList = () => {
         <Text as="p" fontSize="lg" marginTop="8">
               " Nuestra visión es ser la principal tienda en línea de libros a nivel mundial, ofreciendo la mejor selección de títulos, precios competitivos y un servicio excepcional. Nos esforzamos por ser una app líder en innovación y tecnología, brindando una experiencia de compra en línea fácil y cómoda para nuestros clientes. Aspiramos a ser reconocidos como un actor clave en la promoción de la lectura y la educación, y en la difusión de la cultura en todo el mundo. Nuestro objetivo es ser una empresa responsable y sostenible, comprometida con la protección del medio ambiente y la promoción de valores éticos y sociales. Creemos que los libros pueden cambiar vidas, y estamos dedicados a hacer que la lectura sea accesible y agradable para todos."
             </Text>
-            {/* <BlogAuthor
-              name="John Doe"
-              date={new Date('2021-04-06T19:01:27Z')}
-            /> */}
+          
           </Box>
         </WrapItem>
       </Wrap>
