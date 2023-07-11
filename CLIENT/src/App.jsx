@@ -11,19 +11,20 @@ import NavBar from "./components/NavBar/NavBar";
 
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
-//import EditProfile from "./components/EditProfile";
+import EditProfile from './components/UserPage/EditProfile';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
+import CreateReview from "./components/CreateReview/CreateReview";
 
 export default function App() {
   const location = useLocation();
   const hideNavBarRoutes = [
     "/profile",
     "/profile/myProfile",
-    "/profile/myShopping",
+    // "/profile/myShopping",
     "/profile/myReviews",
     "/profile/billing",
   ];
@@ -40,7 +41,7 @@ export default function App() {
 
         <Route path="/profile" element={<UserPage />}>
           <Route path="" element={<UserPageInfo />} />
-          <Route path="myProfile" element={<p>Mi perfil</p>} />
+          <Route path="myProfile" element={<EditProfile />} />
           {/* <Route path="myShopping" element={< />} />
         <Route path="myReviews" element={< />} />
         <Route path="billing" element={< />} />  */}
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
+        <Route path="/createreview" element={<CreateReview />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

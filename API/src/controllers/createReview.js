@@ -2,12 +2,12 @@ const { Book, User, Review } = require('../db');
 
 module.exports = async function ({ IdUser, IdBook, rate, description }) {
   try {
-    const userExist = await User.findByPk(IdUser);
+    const userExist = await User.findOne({ where: { email: IdUser } });
     const bookExist = await Book.findByPk(IdBook);
     
    if (userExist && bookExist) {
      const newReview = await Review.create({
-       IdUser,
+       IdUser : userExist.IdUser,
        IdBook,
        rate,
        description

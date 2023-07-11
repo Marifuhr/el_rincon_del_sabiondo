@@ -5,10 +5,10 @@ module.exports = async function ({ picture, sub, email, name }) {
     
     const [user, created] = await User.findOrCreate({ 
         where:{
-            email
+            IdUser
         },
         defaults:{
-            picture, name, IdUser
+            picture, name, email
         },
         include:[
             {

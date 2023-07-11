@@ -2,8 +2,9 @@ const findCreateUser = require("../controllers/findCreateUser");
 
 module.exports = async function(req,res) {
     try {
-        const { name, email, sub, picture } = req.body;
-        
+        const { name, email:correo, sub, picture } = req.body;
+        const email = correo ?? `${name.toLowerCase().replaceAll(' ','')}@rds.com`;
+
         //If values are empty or undefined
         const validateValues = Object.values({ name, email, picture }).some((val) => !val);
         

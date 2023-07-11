@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 export const Profile = () => {
   const { user, isAuthenticated, logout } = useAuth0();
- 
+
   const handleLogout = () => {
     clearStorageCart();
     console.log("Realizando acciones antes de hacer logout...");

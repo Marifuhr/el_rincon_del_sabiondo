@@ -1,6 +1,5 @@
 import {
   Box,
-  chakra,
   Container,
   Stack,
   Text,
@@ -11,14 +10,13 @@ import {
   Heading,
   SimpleGrid,
   StackDivider,
-  useColorModeValue,
-  VisuallyHidden,
-  List,
   ListItem,
+  List
 } from "@chakra-ui/react";
 
 import { MdLocalShipping } from "react-icons/md";
 import { useUserInfo } from "../../context/ProviderUser";
+
 import  formatDate  from "../../utils/formatDate";
 
 export default function Simple() {
@@ -72,13 +70,15 @@ console.log(user);
       </SimpleGrid>
       {/* </Container> */}
       {/* <Stack
+
               spacing={{ base: 4, sm: 6 }}
               direction={"column"}
               divider={
                 <StackDivider
-                  borderColor={useColorModeValue("gray.200", "gray.600")}
+                  borderColor="gray.200"
                 />
               }
+
             > 
        <VStack spacing={{ base: 4, sm: 6 }}>
         <Text fontSize={"lg"}>
@@ -210,14 +210,15 @@ console.log(user);
         </List>
       </Box>
 
+
       {/* <Button
               rounded={"none"}
               w={"full"}
               mt={8}
               size={"lg"}
               py={"7"}
-              bg={useColorModeValue("gray.900", "gray.50")}
-              color={useColorModeValue("white", "gray.900")}
+              bg="gray.900"
+              color="white"
               textTransform={"uppercase"}
               _hover={{
                 transform: "translateY(2px)",
@@ -234,8 +235,10 @@ console.log(user);
             >
               <MdLocalShipping />
               <Text>2-3 business days delivery</Text>
+
             </Stack> */}
       {/* </Stack> */}
     </Box>
+
   );
 }
