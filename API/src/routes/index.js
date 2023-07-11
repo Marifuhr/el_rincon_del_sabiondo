@@ -10,6 +10,8 @@ const routerMercadoPago = require('./routerMercadoPago');
 const routerUsers = require("./routerUsers");
 const routeMail = require("./routeMail");
 const routerReviews = require("./routerReviews");
+const routerSellings = require("./routerSellings");
+
 const bulkCreateBooksHandler = require("../handlers/BulkCreateBooksHandler");
 
 const rootRouter = express.Router();
@@ -24,5 +26,6 @@ rootRouter.use('/', routerMercadoPago);
 rootRouter.use('/users', routerUsers);
 rootRouter.use('/reviews', routerReviews)
 rootRouter.use("/mail", routeMail);
+rootRouter.use("/sellings", routerSellings);
 
 module.exports = rootRouter;
