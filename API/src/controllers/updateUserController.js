@@ -4,7 +4,8 @@ const errorFieldsToUpdate = {
     role: 'El role no es válido',
     picture: 'El url de la imágen no es válida',
     name: 'El nombre debe tener entre 5 - 50 carácteres',
-    isActive: 'El estado de Usuario debe ser un valor Booleano'
+    isActive: 'El estado de Usuario debe ser un valor Booleano',
+    email: 'El email no es válido'
 };
 
 const validationsAttributes = {
@@ -24,6 +25,7 @@ const validationsAttributes = {
         return l >= 5 && l <= 50
     },
     isActive: stateUser => [true,false].includes(stateUser),
+    email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
 };
 
 module.exports = async function({id_user, dataToUpdate}){
