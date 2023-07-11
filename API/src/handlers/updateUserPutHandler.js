@@ -3,10 +3,10 @@ const updateUserController = require("../controllers/updateUserController");
 module.exports = async function (req, res) {
     try {
         const { id_user } = req.params;
-        const { name, picture, isActive, role } = req.body;
+        const { name, email, picture, isActive, role } = req.body;
 
         //Filter field by empty values
-        const filterEmptyValues = Object.entries({ name, picture, isActive, role }).filter( ([,v]) => v);
+        const filterEmptyValues = Object.entries({ name, email, picture, isActive, role }).filter( ([,v]) => v);
 
         if(!filterEmptyValues.length) throw new Error('No tienes valores válidos para actualizar un usuario');
 
