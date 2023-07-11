@@ -17,7 +17,9 @@ import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
+
 import CreateReview from "./components/CreateReview/CreateReview";
+
 
 export default function App() {
   const location = useLocation();
@@ -53,6 +55,7 @@ export default function App() {
         <Route path="/cart_pay" element={<CartPayPage />} />
         <Route path="/createreview" element={<CreateReview />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/myShopping" element={<MyShopping />} />
       </Routes>
     </div>
   );
