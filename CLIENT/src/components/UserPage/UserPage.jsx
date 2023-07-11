@@ -1,20 +1,16 @@
-import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../assets/image/Logo.png";
 import { Profile } from "../Login/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import { clearStorageCart } from "../../Redux/Action/Index";
-import Simple from "./UserPageInfo";
 import {
-  IconButton,
-  Avatar,
   Box,
   CloseButton,
   Flex,
   HStack,
-  VStack,
   Icon,
   useColorModeValue,
+  IconButton,
   // Link,
   Image,
   Drawer,
@@ -45,7 +41,7 @@ const LinkItems = [
   { name: "Billing", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
-export default function SidebarWithHeader({ children }) {
+export default function SidebarWithHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
