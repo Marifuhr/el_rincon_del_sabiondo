@@ -1,70 +1,5 @@
-// import React, { useState } from "react";
-// import { useDispatch } from "react-redux";
-// import { saveProfileChanges } from "../../Redux/Action/Index";
-// import UserPage from "./UserPage";
 
-// export default function EditProfile() {
-//     const dispatch = useDispatch();
-//   const [name, setName] = useState("");
-//   const [email, setEmail] = useState("");
-//   const [password, setPassword] = useState("");
-
-
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const profileData = {
-//         name,
-//         email,
-//         password,
-//       };
-//       dispatch(saveProfileChanges(profileData));
-//     setName("");
-//     setEmail("");
-//     setPassword("");
-//   };
-
-//   return (
-//       <div>
-// <UserPage />
-//       <h2>Edit Profile</h2>
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           Name:
-//           <input
-//             type="text"
-//             value={name}
-//             onChange={(e) => setName(e.target.value)}
-//           />
-//         </label>
-//         <br />
-//         <label>
-//           Email:
-//           <input
-//             type="email"
-//             value={email}
-//             onChange={(e) => setEmail(e.target.value)}
-//           />
-//         </label>
-//         <br />
-//         <label>
-//           Password:
-//           <input
-//             type="password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//         </label>
-//         <br />
-//         <button type="submit">Save Changes</button>
-//       </form>
-//     </div>
-//   );
-// }
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { saveProfileChanges } from "../../Redux/Action/Index";
-import UserPage from "./UserPage";
 import {
   Button,
   Flex,
@@ -81,66 +16,65 @@ import {
   Center,
   Box
 } from '@chakra-ui/react';
-import { SmallCloseIcon } from '@chakra-ui/icons';
-import useUserInfo from "../../hooks/useUserInfo";
+
+import { useUserInfo } from "../../context/ProviderUser";
+import axios from "axios";
 
 
 export default function EditProfile() {
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
 
-  const { user } = useUserInfo();
-  console.log(user);
+const [name, setName] = useState("");
+const [picture, setPicture] = useState("");
+// const [email, setEmail] = useState("");
+// const [password, setPassword] = useState("");
+
+const { user } = useUserInfo();
+console.log(user);
+
+
+function handleSubmit(e) {
+  e.preventDefault();
+axios.put(`${import.meta.env.VITE_URL_ENDPOINT}/users/${user.id}`, {
+  name,
+  picture,  
+})
+ 
+}
+const handleImageSelect = async (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", 'srpd9jzh');
+
+      const response = await axios.post(
+          `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
+          formData
+      );
+
+      const imageUrl = response.data.secure_url;
+
+      setPicture(imageUrl)
+      
+    } catch (error) {
+      console.error("Error al cargar la imagen a Cloudinary:", error);
+    }
+  }
+};
  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const profileData = {
-      name,
-      email,
-      password,
-    };
-    dispatch(saveProfileChanges(profileData));
-    setName("");
-    setEmail("");
-    setPassword("");
-  };
-//   const [perfil, setPerfil] = useState([]);
-
-//   useEffect(() => {
-//     const obtenerPerfil = async () => {
-//       try {
-//         // Realizar la solicitud a la base de datos para obtener el perfil del cliente
-//         const response = await axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/perfil?customerId=${customerId}`);
-//         setPerfil(
-// response.data
-// ); // Actualizar el estado con el perfil del cliente
-//       } catch (error) {
-//         console.error('Error al obtener perfil:', error);
-//       }
-//     };
-
-//      if (customerId) {
-//       obtenerPerfil();
-//      }
-//   }, [customerId]);
   return (
-    <Box >
-          <UserPage />
+    <Box>
       <Flex
-        // minH={'1vh'}
         marginTop={'-10px'}
         align={'center'}
         justify={'center'}
-        // bg={useColorModeValue('gray.50', 'gray.100')}
       >
         <Stack
           spacing={5}
           w={'full'}
           maxW={'md'}
-        //   bg={useColorModeValue('white', 'gray.700')}
           rounded={'xl'}
           boxShadow={'lg'}
           p={8}
@@ -150,26 +84,35 @@ export default function EditProfile() {
             Edit Profile
           </Heading>
           <FormControl id={user.icon}>
-          <FormLabel>User Icon</FormLabel>
-          <Stack direction={['column', 'row']} spacing={6}>
-            <Center>
-              <Avatar size="xl" src="https://bit.ly/sage-adebayo">
-                <AvatarBadge
-                  as={IconButton}
-                  size="sm"
-                  rounded="full"
-                  top="-10px"
-                  colorScheme="red"
-                  aria-label="remove Image"
-                  icon={<SmallCloseIcon />}
-                />
-              </Avatar>
-            </Center>
-            <Center w="full">
-              <Button w="full">Change Icon</Button>
-            </Center>
-          </Stack>
-        </FormControl>
+            <FormLabel>User Icon</FormLabel>
+            <Stack direction={['column', 'row']} spacing={6}>
+              <Center>
+                <Avatar size="xl" src={user.picture}>
+                  {/* <AvatarBadge
+                    as={IconButton}
+                    size="sm"
+                    rounded="full"
+                    top="-10px"
+                    colorScheme="red"
+                    aria-label="remove Image"
+                    icon={<SmallCloseIcon />}
+                  /> */}
+                </Avatar>
+              </Center>
+              <Center w="full">
+                <Button w="full">Change Icon
+                <input
+              type="file"
+              id="image"
+              name="image"
+              accept="image/*"
+              onChange={handleImageSelect}
+              style={{ display: "none" }}
+            />
+            </Button>
+              </Center>
+            </Stack>
+          </FormControl>
           <FormControl id={user.name} isRequired>
             <FormLabel>User Name</FormLabel>
             <Input
@@ -180,7 +123,7 @@ export default function EditProfile() {
               onChange={(e) => setName(e.target.value)}
             />
           </FormControl>
-          <FormControl id={user.email} isRequired>
+         {/* <FormControl id={user.email} isRequired>
             <FormLabel>Email Address</FormLabel>
             <Input
               placeholder="your-email@example.com"
@@ -199,7 +142,7 @@ export default function EditProfile() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-          </FormControl>
+          </FormControl> */}
           <Stack spacing={6} direction={['column', 'row']}>
             <Button
               bg={'red.400'}
@@ -210,8 +153,7 @@ export default function EditProfile() {
               }}
               onClick={() => {
                 setName("");
-                setEmail("");
-                setPassword("");
+                setPicture("");
               }}
             >
               Cancel
