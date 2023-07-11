@@ -11,7 +11,7 @@ import NavBar from "./components/NavBar/NavBar";
 
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
-//import EditProfile from "./components/EditProfile";
+import EditProfile from './components/UserPage/EditProfile';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
@@ -24,7 +24,7 @@ export default function App() {
   const hideNavBarRoutes = [
     "/profile",
     "/profile/myProfile",
-    "/profile/myShopping",
+    // "/profile/myShopping",
     "/profile/myReviews",
     "/profile/billing",
   ];
@@ -41,7 +41,7 @@ export default function App() {
 
         <Route path="/profile" element={<UserPage />}>
           <Route path="" element={<UserPageInfo />} />
-          <Route path="myProfile" element={<p>Mi perfil</p>} />
+          <Route path="myProfile" element={<EditProfile />} />
           {/* <Route path="myShopping" element={< />} />
         <Route path="myReviews" element={< />} />
         <Route path="billing" element={< />} />  */}
