@@ -3,6 +3,8 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 import { useContext } from "react";
 import Loader from "../components/Loader/Loader";
+import { useLocation } from "react-router-dom";
+
 
 //Create context
 const contextUser = createContext();
@@ -17,6 +19,9 @@ const ProviderUser = ({ children }) => {
     const [userDB, setUserDB] = useState({});
     const [isLoading, setIsLoading ] = useState(true);
     const { user, isAuthenticated } = useAuth0();
+    const location = useLocation();
+
+
     
     useEffect(() => {
         if(isAuthenticated){
@@ -34,7 +39,7 @@ const ProviderUser = ({ children }) => {
             return;
         }
         setIsLoading(false);
-    },[user]);
+    },[user, location]);
 
     return (
         <contextUser.Provider value={userDB}>

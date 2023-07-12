@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "./components/Landing/Landing";
 import Home from "./components/Home/Home";
@@ -8,7 +7,7 @@ import FormCreate from "./components/FormCreate/form";
 import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
-
+import MyShopping from "./components/myShoping/MyShoping";
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
 import EditProfile from './components/UserPage/EditProfile';
@@ -17,7 +16,6 @@ import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
-
 import CreateReview from "./components/CreateReview/CreateReview";
 
 
@@ -26,7 +24,7 @@ export default function App() {
   const hideNavBarRoutes = [
     "/profile",
     "/profile/myProfile",
-    // "/profile/myShopping",
+    "/profile/myShopping",
     "/profile/myReviews",
     "/profile/billing",
   ];
@@ -44,8 +42,8 @@ export default function App() {
         <Route path="/profile" element={<UserPage />}>
           <Route path="" element={<UserPageInfo />} />
           <Route path="myProfile" element={<EditProfile />} />
-          {/* <Route path="myShopping" element={< />} />
-        <Route path="myReviews" element={< />} />
+           <Route path="myShopping" element={< MyShopping/>} />
+       {/*  <Route path="myReviews" element={< />} />
         <Route path="billing" element={< />} />  */}
         </Route>
 

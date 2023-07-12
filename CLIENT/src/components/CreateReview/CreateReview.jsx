@@ -4,22 +4,23 @@ import { Box, Input, Button, FormControl, FormLabel, FormErrorMessage, Alert, Al
 import { StarIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
+import { useUserInfo } from '../../context/ProviderUser';
 
 const CreateReview = () => {
-  const { isAuthenticated, user, getAccessTokenSilently } = useAuth0();
+  const { isAuthenticated} = useAuth0();
   const [description, setDescription] = useState('');
   const [bookId, setBookId] = useState('');
   const [rate, setRate] = useState(0);
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const { user } = useUserInfo();
 
   const handleCreateReview = async () => {
     try {
-      const accessToken = await getAccessTokenSilently();
       const reviewData = {
         description,
         rate,
-        IdUser: user.email,
+        IdUser: user.IdUser,
         IdBook: bookId,
       };
       console.log(reviewData);

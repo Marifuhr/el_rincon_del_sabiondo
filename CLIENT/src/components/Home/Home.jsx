@@ -8,6 +8,7 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
 import  { useState, useEffect } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
+import PopUp from '../PopUp/PopUp';
 
 
 
@@ -199,7 +200,7 @@ export default function Home() {
         </div> */}
         <div>
           {paymentId !== null && status === "approved" ? (
-           <PopUp/>
+           <PopUp />
           ) : null}
         </div>
         <div className={styles.boxCardBooks}>

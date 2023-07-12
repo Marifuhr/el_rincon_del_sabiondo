@@ -4,13 +4,16 @@ import { Box, Button, Image, Menu, MenuButton, MenuList, MenuItem } from "@chakr
 import { FiLogOut } from "react-icons/fi";
 import styles from './Profile.module.css';
 import { clearStorageCart } from "../../Redux/Action/Index";
-
+import { useUserInfo } from "../../context/ProviderUser";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 
 
 export const Profile = () => {
-  const { user, isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated, logout } = useAuth0();
+  const { user } = useUserInfo();
+  console.log(user)
 
   const handleLogout = () => {
     clearStorageCart();
@@ -21,7 +24,7 @@ export const Profile = () => {
   };
 
   return (
-    isAuthenticated && (
+    isAuthenticated && user && (
       <div className={styles.profile_zlksadaskj}>
         <Menu>
           <MenuButton as={Button} variant="flat" colorScheme="gray" size="sm">

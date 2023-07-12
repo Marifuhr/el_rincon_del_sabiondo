@@ -16,6 +16,8 @@ import {
 import { useColorModeValue } from "@chakra-ui/react";
 //import { MdLocalShipping } from "react-icons/md";
 import { useUserInfo } from "../../context/ProviderUser";
+import {useColorModeValue} from "@chakra-ui/color-mode";
+
 import  formatDate  from "../../utils/formatDate";
 import { useState, useEffect } from "react";
 
