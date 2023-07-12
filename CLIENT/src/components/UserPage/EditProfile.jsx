@@ -21,22 +21,27 @@ import { useUserInfo } from "../../context/ProviderUser";
 import axios from "axios";
 
 
+
 export default function EditProfile() {
+  const { user } = useUserInfo();
+  console.log(user);
 
 const [name, setName] = useState("");
 const [picture, setPicture] = useState("");
-// const [email, setEmail] = useState("");
-// const [password, setPassword] = useState("");
-
-const { user } = useUserInfo();
-console.log(user);
+ const [address, setAddress] = useState("");
+ const [postalCode, setPostalCode] = useState("");
+ const [province, setProvince] = useState("");
+ const [country, setCountry] = useState("");
 
 
 function handleSubmit(e) {
   e.preventDefault();
 axios.put(`${import.meta.env.VITE_URL_ENDPOINT}/users/${user.id}`, {
   name,
-  picture,  
+  picture, 
+  address,
+  postalCode,
+  country, 
 })
  
 }
@@ -47,16 +52,9 @@ const handleImageSelect = async (event) => {
       const formData = new FormData();
       formData.append("file", file);
       formData.append("upload_preset", 'srpd9jzh');
-
-      const response = await axios.post(
-          `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
-          formData
-      );
-
+      const response = await axios.post(`https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,formData);
       const imageUrl = response.data.secure_url;
-
-      setPicture(imageUrl)
-      
+      setPicture(imageUrl);
     } catch (error) {
       console.error("Error al cargar la imagen a Cloudinary:", error);
     }
@@ -83,20 +81,11 @@ const handleImageSelect = async (event) => {
           <Heading lineHeight={1.1} fontSize={{ base: '2xl', sm: '3xl' }}>
             Edit Profile
           </Heading>
-          <FormControl id={user.icon}>
+          {/* <FormControl id={user.icon}> */}
             <FormLabel>User Icon</FormLabel>
             <Stack direction={['column', 'row']} spacing={6}>
               <Center>
                 <Avatar size="xl" src={user.picture}>
-                  {/* <AvatarBadge
-                    as={IconButton}
-                    size="sm"
-                    rounded="full"
-                    top="-10px"
-                    colorScheme="red"
-                    aria-label="remove Image"
-                    icon={<SmallCloseIcon />}
-                  /> */}
                 </Avatar>
               </Center>
               <Center w="full">
@@ -112,7 +101,7 @@ const handleImageSelect = async (event) => {
             </Button>
               </Center>
             </Stack>
-          </FormControl>
+          {/* </FormControl> */}
           <FormControl id={user.name} isRequired>
             <FormLabel>User Name</FormLabel>
             <Input
@@ -123,26 +112,46 @@ const handleImageSelect = async (event) => {
               onChange={(e) => setName(e.target.value)}
             />
           </FormControl>
-         {/* <FormControl id={user.email} isRequired>
-            <FormLabel>Email Address</FormLabel>
+          <FormControl id={user.country} isRequired>
+            <FormLabel>Country</FormLabel>
             <Input
-              placeholder="your-email@example.com"
+              placeholder="country"
               _placeholder={{ color: 'gray.500' }}
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              type="country"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
             />
           </FormControl>
-          <FormControl id={user.password} isRequired>
-            <FormLabel>Password</FormLabel>
+          <FormControl id={user.province} isRequired>
+            <FormLabel>Address</FormLabel>
             <Input
-              placeholder="Password"
+              placeholder="province"
               _placeholder={{ color: 'gray.500' }}
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              type="province"
+              value={province}
+              onChange={(e) => setProvince(e.target.value)}
             />
-          </FormControl> */}
+          </FormControl>
+         <FormControl id={user.address} isRequired>
+            <FormLabel>Address</FormLabel>
+            <Input
+              placeholder="address"
+              _placeholder={{ color: 'gray.500' }}
+              type="address"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+            />
+          </FormControl>
+          <FormControl id={user.postalCode} isRequired>
+            <FormLabel>Postal Code</FormLabel>
+            <Input
+              placeholder="PostalCode"
+              _placeholder={{ color: 'gray.500' }}
+              type="postalCode"
+              value={postalCode}
+              onChange={(e) => setPostalCode(e.target.value)}
+            />
+          </FormControl>
           <Stack spacing={6} direction={['column', 'row']}>
             <Button
               bg={'red.400'}
@@ -167,6 +176,7 @@ const handleImageSelect = async (event) => {
               }}
               type="submit"
               onClick={handleSubmit}
+
             >
               Save Changes
             </Button>

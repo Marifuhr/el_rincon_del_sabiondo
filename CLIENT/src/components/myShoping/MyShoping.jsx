@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUserInfo } from "../../context/ProviderUser"; 
 
-function MyShopping(){
+function MyShopping() {
   const { user } = useUserInfo();
   console.log(user);
   const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
 
   const [compras, setCompras] = useState([]);
+  const [carrito, setCarrito] = useState([]);
 
   useEffect(() => {
     const obtenerCompras = async () => {
@@ -20,14 +21,25 @@ function MyShopping(){
       }
     };
 
-     if (customerId) {
+    if (customerId) {
       obtenerCompras();
-     }
+    }
   }, [customerId]);
+
+  // Función para agregar un producto al carrito
+  const agregarAlCarrito = (producto) => {
+    setCarrito([...carrito, producto]);
+  };
 
   return (
     <div>
-      <h2>Compras del cliente {customerId}</h2>
+      <h2>Mis Compras {customerId}</h2>
+      <h3>Carrito ({carrito.length})</h3>
+      <ul>
+        {carrito.map((producto, index) => (
+          <li key={index}>{producto}</li>
+        ))}
+      </ul>
       <ul>
         {compras.map(compra => (
           <li key={compra.id}>
