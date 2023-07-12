@@ -13,6 +13,7 @@ import { useEffect } from "react";
 export const Profile = () => {
   const { isAuthenticated, logout } = useAuth0();
   const { user } = useUserInfo();
+  
   console.log(user)
 
   const handleLogout = () => {

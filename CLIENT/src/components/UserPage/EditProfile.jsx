@@ -18,8 +18,8 @@ import {
   AlertIcon,
   AlertTitle,
   CloseButton,
-} from '@chakra-ui/react';
-
+} from "@chakra-ui/react";
+import { useEffect } from "react";
 import { useUserInfo } from "../../context/ProviderUser";
 import axios from "axios";
 
@@ -38,18 +38,55 @@ export default function EditProfile() {
 
   const fileInputRef = useRef(null);
 
+  useEffect(() => {
+    setName(user.name || "");
+    setPicture(user.picture || "");
+    setAddress(user.address || "");
+    setPostalCode(user.postalCode || "");
+    setProvince(user.province || "");
+    setCountry(user.country || "");
+
+    if (user.picture && !user.picture.includes("cloudinary")) {
+      uploadImageToCloudinary(user.picture);
+    }
+  }, [user]);
+
+  // Función para cargar la imagen en Cloudinary
+const uploadImageToCloudinary = async (imageUrl) => {
+  try {
+    const formData = new FormData();
+    formData.append("file", imageUrl);
+    formData.append("upload_preset", "srpd9jzh");
+    const response = await axios.post(
+      `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
+      formData
+    );
+    const cloudinaryImageUrl = response.data.secure_url;
+    setPicture(cloudinaryImageUrl);
+  } catch (error) {
+    console.error("Error al cargar la imagen a Cloudinary:", error);
+  }
+};
+
   async function handleSubmit(e) {
     e.preventDefault();
+
+    // Validar campos requeridos
+    if (!name || !country || !province || !address || !postalCode) {
+      setUpdateError("Por favor, rellene todos los campos.");
+      setUpdateSuccess(false);
+      return;
+    }
     try {
       const response = await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
         {
-          name: name ? name : user.name,
-          picture: picture ? picture : user.picture,
-          address: address ? address : user.address,
-          province: province ? province : user.province,
-          postalCode: postalCode ? postalCode : user.postalCode,
-          country: country ? country : user.country,
+          name: name,
+          picture: picture,
+          address: address,
+          province: province,
+          postalCode: postalCode,
+          country: country,
         }
       );
       console.log(response.data);
@@ -60,7 +97,6 @@ export default function EditProfile() {
         } else {
           setUpdateSuccess(true);
           setName("");
-          setPicture(null);
           setAddress("");
           setPostalCode("");
           setProvince("");
@@ -118,7 +154,7 @@ export default function EditProfile() {
           <FormLabel>User Icon</FormLabel>
           <Stack direction={["column", "row"]} spacing={6}>
             <Center>
-              <Avatar size="xl" src={picture ? picture : user.picture}></Avatar>
+              <Avatar size="xl" src={picture}></Avatar>
             </Center>
             <Center w="full">
               <Button w="full" onClick={handleOpenFileDialog}>
