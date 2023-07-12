@@ -122,7 +122,11 @@ module.exports = function(database) {
             }
         },
         address: {
+<<<<<<< HEAD
             type: DataTypes.STRING(100),
+=======
+            type: DataTypes.STRING(45),
+>>>>>>> 3c7ddb452c6c46a314e5bb3a73d3120359ddba57
             allowNull: true,
         },
         postalCode: {
@@ -138,4 +142,8 @@ module.exports = function(database) {
             allowNull: true,
         }
     });
+<<<<<<< HEAD
 } 
+=======
+}
+>>>>>>> 3c7ddb452c6c46a314e5bb3a73d3120359ddba57

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // const { DataTypes } = require("sequelize")
 // const generateIdUUID = require("../utils/generateIdUUID")
 
@@ -25,6 +26,11 @@
 const { DataTypes } = require("sequelize");
 const generateIdUUID = require("../utils/generateIdUUID");
 
+=======
+const { DataTypes } = require("sequelize");
+const generateIdUUID = require("../utils/generateIdUUID");
+
+>>>>>>> 3c7ddb452c6c46a314e5bb3a73d3120359ddba57
 module.exports = function(database) {
     database.define('SellingTotal', {
         IdSellingTotal: {
@@ -57,4 +63,8 @@ module.exports = function(database) {
         createdAt: true,
         updatedAt: false
     });
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 3c7ddb452c6c46a314e5bb3a73d3120359ddba57

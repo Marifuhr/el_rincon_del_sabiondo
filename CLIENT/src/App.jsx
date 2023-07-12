@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Landing from "./components/Landing/Landing";
 import Home from "./components/Home/Home";
@@ -17,7 +16,10 @@ import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
+import MyShopping from './components/myShoping/MyShoping'
+
 import CreateReview from "./components/CreateReview/CreateReview";
+
 
 export default function App() {
   const location = useLocation();
@@ -53,7 +55,11 @@ export default function App() {
         <Route path="/cart_pay" element={<CartPayPage />} />
         <Route path="/createreview" element={<CreateReview />} />
         <Route path="*" element={<NotFound />} />
+<<<<<<< HEAD
        
+=======
+        <Route path="/myShopping" element={<MyShopping />} />
+>>>>>>> 3c7ddb452c6c46a314e5bb3a73d3120359ddba57
       </Routes>
     </div>
   );

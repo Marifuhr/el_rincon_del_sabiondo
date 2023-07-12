@@ -10,7 +10,7 @@ import {
   REMOVE_BOOK_SHOPPING_CART,
   CLEAR_SHOPPING_CART,
   CREATE_USER,
-  SAVE_PROFILE_CHANGES
+  SEND_MAIL,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -31,7 +31,7 @@ const initialState = {
     category: "",
     price: "",
   },
-  cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || []
+  cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
 };
 
 const filterResultsByCriteria = (filters, resultsToFilter) => {
@@ -59,7 +59,7 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
 
       return true; // Si no se especifica un valor de filtro válido, se devuelven todos los libros.
     });
-  };
+  }
   return filterResults;
 };
 
@@ -91,7 +91,7 @@ const reducer = (state = initialState, action) => {
         return {
           ...state,
           filtered: filterResultsByCriteria(action.payload, state.search),
-        }
+        };
       }
       return {
         ...state,
@@ -113,15 +113,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         allBooks: [...state.allBooks, action.payload],
-      }
+      };
 
     case ORDER_PRICE: {
       let filterOrder = [];
       state.filtered
         ? (filterOrder = [...state.filtered])
         : state.search
-          ? (filterOrder = [...state.search])
-          : (filterOrder = [...state.allBooks]);
+        ? (filterOrder = [...state.search])
+        : (filterOrder = [...state.allBooks]);
 
       filterOrder.sort((bookA, bookB) => {
         const priceA = parseFloat(bookA.price);
@@ -139,14 +139,16 @@ const reducer = (state = initialState, action) => {
     }
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
-      const validateIfExistBook = state.cart_shopping.some(({ IdBook }) => IdBook === bookPayload.IdBook);
+      const validateIfExistBook = state.cart_shopping.some(
+        ({ IdBook }) => IdBook === bookPayload.IdBook
+      );
 
       if (validateIfExistBook) {
         const mapedBooks = state.cart_shopping.map((book) => {
           const finalBook = book;
           if (book.IdBook === bookPayload.IdBook) {
             finalBook.quantity += 1;
-          };
+          }
           return book;
         });
 
@@ -154,17 +156,17 @@ const reducer = (state = initialState, action) => {
 
         return {
           ...state,
-          cart_shopping: mapedBooks
+          cart_shopping: mapedBooks,
         };
-      };
+      }
 
       const parsedBook = {
         IdBook: bookPayload.IdBook,
         title: bookPayload.title,
-        description: bookPayload.description.slice(0,255),
+        description: bookPayload.description.slice(0, 255),
         picture_url: bookPayload.image,
         unit_price: Number(bookPayload.price),
-        quantity: 1
+        quantity: 1,
       };
       
       const cart_shopping = [...state.cart_shopping, parsedBook];
@@ -172,41 +174,47 @@ const reducer = (state = initialState, action) => {
       
       return {
         ...state,
-        cart_shopping
-      }
+        cart_shopping,
+      };
     }
-    case REMOVE_BOOK_SHOPPING_CART:{
+    case REMOVE_BOOK_SHOPPING_CART: {
       const IdBookToRemove = action.payload;
-      const lastCart = state.cart_shopping.filter(({IdBook}) =>  IdBook !== IdBookToRemove);
+      const lastCart = state.cart_shopping.filter(
+        ({ IdBook }) => IdBook !== IdBookToRemove
+      );
       addShoopingCartStorage(lastCart);
-      
+
       return {
         ...state,
-        cart_shopping: lastCart
-      }
+        cart_shopping: lastCart,
+      };
     }
     
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
+
+
+    case SEND_MAIL:
+      return {
+        ...state,
+        infoSend: action.payload,
+      };
+    default:
+      return { ...state };
+  }
+};
+const createUser = (state = initialState, action) => {
+  switch (action.type) {
     case CREATE_USER:
       return {
         ...state,
         users: [...state.users, action.payload],
       };
-      case SAVE_PROFILE_CHANGES:
-        return {
-          ...state,
-          profile: action.payload,
-        };
-  
     default:
-      return { ...state };
-    };
-  };
-    
-
-  
+      return state;
+  }
+};
 
 export default reducer;
