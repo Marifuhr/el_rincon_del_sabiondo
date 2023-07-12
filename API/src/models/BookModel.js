@@ -92,6 +92,13 @@ module.exports = function (database) {
         isActive: {
             type: DataTypes.BOOLEAN,
             defaultValue: true
+        },
+        stock:{
+            type: DataTypes.INTEGER,
+            defaultValue: 0,
+            validate:{
+                min:0,
+            }
         }
         //? Association with BookCategory in relationsModels.js N:N
         //? Association with BookReviews in relationsModels.js N:N

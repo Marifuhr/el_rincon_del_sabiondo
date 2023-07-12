@@ -15,6 +15,11 @@ import {
 import { addShoopingCartStorage } from "../Action/Index.js";
 
 const initialState = {
+  profile: {
+    name: "",
+    email: "",
+    password: "",
+  },
   users: [],
   allBooks: [],
   detailBooks: [],
@@ -163,10 +168,10 @@ const reducer = (state = initialState, action) => {
         unit_price: Number(bookPayload.price),
         quantity: 1,
       };
-
+      
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-
+      
       return {
         ...state,
         cart_shopping,
@@ -184,11 +189,12 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart,
       };
     }
-
+    
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
+
 
     case SEND_MAIL:
       return {

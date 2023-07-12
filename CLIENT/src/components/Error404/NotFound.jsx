@@ -21,14 +21,16 @@ export default function NotFound() {
         La página que estás buscando no parece existir
       </Text>
 
-      <Button
-        colorScheme="teal"
-        bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
-        color="white"
-        variant="solid"
-      >
-        Ir Pagina Principal
-      </Button>
+      <a href="/home">
+  <Button
+    colorScheme="teal"
+    bgGradient="linear(to-r, teal.400, teal.500, teal.600)"
+    color="white"
+    variant="solid"
+  >
+    Ir Página Principal
+  </Button>
+  </a>
     </Box>
   );
 }

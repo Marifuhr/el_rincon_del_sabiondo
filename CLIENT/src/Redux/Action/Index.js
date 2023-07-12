@@ -157,3 +157,13 @@ export const sendMail = (data) => {
     }
   };
 };
+
+
+// actions.js
+
+export function saveProfileChanges(profileData){
+  return {
+    type: SAVE_PROFILE_CHANGES,
+    payload: profileData,
+  };
+};
