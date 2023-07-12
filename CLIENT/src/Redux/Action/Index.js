@@ -12,6 +12,7 @@ import {
   REMOVE_BOOK_SHOPPING_CART,
   CLEAR_SHOPPING_CART,
   CREATE_USER,
+  SEND_MAIL,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -93,12 +94,12 @@ export const createBook = (book) => {
       return dispatch({
         type: CREATE_BOOK,
         payload: newBook,
-      })
+      });
     } catch (error) {
       console.log(error.message);
     }
-  }
-}
+  };
+};
 
 export function orderPrice(order) {
   return {
@@ -107,39 +108,52 @@ export function orderPrice(order) {
   };
 }
 
-export function addBookCart(book){
+export function addBookCart(book) {
   return {
     type: ADD_BOOK_SHOPPING_CART,
-    payload:book
-  }
-};
-
-export function remoteBookCart(Id){
-  return {
-    type: REMOVE_BOOK_SHOPPING_CART,
-    payload:Id
-  }
-};
-
-export function clearShoppingCart(){
-  return {
-    type: CLEAR_SHOPPING_CART
-  }
+    payload: book,
+  };
 }
 
+export function remoteBookCart(Id) {
+  return {
+    type: REMOVE_BOOK_SHOPPING_CART,
+    payload: Id,
+  };
+}
 
-export function addShoopingCartStorage(cart){
+export function clearShoppingCart() {
+  return {
+    type: CLEAR_SHOPPING_CART,
+  };
+}
+
+export function addShoopingCartStorage(cart) {
   localStorage.setItem(TOKEN_STORAGE_CART, JSON.stringify(cart));
 }
 
-export function clearStorageCart(){
+export function clearStorageCart() {
   localStorage.removeItem(TOKEN_STORAGE_CART);
 }
-
 
 export function createUser(userData) {
   return {
     type: CREATE_USER,
     payload: userData,
+  };
+}
+
+export const sendMail = (data) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${endpoint}/mail`, data);
+      const infoSend = response.data;
+      return dispatch({
+        type: SEND_MAIL,
+        payload: infoSend,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 };
