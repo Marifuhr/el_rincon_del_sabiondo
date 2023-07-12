@@ -13,7 +13,11 @@ import {
   AvatarBadge,
   IconButton,
   Center,
-  Box
+  Box,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  CloseButton,
 } from '@chakra-ui/react';
 
 import { useUserInfo } from "../../context/ProviderUser";
@@ -29,20 +33,48 @@ export default function EditProfile() {
   const [postalCode, setPostalCode] = useState(null);
   const [province, setProvince] = useState(null);
   const [country, setCountry] = useState(null);
+  const [updateSuccess, setUpdateSuccess] = useState(false);
+  const [updateError, setUpdateError] = useState(null);
 
   const fileInputRef = useRef(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await axios.put(`${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, {
-      name: name ? name : user.name,
-      picture: picture ? picture : user.picture,
-      address: address ? address : user.address,
-      province: province ? province : user.province,
-      postalCode: postalCode ? postalCode : user.postalCode,
-      country: country ? country : user.country,
-    });
-    console.log(response.data);
+    try {
+      const response = await axios.put(
+        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
+        {
+          name: name ? name : user.name,
+          picture: picture ? picture : user.picture,
+          address: address ? address : user.address,
+          province: province ? province : user.province,
+          postalCode: postalCode ? postalCode : user.postalCode,
+          country: country ? country : user.country,
+        }
+      );
+      console.log(response.data);
+      if (response.status === 200) {
+        if (response.data.error) {
+          setUpdateError(response.data.error);
+          setUpdateSuccess(false);
+        } else {
+          setUpdateSuccess(true);
+          setName("");
+          setPicture(null);
+          setAddress("");
+          setPostalCode("");
+          setProvince("");
+          setCountry("");
+        }
+      } else {
+        setUpdateError("An error occurred during the update.");
+        setUpdateSuccess(false);
+      }
+    } catch (error) {
+      console.error("Error updating user:", error);
+      setUpdateError("An error occurred during the update.");
+      setUpdateSuccess(false);
+    }
   }
 
   const handleImageSelect = async (event) => {
@@ -153,6 +185,30 @@ export default function EditProfile() {
               onChange={(e) => setPostalCode(e.target.value)}
             />
           </FormControl>
+          {updateError && (
+            <Alert status="error">
+              <AlertIcon />
+              <AlertTitle>{updateError}</AlertTitle>
+              <CloseButton
+                position="absolute"
+                right="8px"
+                top="8px"
+                onClick={() => setUpdateError(null)}
+              />
+            </Alert>
+          )}
+          {updateSuccess && (
+            <Alert status="success">
+              <AlertIcon />
+              <AlertTitle>Update successful.</AlertTitle>
+              <CloseButton
+                position="absolute"
+                right="8px"
+                top="8px"
+                onClick={() => setUpdateSuccess(false)}
+              />
+            </Alert>
+          )}
           <Stack spacing={6} direction={["column", "row"]}>
             <Button
               bg={"red.400"}
