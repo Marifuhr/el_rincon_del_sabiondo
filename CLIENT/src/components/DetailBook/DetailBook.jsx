@@ -3,13 +3,15 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetailBooks } from "../../Redux/Action/Index";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
 import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
 import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
+import { Button, Flex } from '@chakra-ui/react';
+
 
 function DetailBook() {
   const { id } = useParams();
@@ -55,16 +57,18 @@ function DetailBook() {
       ? book.Categories[0].name
       : "Unknown Category";
 
-  return (
-    <div>
+      
+
+      return (
+        <div>
       <button className="btn-back">
         <ButtonVolver />
       </button>
       {
         loaderBooks ?
-          <Loader />
+        <Loader />
         : (
-            <div className="container">
+          <div className="container">
               <div className="row justify-content-center">
                 <div style={{ position: 'relative' }} className="col-md-7 col-lg-4 mb-5 mb-lg-0 wow fadeIn">
                   <div className="card border-0 shadow">
@@ -119,6 +123,28 @@ function DetailBook() {
                               <p className="mb-0"></p>
                             </div>
                           </div>
+                            <Flex h="100vh" justifyContent="center" alignItems="center">
+                            <Link to="/createReview">
+              <Button
+            
+                px={4}
+                fontSize={'sm'}
+                rounded={'full'}
+                bg={'blue.400'}
+                color={'white'}
+                boxShadow={
+                  '0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)'
+                }
+                _hover={{
+                  bg: 'blue.500',
+                }}
+                _focus={{
+                  bg: 'blue.500',
+                }}>
+                Dejá tu comentario
+              </Button>
+            </Link>
+            </Flex>
                         </div>
                       </div>
                     </div>

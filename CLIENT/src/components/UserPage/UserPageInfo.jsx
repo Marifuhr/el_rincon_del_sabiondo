@@ -1,15 +1,11 @@
 import {
   Box,
-  Container,
   Stack,
   Text,
   Image,
   Flex,
-  VStack,
-  Button,
   Heading,
   SimpleGrid,
-  StackDivider,
   ListItem,
   List,
   useColorModeValue
@@ -63,44 +59,50 @@ export default function Simple() {
           </Box>
         </Stack>
       </SimpleGrid>
+        <Box>
+          <Text
+            fontSize={{ base: "16px", lg: "18px" }}
+            color="yellow.500"
+            fontWeight={"500"}
+            textTransform={"uppercase"}
+            mb={"4"}
+          >
+            Datos
+          </Text>
 
-      <Box>
-        <Text
-          fontSize={{ base: "16px", lg: "18px" }}
-          color={useColorModeValue("yellow.500", "yellow.300")}
-          fontWeight={"500"}
-          textTransform={"uppercase"}
-          mb={"4"}
-        >
-          Datos
-        </Text>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+            <List spacing={2}>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Rol:
+                </Text>{" "}
+                {user.role}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Id:
+                </Text>{" "}
+                {user.IdUser}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Email:
+                </Text>{" "}
+                {user.email}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Actualizacion:
+                </Text>{" "}
+                {formatDate(user.updatedAt)}
+              </ListItem>
+            </List>
+          </SimpleGrid>
+        </Box>
+  
+    
+       
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          <List spacing={2}>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Rol:
-              </Text>{" "}
-              {user.role}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Id:
-              </Text>{" "}
-              {user.IdUser}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Email:
-              </Text>{" "}
-              {user.email}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Actualizacion:
-              </Text>{" "}
-              {formatDate(user.updatedAt)}
-            </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
                 País:
