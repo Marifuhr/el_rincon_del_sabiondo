@@ -76,9 +76,8 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    console.log(cartStorage.current);
-    if ( paymentId !== null && status === "approved" && cartStorage.current.length){
-      if(user){
+    if(user){
+      if ( paymentId !== null && status === "approved" && cartStorage.current.length){
         createSellingTotalDB({IdUser: user.IdUser, products: cartStorage.current})
       }
     }
