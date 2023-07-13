@@ -1,6 +1,8 @@
 import {
   Avatar,
   Box,
+  ListItem,
+  Text,
   chakra,
   Container,
   Flex,
@@ -64,7 +66,7 @@ import { useState, useEffect } from "react";
           fontSize={"15px"}
           pb={4}
         >
-          {content}
+          {user.Reviews}
         </chakra.p>
         <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={14}>
           {user.name}
@@ -89,13 +91,13 @@ import { useState, useEffect } from "react";
   );
 }
 
-export default function GridBlurredBackdrop(props) {
-  console.log(props)
-   const [reviews, setReviews] = useState([]);
+export default function GridBlurredBackdrop() {
+  // const { user } = useUserInfo();
+ const [reviews, setReviews] = useState([]);
 
-   useEffect(() => {
-     setReviews(props.user.Reviews);
-   }, [reviews]);
+ useEffect(() => {
+   setReviews(TestimonialCard);
+ }, [TestimonialCard()]);
   return (
     <Flex
       textAlign={"center"}
@@ -146,7 +148,7 @@ export default function GridBlurredBackdrop(props) {
         mx={"auto"}
       >
         {reviews?.map((review) => (
-          <TestimonialCard {...review}/>
+          <TestimonialCard key={review} />
         ))}
       </SimpleGrid>
       <Box>
