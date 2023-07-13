@@ -18,7 +18,7 @@ import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
 import CreateReview from "./components/CreateReview/CreateReview";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-
+import MyReviews from './components/UserPage/MyReviews'
 
 export default function App() {
   const location = useLocation();
@@ -44,8 +44,8 @@ export default function App() {
           <Route path="" element={<UserPageInfo />} />
           <Route path="myProfile" element={<EditProfile />} />
            <Route path="myShopping" element={< MyShopping/>} />
-       {/*  <Route path="myReviews" element={< />} />
-        <Route path="billing" element={< />} />  */}
+         <Route path="myReviews" element={< MyReviews />} />
+       {/* <Route path="billing" element={< />} />  */}
         </Route>
 
         <Route path="/create" element={<FormCreate />} />
