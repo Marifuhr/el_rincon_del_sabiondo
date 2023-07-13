@@ -1,11 +1,15 @@
 import {
   Box,
+  Container,
   Stack,
   Text,
   Image,
   Flex,
+  VStack,
+  Button,
   Heading,
   SimpleGrid,
+  StackDivider,
   ListItem,
   List,
   useColorModeValue
@@ -18,10 +22,15 @@ export default function Simple() {
   const { user } = useUserInfo();
   console.log(user);
   const [reviews, setReviews] = useState([]);
+  const [shopping, setShopping] = useState([]);
 
   useEffect(() => {
     setReviews(user.Reviews);
   }, [user.Reviews]);
+
+  useEffect(() => {
+    setShopping(user.SellingTotals);
+  }, [user.SellingTotals]);
 
   return (
     <Box>
@@ -54,50 +63,44 @@ export default function Simple() {
           </Box>
         </Stack>
       </SimpleGrid>
-        <Box>
-          <Text
-            fontSize={{ base: "16px", lg: "18px" }}
-            color="yellow.500"
-            fontWeight={"500"}
-            textTransform={"uppercase"}
-            mb={"4"}
-          >
-            Datos
-          </Text>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-            <List spacing={2}>
-              <ListItem>
-                <Text as={"span"} fontWeight={"bold"}>
-                  Rol:
-                </Text>{" "}
-                {user.role}
-              </ListItem>
-              <ListItem>
-                <Text as={"span"} fontWeight={"bold"}>
-                  Id:
-                </Text>{" "}
-                {user.IdUser}
-              </ListItem>
-              <ListItem>
-                <Text as={"span"} fontWeight={"bold"}>
-                  Email:
-                </Text>{" "}
-                {user.email}
-              </ListItem>
-              <ListItem>
-                <Text as={"span"} fontWeight={"bold"}>
-                  Actualizacion:
-                </Text>{" "}
-                {formatDate(user.updatedAt)}
-              </ListItem>
-            </List>
-          </SimpleGrid>
-        </Box>
-  
-    
-       
+      <Box>
+        <Text
+          fontSize={{ base: "16px", lg: "18px" }}
+          color={useColorModeValue("yellow.500", "yellow.300")}
+          fontWeight={"500"}
+          textTransform={"uppercase"}
+          mb={"4"}
+        >
+          Datos
+        </Text>
 
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+          <List spacing={2}>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Rol:
+              </Text>{" "}
+              {user.role}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Id:
+              </Text>{" "}
+              {user.IdUser}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Email:
+              </Text>{" "}
+              {user.email}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Actualizacion:
+              </Text>{" "}
+              {formatDate(user.updatedAt)}
+            </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
                 País:
@@ -138,9 +141,7 @@ export default function Simple() {
 
         <List spacing={2}>
           <ListItem>
-            <Text as={"span"} fontWeight={"bold"}>
-          
-            </Text>{" "}
+            <Text as={"span"} fontWeight={"bold"}></Text>{" "}
             {reviews?.map((review) => (
               <Box>
                 <ListItem>
@@ -167,7 +168,7 @@ export default function Simple() {
                   </Text>{" "}
                   {review.description}
                 </ListItem>
-                <br/>
+                <br />
               </Box>
             ))}
           </ListItem>
@@ -189,7 +190,22 @@ export default function Simple() {
             <Text as={"span"} fontWeight={"bold"}>
               Total de Libro:
             </Text>{" "}
-            {user.SellingTotals}
+            {shopping?.map((book) => (
+              <Box>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Producto:
+                  </Text>{" "}
+                  {book.product}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Precio:
+                  </Text>{" "}
+                  {book.price}
+                </ListItem>
+              </Box>
+            ))}
           </ListItem>
         </List>
       </Box>
