@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import {
   Button,
   Flex,
@@ -7,11 +7,7 @@ import {
   Heading,
   Input,
   Stack,
-  useColorModeValue,
-  HStack,
   Avatar,
-  AvatarBadge,
-  IconButton,
   Center,
   Box,
   Alert,
@@ -25,7 +21,6 @@ import axios from "axios";
 
 export default function EditProfile() {
   const { user } = useUserInfo();
-  console.log(user);
 
   const [name, setName] = useState(null);
   const [picture, setPicture] = useState(null);
@@ -89,7 +84,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
           country: country,
         }
       );
-      console.log(response.data);
+
       if (response.status === 200) {
         if (response.data.error) {
           setUpdateError(response.data.error);

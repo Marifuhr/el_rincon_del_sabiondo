@@ -17,6 +17,7 @@ import DetailBook from "./components/DetailBook/DetailBook";
 import CartPayPage from "./components/CartPayPage/CartPayPage";
 import NotFound from "./components/Error404/NotFound";
 import CreateReview from "./components/CreateReview/CreateReview";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 
 export default function App() {
@@ -39,7 +40,7 @@ export default function App() {
         <Route path="/login" element={<LoginButton />} />
         {/* <Route path="/logout" element={<LogoutButton />} /> */}
 
-        <Route path="/profile" element={<UserPage />}>
+        <Route path="/profile" element={<PrivateRoute><UserPage /></PrivateRoute>}>
           <Route path="" element={<UserPageInfo />} />
           <Route path="myProfile" element={<EditProfile />} />
            <Route path="myShopping" element={< MyShopping/>} />
