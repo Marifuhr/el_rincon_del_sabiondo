@@ -22,10 +22,15 @@ export default function Simple() {
   const { user } = useUserInfo();
   console.log(user);
   const [reviews, setReviews] = useState([]);
+  const [shopping, setShopping] = useState([]);
 
   useEffect(() => {
     setReviews(user.Reviews);
   }, [user.Reviews]);
+
+  useEffect(() => {
+    setShopping(user.SellingTotals);
+  }, [user.SellingTotals]);
 
   return (
     <Box>
@@ -136,9 +141,7 @@ export default function Simple() {
 
         <List spacing={2}>
           <ListItem>
-            <Text as={"span"} fontWeight={"bold"}>
-          
-            </Text>{" "}
+            <Text as={"span"} fontWeight={"bold"}></Text>{" "}
             {reviews?.map((review) => (
               <Box>
                 <ListItem>
@@ -165,7 +168,7 @@ export default function Simple() {
                   </Text>{" "}
                   {review.description}
                 </ListItem>
-                <br/>
+                <br />
               </Box>
             ))}
           </ListItem>
@@ -187,7 +190,22 @@ export default function Simple() {
             <Text as={"span"} fontWeight={"bold"}>
               Total de Libro:
             </Text>{" "}
-            {user.SellingTotals}
+            {shopping?.map((book) => (
+              <Box>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Producto:
+                  </Text>{" "}
+                  {book.product}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Precio:
+                  </Text>{" "}
+                  {book.price}
+                </ListItem>
+              </Box>
+            ))}
           </ListItem>
         </List>
       </Box>
