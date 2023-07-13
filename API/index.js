@@ -1,5 +1,4 @@
 require('dotenv').config();
-const bulk = require('./src/handlers/bulkCreateBooksFromFile');
 
 const morgan = require('morgan');
 const express = require('express');
@@ -40,6 +39,5 @@ db.sync({alter:true}).then(() => {
     //execute server
     server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
-        bulk();
     })
 });
