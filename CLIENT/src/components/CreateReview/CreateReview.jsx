@@ -23,7 +23,6 @@ const CreateReview = () => {
         IdUser: user.IdUser,
         IdBook: bookId,
       };
-      console.log(reviewData);
       const response = await axios.post(`${endpoint}/reviews`, reviewData);
 
       if (response.status === 200) {

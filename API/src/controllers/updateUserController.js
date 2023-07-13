@@ -18,11 +18,8 @@ const validationsAttributes = {
         return roles.includes(rol);
     },
     picture: (image) => {
-        const erValidateUrl = new RegExp('^(https?:\\/\\/)?'+ 
-	    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
-	    '((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
-	    '(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');
-	  return !!erValidateUrl.test(image);
+        const erValidateUrl = /^(https?:\/\/)?(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i;
+	    return !!erValidateUrl.test(image);
     },
     name: nameString => {
         const l = nameString.length;

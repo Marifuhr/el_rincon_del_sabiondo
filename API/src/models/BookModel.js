@@ -67,15 +67,21 @@ module.exports = function (database) {
                 notEmpty: true
             },
         },
-        rate: {//VIRTUAL
-            type: DataTypes.FLOAT,
-            defaultValue: 0.0,
-            validate: {
-                min: 0.0,
-                max: 5.0,
-                notEmpty: true,
+        rate: {
+            type: DataTypes.VIRTUAL,
+            get(){
+                const reviews = this.getDataValue('Reviews');
+                if (reviews.length > 0) {
+                    const totalRate = reviews.reduce((sum, review) => sum + review.rate, 0);
+                    return (totalRate / reviews.length).toFixed(2);
+                } else {
+                    return 0.0;
+                }
+            },
+            set(){
+                throw new Error('Cannot set the "rate" field directly.');
             }
-        },
+        }, 
         price: {
             type: DataTypes.DECIMAL,
             allowNull: false
