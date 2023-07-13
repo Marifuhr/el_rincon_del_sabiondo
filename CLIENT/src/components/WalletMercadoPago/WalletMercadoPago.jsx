@@ -11,7 +11,19 @@ function WalletMercadoPago({products}) {
     const handleBuy = async () => {
         initMercadoPago(import.meta.env.VITE_TOKEN_MERCADO_PAGO);
 
-        const id = await createPreference(products);
+        /* { title, description, picture_url, quantity, unit_price} */
+
+        const finalProducts = products.map(({price, quantity, image, title, description}) => {
+            const descriptionLast = description.slice(0, 250);
+            return {
+                unit_price:price,
+                quantity,
+                picture_url:image,
+                title,
+                description: descriptionLast
+            }
+        });
+        const id = await createPreference(finalProducts);
         if (id) {
             setPreferenceId(id);
         }
