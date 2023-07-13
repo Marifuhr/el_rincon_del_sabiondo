@@ -69,16 +69,16 @@ module.exports = function (database) {
         },
         rate: {
             type: DataTypes.VIRTUAL,
-            get() {
+            get(){
                 const reviews = this.getDataValue('Reviews');
                 if (reviews.length > 0) {
                     const totalRate = reviews.reduce((sum, review) => sum + review.rate, 0);
-                    return totalRate / reviews.length;
+                    return (totalRate / reviews.length).toFixed(2);
                 } else {
                     return 0.0;
                 }
             },
-            set() {
+            set(){
                 throw new Error('Cannot set the "rate" field directly.');
             }
         }, 
