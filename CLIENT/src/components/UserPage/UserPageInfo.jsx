@@ -11,13 +11,10 @@ import {
   SimpleGrid,
   StackDivider,
   ListItem,
-  List
+  List,
+  useColorModeValue
 } from "@chakra-ui/react";
-import { useColorModeValue } from "@chakra-ui/react";
-//import { MdLocalShipping } from "react-icons/md";
 import { useUserInfo } from "../../context/ProviderUser";
-import {useColorModeValue} from "@chakra-ui/color-mode";
-
 import  formatDate  from "../../utils/formatDate";
 import { useState, useEffect } from "react";
 
@@ -101,15 +98,9 @@ export default function Simple() {
             </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
-                Dirección:
+                País:
               </Text>{" "}
-              {user.address}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Codigo Postal:
-              </Text>{" "}
-              {user.postalCode}
+              {user.country}
             </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
@@ -119,9 +110,15 @@ export default function Simple() {
             </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
-                País:
+                Dirección:
               </Text>{" "}
-              {user.country}
+              {user.address}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Codigo Postal:
+              </Text>{" "}
+              {user.postalCode}
             </ListItem>
           </List>
         </SimpleGrid>
@@ -140,13 +137,19 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}>
-              Mi comentario:
+          
             </Text>{" "}
             {reviews?.map((review) => (
               <Box>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
-                    Libro:
+                    Nombre del Libro:
+                  </Text>{" "}
+                  {review.title}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Id del Libro:
                   </Text>{" "}
                   {review.IdBook}
                 </ListItem>
@@ -162,6 +165,7 @@ export default function Simple() {
                   </Text>{" "}
                   {review.description}
                 </ListItem>
+                <br/>
               </Box>
             ))}
           </ListItem>
