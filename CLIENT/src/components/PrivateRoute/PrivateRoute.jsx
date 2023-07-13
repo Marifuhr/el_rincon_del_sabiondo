@@ -1,15 +1,13 @@
-import { useEffect } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/ProviderUser';
 
 const PrivateRoute = ({ children }) => {
     const {user} = useUserInfo();
     
-    useEffect(() => {
-        console.log(user);
-    },[user]);
-
     return (
-        children
+        user ?
+            children
+        : <Navigate to='/' replace={true}/>
     )
 }
 
