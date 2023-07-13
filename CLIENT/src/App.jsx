@@ -11,7 +11,6 @@ import MyShopping from "./components/myShoping/MyShoping";
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
 import EditProfile from './components/UserPage/EditProfile';
-import MyReviews from "./components/UserPage/MyReviews";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
@@ -45,8 +44,8 @@ export default function App() {
           <Route path="" element={<UserPageInfo />} />
           <Route path="myProfile" element={<EditProfile />} />
            <Route path="myShopping" element={< MyShopping/>} />
-        <Route path="myReviews" element={< MyReviews/>} />
-       {/*  <Route path="billing" element={< />} />  */}
+       {/*  <Route path="myReviews" element={< />} />
+        <Route path="billing" element={< />} />  */}
         </Route>
 
         <Route path="/create" element={<FormCreate />} />
