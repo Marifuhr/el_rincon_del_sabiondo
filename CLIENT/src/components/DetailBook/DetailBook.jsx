@@ -4,15 +4,18 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getDetailBooks } from "../../Redux/Action/Index";
 import { useParams, Link } from "react-router-dom";
-
+import { useAuth0 } from "@auth0/auth0-react";
 import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
 import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
-import { Button, Flex } from "@chakra-ui/react";
+
+import { Button, Flex, Text } from "@chakra-ui/react";
+
 
 function DetailBook() {
+  const { isAuthenticated } = useAuth0();
   const { id } = useParams();
   const dispatch = useDispatch();
   const book = useSelector((state) => state.detailBooks);
@@ -135,7 +138,13 @@ function DetailBook() {
                         justifyContent="center"
                         alignItems="center"
                       >
+
+                        { isAuthenticated ? (
+                          
+                     
+
                         <Link to={`/createReview/${id}`}>
+
                           <Button
                             px={4}
                             fontSize={"sm"}
@@ -155,6 +164,9 @@ function DetailBook() {
                             Dejá tu comentario
                           </Button>
                         </Link>
+
+                          ) : <Text m={0} textAlign="center" whiteSpace="nowrap" background="rgba(0,0,0,0.03)" p={1} borderRadius={3}>Debes iniciar sesión para comentar</Text>}
+
                       </Flex>
                     </div>
                   </div>
