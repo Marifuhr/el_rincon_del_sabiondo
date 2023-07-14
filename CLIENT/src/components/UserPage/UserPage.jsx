@@ -182,12 +182,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        <IconButton
+        {/* <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<FiBell />}
-        />
+        /> */}
         <Flex alignItems={"center"}>
           <Menu>
             <Profile onClick={handleLogout} />
