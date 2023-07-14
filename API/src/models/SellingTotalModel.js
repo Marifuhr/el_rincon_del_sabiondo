@@ -16,18 +16,6 @@ module.exports = function(database) {
             type: DataTypes.STRING(50),
             allowNull: false
         },
-        price: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        product: {
-            type: DataTypes.STRING(100),
-            allowNull: false
-        },
-        purchaseDate: {
-            type: DataTypes.DATEONLY,
-            allowNull: false
-        }
     }, {
         timestamps: true,
         createdAt: true,

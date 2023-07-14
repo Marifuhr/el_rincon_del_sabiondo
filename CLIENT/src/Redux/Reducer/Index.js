@@ -159,11 +159,7 @@ const reducer = (state = initialState, action) => {
       }
 
       const parsedBook = {
-        IdBook: bookPayload.IdBook,
-        title: bookPayload.title,
-        description: bookPayload.description.slice(0, 255),
-        picture_url: bookPayload.image,
-        unit_price: Number(bookPayload.price),
+        ...bookPayload,
         quantity: 1,
       };
       

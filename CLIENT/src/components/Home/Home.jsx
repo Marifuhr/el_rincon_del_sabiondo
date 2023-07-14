@@ -1,16 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
+import {
+  getAllBooks,
+  clearShoppingCart,
+  createSellingTotalDB,
+  sendMail,
+} from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
-import  { useState, useEffect } from "react";
-import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
-import PopUp from '../PopUp/PopUp';
-
-
+import { useState, useEffect, useRef } from "react";
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from "react-icons/bs";
+import PopUp from "../PopUp/PopUp";
+import { useSearchParams } from "react-router-dom";
+import { useUserInfo } from "../../context/ProviderUser";
+import { TOKEN_STORAGE_CART } from "../../Redux/Action/Actions.types";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
@@ -19,26 +25,35 @@ const initialFilters = {
 };
 
 export default function Home() {
+  const { user } = useUserInfo();
   const resultados = useSelector((state) => state.search);
   const dispatch = useDispatch();
+  const [, setParams] = useSearchParams();
+
+  const [params] = useSearchParams();
+  const paymentId = params.get("payment_id");
+  const status = params.get("status");
+  const cartStorage = useRef(
+    JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART))
+  );
 
   const allBooks = useSelector((state) => state.allBooks);
   const filteredBooks = useSelector((state) => state.filtered);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 12;
 
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
-  
-  
+
   const [categoryValue, setCategoryValue] = useState("");
   const [priceValue, setPriceValue] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleReset = () => {
     dispatch(filterResults(initialFilters));
     setCategoryValue("");
@@ -58,8 +73,40 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (user) {
+      if (
+        paymentId !== null &&
+        status === "approved" &&
+        cartStorage.current.length
+      ) {
+        //console.log(cartStorage.current);
+        createSellingTotalDB({
+          IdUser: user.IdUser,
+          products: cartStorage.current,
+        });
+        // EL MAIL DE MAUROELDEMOLEDOR VA ACÁ!!!! :D
+        let products = [];
+        products = cartStorage.current.map((item) => ({
+          title: item.title,
+          price: item.price,
+          quantity: item.quantity,
+        }));
+        let mailer = {
+          email: user.email,
+          asunto: "Compra exitosa",
+          mensaje:
+            "Gracias por tu compra. Adjunto encontrarás los detalles de los libros adquiridos.",
+          products,
+        };
+        dispatch(sendMail(mailer));
+        dispatch(clearShoppingCart());
+      }
+    }
+  }, [user]);
+
+  useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch, currentPage, resultados]);
+  }, [currentPage]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -121,17 +168,9 @@ export default function Home() {
     dispatch(orderPrice(newSortOrder));
   };
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const paymentId = urlParams.get("payment_id");
-  const status = urlParams.get("status");
-  if (paymentId !== null && status === "approved") {
-    dispatch(clearShoppingCart());
-  }
-
-
   return (
     <div>
-     <SearchBar />
+      <SearchBar />
       <div className="filtros_posjqlk">
         <select
           className="select_lkow"
@@ -160,7 +199,9 @@ export default function Home() {
           <option value="gt300">Más de 300</option>
         </select>
         <button onClick={handleSortClick}>{buttonText}</button>
-        <button className="clear_button" onClick={handleReset}>Limpiar</button>
+        <button className="clear_button" onClick={handleReset}>
+          Limpiar
+        </button>
       </div>
       <div className={styles.homePage}>
         <div className={styles.pageIndicator}>
@@ -199,15 +240,17 @@ export default function Home() {
         ) : null}
         </div> */}
         <div>
-          {paymentId !== null && status === "approved" ? (
-           <PopUp />
+          {paymentId !== null &&
+          status === "approved" &&
+          cartStorage.current.length ? (
+            <PopUp />
           ) : null}
         </div>
         <div className={styles.boxCardBooks}>
           {books &&
             books.map((book) => <Card key={book.IdBook} props={book} />)}
         </div>
-        
+
         <div className={styles.scrollToTopButton} onClick={handleScrollToTop}>
           Subir
         </div>
@@ -218,4 +261,3 @@ export default function Home() {
     </div>
   );
 }
-

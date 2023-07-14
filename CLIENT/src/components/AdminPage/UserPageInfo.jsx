@@ -14,7 +14,6 @@ import {
   List,
   useColorModeValue
 } from "@chakra-ui/react";
-import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
 import formatDate from "../../utils/formatDate";
 import { useState, useEffect } from "react";
@@ -147,24 +146,13 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-            {reviews?.slice(0, 3).map((review) => (
-              <Box>
-                <ListItem>
-                  <Image
-                    rounded={"md"}
-                    src={review.Book.image}
-                    alt={review.Book.title}
-                    fit={"cover"}
-                    align={"center"}
-                    w={"10%"}
-                    h={{ sm: "100px", lg: "70px" }}
-                  />
-                </ListItem>
+            {reviews?.map((review, i) => (
+              <Box key={i}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Nombre del Libro:
                   </Text>{" "}
-                  {review.Book.title}
+                  {review.title}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -173,13 +161,10 @@ export default function Simple() {
                   {review.IdBook}
                 </ListItem>
                 <ListItem>
-                  {[1, 2, 3, 4, 5].map((value) => (
-                    <StarIcon
-                      key={value}
-                      boxSize={3}
-                      color={value <= review.rate ? "yellow.500" : "gray.300"}
-                    />
-                  ))}
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Puntuación:
+                  </Text>{" "}
+                  {review.rate}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -209,21 +194,23 @@ export default function Simple() {
             <Text as={"span"} fontWeight={"bold"}>
               Total de Libro: {totalPrice}
             </Text>{" "}
-            {shopping?.slice(0, 3).map((book) => (
-              <Box>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Producto:
-                  </Text>{" "}
-                  {book.product}
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Precio:
-                  </Text>{" "}
-                  {book.price}
-                </ListItem>
-              </Box>
+            {shopping?.map(({ products }) => (
+              products.map(({ Book }, i) => (
+                <Box key={i} p={1} bg={'white'} my={1} borderRadius={2} >
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Producto:
+                    </Text>{" "}
+                    {Book.title}
+                  </ListItem>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Precio:
+                    </Text>{" "}
+                    {Book.price}
+                  </ListItem>
+                </Box>
+              ))
             ))}
           </ListItem>
         </List>
