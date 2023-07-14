@@ -30,6 +30,10 @@ export default function App() {
     "/profile/myShopping",
     "/profile/myReviews",
     "/profile/billing",
+    "/admin",
+    "/admin/myProfile",
+    "/admin/usuariosAdmin",
+    "/admin/create",
   ];
   return (
     <div className="App">
