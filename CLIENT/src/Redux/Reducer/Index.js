@@ -66,7 +66,6 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_BOOKS:
-      // console.log(action.payload);
       return {
         ...state,
         allBooks: action.payload,
@@ -85,7 +84,6 @@ const reducer = (state = initialState, action) => {
       };
 
     case FILTER_RESULTS:
-      console.log(action.payload);
       state.filters = action.payload;
       if (state.search) {
         return {

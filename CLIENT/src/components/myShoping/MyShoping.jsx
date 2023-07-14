@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useUserInfo } from "../../context/ProviderUser"; 
 
 function MyShopping() {
   const { user } = useUserInfo();
-  console.log(user);
   const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
 
   const [compras, setCompras] = useState([]);

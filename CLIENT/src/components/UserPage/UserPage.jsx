@@ -34,11 +34,11 @@ import {
 } from "react-icons/fi";
 
 const LinkItems = [
-  { name: "Home", icon: FiHome, route: "/home" },
-  { name: "Edit profile", icon: FiUser, route: "/profile/myProfile" },
-  { name: "My shopping", icon: FiShoppingCart, route: "/profile/myShopping" },
-  { name: "My reviews", icon: FiMessageSquare, route: "/profile/myReviews" },
-  { name: "Billing", icon: FiCheckCircle, route: "/profile/billing" },
+  { name: "Inicio", icon: FiHome, route: "/home" },
+  { name: "Editar Perfil", icon: FiUser, route: "/profile/myProfile" },
+  { name: "Mis compras", icon: FiShoppingCart, route: "/profile/myShopping" },
+  { name: "Mis Reseñas", icon: FiMessageSquare, route: "/profile/myReviews" },
+  // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
 export default function SidebarWithHeader() {

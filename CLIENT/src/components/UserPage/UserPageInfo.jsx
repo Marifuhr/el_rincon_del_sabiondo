@@ -11,18 +11,27 @@ import {
   SimpleGrid,
   StackDivider,
   ListItem,
-  List
+  List,
+  useColorModeValue
 } from "@chakra-ui/react";
-
-import { MdLocalShipping } from "react-icons/md";
 import { useUserInfo } from "../../context/ProviderUser";
-
 import  formatDate  from "../../utils/formatDate";
+import { useState, useEffect } from "react";
 
 export default function Simple() {
   const { user } = useUserInfo();
-  
-console.log(user);
+  console.log(user);
+  const [reviews, setReviews] = useState([]);
+  const [shopping, setShopping] = useState([]);
+
+  useEffect(() => {
+    setReviews(user.Reviews);
+  }, [user.Reviews]);
+
+  useEffect(() => {
+    setShopping(user.SellingTotals);
+  }, [user.SellingTotals]);
+
   return (
     <Box>
       {/* <Container maxW={"4xl"}> */}
@@ -51,42 +60,10 @@ console.log(user);
             >
               {user.name}
             </Heading>
-            {/*<Text
-              color={useColorModeValue("gray.500", "gray.400")}
-              fontSize={"2xl"}
-              fontWeight={"300"}
-            >
-              {`Id: ${user.IdUser}`}
-            </Text>
-            <Text
-              color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
-              {user.role}
-            </Text>*/}
           </Box>
         </Stack>
       </SimpleGrid>
-      {/* </Container> */}
-      {/* <Stack
 
-              spacing={{ base: 4, sm: 6 }}
-              direction={"column"}
-              divider={
-                <StackDivider
-                  borderColor="gray.200"
-                />
-              }
-
-            > 
-       <VStack spacing={{ base: 4, sm: 6 }}>
-        <Text fontSize={"lg"}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid
-          amet at delectus doloribus dolorum expedita hic, ipsum maxime modi nam
-          officiis porro, quae, quisquam quos reprehenderit velit? Natus, totam.
-        </Text>
-      </VStack> */}
       <Box>
         <Text
           fontSize={{ base: "16px", lg: "18px" }}
@@ -124,13 +101,30 @@ console.log(user);
               </Text>{" "}
               {formatDate(user.updatedAt)}
             </ListItem>
-            {/*  <ListItem>Master Chronometer Certified</ListItem>{" "}
-                    <ListItem>Tachymeter</ListItem>
-                  </List>
-                  <List spacing={2}>
-                    <ListItem>Anti‑magnetic</ListItem>
-                    <ListItem>Chronometer</ListItem>
-                    <ListItem>Small seconds</ListItem>*/}
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                País:
+              </Text>{" "}
+              {user.country}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Provincia:
+              </Text>{" "}
+              {user.province}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Dirección:
+              </Text>{" "}
+              {user.address}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Codigo Postal:
+              </Text>{" "}
+              {user.postalCode}
+            </ListItem>
           </List>
         </SimpleGrid>
       </Box>
@@ -147,10 +141,36 @@ console.log(user);
 
         <List spacing={2}>
           <ListItem>
-            <Text as={"span"} fontWeight={"bold"}>
-              Mi comentario:
-            </Text>{" "}
-            {user.Review}
+            <Text as={"span"} fontWeight={"bold"}></Text>{" "}
+            {reviews?.map((review) => (
+              <Box>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Nombre del Libro:
+                  </Text>{" "}
+                  {review.title}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Id del Libro:
+                  </Text>{" "}
+                  {review.IdBook}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Puntuación:
+                  </Text>{" "}
+                  {review.rate}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Descripción:
+                  </Text>{" "}
+                  {review.description}
+                </ListItem>
+                <br />
+              </Box>
+            ))}
           </ListItem>
         </List>
       </Box>
@@ -167,78 +187,28 @@ console.log(user);
 
         <List spacing={2}>
           <ListItem>
-            <Text as={"span"} fontWeight={"bold"}>Total de Libro:</Text> {user.SellingTotals}
+            <Text as={"span"} fontWeight={"bold"}>
+              Total de Libro:
+            </Text>{" "}
+            {shopping?.map((book) => (
+              <Box>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Producto:
+                  </Text>{" "}
+                  {book.product}
+                </ListItem>
+                <ListItem>
+                  <Text as={"span"} fontWeight={"bold"}>
+                    Precio:
+                  </Text>{" "}
+                  {book.price}
+                </ListItem>
+              </Box>
+            ))}
           </ListItem>
-
-          {/* <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Bracelet:
-                    </Text>{" "}
-                    leather strap
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case:
-                    </Text>{" "}
-                    Steel
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Case diameter:
-                    </Text>{" "}
-                    42 mm
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Dial color:
-                    </Text>{" "}
-                    Black
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Crystal:
-                    </Text>{" "}
-                    Domed, scratch‑resistant sapphire crystal with
-                    anti‑reflective treatment inside
-                  </ListItem>
-                  <ListItem>
-                    <Text as={"span"} fontWeight={"bold"}>
-                      Water resistance:
-                    </Text>{" "}
-                    5 bar (50 metres / 167 feet){" "}
-                  </ListItem> */}
         </List>
       </Box>
-
-
-      {/* <Button
-              rounded={"none"}
-              w={"full"}
-              mt={8}
-              size={"lg"}
-              py={"7"}
-              bg="gray.900"
-              color="white"
-              textTransform={"uppercase"}
-              _hover={{
-                transform: "translateY(2px)",
-                boxShadow: "lg",
-              }}
-            >
-              Add to cart
-            </Button>
-
-            <Stack
-              direction="row"
-              alignItems="center"
-              justifyContent={"center"}
-            >
-              <MdLocalShipping />
-              <Text>2-3 business days delivery</Text>
-
-            </Stack> */}
-      {/* </Stack> */}
     </Box>
-
   );
 }

@@ -1,27 +1,26 @@
 
 import { useAuth0 } from "@auth0/auth0-react";
-import { Box, Button, Image, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
+import { Button, Image, Menu, MenuButton, MenuList, MenuItem } from "@chakra-ui/react";
 import { FiLogOut } from "react-icons/fi";
 import styles from './Profile.module.css';
 import { clearStorageCart } from "../../Redux/Action/Index";
-
+import { useUserInfo } from "../../context/ProviderUser";
 import { Link } from "react-router-dom";
 
 
 
 export const Profile = () => {
-  const { user, isAuthenticated, logout } = useAuth0();
+  const { isAuthenticated, logout } = useAuth0();
+  const { user } = useUserInfo();
 
   const handleLogout = () => {
     clearStorageCart();
-    console.log("Realizando acciones antes de hacer logout...");
-
     // Hacer logout
     logout({ returnTo: window.location.origin });
   };
 
   return (
-    isAuthenticated && (
+    (isAuthenticated && user) && (
       <div className={styles.profile_zlksadaskj}>
         <Menu>
           <MenuButton as={Button} variant="flat" colorScheme="gray" size="sm">

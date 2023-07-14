@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Landing.module.css";
 import CardLanding from "../CardLanding/CardLanding";
 import LandingCarrusel from "../LandingCarrusel/carrusel"
-import Reviews from './../reviews/Reviews';
+// import Reviews from './../reviews/Reviews';
 import Footer from "../Footer/Footer";
 
 import { Heading } from "@chakra-ui/react";
@@ -14,8 +14,8 @@ function Landing() {
       <div className={styles.landing}>
         <LandingCarrusel />
         <CardLanding />
-        <Heading textAlign="center" padding={5} m={0}>La voz de los lectores</Heading>
-        <Reviews />
+        {/* <Heading textAlign="center" padding={5} m={0}>La voz de los lectores</Heading> */}
+        {/* <Reviews /> */}
       </div>
       <Footer />
     </>

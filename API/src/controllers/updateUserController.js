@@ -5,7 +5,11 @@ const errorFieldsToUpdate = {
     picture: 'El url de la imágen no es válida',
     name: 'El nombre debe tener entre 5 - 50 carácteres',
     isActive: 'El estado de Usuario debe ser un valor Booleano',
-    email: 'El email no es válido'
+    email: 'El email no es válido',
+    address: 'La dirección no es válida',
+    province: 'La provincia no es válida',
+    postalCode: 'El código postal no es válido',
+    country: 'El país no es válido',
 };
 
 const validationsAttributes = {
@@ -14,11 +18,8 @@ const validationsAttributes = {
         return roles.includes(rol);
     },
     picture: (image) => {
-        const erValidateUrl = new RegExp('^(https?:\\/\\/)?'+ 
-	    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+
-	    '((\\d{1,3}\\.){3}\\d{1,3}))'+'(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+
-	    '(\\?[;&a-z\\d%_.~+=-]*)?'+'(\\#[-a-z\\d_]*)?$','i');
-	  return !!erValidateUrl.test(image);
+        const erValidateUrl = /^(https?:\/\/)?(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i;
+	    return !!erValidateUrl.test(image);
     },
     name: nameString => {
         const l = nameString.length;
@@ -26,6 +27,23 @@ const validationsAttributes = {
     },
     isActive: stateUser => [true,false].includes(stateUser),
     email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
+    address: addressString => {
+        const l = addressString.length;
+        return l >= 5 && l <= 100
+    },
+    province: provinceString =>{
+        const l = provinceString.length;
+        return l >= 5 && l <= 50
+    },
+    postalCode: postalCodeString => {
+        const l = postalCodeString.toString().length;
+        return l >= 5 && l <= 10
+    },
+    country: countryString => {
+        const l = countryString.length;
+        return l >= 4 && l <= 50
+    }
+
 };
 
 module.exports = async function({id_user, dataToUpdate}){

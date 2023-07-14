@@ -19,7 +19,10 @@ module.exports = async function ({ picture, sub, email, name }) {
                 as:'wichListBook'
             },
             {
-                model: Review
+                model: Review,
+                include:{
+                    model: Book
+                }
             }
         ]
     });

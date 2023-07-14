@@ -1,4 +1,4 @@
-async function validator ({ title, description, language, datePublication, publisher, numberPages, rate, category, authors, image }) {
+async function validator ({ title, description, language, datePublication, publisher, numberPages, category, authors, image }) {
   let errors = [];
   console.log(title)
   if (!title || title.length <= 0) {
@@ -41,9 +41,6 @@ async function validator ({ title, description, language, datePublication, publi
   }
   if (!parseInt(numberPages) || numberPages <= 0) {
     errors.push({ numberPages : 'The number of pages must be an integer greater than 0'});
-  }
-  if (parseInt(rate) < 0 || parseInt(rate) > 10) {
-    errors.push({ rate : 'The rate cannot be empty or greater than 10'});
   }
   // if (!ISBN) {
   //   errors.push({ ISBN : 'The ISBN cannot be empty'});
