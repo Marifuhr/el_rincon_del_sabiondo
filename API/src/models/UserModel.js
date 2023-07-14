@@ -129,6 +129,10 @@ module.exports = function(database) {
             type: DataTypes.STRING(10),
             allowNull: true,
         },
+        city: {
+            type: DataTypes.STRING(100),
+            allowNull: true,
+        },
         province: {
             type: DataTypes.STRING(50),
             allowNull: true,

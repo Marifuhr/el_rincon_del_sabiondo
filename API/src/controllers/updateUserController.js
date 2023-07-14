@@ -10,6 +10,7 @@ const errorFieldsToUpdate = {
     province: 'La provincia no es válida',
     postalCode: 'El código postal no es válido',
     country: 'El país no es válido',
+    city: 'La ciudad no es válida'
 };
 
 const validationsAttributes = {
@@ -37,11 +38,15 @@ const validationsAttributes = {
     },
     postalCode: postalCodeString => {
         const l = postalCodeString.toString().length;
-        return l >= 5 && l <= 10
+        return l >= 4 && l <= 10
     },
     country: countryString => {
         const l = countryString.length;
         return l >= 4 && l <= 50
+    },
+    city: cityString => {
+        const l = cityString.length;
+        return l >= 5 && l <= 50
     }
 
 };

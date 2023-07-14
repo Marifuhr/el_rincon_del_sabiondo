@@ -19,6 +19,6 @@ module.exports = async function(req,res){
         const SellingTotal = await getASellingTotal({IdSelling: IdSellingTotal});
         res.json(SellingTotal);
     } catch (error) {
-        res.json({error:`${name} | ${message}`});
+        res.json({error: error.message});
     };
 };

@@ -66,19 +66,15 @@ export default function Home() {
       }
     };
     fetchData();
-
-
-    if ( paymentId !== null && status === "approved") {
-      dispatch(clearShoppingCart());
-    }else{
-      setParams("")
-    }
   }, []);
 
   useEffect(() => {
     if(user){
       if ( paymentId !== null && status === "approved" && cartStorage.current.length){
+        //console.log(cartStorage.current);
         createSellingTotalDB({IdUser: user.IdUser, products: cartStorage.current})
+        // EL MAIL DE MAUROELDEMOLEDOR VA ACÁ!!!! :D
+        dispatch(clearShoppingCart());
       }
     }
   },[user]);
