@@ -13,16 +13,24 @@ import {
 import { StarIcon } from "@chakra-ui/icons";
 import axios from "axios";
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
+
 import { useUserInfo } from "../../context/ProviderUser";
 import { useParams } from "react-router-dom";
+
+import { useNavigate} from 'react-router-dom';
+
 
 const CreateReview = () => {
   const { isAuthenticated } = useAuth0();
   const [description, setDescription] = useState("");
   const [bookId, setBookId] = useState("");
   const [rate, setRate] = useState(0);
+
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+
+  const navigate = useNavigate();
+
   const { user } = useUserInfo();
   const { id } = useParams();
 
@@ -32,8 +40,11 @@ const CreateReview = () => {
         description,
         rate,
         IdUser: user.IdUser,
+
         IdBook: id,
+
       };
+
       const response = await axios.post(`${endpoint}/reviews`, reviewData);
 
       if (response.status === 200) {
@@ -43,6 +54,7 @@ const CreateReview = () => {
         setDescription("");
         setBookId("");
         setRate(0);
+        navigate(-1);
       } else {
         // Manejar la respuesta de error
       }

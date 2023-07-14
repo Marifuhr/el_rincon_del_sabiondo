@@ -8,8 +8,8 @@ import { Link } from "react-router-dom";
 
 const CartPayPage = () => {
   const [storageCartShopping, count] = useSelector(({ cart_shopping }) => {
-    const count = cart_shopping.reduce((init, { unit_price, quantity }) => {
-      return init + (unit_price * quantity);
+    const count = cart_shopping.reduce((init, { price, quantity }) => {
+      return init + (price * quantity);
     }, 0);
 
     return [cart_shopping, count.toFixed(2)]
