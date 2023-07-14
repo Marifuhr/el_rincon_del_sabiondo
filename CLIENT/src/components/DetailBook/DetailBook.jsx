@@ -7,13 +7,12 @@ import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
-import { Button, Flex } from "@chakra-ui/react";
 import { useUserInfo } from "../../context/ProviderUser";
 import CreateReview from "../CreateReview/CreateReview";
 
 
 function DetailBook() {
-  const { isAuthenticated } = useAuth0();
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const book = useSelector((state) => state.detailBooks);
