@@ -1,0 +1,6 @@
+ .social-icon:hover {
+   transform: scale(1.5);
+   /* aumenta el tamaño del icono */
+   color: yellow;
+   /* cambia el color del icono a amarillo */
+ }
