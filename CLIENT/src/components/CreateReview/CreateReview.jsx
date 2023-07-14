@@ -1,19 +1,30 @@
-import { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Box, Input, Button, FormControl, FormLabel, FormErrorMessage, Alert, AlertIcon } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
-import axios from 'axios';
+import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+  Box,
+  Input,
+  Button,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+import axios from "axios";
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
-import { useUserInfo } from '../../context/ProviderUser';
+import { useUserInfo } from "../../context/ProviderUser";
+import { useParams } from "react-router-dom";
 
 const CreateReview = () => {
-  const { isAuthenticated} = useAuth0();
-  const [description, setDescription] = useState('');
-  const [bookId, setBookId] = useState('');
+  const { isAuthenticated } = useAuth0();
+  const [description, setDescription] = useState("");
+  const [bookId, setBookId] = useState("");
   const [rate, setRate] = useState(0);
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const { user } = useUserInfo();
+  const { id } = useParams();
 
   const handleCreateReview = async () => {
     try {
@@ -21,16 +32,16 @@ const CreateReview = () => {
         description,
         rate,
         IdUser: user.IdUser,
-        IdBook: bookId,
+        IdBook: id,
       };
       const response = await axios.post(`${endpoint}/reviews`, reviewData);
 
       if (response.status === 200) {
-        setSuccessMessage('Review Creada');
+        setSuccessMessage("Review Creada");
         console.log(response.data);
         // Limpiar los campos después de la respuesta exitosa
-        setDescription('');
-        setBookId('');
+        setDescription("");
+        setBookId("");
         setRate(0);
       } else {
         // Manejar la respuesta de error
@@ -42,13 +53,13 @@ const CreateReview = () => {
 
   const handleRateChange = (value) => {
     setRate(value);
-    setError('');
+    setError("");
   };
 
   const handleDescriptionChange = (event) => {
     const value = event.target.value;
     setDescription(value);
-    setError('');
+    setError("");
   };
 
   // Verificar si el usuario está autenticado antes de renderizar el componente
@@ -71,7 +82,7 @@ const CreateReview = () => {
             <StarIcon
               key={value}
               boxSize={6}
-              color={value <= rate ? 'yellow.500' : 'gray.300'}
+              color={value <= rate ? "yellow.500" : "gray.300"}
               cursor="pointer"
               onClick={() => handleRateChange(value)}
             />
