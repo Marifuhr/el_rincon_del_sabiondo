@@ -35,9 +35,9 @@ import {
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
-  { name: "Editar Perfil", icon: FiUser, route: "/profile/myProfile" },
+  { name: "Editar Perfil", icon: FiUser, route: "/admin/myProfile" },
   { name: "Usuarios", icon: FiShoppingCart, route: "/admin/usuariosAdmin" },
-  { name: "Agregar Libros", icon: FiMessageSquare, route: "/create" },
+  { name: "Agregar Libros", icon: FiMessageSquare, route: "/admin/create" },
   // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
