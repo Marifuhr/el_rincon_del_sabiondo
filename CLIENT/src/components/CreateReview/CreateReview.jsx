@@ -25,12 +25,8 @@ const CreateReview = () => {
   const [description, setDescription] = useState("");
   const [bookId, setBookId] = useState("");
   const [rate, setRate] = useState(0);
-
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-
-  const navigate = useNavigate();
-
   const { user } = useUserInfo();
   const { id } = useParams();
 
@@ -54,7 +50,6 @@ const CreateReview = () => {
         setDescription("");
         setBookId("");
         setRate(0);
-        navigate(-1);
       } else {
         // Manejar la respuesta de error
       }
@@ -87,7 +82,7 @@ const CreateReview = () => {
           {successMessage}
         </Alert>
       )}
-      <FormControl isInvalid={!!error} mb={4}>
+      <FormControl isInvalid={!!error} mb={5} marginTop={20}>
         <FormLabel>Calificación</FormLabel>
         <Box>
           {[1, 2, 3, 4, 5].map((value) => (
@@ -102,7 +97,7 @@ const CreateReview = () => {
         </Box>
         <FormErrorMessage>{error}</FormErrorMessage>
       </FormControl>
-      <FormControl isInvalid={!!error} mb={4}>
+      <FormControl isInvalid={!!error} mb={6}>
         <FormLabel>Descripción</FormLabel>
         <Input
           as="textarea"
@@ -113,15 +108,8 @@ const CreateReview = () => {
         />
         <FormErrorMessage>{error}</FormErrorMessage>
       </FormControl>
-      <FormControl mb={4}>
-        <FormLabel>ID del libro (UUID4)</FormLabel>
-        <Input
-          placeholder="ID del libro"
-          value={bookId}
-          onChange={(e) => setBookId(e.target.value)}
-        />
-      </FormControl>
-      <Button onClick={handleCreateReview}>Crear reseña</Button>
+
+      <Button onClick={handleCreateReview} bg={"gray"} >Crear reseña</Button>
     </Box>
   );
 };

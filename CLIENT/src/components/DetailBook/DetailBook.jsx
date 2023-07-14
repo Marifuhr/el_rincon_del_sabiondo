@@ -10,8 +10,8 @@ import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
 import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
-
 import { Button, Flex, Text } from "@chakra-ui/react";
+import CreateReview from "../CreateReview/CreateReview";
 
 
 function DetailBook() {
@@ -133,41 +133,7 @@ function DetailBook() {
                           <p className="mb-0"></p>
                         </div>
                       </div>
-                      <Flex
-                        h="100vh"
-                        justifyContent="center"
-                        alignItems="center"
-                      >
-
-                        { isAuthenticated ? (
-                          
-                     
-
-                        <Link to={`/createReview/${id}`}>
-
-                          <Button
-                            px={4}
-                            fontSize={"sm"}
-                            rounded={"full"}
-                            bg={"blue.400"}
-                            color={"white"}
-                            boxShadow={
-                              "0px 1px 25px -5px rgb(66 153 225 / 48%), 0 10px 10px -5px rgb(66 153 225 / 43%)"
-                            }
-                            _hover={{
-                              bg: "blue.500",
-                            }}
-                            _focus={{
-                              bg: "blue.500",
-                            }}
-                          >
-                            Dejá tu comentario
-                          </Button>
-                        </Link>
-
-                          ) : <Text m={0} textAlign="center" whiteSpace="nowrap" background="rgba(0,0,0,0.03)" p={1} borderRadius={3}>Debes iniciar sesión para comentar</Text>}
-
-                      </Flex>
+                      <CreateReview />
                     </div>
                   </div>
                 </div>
