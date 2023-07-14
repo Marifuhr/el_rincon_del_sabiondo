@@ -30,6 +30,7 @@ export default function EditProfile() {
   const [country, setCountry] = useState(null);
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [updateError, setUpdateError] = useState(null);
+  const [city, setCity] = useState(null);
 
   const fileInputRef = useRef(null);
 
@@ -40,6 +41,7 @@ export default function EditProfile() {
     setPostalCode(user.postalCode || "");
     setProvince(user.province || "");
     setCountry(user.country || "");
+    setCity(user.city || "");
 
     if (user.picture && !user.picture.includes("cloudinary")) {
       uploadImageToCloudinary(user.picture);
@@ -67,7 +69,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
     e.preventDefault();
 
     // Validar campos requeridos
-    if (!name || !country || !province || !address || !postalCode) {
+    if (!name || !country || !province || !address || !postalCode || !city ) {
       setUpdateError("Por favor, rellene todos los campos.");
       setUpdateSuccess(false);
       return;
@@ -82,6 +84,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
           province: province,
           postalCode: postalCode,
           country: country,
+          city: city
         }
       );
 
@@ -96,6 +99,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
           setPostalCode("");
           setProvince("");
           setCountry("");
+          setCity("");
         }
       } else {
         setUpdateError("An error occurred during the update.");
@@ -184,6 +188,16 @@ const uploadImageToCloudinary = async (imageUrl) => {
               type="country"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
+            />
+          </FormControl>
+          <FormControl id={user.city} isRequired>
+            <FormLabel>Ciudad</FormLabel>
+            <Input
+              placeholder="province"
+              _placeholder={{ color: "gray.500" }}
+              type="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             />
           </FormControl>
           <FormControl id={user.province} isRequired>
