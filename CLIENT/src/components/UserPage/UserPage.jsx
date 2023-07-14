@@ -67,7 +67,7 @@ export default function SidebarWithHeader() {
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {<Outlet />}
-     </Box>
+      </Box>
     </Box>
   );
 }
@@ -190,29 +190,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
         />
         <Flex alignItems={"center"}>
           <Menu>
-            <MenuButton
-              py={2}
-              transition="all 0.3s"
-              _focus={{ boxShadow: "none" }}
-            >
-              <Profile onClick={handleLogout} />
-              {/* <HStack>
-                  <VStack
-                  display={{ base: "none", md: "flex" }}
-                  alignItems="flex-start"
-                  spacing="1px"
-                  ml="2"
-                >
-                  <Text fontSize="sm">Justina Clark</Text>
-                  <Text fontSize="xs" color="gray.600">
-                    Admin
-                  </Text>
-                </VStack>
-                <Box display={{ base: "none", md: "flex" }}>
-                  <FiChevronDown />
-                </Box>
-              </HStack>*/}
-            </MenuButton>
+            <Profile onClick={handleLogout} />
             <MenuList
               bg={useColorModeValue("white", "gray.900")}
               borderColor={useColorModeValue("gray.200", "gray.700")}

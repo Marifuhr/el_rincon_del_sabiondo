@@ -15,14 +15,14 @@ import {
   useColorModeValue
 } from "@chakra-ui/react";
 import { useUserInfo } from "../../context/ProviderUser";
-import  formatDate  from "../../utils/formatDate";
+import formatDate from "../../utils/formatDate";
 import { useState, useEffect } from "react";
 
 export default function Simple() {
   const { user } = useUserInfo();
-  console.log(user);
   const [reviews, setReviews] = useState([]);
   const [shopping, setShopping] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
     setReviews(user.Reviews);
@@ -30,6 +30,10 @@ export default function Simple() {
 
   useEffect(() => {
     setShopping(user.SellingTotals);
+    setTotalPrice(user.SellingTotals.reduce((init, {products}) => {
+      const price = eval(products.map(({Book}) => Book.price).toString().replaceAll(',',"+"));
+      return (init + price);
+    },0).toFixed(2));
   }, [user.SellingTotals]);
 
   return (
@@ -142,8 +146,8 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-            {reviews?.map((review) => (
-              <Box>
+            {reviews?.map((review, i) => (
+              <Box key={i}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Nombre del Libro:
@@ -188,23 +192,25 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}>
-              Total de Libro:
+              Total de Libro: {totalPrice}
             </Text>{" "}
-            {shopping?.map((book) => (
-              <Box>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Producto:
-                  </Text>{" "}
-                  {book.product}
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Precio:
-                  </Text>{" "}
-                  {book.price}
-                </ListItem>
-              </Box>
+            {shopping?.map(({ products }) => (
+              products.map(({ Book }, i) => (
+                <Box key={i} p={1} bg={'white'} my={1} borderRadius={2} >
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Producto:
+                    </Text>{" "}
+                    {Book.title}
+                  </ListItem>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Precio:
+                    </Text>{" "}
+                    {Book.price}
+                  </ListItem>
+                </Box>
+              ))
             ))}
           </ListItem>
         </List>
