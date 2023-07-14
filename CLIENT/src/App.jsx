@@ -11,6 +11,7 @@ import MyShopping from "./components/myShoping/MyShoping";
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
 import EditProfile from "./components/UserPage/EditProfile";
+import EditProfileAdmin from "./components/UsuariosAdmin/EditProfileAdmin";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import DetailBook from "./components/DetailBook/DetailBook";
@@ -57,11 +58,11 @@ export default function App() {
         </Route>
 
         <Route path="/admin" element={<AdminPage />}>
-          <Route path="myProfile" element={<EditProfile />} />
+          <Route path="myProfile" element={<EditProfileAdmin />} />
           <Route path="usuariosAdmin" element={<UsuariosAdmin />} />
+          <Route path="create" element={<FormCreate />} />
         </Route>
-
-        <Route path="/create" element={<FormCreate />} />
+        
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
