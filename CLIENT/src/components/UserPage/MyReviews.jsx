@@ -11,6 +11,7 @@ import {
   SimpleGrid,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
 //import { useState, useEffect } from "react";
 
@@ -29,7 +30,7 @@ function TestimonialCard({ review }) {
       direction={{ base: "column-reverse", md: "row" }}
       width={"full"}
       rounded={"xl"}
-      p={10}
+      p={6}
       justifyContent={"space-between"}
       position={"relative"}
       bg={useColorModeValue("white", "gray.800")}
@@ -87,7 +88,16 @@ function TestimonialCard({ review }) {
             color={"gray.500"}
           >
             {" "}
-            - {review.rate}
+            -{" "}
+            
+              {[1, 2, 3, 4, 5].map((value) => (
+                <StarIcon
+                  key={value}
+                  boxSize={3}
+                  color={value <= review.rate ? "yellow.500" : "gray.300"}
+                />
+              ))}
+           
           </chakra.span>
         </chakra.p>
       </Flex>
@@ -106,12 +116,14 @@ export default function GridBlurredBackdrop() {
       direction={"column"}
       width={"full"}
       overflow={"hidden"}
+      maxW={"1200px"}
+      margin={"auto"}
     >
       <Box width={{ base: "full", sm: "lg", lg: "xl" }} margin={"auto"}>
         <chakra.h3
           fontFamily={"Work Sans"}
           fontWeight={"bold"}
-          fontSize={20}
+          fontSize={{ base: 16, md: 20 }}
           textTransform={"uppercase"}
           color={"purple.400"}
         >
@@ -119,43 +131,27 @@ export default function GridBlurredBackdrop() {
         </chakra.h3>
         <chakra.h1
           py={5}
-          fontSize={48}
+          fontSize={{ base: 32, md: 48 }}
           fontFamily={"Work Sans"}
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
           Los comentarios que realizados
         </chakra.h1>
-        {/* <chakra.h2
-          margin={"auto"}
-          width={"70%"}
-          fontFamily={"Inter"}
-          fontWeight={"medium"}
-          color={useColorModeValue("gray.500", "gray.400")}
-        >
-          See why over{" "}
-          <chakra.strong color={useColorModeValue("gray.700", "gray.50")}>
-            150,000+
-          </chakra.strong>{" "}
-          influencers use EEZY to manage their social media content!
-        </chakra.h2> */}
       </Box>
       <SimpleGrid
-        columns={{ base: 1, xl: 2 }}
-        spacing={"20"}
+        // columns={{ base: 1, xl: 2 }}
+        spacing={{ base: 4, md: 10 }}
+        width={"full"}
         mt={16}
         mb={16}
         mx={"auto"}
+        marginLeft={{ base: "0", xl: "20" }}
       >
         {user?.Reviews?.map((review, index) => (
           <TestimonialCard key={index} review={review} />
         ))}
       </SimpleGrid>
-      <Box>
-        <Text fontFamily={"Inter"} mt={14} boxSize={10} color={"purple.400"}>
-          El Rincón del Sabiondo
-        </Text>
-      </Box>
     </Flex>
   );
 }

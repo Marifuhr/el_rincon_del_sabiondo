@@ -14,6 +14,7 @@ import {
   List,
   useColorModeValue
 } from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
 import  formatDate  from "../../utils/formatDate";
 import { useState, useEffect } from "react";
@@ -142,17 +143,17 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-            {reviews?.map((review) => (
+            {reviews?.slice(0, 3).map((review) => (
               <Box>
                 <ListItem>
                   <Image
                     rounded={"md"}
                     src={review.Book.image}
-                    alt={user.name}
+                    alt={review.Book.title}
                     fit={"cover"}
                     align={"center"}
-                    w={"20%"}
-                    h={{ sm: "100px", lg: "50px" }}
+                    w={"10%"}
+                    h={{ sm: "100px", lg: "70px" }}
                   />
                 </ListItem>
                 <ListItem>
@@ -168,10 +169,13 @@ export default function Simple() {
                   {review.IdBook}
                 </ListItem>
                 <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Puntuación:
-                  </Text>{" "}
-                  {review.rate}
+                  {[1, 2, 3, 4, 5].map((value) => (
+                    <StarIcon
+                      key={value}
+                      boxSize={3}
+                      color={value <= review.rate ? "yellow.500" : "gray.300"}
+                    />
+                  ))}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -201,7 +205,7 @@ export default function Simple() {
             <Text as={"span"} fontWeight={"bold"}>
               Total de Libro:
             </Text>{" "}
-            {shopping?.map((book) => (
+            {shopping?.slice(0, 3).map((book) => (
               <Box>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
