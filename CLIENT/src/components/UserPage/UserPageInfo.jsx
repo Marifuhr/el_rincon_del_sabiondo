@@ -145,10 +145,21 @@ export default function Simple() {
             {reviews?.map((review) => (
               <Box>
                 <ListItem>
+                  <Image
+                    rounded={"md"}
+                    src={review.Book.image}
+                    alt={user.name}
+                    fit={"cover"}
+                    align={"center"}
+                    w={"20%"}
+                    h={{ sm: "100px", lg: "50px" }}
+                  />
+                </ListItem>
+                <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Nombre del Libro:
                   </Text>{" "}
-                  {review.title}
+                  {review.Book.title}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
