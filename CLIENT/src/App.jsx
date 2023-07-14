@@ -19,7 +19,8 @@ import NotFound from "./components/Error404/NotFound";
 import CreateReview from "./components/CreateReview/CreateReview";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyReviews from "./components/UserPage/MyReviews";
-
+import AdminPage from "./components/AdminPage/AdminPage"
+import UsuariosAdmin from "./components/UsuariosAdmin/UsuariosAdmin";
 export default function App() {
   const location = useLocation();
   const hideNavBarRoutes = [
@@ -53,6 +54,11 @@ export default function App() {
           <Route path="myShopping" element={<MyShopping />} />
           <Route path="myReviews" element={<MyReviews />} />
           {/* <Route path="billing" element={< />} />  */}
+        </Route>
+
+        <Route path="/admin" element={<AdminPage />}>
+          <Route path="myProfile" element={<EditProfile />} />
+          <Route path="usuariosAdmin" element={<UsuariosAdmin />} />
         </Route>
 
         <Route path="/create" element={<FormCreate />} />
