@@ -16,11 +16,9 @@ module.exports = async function(req,res){
         const {IdSellingTotal} = SellingTotalCreated;
         
         await createBulKSellingIndividual({products, IdSellingTotal });
-
         const SellingTotal = await getASellingTotal({IdSelling: IdSellingTotal});
         res.json(SellingTotal);
-    } catch ({message, name}) {
-        console.log(name);
+    } catch (error) {
         res.json({error:`${name} | ${message}`});
     };
 };

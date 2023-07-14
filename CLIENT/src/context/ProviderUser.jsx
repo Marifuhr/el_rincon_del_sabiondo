@@ -33,7 +33,7 @@ const ProviderUser = ({ children }) => {
                     return
                 };
 
-                setUserDB(data.data)
+                setUserDB(data.data);
                 setIsLoading(false);
             });
             return;

@@ -70,12 +70,12 @@ module.exports = function (database) {
         rate: {
             type: DataTypes.VIRTUAL,
             get(){
-                const reviews = this.getDataValue('Reviews');
-                if (reviews.length > 0) {
+                const reviews = this.getReviews();
+                if (reviews?.length > 0) {
                     const totalRate = reviews.reduce((sum, review) => sum + review.rate, 0);
-                    return (totalRate / reviews.length).toFixed(2);
+                    this.setDataValue('rate', (totalRate / reviews?.length).toFixed(2) || 0);
                 } else {
-                    return 0.0;
+                    this.setDataValue('rate', 0.0)
                 }
             },
             set(){

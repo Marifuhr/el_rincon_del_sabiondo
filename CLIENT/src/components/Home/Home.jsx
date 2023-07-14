@@ -1,14 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import Card from "../../components/Card/card";
-import { getAllBooks, clearShoppingCart } from "../../Redux/Action/Index";
+import { getAllBooks, clearShoppingCart, createSellingTotalDB } from "../../Redux/Action/Index";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import { filterResults, orderPrice } from "../../Redux/Action/Index";
 import SearchBar from "../../components/SearchBar/SearchBar";
 import axios from "axios";
-import  { useState, useEffect } from "react";
+import  { useState, useEffect, useRef } from "react";
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs';
 import PopUp from '../PopUp/PopUp';
+import { useSearchParams } from "react-router-dom";
+import { useUserInfo } from "../../context/ProviderUser";
+import { TOKEN_STORAGE_CART } from "../../Redux/Action/Actions.types";
 
 
 
@@ -19,18 +22,21 @@ const initialFilters = {
 };
 
 export default function Home() {
+  const {user} = useUserInfo();
   const resultados = useSelector((state) => state.search);
   const dispatch = useDispatch();
+  const [,setParams] = useSearchParams();
+  
+  const [ params ] = useSearchParams();
+  const paymentId = params.get('payment_id');
+  const status = params.get('status');
+  const cartStorage = useRef(JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)));
 
   const allBooks = useSelector((state) => state.allBooks);
   const filteredBooks = useSelector((state) => state.filtered);
   const [currentPage, setCurrentPage] = useState(1);
   const booksPerPage = 12;
 
-
-  const handlePageChange = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
   const filters = useSelector((state) => state.filters);
   const [options, setOptions] = useState([]);
   
@@ -39,6 +45,11 @@ export default function Home() {
   const [priceValue, setPriceValue] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
+  
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
   const handleReset = () => {
     dispatch(filterResults(initialFilters));
     setCategoryValue("");
@@ -55,11 +66,26 @@ export default function Home() {
       }
     };
     fetchData();
+
+
+    if ( paymentId !== null && status === "approved") {
+      dispatch(clearShoppingCart());
+    }else{
+      setParams("")
+    }
   }, []);
 
   useEffect(() => {
+    if(user){
+      if ( paymentId !== null && status === "approved" && cartStorage.current.length){
+        createSellingTotalDB({IdUser: user.IdUser, products: cartStorage.current})
+      }
+    }
+  },[user]);
+
+  useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch, currentPage, resultados]);
+  }, [currentPage]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -120,14 +146,6 @@ export default function Home() {
 
     dispatch(orderPrice(newSortOrder));
   };
-
-  const urlParams = new URLSearchParams(window.location.search);
-  const paymentId = urlParams.get("payment_id");
-  const status = urlParams.get("status");
-  if (paymentId !== null && status === "approved") {
-    dispatch(clearShoppingCart());
-  }
-
 
   return (
     <div>
@@ -199,7 +217,7 @@ export default function Home() {
         ) : null}
         </div> */}
         <div>
-          {paymentId !== null && status === "approved" ? (
+          {(paymentId !== null && status === "approved" && cartStorage.current.length)? (
            <PopUp />
           ) : null}
         </div>
