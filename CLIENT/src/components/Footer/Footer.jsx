@@ -33,6 +33,7 @@ const Logo = () => {
 };
 
 const SocialButton = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { children, label, href } = props;
   return (
     <chakra.button
@@ -57,6 +58,7 @@ const SocialButton = (props) => {
   );
 };
 
+// eslint-disable-next-line react/prop-types
 const ListHeader = ({ children }) => {
   return (
     <Text fontWeight={"500"} fontSize={"lg"} mb={2}>
