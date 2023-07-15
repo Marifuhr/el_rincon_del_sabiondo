@@ -7,12 +7,12 @@ import ButtonVolver from "../../elements/ButtonVolver";
 import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
+// import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
+import { Button, Flex } from "@chakra-ui/react";
 import { useUserInfo } from "../../context/ProviderUser";
 import CreateReview from "../CreateReview/CreateReview";
 
-
 function DetailBook() {
-
   const { id } = useParams();
   const dispatch = useDispatch();
   const book = useSelector((state) => state.detailBooks);
@@ -22,6 +22,13 @@ function DetailBook() {
   const [userBuy, setUserBuy] = useState(null);
   const [userReview, setUserReview] = useState(null);
   const [reviews, setReviews] = useState(null)
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: GET_DETAIL_BOOKS,
+  //     payload: {},
+  //   });
+  // }, []);
 
   useEffect(() => {
     dispatch(getDetailBooks(id));
@@ -78,6 +85,17 @@ if (user) {
       setUserBuy(productbuy.length > 0);
 }
   };
+
+  // async function getReviews(id) {
+  //   try {
+  //     const response = await axios.get(
+  //       `${import.meta.env.VITE_URL_ENDPOINT}/books/${id}`
+  //     );
+  //     setReviews(response.data.);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   function mapReviews(reviews, user) {
       const filteredReviews = reviews.filter((review) => {
@@ -141,7 +159,7 @@ if (user) {
                           <p className="mb-0">{book.language}</p>
                         </div>
                       </div>
-                      {userBuy && !userReview && (
+                      {(userBuy && !userReview) && (
                         <div style={{ marginTop: "1rem" }}>
                           <CreateReview />
                         </div>
@@ -154,7 +172,6 @@ if (user) {
                           <h3 className="h5 mb-3">Numero de Paginas</h3>
                           <p className="mb-0">{book.numberPages}</p>
                         </div>
-
                       </div>
                     </div>
                     <div className="col-sm-6 col-xl-4 mt-4">
@@ -165,7 +182,6 @@ if (user) {
                           <p className="mb-0"></p>
                         </div>
                       </div>
-                      <CreateReview />
                     </div>
                   </div>
                 </div>
@@ -194,4 +210,4 @@ if (user) {
   );
 }
 
-export default DetailBook;
+export default DetailBook; 
