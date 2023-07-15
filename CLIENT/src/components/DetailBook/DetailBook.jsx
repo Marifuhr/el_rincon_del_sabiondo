@@ -159,7 +159,7 @@ if (user) {
                           <p className="mb-0">{book.language}</p>
                         </div>
                       </div>
-                      {userBuy && !userReview && (
+                      {(userBuy && !userReview) && (
                         <div style={{ marginTop: "1rem" }}>
                           <CreateReview />
                         </div>
@@ -210,4 +210,4 @@ if (user) {
   );
 }
 
-export default DetailBook;
+export default DetailBook; 
