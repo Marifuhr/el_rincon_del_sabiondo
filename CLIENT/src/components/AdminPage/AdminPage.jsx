@@ -35,9 +35,9 @@ import {
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
-  { name: "Editar Perfil", icon: FiUser, route: "/profile/myProfile" },
-  { name: "Mis compras", icon: FiShoppingCart, route: "/profile/myShopping" },
-  { name: "Mis Reseñas", icon: FiMessageSquare, route: "/profile/myReviews" },
+  { name: "Editar Perfil", icon: FiUser, route: "/admin/myProfile" },
+  { name: "Usuarios", icon: FiShoppingCart, route: "/admin/usuariosAdmin" },
+  { name: "Agregar Libros", icon: FiMessageSquare, route: "/admin/create" },
   // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
@@ -182,12 +182,12 @@ const MobileNav = ({ onOpen, ...rest }) => {
       </Text>
 
       <HStack spacing={{ base: "0", md: "6" }}>
-        {/* <IconButton
+        <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
           icon={<FiBell />}
-        /> */}
+        />
         <Flex alignItems={"center"}>
           <Menu>
             <Profile onClick={handleLogout} />

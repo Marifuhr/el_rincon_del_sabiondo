@@ -1,22 +1,36 @@
-import { useState } from 'react';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Box, Input, Button, FormControl, FormLabel, FormErrorMessage, Alert, AlertIcon } from '@chakra-ui/react';
-import { StarIcon } from '@chakra-ui/icons';
-import axios from 'axios';
+import { useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
+import {
+  Box,
+  Input,
+  Button,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
+import { StarIcon } from "@chakra-ui/icons";
+import axios from "axios";
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
-import { useUserInfo } from '../../context/ProviderUser';
+
+import { useUserInfo } from "../../context/ProviderUser";
+import { useParams } from "react-router-dom";
+
 import { useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+
 
 const CreateReview = () => {
   const { isAuthenticated} = useAuth0();
   const [description, setDescription] = useState('');
   const book = useSelector((state) => state.detailBooks)
+
   const [rate, setRate] = useState(0);
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
   const { user } = useUserInfo();
+  const { id } = useParams();
 
   const handleCreateReview = async () => {
     try {
@@ -35,18 +49,19 @@ const CreateReview = () => {
         rate,
         IdUser: user.IdUser,
         IdBook: book.IdBook,
+
       };
 
       const response = await axios.post(`${endpoint}/reviews`, reviewData);
 
       if (response.status === 200) {
-        setSuccessMessage('Review Creada');
+        setSuccessMessage("Review Creada");
         console.log(response.data);
         // Limpiar los campos después de la respuesta exitosa
         setDescription('');
-        // setBookId('');
         setRate(0);
         navigate(0);
+
       } else {
         console.log(response.data);
       }
@@ -57,13 +72,13 @@ const CreateReview = () => {
 
   const handleRateChange = (value) => {
     setRate(value);
-    setError('');
+    setError("");
   };
 
   const handleDescriptionChange = (event) => {
     const value = event.target.value;
     setDescription(value);
-    setError('');
+    setError("");
   };
 
   // Verificar si el usuario está autenticado antes de renderizar el componente
@@ -79,14 +94,14 @@ const CreateReview = () => {
           {successMessage}
         </Alert>
       )}
-      <FormControl isInvalid={!!error} mb={4}>
+      <FormControl isInvalid={!!error} mb={5} marginTop={20}>
         <FormLabel>Calificación</FormLabel>
         <Box>
           {[1, 2, 3, 4, 5].map((value) => (
             <StarIcon
               key={value}
               boxSize={6}
-              color={value <= rate ? 'yellow.500' : 'gray.300'}
+              color={value <= rate ? "yellow.500" : "gray.300"}
               cursor="pointer"
               onClick={() => handleRateChange(value)}
             />
@@ -94,7 +109,7 @@ const CreateReview = () => {
         </Box>
         <FormErrorMessage>{error}</FormErrorMessage>
       </FormControl>
-      <FormControl isInvalid={!!error} mb={4}>
+      <FormControl isInvalid={!!error} mb={6}>
         <FormLabel>Descripción</FormLabel>
         <Input
           as="textarea"
@@ -114,6 +129,7 @@ const CreateReview = () => {
         />
       </FormControl> */}
       <Button onClick={handleCreateReview}>Crear reseña</Button>
+
     </Box>
   );
 };
