@@ -14,9 +14,9 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
-      <box>
+     
         <ButtonVolver />
-      </box>
+     
       {/* ====================Mision======================================= */}
       <SimpleGrid
         columns={{
@@ -67,7 +67,7 @@ const About = () => {
             }}
             lineHeight="shorter"
             textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-            textEmboss="rgba(0, 0, 0, 0.5) 2px 2px 3px"
+            
           >
             Nuestra misión
           </chakra.h1>
@@ -152,7 +152,7 @@ const About = () => {
               }}
               lineHeight="shorter"
               textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-              textEmboss="rgba(0, 0, 0, 0.5) 2px 2px 3px"
+             
             >
               Y además . . .
             </chakra.span>
@@ -171,7 +171,7 @@ const About = () => {
               }}
               lineHeight="shorter"
               textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-              textEmboss="rgba(0, 0, 0, 0.5) 2px 2px 3px"
+             
             >
               Nuestra Visión
             </chakra.span>
@@ -259,7 +259,7 @@ const About = () => {
             }}
             lineHeight="shorter"
             textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-            textEmboss="rgba(0, 0, 0, 0.5) 2px 2px 3px"
+        
           >
             En el Rincon del Sabiondo . . .
           </chakra.span>
@@ -277,7 +277,7 @@ const About = () => {
             }}
             lineHeight="shorter"
             textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-            textEmboss="rgba(0, 0, 0, 0.5) 2px 2px 3px"
+            
           >
             Queremos mostrarte nuestros Valores
           </chakra.h1>
