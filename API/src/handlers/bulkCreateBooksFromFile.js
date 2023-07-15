@@ -3681,6 +3681,10 @@ async function bulkCreateBooksFromFile() {
 
       if (!foundBook) {
         // Crear el libro si no existe
+        if (book.stock = 0) {
+          //asigno stock random entre 1 y 9
+          book.stock = Math.floor(Math.random() * 10);
+        }
         const createdBook = await Book.create(book);
         console.log('Libro creado:', createdBook);
 
