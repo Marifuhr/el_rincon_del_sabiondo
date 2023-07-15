@@ -27,10 +27,8 @@ export const Profile = () => {
             <Image src={user.picture} alt={`profile_${user.name}`} borderRadius="full" boxSize={8} objectFit="cover" />
           </MenuButton>
           <MenuList>
-
             <MenuItem as={Link} to="/profile">Perfil</MenuItem>
             <MenuItem onClick={handleLogout} icon={<FiLogOut />} command="⌘L">
-
               Cerrar sesión
             </MenuItem>
           </MenuList>
