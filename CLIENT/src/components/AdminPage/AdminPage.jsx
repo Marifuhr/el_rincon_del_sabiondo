@@ -27,7 +27,8 @@ import {
   FiHome,
   FiUser,
   FiShoppingCart,
-  FiMessageSquare,
+  FiSmile,
+  FiEdit2,
   FiCheckCircle,
   FiMenu,
   FiBell,
@@ -36,8 +37,8 @@ import {
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
   { name: "Editar Perfil", icon: FiUser, route: "/admin/myProfile" },
-  { name: "Usuarios", icon: FiShoppingCart, route: "/admin/usuariosAdmin" },
-  { name: "Agregar Libros", icon: FiMessageSquare, route: "/admin/create" },
+  { name: "Usuarios", icon: FiSmile, route: "/admin/usuariosAdmin" },
+  { name: "Agregar Libros", icon: FiEdit2, route: "/admin/create" },
   // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 

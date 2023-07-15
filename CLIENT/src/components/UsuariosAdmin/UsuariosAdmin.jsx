@@ -33,7 +33,7 @@ function UsuariosAdmin() {
   </tr>
   <tr>
     <td></td>
-    <td>&nbsp;</td>
+    <td></td>
     <td>&nbsp;</td>
   </tr>
 </table>
