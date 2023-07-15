@@ -3736,10 +3736,13 @@ async function bulkCreateBooksFromFile() {
         }
       } else {
         const newStock = Math.floor(Math.random() * 10) + 1;
-        foundBook.stock = newStock;
+        if (foundBook.stock === 0) { foundBook.stock = newStock;
         await foundBook.save();
-        console.log('El libro ya existe, se ha actualizado el stock:', foundBook.title, 'Nuevo stock:', newStock);      }
-    }
+        console.log('El libro ya existe, se ha actualizado el stock:', foundBook.title, 'Nuevo stock:', newStock);
+      } else {
+        console.log('El libro ya existe')
+      }
+    }}
 
     console.log('Proceso de creación de libros finalizado.');
   } catch (error) {
