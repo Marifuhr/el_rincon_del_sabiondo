@@ -21,7 +21,8 @@ function DetailBook() {
   const { user } = useUserInfo();
   const [userBuy, setUserBuy] = useState(null);
   const [userReview, setUserReview] = useState(null);
-  const [reviews, setReviews] = useState(null)
+  const [reviews, setReviews] = useState(null);
+  const [mostrarTodasReviews, setMostrarTodasReviews] = useState(false);
 
   // useEffect(() => {
   //   dispatch({
@@ -50,9 +51,9 @@ function DetailBook() {
     Userbuy(id, user);
     setReviews(book.Reviews);
     if (reviews) {
-      setUserReview(mapReviews(reviews, user));  
+      setUserReview(mapReviews(reviews, user));
     }
-    console.log(userReview)
+    console.log(userReview);
   }, [book, userBuy]);
 
   const author =
@@ -65,7 +66,7 @@ function DetailBook() {
       : "Unknown Category";
 
   const Userbuy = async (id, user) => {
-if (user) {
+    if (user) {
       const response = await axios.get(
         `${import.meta.env.VITE_URL_ENDPOINT}/sellings/`
       );
@@ -83,7 +84,7 @@ if (user) {
       });
       console.log(productbuy);
       setUserBuy(productbuy.length > 0);
-}
+    }
   };
 
   // async function getReviews(id) {
@@ -98,11 +99,15 @@ if (user) {
   // }
 
   function mapReviews(reviews, user) {
-      const filteredReviews = reviews.filter((review) => {
-        return review.IdUser === user.IdUser;
-      })
-      return filteredReviews.length > 0 || false;
+    const filteredReviews = reviews.filter((review) => {
+      return review.IdUser === user.IdUser;
+    });
+    return filteredReviews.length > 0 || false;
   }
+
+  const handleMostrarTodosClick = () => {
+    setMostrarTodasReviews(true);
+  };
 
   return (
     <div>
@@ -159,7 +164,7 @@ if (user) {
                           <p className="mb-0">{book.language}</p>
                         </div>
                       </div>
-                      {(userBuy && !userReview) && (
+                      {userBuy && !userReview && (
                         <div style={{ marginTop: "1rem" }}>
                           <CreateReview />
                         </div>
@@ -192,15 +197,26 @@ if (user) {
             <div className="row mt-5">
               <div className="col-lg-8 offset-lg-2">
                 <h2 className="mb-4 text-primary">Reviews</h2>
-                {book.Reviews
-                  .slice(0, 2)
-                  .map((review) => (
-                    <div key={review.id}>
-                      <h4>{review.rate}</h4>
-                      <p>{review.description}</p>
-                      <hr />
-                    </div>
-                  ))}
+                {mostrarTodasReviews
+                  ? book.Reviews.map((review) => (
+                      <div key={review.id}>
+                        <h4>{review.rate}</h4>
+                        <p>{review.description}</p>
+                        <hr />
+                      </div>
+                    ))
+                  : book.Reviews.slice(0, 2).map((review) => (
+                      <div key={review.id}>
+                        <h4>{review.rate}</h4>
+                        <p>{review.description}</p>
+                        <hr />
+                      </div>
+                    ))}
+                {!mostrarTodasReviews && (
+                  <button onClick={handleMostrarTodosClick}>
+                    Mostrar todos
+                  </button>
+                )}
               </div>
             </div>
           )}
@@ -210,4 +226,4 @@ if (user) {
   );
 }
 
-export default DetailBook; 
+export default DetailBook;
