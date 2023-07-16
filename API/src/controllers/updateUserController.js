@@ -29,26 +29,25 @@ const validationsAttributes = {
     isActive: stateUser => [true,false].includes(stateUser),
     email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
     address: addressString => {
-        const l = addressString.length;
+        const l = addressString.trim().length;
         return l >= 5 && l <= 100
     },
     province: provinceString =>{
-        const l = provinceString.length;
+        const l = provinceString.trim().length;
         return l >= 5 && l <= 50
     },
     postalCode: postalCodeString => {
-        const l = postalCodeString.toString().length;
+        const l = postalCodeString.toString().trim().length;
         return l >= 4 && l <= 10
     },
     country: countryString => {
-        const l = countryString.length;
+        const l = countryString.trim().length;
         return l >= 4 && l <= 50
     },
     city: cityString => {
-        const l = cityString.length;
+        const l = cityString.trim().length;
         return l >= 5 && l <= 50
     }
-
 };
 
 module.exports = async function({id_user, dataToUpdate}){

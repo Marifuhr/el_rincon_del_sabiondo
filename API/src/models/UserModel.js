@@ -124,22 +124,37 @@ module.exports = function(database) {
         address: {
             type: DataTypes.STRING(100),
             allowNull: true,
+            validate:{
+                len:[0,100]
+            }
         },
         postalCode: {
             type: DataTypes.STRING(10),
             allowNull: true,
+            validate:{
+                len:[0,100]
+            }
         },
         city: {
             type: DataTypes.STRING(100),
             allowNull: true,
+            validate:{
+                len:[0,100]
+            }
         },
         province: {
             type: DataTypes.STRING(50),
             allowNull: true,
+            validate:{
+                len:[0,100]
+            }
         },
         country: {
             type: DataTypes.STRING(50),
             allowNull: true,
+            validate:{
+                len:[0,100]
+            }
         }
     });
 } 
