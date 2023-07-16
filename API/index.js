@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const { auth } = require('express-openid-connect');
 const mercadopago = require("mercadopago");
-
+const bulk = require ("../API/src/handlers/bulkCreateBooksFromFile")
 mercadopago.configure({
     access_token: process.env.TOKEN_ACCESS_MERCADO_PAGO,
 });
@@ -39,5 +39,6 @@ db.sync({alter:true}).then(() => {
     //execute server
     server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
+        bulk();
     })
 });
