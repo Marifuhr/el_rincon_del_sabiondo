@@ -118,45 +118,39 @@ export default function Simple() {
           <List spacing={2}>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-              {reviews?.slice(0, 3).map((review, i) => (
-                <Box key={i}>
-                  <ListItem>
-                    <Image
-                      rounded={"md"}
-                      src={review.Book.image}
-                      alt={review.Book.title}
-                      fit={"cover"}
-                      align={"center"}
-                      w={"10%"}
-                      h={{ sm: "100px", lg: "70px" }}
-                    />
-                  </ListItem>
-                  <ListItem>
+              {reviews && reviews.slice(0, 3).map((review, i) => (
+                <Box display={{base:"block", md:"flex"}} alignItems="stretch" gap={4} key={i} bg="rgba(255,255,255,0.5)" p={2} borderRadius={3}>
+                  <Image
+                    rounded={"md"}
+                    src={review.Book.image}
+                    alt={review.Book.title}
+                    fit={"cover"}
+                    align={"center"}
+                    w={{base:"100%", md: "30%"}}
+                    h={{sm: "100px", lg: "70px" }}
+                  />
+                  <ListItem display="flex" flexDirection="column">
                     <Text as={"span"} fontWeight={"bold"}>
                       Nombre del Libro:
-                    </Text>{" "}
-                    {review.Book.title}
-                  </ListItem>
-                  <ListItem>
+                      <span style={{fontWeight:"normal"}}> {review.Book.title}</span>
+                    </Text>
                     <Text as={"span"} fontWeight={"bold"}>
                       Id del Libro:
-                    </Text>{" "}
-                    {review.IdBook}
-                  </ListItem>
-                  <ListItem>
-                    {[1, 2, 3, 4, 5].map((value) => (
-                      <StarIcon
-                        key={value}
-                        boxSize={3}
-                        color={value <= review.rate ? "yellow.500" : "gray.300"}
-                      />
-                    ))}
-                  </ListItem>
-                  <ListItem>
+                      <span style={{fontWeight:"normal"}}> {review.IdBook}</span>
+                    </Text>
                     <Text as={"span"} fontWeight={"bold"}>
                       Descripción:
-                    </Text>{" "}
-                    {review.description}
+                      <span style={{fontWeight:"normal"}}> {review.description}</span>
+                    </Text>
+                    <Box>
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <StarIcon
+                          key={value}
+                          boxSize={3}
+                          color={value <= review.rate ? "yellow.500" : "gray.300"}
+                        />
+                      ))}
+                    </Box>
                   </ListItem>
                 </Box>
               ))}
@@ -180,21 +174,21 @@ export default function Simple() {
                 Total de Libro: {totalPrice}
               </Text>{" "}
               {shopping?.slice(0, 3).map((book, i) => (
-                  <Box key={i}>
-                    <ListItem>
-                      <Text as={"span"} fontWeight={"bold"}>
-                        Producto:
-                      </Text>{" "}
-                      {book.product}
-                    </ListItem>
-                    <ListItem>
-                      <Text as={"span"} fontWeight={"bold"}>
-                        Precio:
-                      </Text>{" "}
-                      {book.price}
-                    </ListItem>
-                  </Box>
-                )
+                <Box key={i}>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Producto:
+                    </Text>{" "}
+                    {book.product}
+                  </ListItem>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Precio:
+                    </Text>{" "}
+                    {book.price}
+                  </ListItem>
+                </Box>
+              )
               )}
             </ListItem>
           </List>

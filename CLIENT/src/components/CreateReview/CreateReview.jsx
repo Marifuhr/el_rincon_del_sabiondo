@@ -12,14 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import axios from "axios";
-const endpoint = import.meta.env.VITE_URL_ENDPOINT;
-
 import { useUserInfo } from "../../context/ProviderUser";
-import { useParams } from "react-router-dom";
-
-import { useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 
 const CreateReview = () => {
   const { isAuthenticated} = useAuth0();
@@ -30,7 +26,6 @@ const CreateReview = () => {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const { user } = useUserInfo();
-  const { id } = useParams();
 
   const handleCreateReview = async () => {
     try {
@@ -60,8 +55,6 @@ const CreateReview = () => {
         // Limpiar los campos después de la respuesta exitosa
         setDescription('');
         setRate(0);
-        navigate(0);
-
       } else {
         console.log(response.data);
       }
@@ -120,14 +113,6 @@ const CreateReview = () => {
         />
         <FormErrorMessage>{error}</FormErrorMessage>
       </FormControl>
-      {/* <FormControl mb={4}>
-        <FormLabel>ID del libro (UUID4)</FormLabel>
-        <Input
-          placeholder="ID del libro"
-          value={bookId}
-          onChange={(e) => setBookId(e.target.value)}
-        />
-      </FormControl> */}
       <Button onClick={handleCreateReview}>Crear reseña</Button>
 
     </Box>
