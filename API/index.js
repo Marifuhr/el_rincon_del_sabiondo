@@ -5,7 +5,7 @@ const express = require('express');
 const cors = require('cors');
 const { auth } = require('express-openid-connect');
 const mercadopago = require("mercadopago");
-const bulk = require("../API/src/handlers/bulkCreateBooksFromFile")
+const bulk = require("./src/handlers/bulkCreateBooksFromFile");
 
 mercadopago.configure({
     access_token: process.env.TOKEN_ACCESS_MERCADO_PAGO,

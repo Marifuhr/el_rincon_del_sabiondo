@@ -28,6 +28,8 @@ export default function Simple() {
   useEffect(() => {
     setReviews(user.Reviews);
   }, [user.Reviews]);
+  
+  console.log(user);
 
   useEffect(() => {
     setShopping(user.SellingTotals);
@@ -147,8 +149,8 @@ export default function Simple() {
         <List spacing={2}>
           <ListItem>
             <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-            {reviews?.slice(0, 3).map((review) => (
-              <Box>
+            {reviews?.slice(0, 3).map((review, i) => (
+              <Box key={i}>
                 <ListItem>
                   <Image
                     rounded={"md"}
@@ -209,8 +211,8 @@ export default function Simple() {
             <Text as={"span"} fontWeight={"bold"}>
               Total de Libro: {totalPrice}
             </Text>{" "}
-            {shopping?.slice(0, 3).map((book) => (
-              <Box>
+            {shopping?.slice(0, 3).map((book, i) => (
+              <Box key={i}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Producto:
