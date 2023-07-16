@@ -75,6 +75,15 @@ const uploadImageToCloudinary = async (imageUrl) => {
       return;
     }
     try {
+      console.log({
+        name: name,
+        picture: picture,
+        address: address,
+        province: province,
+        postalCode: postalCode,
+        country: country,
+        city: city
+      }, user.IdUser);
       const response = await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
         {
@@ -84,7 +93,8 @@ const uploadImageToCloudinary = async (imageUrl) => {
           province: province,
           postalCode: postalCode,
           country: country,
-          city: city
+          city: city,
+          isActive: true
         }
       );
 

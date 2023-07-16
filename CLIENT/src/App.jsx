@@ -4,7 +4,7 @@ import Home from "./components/Home/Home";
 import { LoginButton } from "./components/Login/Login";
 // import LogoutButton from "./components/Login/Logout.jsx";
 import FormCreate from "./components/FormCreate/form";
-import About from "./components/About/About";
+import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
 import MyShopping from "./components/myShoping/MyShoping";
