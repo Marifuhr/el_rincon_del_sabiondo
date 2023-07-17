@@ -11,6 +11,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -162,10 +163,10 @@ const reducer = (state = initialState, action) => {
         ...bookPayload,
         quantity: 1,
       };
-      
+
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-      
+
       return {
         ...state,
         cart_shopping,
@@ -183,18 +184,24 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart,
       };
     }
-    
+
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
-
 
     case SEND_MAIL:
       return {
         ...state,
         infoSend: action.payload,
       };
+
+    case SEND_MAIL_SUBSCRIPTION:
+      return {
+        ...state,
+        infoSend: action.payload,
+      };
+
     default:
       return { ...state };
   }

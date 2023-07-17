@@ -13,6 +13,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -143,13 +144,15 @@ export function createUser(userData) {
   };
 }
 
-export async function createSellingTotalDB({IdUser, products}){
-  const lastProducts = products.map(({IdBook}) => IdBook);
+export async function createSellingTotalDB({ IdUser, products }) {
+  const lastProducts = products.map(({ IdBook }) => IdBook);
   console.log(lastProducts);
-  axios.post(`${endpoint}/sellings`,{
-    IdUser,
-    products: lastProducts
-  }).then(console.log);
+  axios
+    .post(`${endpoint}/sellings`, {
+      IdUser,
+      products: lastProducts,
+    })
+    .then(console.log);
 }
 
 export const sendMail = (data) => {
@@ -167,12 +170,26 @@ export const sendMail = (data) => {
   };
 };
 
-
 // actions.js
 
-export function saveProfileChanges(profileData){
+export function saveProfileChanges(profileData) {
   return {
     type: SAVE_PROFILE_CHANGES,
     payload: profileData,
   };
-};
+}
+
+export function sendMailSubscription(data) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${endpoint}/mailSubscription`, data);
+      const infoSend = response.data;
+      return dispatch({
+        type: SEND_MAIL_SUBSCRIPTION,
+        payload: infoSend,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
