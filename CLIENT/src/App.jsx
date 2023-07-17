@@ -7,7 +7,7 @@ import FormCreate from "./components/FormCreate/form";
 import About from "./components/About/about";
 import Contacto from "./components/Contacto/contacto";
 import NavBar from "./components/NavBar/NavBar";
-import MyShopping from "./components/myShoping/MyShoping";
+
 import UserPage from "./components/UserPage/UserPage";
 import UserPageInfo from "./components/UserPage/UserPageInfo";
 import EditProfile from "./components/UserPage/EditProfile";
@@ -29,7 +29,7 @@ export default function App() {
   const hideNavBarRoutes = [
     "/profile",
     "/profile/myProfile",
-    "/profile/myShopping",
+    
     "/profile/myReviews",
     "/profile/billing",
     "/admin",
@@ -59,7 +59,7 @@ export default function App() {
         >
           <Route path="" element={<UserPageInfo />} />
           <Route path="myProfile" element={<EditProfile />} />
-          <Route path="myShopping" element={<MyShopping />} />
+          
           <Route path="myReviews" element={<MyReviews />} />
           {/* <Route path="billing" element={< />} />  */}
         </Route>
@@ -78,9 +78,9 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
-        <Route path="/createreview/:id" element={<PrivateRoute><CreateReview /></PrivateRoute>} />
+        <Route path="/createreview/:id" element={<CreateReview />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/myShopping" element={<MyShopping />} />
+        
       </Routes>
     </div>
   );

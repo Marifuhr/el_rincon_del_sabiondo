@@ -33,7 +33,6 @@ const initialState = {
   filters: {
     category: "",
     price: "",
-    order: "",
   },
   cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
 };
@@ -67,9 +66,8 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
   return filterResults;
 };
 
-const yourReducer = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    // ...otros casos de reducción
     case ORDER_BY_ALPHABETICAL:
       const order = action.payload;
       let sortedUsers = [];
@@ -89,12 +87,7 @@ const yourReducer = (state = initialState, action) => {
         users: sortedUsers,
         order: action.payload,
       };
-    default:
-      return state;
-  }
-};
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
+ 
     case GET_ALL_BOOKS:
       return {
         ...state,
@@ -165,6 +158,7 @@ const reducer = (state = initialState, action) => {
       });
       return { ...state, filtered: filterOrder };
     }
+
     case SET_FILTER:
       return {
         ...state,
@@ -172,6 +166,7 @@ const reducer = (state = initialState, action) => {
       };
     default:
       return state;
+  
 
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
@@ -233,6 +228,8 @@ const reducer = (state = initialState, action) => {
         ...state,
         infoSend: action.payload,
       };
+   
+    
   }
 };
 const createUser = (state = initialState, action) => {
