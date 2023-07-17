@@ -7,11 +7,9 @@ const styleSpan = {
   textDecoration: "none"
 }
 
-const CardBookAdmin = (props) => {
-  console.log(props);
-  const { image, title, IdBook, languageBook: { language }, price, publisher, numberPages, stock, isActive, description } = props;
+const CardBookAdmin = ({ image, title, IdBook, languageBook: { language }, price, publisher, numberPages, stock, isActive, description }) => {
   const [disabled, setDisabled] = useState(isActive);
-  const [editMode, setEditMode] = useState(true);
+  const [editMode, setEditMode] = useState(false);
   const [valuesBook, setValuesBook] = useState({image, title, price, publisher, numberPages, stock, description});
 
   const handleActiveBook = () => {
