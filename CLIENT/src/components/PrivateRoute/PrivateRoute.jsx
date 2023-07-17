@@ -4,6 +4,8 @@ import { useUserInfo } from '../../context/ProviderUser';
 const PrivateRoute = ({ children }) => {
     const {user} = useUserInfo();
     
+    if(!user) return null;
+
     return (
         user ?
             children

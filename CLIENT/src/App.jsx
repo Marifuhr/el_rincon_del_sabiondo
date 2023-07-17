@@ -70,7 +70,7 @@ export default function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contacto" element={<Contacto />} />
         <Route path="/cart_pay" element={<CartPayPage />} />
-        <Route path="/createreview/:id" element={<CreateReview />} />
+        <Route path="/createreview/:id" element={<PrivateRoute><CreateReview /></PrivateRoute>} />
         <Route path="*" element={<NotFound />} />
         <Route path="/myShopping" element={<MyShopping />} />
       </Routes>
