@@ -23,6 +23,7 @@ import MyReviews from "./components/UserPage/MyReviews";
 import AdminPage from "./components/AdminPage/AdminPage"
 import UsuariosAdmin from "./components/UsuariosAdmin/UsuariosAdmin";
 import AdminBooks from "./components/AdminBooks/AdminBooks";
+import ProviderBooksAdmin from "./context/ProviderBooksAdmin";
 export default function App() {
   const location = useLocation();
   const hideNavBarRoutes = [
@@ -66,7 +67,11 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />}>
           <Route path="myProfile" element={<EditProfileAdmin />} />
           <Route path="usuariosAdmin" element={<UsuariosAdmin />} />
-          <Route path="books" element={<AdminBooks />} />
+          <Route path="books" element={(
+            <ProviderBooksAdmin>
+              <AdminBooks />
+            </ProviderBooksAdmin>
+          )} />
           <Route path="create" element={<FormCreate />} />
         </Route>
         
