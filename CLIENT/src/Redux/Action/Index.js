@@ -14,6 +14,7 @@ import {
   CREATE_USER,
   SEND_MAIL,
   ORDER_BY_ALPHABETICAL,
+  SET_FILTER,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -181,5 +182,12 @@ export const orderByAlphabet = (order) => {
   return {
     type: ORDER_BY_ALPHABETICAL,
     payload: order,
+  };
+};
+
+export const setFilter = (filterType) => {
+  return {
+    type: SET_FILTER,
+    filterType
   };
 };

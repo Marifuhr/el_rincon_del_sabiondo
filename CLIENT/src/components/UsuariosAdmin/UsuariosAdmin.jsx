@@ -10,14 +10,31 @@ function UsuariosAdmin() {
   const [order, setOrder] = useState("");
   const [orderBy, setOrderBy] = useState("");
   const [users, setUsers] = useState([]);
+  const [filter, setFilter] = useState("");
+  const [userTypeFilter, setUserTypeFilter] = useState(null);
 
 
+  const handleFilterChange = (filterType) => {
+    setUserTypeFilter(filterType);
+  };
+  
+
+// const getUsers = async () => {
+//   try {
+//     const response = await axios.get(
+//       `${import.meta.env.VITE_URL_ENDPOINT}/users`
+//     );
+//     let fetchedUsers = response.data;
 const getUsers = async () => {
   try {
     const response = await axios.get(
       `${import.meta.env.VITE_URL_ENDPOINT}/users`
     );
     let fetchedUsers = response.data;
+
+    if (userTypeFilter) {
+      fetchedUsers = fetchedUsers.filter((user) => user.role === userTypeFilter);
+    }
 
     if (orderBy === "atoz") {
       fetchedUsers = fetchedUsers.sort((a, b) =>
@@ -49,7 +66,7 @@ const getUsers = async () => {
       setUsers(fetchedUsers);
     };
     fetchData();
-  }, [orderBy]);
+  }, [orderBy, userTypeFilter]);
   
 
   const handleIsActive = async (user) => {
@@ -102,7 +119,16 @@ const getUsers = async () => {
     </MenuList>
   </Menu>
 </Th>
-            <Th>TIPO USUARIO</Th>
+            <Th>
+  <Menu>
+    <MenuButton as={Button}>Tipo Usuario</MenuButton>
+    <MenuList>
+      <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
+      <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
+    </MenuList>
+  </Menu>
+</Th>
+
             <Th>ESTADO</Th>
             <Th>Acciones</Th>
           </Tr>

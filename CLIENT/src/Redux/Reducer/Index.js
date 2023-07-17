@@ -12,6 +12,7 @@ import {
   CREATE_USER,
   SEND_MAIL,
   ORDER_BY_ALPHABETICAL,
+  SET_FILTER,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -28,6 +29,7 @@ const initialState = {
   search: null,
   category: [],
   filtered: null,
+  filter:"",
   filters: {
     category: "",
     price: "",
@@ -163,6 +165,14 @@ const reducer = (state = initialState, action) => {
       });
       return { ...state, filtered: filterOrder };
     }
+    case SET_FILTER:
+      return {
+        ...state,
+        filter: action.filterType
+      };
+    default:
+      return state;
+
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
       const validateIfExistBook = state.cart_shopping.some(
@@ -223,8 +233,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         infoSend: action.payload,
       };
-    default:
-      return { ...state };
   }
 };
 const createUser = (state = initialState, action) => {
