@@ -15,7 +15,7 @@ export default function UsuariosAdmin() {
   const [userTypeFilter, setUserTypeFilter] = useState(null);
 
   const handleFilterChange = (filterType) => {
-    setUserTypeFilter(filterType);
+    setUserTypeFilter(filterType === "todos" ? null : filterType);
   };
 
 
@@ -111,6 +111,7 @@ export default function UsuariosAdmin() {
   <Menu>
     <MenuButton as={Button}>Tipo Usuario</MenuButton>
     <MenuList>
+      <MenuItem onClick={() => handleFilterChange("todos")}>Todos</MenuItem>
       <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
       <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
     </MenuList>
