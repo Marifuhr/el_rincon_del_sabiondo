@@ -38,6 +38,7 @@ export default function Simple() {
   }, [user.SellingTotals]);
 
   return (
+<<<<<<< HEAD
     <Box>
       {/* <Container maxW={"4xl"}> */}
       <SimpleGrid
@@ -69,6 +70,9 @@ export default function Simple() {
         </Stack>
       </SimpleGrid>
 
+=======
+    
+>>>>>>> 013c696e6d0c08c79393b06a333c0b5bc42cce3b
       <Box>
         <Text
           fontSize={{ base: "16px", lg: "18px" }}
@@ -79,6 +83,93 @@ export default function Simple() {
         >
           Datos
         </Text>
+          <Flex>
+            <Image
+              rounded={"md"}
+              src={user.picture}
+              alt={user.name}
+              fit={"cover"}
+              align={"center"}
+              w={"70%"}
+              h={{ sm: "300px", lg: "300px" }}
+            />
+          </Flex>
+          <Stack spacing={{ base: 6, md: 1 }}>
+            <Box as={"header"}>
+              <Heading
+                lineHeight={5.9}
+                fontWeight={600}
+                fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
+              >
+                {user.name}
+              </Heading>
+            </Box>
+          </Stack>
+        </SimpleGrid>
+
+        <Box>
+          <Text
+            fontSize={{ base: "16px", lg: "18px" }}
+            color="yellow.500"
+            fontWeight={"500"}
+            textTransform={"uppercase"}
+            mb={"4"}
+          >
+            Datos
+          </Text>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
+            <List spacing={2}>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Rol:
+                </Text>{" "}
+                {user.role}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Id:
+                </Text>{" "}
+                {user.IdUser}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Email:
+                </Text>{" "}
+                {user.email}
+              </ListItem>
+              <ListItem>
+                <Text as={"span"} fontWeight={"bold"}>
+                  Actualizacion:
+                </Text>{" "}
+                {formatDate(user.updatedAt)}
+              </ListItem>
+            </List>
+          </SimpleGrid>
+        </Box>
+        <Box>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                País:
+              </Text>{" "}
+              {user.country}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Provincia:
+              </Text>{" "}
+              {user.province}
+            </ListItem>
+
+          <Text
+            fontSize={{ base: "16px", lg: "18px" }}
+            color={useColorModeValue("yellow.500", "yellow.300")}
+            fontWeight={"500"}
+            textTransform={"uppercase"}
+            mb={"4"}
+          >
+            Reviews
+          </Text>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
           <List spacing={2}>
@@ -159,6 +250,7 @@ export default function Simple() {
                     w={"10%"}
                     h={{ sm: "100px", lg: "70px" }}
                   />
+<<<<<<< HEAD
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -227,7 +319,77 @@ export default function Simple() {
             ))}
           </ListItem>
         </List>
+=======
+                  <ListItem display="flex" flexDirection="column">
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Nombre del Libro:
+                      <span style={{fontWeight:"normal"}}> {review.Book.title}</span>
+                    </Text>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Id del Libro:
+                      <span style={{fontWeight:"normal"}}> {review.IdBook}</span>
+                    </Text>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Descripción:
+                      <span style={{fontWeight:"normal"}}> {review.description}</span>
+                    </Text>
+                    <Box>
+                      {[1, 2, 3, 4, 5].map((value) => (
+                        <StarIcon
+                          key={value}
+                          boxSize={3}
+                          color={value <= review.rate ? "yellow.500" : "gray.300"}
+                        />
+                      ))}
+                    </Box>
+                  </ListItem>
+                </Box>
+              ))}
+            </ListItem>
+          </List>
+        </Box>
+        <Box>
+          <Text
+            fontSize={{ base: "16px", lg: "18px" }}
+            color={useColorModeValue("yellow.500", "yellow.300")}
+            fontWeight={"500"}
+            textTransform={"uppercase"}
+            mb={"4"}
+          >
+            Compras realizadas
+          </Text>
+<Box>
+          <List spacing={2}>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Total de Libro: {totalPrice}
+              </Text>{" "}
+              {shopping?.slice(0, 3).map((book, i) => (
+                <Box key={i}>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Producto:
+                    </Text>{" "}
+                    {book.product}
+                  </ListItem>
+                  <ListItem>
+                    <Text as={"span"} fontWeight={"bold"}>
+                      Precio:
+                    </Text>{" "}
+                    {book.price}
+                  </ListItem>
+                </Box>
+              ))}
+            </ListItem>
+          </List>
+        </Box>
+        </Box>
+>>>>>>> 013c696e6d0c08c79393b06a333c0b5bc42cce3b
       </Box>
-    </Box>
   );
 }
+
+
+              
+      
+     
