@@ -3681,6 +3681,10 @@ async function bulkCreateBooksFromFile() {
 
       if (!foundBook) {
         // Crear el libro si no existe
+        if (book.stock = 0) {
+          //asigno stock random entre 1 y 9
+          book.stock = Math.floor(Math.random() * 10);
+        }
         const createdBook = await Book.create(book);
         console.log('Libro creado:', createdBook);
 
@@ -3730,11 +3734,15 @@ async function bulkCreateBooksFromFile() {
 
           await createdBook.setCategories(foundCategories);
         }
+      } else if (foundBook.stock === 0) {
+        const newStock = Math.floor(Math.random() * 10) + 1;
+        foundBook.stock = newStock
+        await foundBook.save();
+        console.log('El libro ya existe, se ha actualizado el stock:', foundBook.title, 'Nuevo stock:', newStock);
       } else {
-        console.log('El libro ya existe:', foundBook.title);
+        console.log('El libro ya existe');
       }
     }
-
     console.log('Proceso de creación de libros finalizado.');
   } catch (error) {
     console.error('Error al crear los libros:', error);
