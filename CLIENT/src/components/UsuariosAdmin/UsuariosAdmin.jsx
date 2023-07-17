@@ -1,65 +1,53 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useUserInfo } from "../../context/ProviderUser";
-import { Box,Menu, MenuButton, MenuList, MenuItem, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
+import { Box, Menu, MenuButton, MenuList, MenuItem, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
 
 
 function UsuariosAdmin() {
-  const { user } = useUserInfo();
-  const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
-  const [order, setOrder] = useState("");
   const [orderBy, setOrderBy] = useState("");
   const [users, setUsers] = useState([]);
-  const [filter, setFilter] = useState("");
   const [userTypeFilter, setUserTypeFilter] = useState(null);
 
 
   const handleFilterChange = (filterType) => {
     setUserTypeFilter(filterType);
   };
-  
 
-// const getUsers = async () => {
-//   try {
-//     const response = await axios.get(
-//       `${import.meta.env.VITE_URL_ENDPOINT}/users`
-//     );
-//     let fetchedUsers = response.data;
-const getUsers = async () => {
-  try {
-    const response = await axios.get(
-      `${import.meta.env.VITE_URL_ENDPOINT}/users`
-    );
-    let fetchedUsers = response.data;
-
-    if (userTypeFilter) {
-      fetchedUsers = fetchedUsers.filter((user) => user.role === userTypeFilter);
-    }
-
-    if (orderBy === "atoz") {
-      fetchedUsers = fetchedUsers.sort((a, b) =>
-        a.name.localeCompare(b.name)
+  const getUsers = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL_ENDPOINT}/users`
       );
-    } else if (orderBy === "ztoa") {
-      fetchedUsers = fetchedUsers.sort((a, b) =>
-        b.name.localeCompare(a.name)
-      );
-    }
+      let fetchedUsers = response.data;
 
-    return fetchedUsers;
-  } catch (error) {
-    console.error("Error al obtener los usuarios:", error);
-  }
-};
+      if (userTypeFilter) {
+        fetchedUsers = fetchedUsers.filter((user) => user.role === userTypeFilter);
+      }
+
+      if (orderBy === "atoz") {
+        fetchedUsers = fetchedUsers.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (orderBy === "ztoa") {
+        fetchedUsers = fetchedUsers.sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      }
+
+      return fetchedUsers;
+    } catch (error) {
+      console.error("Error al obtener los usuarios:", error);
+    }
+  };
 
 
   const orderByAlphabetical = (order) => {
     setOrderBy(order);
   };
-  
 
 
-  
+
+
   useEffect(() => {
     const fetchData = async () => {
       const fetchedUsers = await getUsers();
@@ -67,7 +55,7 @@ const getUsers = async () => {
     };
     fetchData();
   }, [orderBy, userTypeFilter]);
-  
+
 
   const handleIsActive = async (user) => {
     try {
@@ -110,24 +98,24 @@ const getUsers = async () => {
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
-          <Th>
-  <Menu>
-    <MenuButton as={Button}>Usuarios</MenuButton>
-    <MenuList>
-      <MenuItem onClick={() => orderByAlphabetical("atoz")}>Ordenar A-Z</MenuItem>
-      <MenuItem onClick={() => orderByAlphabetical("ztoa")}>Ordenar Z-A</MenuItem>
-    </MenuList>
-  </Menu>
-</Th>
             <Th>
-  <Menu>
-    <MenuButton as={Button}>Tipo Usuario</MenuButton>
-    <MenuList>
-      <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
-      <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
-    </MenuList>
-  </Menu>
-</Th>
+              <Menu>
+                <MenuButton as={Button}>Usuarios</MenuButton>
+                <MenuList>
+                  <MenuItem onClick={() => orderByAlphabetical("atoz")}>Ordenar A-Z</MenuItem>
+                  <MenuItem onClick={() => orderByAlphabetical("ztoa")}>Ordenar Z-A</MenuItem>
+                </MenuList>
+              </Menu>
+            </Th>
+            <Th>
+              <Menu>
+                <MenuButton as={Button}>Tipo Usuario</MenuButton>
+                <MenuList>
+                  <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
+                  <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
+                </MenuList>
+              </Menu>
+            </Th>
 
             <Th>ESTADO</Th>
             <Th>Acciones</Th>

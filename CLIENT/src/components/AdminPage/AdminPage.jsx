@@ -18,7 +18,6 @@ import {
   Text,
   useDisclosure,
   Menu,
-  MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -26,19 +25,19 @@ import {
 import {
   FiHome,
   FiUser,
-  FiShoppingCart,
   FiSmile,
   FiEdit2,
-  FiCheckCircle,
   FiMenu,
-  FiBell,
 } from "react-icons/fi";
+import { TbBooks } from "react-icons/tb";
+
 import SearchBar from "../SearchBar/SearchBar";
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
   { name: "Editar Perfil", icon: FiUser, route: "/admin/myProfile" },
   { name: "Usuarios", icon: FiSmile, route: "/admin/usuariosAdmin" },
+  { name: "Administrar Libros", icon: TbBooks, route: "/admin/books" },
   { name: "Agregar Libros", icon: FiEdit2, route: "/admin/create" },
   // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
@@ -68,7 +67,7 @@ export default function SidebarWithHeader() {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {<Outlet />}
+        <Outlet />
       </Box>
     </Box>
   );
@@ -156,17 +155,17 @@ const MobileNav = ({ onOpen, ...rest }) => {
   };
   return (
     <Flex
-    ml={{ base: 0, md: 60 }}
-    px={{ base: 4, md: 4 }}
-    height="20"
-    alignItems="center"
-    bg={useColorModeValue("#70a57b", "gray.900")}
-    borderBottomWidth="1px"
-    borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-    justifyContent={{ base: "space-between", md: "flex-end" }}
-    {...rest}
+      ml={{ base: 0, md: 60 }}
+      px={{ base: 4, md: 4 }}
+      height="20"
+      alignItems="center"
+      bg={useColorModeValue("#70a57b", "gray.900")}
+      borderBottomWidth="1px"
+      borderBottomColor={useColorModeValue("gray.200", "gray.700")}
+      justifyContent={{ base: "space-between", md: "flex-end" }}
+      {...rest}
     >
-    <SearchBar />
+      <SearchBar />
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
