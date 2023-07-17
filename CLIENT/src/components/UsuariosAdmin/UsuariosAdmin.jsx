@@ -21,9 +21,7 @@ export default function UsuariosAdmin() {
 
   const getUsers = async () => {
     try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_URL_ENDPOINT}/users`
-      );
+      const response = await axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/users`);
       let fetchedUsers = response.data;
   
       if (userTypeFilter) {
