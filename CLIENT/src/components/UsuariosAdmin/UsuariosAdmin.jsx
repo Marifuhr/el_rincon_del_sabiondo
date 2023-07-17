@@ -1,32 +1,56 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserInfo } from "../../context/ProviderUser";
-import { Box, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
+import { Box,Menu, MenuButton, MenuList, MenuItem, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
+
 
 function UsuariosAdmin() {
   const { user } = useUserInfo();
   const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
-
+  const [order, setOrder] = useState("");
+  const [orderBy, setOrderBy] = useState("");
   const [users, setUsers] = useState([]);
 
-  const getUsers = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_URL_ENDPOINT}/users`
-      );
-      return response.data; // Actualizar el estado con los usuarios
-    } catch (error) {
-      console.error("Error al obtener los usuarios:", error);
-    }
-  };
 
+const getUsers = async () => {
+  try {
+    const response = await axios.get(
+      `${import.meta.env.VITE_URL_ENDPOINT}/users`
+    );
+    let fetchedUsers = response.data;
+
+    if (orderBy === "atoz") {
+      fetchedUsers = fetchedUsers.sort((a, b) =>
+        a.name.localeCompare(b.name)
+      );
+    } else if (orderBy === "ztoa") {
+      fetchedUsers = fetchedUsers.sort((a, b) =>
+        b.name.localeCompare(a.name)
+      );
+    }
+
+    return fetchedUsers;
+  } catch (error) {
+    console.error("Error al obtener los usuarios:", error);
+  }
+};
+
+
+  const orderByAlphabetical = (order) => {
+    setOrderBy(order);
+  };
+  
+
+
+  
   useEffect(() => {
     const fetchData = async () => {
       const fetchedUsers = await getUsers();
       setUsers(fetchedUsers);
     };
     fetchData();
-  }, []);
+  }, [orderBy]);
+  
 
   const handleIsActive = async (user) => {
     try {
@@ -69,7 +93,15 @@ function UsuariosAdmin() {
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
-            <Th>USUARIO</Th>
+          <Th>
+  <Menu>
+    <MenuButton as={Button}>Usuarios</MenuButton>
+    <MenuList>
+      <MenuItem onClick={() => orderByAlphabetical("atoz")}>Ordenar A-Z</MenuItem>
+      <MenuItem onClick={() => orderByAlphabetical("ztoa")}>Ordenar Z-A</MenuItem>
+    </MenuList>
+  </Menu>
+</Th>
             <Th>TIPO USUARIO</Th>
             <Th>ESTADO</Th>
             <Th>Acciones</Th>

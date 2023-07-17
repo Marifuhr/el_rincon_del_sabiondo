@@ -13,6 +13,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  ORDER_BY_ALPHABETICAL,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -174,5 +175,11 @@ export function saveProfileChanges(profileData){
   return {
     type: SAVE_PROFILE_CHANGES,
     payload: profileData,
+  };
+};
+export const orderByAlphabet = (order) => {
+  return {
+    type: ORDER_BY_ALPHABETICAL,
+    payload: order,
   };
 };

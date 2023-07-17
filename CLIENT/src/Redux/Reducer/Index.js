@@ -11,6 +11,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  ORDER_BY_ALPHABETICAL,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -30,6 +31,7 @@ const initialState = {
   filters: {
     category: "",
     price: "",
+    order: "",
   },
   cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
 };
@@ -63,6 +65,32 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
   return filterResults;
 };
 
+const yourReducer = (state = initialState, action) => {
+  switch (action.type) {
+    // ...otros casos de reducción
+    case ORDER_BY_ALPHABETICAL:
+      const order = action.payload;
+      let sortedUsers = [];
+
+      if (order === "atoz") {
+        sortedUsers = [...state.users].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (order === "ztoa") {
+        sortedUsers = [...state.users].sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      }
+
+      return {
+        ...state,
+        users: sortedUsers,
+        order: action.payload,
+      };
+    default:
+      return state;
+  }
+};
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_ALL_BOOKS:

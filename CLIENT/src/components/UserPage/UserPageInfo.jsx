@@ -36,6 +36,7 @@ export default function Simple() {
   return (
     <Box>
       <Box>
+
         <SimpleGrid
           columns={{ base: 1, md: 2, lg: 2 }}
           spacing={{ base: 2, md: 0 }}
@@ -64,6 +65,7 @@ export default function Simple() {
             </Box>
           </Stack>
         </SimpleGrid>
+
         <Box>
           <Text
             fontSize={{ base: "16px", lg: "18px" }}
@@ -105,6 +107,21 @@ export default function Simple() {
           </SimpleGrid>
         </Box>
         <Box>
+
+          <List spacing={2}>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                País:
+              </Text>{" "}
+              {user.country}
+            </ListItem>
+            <ListItem>
+              <Text as={"span"} fontWeight={"bold"}>
+                Provincia:
+              </Text>{" "}
+              {user.province}
+            </ListItem>
+
           <Text
             fontSize={{ base: "16px", lg: "18px" }}
             color={useColorModeValue("yellow.500", "yellow.300")}
@@ -169,6 +186,7 @@ export default function Simple() {
           </Text>
 
           <List spacing={2}>
+
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
                 Total de Libro: {totalPrice}
@@ -190,10 +208,5 @@ export default function Simple() {
                 </Box>
               )
               )}
-            </ListItem>
-          </List>
-        </Box>
-      </Box>
-    </Box>
-  );
-}
+      
+     
