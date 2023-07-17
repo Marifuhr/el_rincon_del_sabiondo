@@ -13,6 +13,7 @@ import {
   SEND_MAIL,
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
+  SEARCH_NAME_USER,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -233,6 +234,13 @@ const reducer = (state = initialState, action) => {
         ...state,
         infoSend: action.payload,
       };
+      
+      case SEARCH_NAME_USER: {
+        return {
+          ...state,
+          users: action.payload,
+        };
+      };
   }
 };
 const createUser = (state = initialState, action) => {
@@ -246,5 +254,6 @@ const createUser = (state = initialState, action) => {
       return state;
   }
 };
+
 
 export default reducer;
