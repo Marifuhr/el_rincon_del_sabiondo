@@ -213,9 +213,9 @@ function DetailBook() {
                       </div>
                     ))}
                 {!mostrarTodasReviews && (
-                  <button onClick={handleMostrarTodosClick}>
+                  <Button colorScheme="teal" onClick={handleMostrarTodosClick}>
                     Mostrar todos
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
