@@ -196,7 +196,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U02L5ATGVS5-e2ea0e8e3a84-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -276,29 +276,29 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:blenda.prg@gmail.com" isExternal>
+              <Link href="mailto:correo@example.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/BLENDA23" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://www.linkedin.com/in/blenda-reyes-a2078811a/"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -342,7 +342,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U0498L3L53J-617cf5d89eee-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -422,29 +422,29 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:ponce.elizabeth.j@gmil.com" isExternal>
+              <Link href="mailto:correo@example.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/Elizabeth019" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://www.linkedin.com/in/elizabeth-ponce-4835b0255/"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -488,7 +488,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U04CXRT4W3S-7679f3f4ee7c-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -520,9 +520,9 @@ export default function contacto() {
                 color: "white",
               }}
             >
-              Maria
+              María Rosa
               <br />
-              Fhur
+              Fuhr
             </Text>
             <HStack
               spacing={6}
@@ -568,29 +568,29 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:mariarosafuhr@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/Marifuhr" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://linkedin.com/in/maria-rosa-fuhr-78b839201"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -714,7 +714,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="alemar.martinez16@gmail.com" isExternal>
+              <Link href="mailto:alemar.martinez16@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -732,11 +732,11 @@ export default function contacto() {
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/TheArmandoMarti" isExternal>
+              {/* <Link href="https://twitter.com/TheArmandoMarti" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -780,7 +780,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U04856YH65B-158aa48bfe1d-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -860,29 +860,29 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:alasiamd@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/alasiamd" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://www.linkedin.com/in/mauro-daniel-alasia-25930620/"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -926,7 +926,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://photos.app.goo.gl/WbCfKKk5mPqx7AU78"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -1006,7 +1006,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:maurocmg@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -1024,11 +1024,11 @@ export default function contacto() {
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -1072,7 +1072,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U04BTJB9VD5-e69eebc4f429-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -1152,7 +1152,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:Rodrisoyhenry@gmail.com" isExternal>
+              <Link href="mailto:correo@example.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -1170,11 +1170,11 @@ export default function contacto() {
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>
@@ -1218,7 +1218,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://images.unsplash.com/photo-1623930154261-37f8b293c059?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src="https://ca.slack-edge.com/TPRS7H4PN-U04HT7DRP39-897d4c3af224-512"
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -1298,7 +1298,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:bulla.d.david@gmail.com" isExternal>
+              <Link href="mailto:correo@example.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -1316,11 +1316,11 @@ export default function contacto() {
                   <FaLinkedin size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
+              {/* <Link href="https://twitter.com/tu_usuario_twitter" isExternal>
                 <Tooltip label="Visitar Twitter" placement="top">
                   <FaTwitter size={30} className="social-icon" />
                 </Tooltip>
-              </Link>
+              </Link> */}
             </HStack>
           </Box>
         </Flex>

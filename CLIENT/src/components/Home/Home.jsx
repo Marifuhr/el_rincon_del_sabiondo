@@ -17,6 +17,8 @@ import PopUp from "../PopUp/PopUp";
 import { useSearchParams } from "react-router-dom";
 import { useUserInfo } from "../../context/ProviderUser";
 import { TOKEN_STORAGE_CART } from "../../Redux/Action/Actions.types";
+import { Box, Button } from "@chakra-ui/react";
+import { FaArrowUp } from "react-icons/fa";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
@@ -160,7 +162,7 @@ export default function Home() {
   const handleSortClick = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const newButtonText =
-      sortOrder === "asc" ? "Precios mayor a menor" : "Precios menor a mayor";
+      sortOrder === "asc" ? "Precios MAYOR a menor" : "Precios MENOR a mayor";
 
     setSortOrder(newSortOrder);
     setButtonText(newButtonText);
@@ -170,38 +172,72 @@ export default function Home() {
 
   return (
     <div>
-      <SearchBar />
-      <div className="filtros_posjqlk">
+      <div
+        className={styles.filtrosTodos}
+        style={{
+          backgroundColor: "#70a57b",
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "15px",
+          padding: "10px 0px 20px 0px",
+          boxShadow:
+            "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+        }}
+      >
+        <div style={{ width: "30%" }}>
+          <SearchBar />
+        </div>
+
         <select
-          className="select_lkow"
+          className={styles.selectCategory}
           name="category"
           onChange={handleChange}
           value={categoryValue}
+          style={{
+            width: "370px",
+          }}
         >
-          <option value="">Seleccionar</option>
+          <option value="">Filtar por Libros por Categorias</option>
           {options.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}
             </option>
           ))}
         </select>
+
         <select
-          className="select_lkow"
+          className={styles.selectPrecio}
           id="price"
           name="price"
           onChange={handleChange}
           value={priceValue}
         >
-          <option value="">todos</option>
-          <option value="lt100">Menos que 100</option>
-          <option value="101-200">De 101 a 200</option>
-          <option value="201-300">De 201 a 300</option>
-          <option value="gt300">Más de 300</option>
+          <option value="">Todos los Precios</option>
+          <option value="lt100">Menos que $100</option>
+          <option value="101-200">De $101 a $200</option>
+          <option value="201-300">De $201 a $300</option>
+          <option value="gt300">Más de $300</option>
         </select>
-        <button onClick={handleSortClick}>{buttonText}</button>
-        <button className="clear_button" onClick={handleReset}>
+
+        <Button
+          variant="boton1"
+          bg={"#448f53"}
+          size={"sm"}
+          onClick={handleSortClick}
+        >
+          {buttonText}
+        </Button>
+        <Button
+          variant="boton1"
+          bg={"#448f53"}
+          size={"sm"}
+          className="clear_button"
+          onClick={handleReset}
+        >
           Limpiar
-        </button>
+        </Button>
       </div>
       <div className={styles.homePage}>
         <div className={styles.pageIndicator}>
@@ -251,8 +287,21 @@ export default function Home() {
             books.map((book) => <Card key={book.IdBook} props={book} />)}
         </div>
 
-        <div className={styles.scrollToTopButton} onClick={handleScrollToTop}>
-          Subir
+        <div
+          style={{ position: "fixed", right: "0", bottom: "0", margin: "20px" }}
+        >
+          <Button
+            variant="boton1"
+            bg={"#448f53"}
+            size={"sm"}
+            onClick={handleScrollToTop}
+            borderRadius="100%"
+            display="flex"
+            justifyContent="center"
+            title="Subir"
+          >
+            <FaArrowUp style={{ alignSelf: "center" }} />
+          </Button>
         </div>
       </div>
       <div style={{ marginTop: "20px" }}>
