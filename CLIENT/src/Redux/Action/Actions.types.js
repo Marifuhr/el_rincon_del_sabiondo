@@ -15,3 +15,4 @@ export const CREATE_USER = "CREATE_USER";
 export const SEND_MAIL = "SEND_MAIL";
 export const ORDER_BY_ALPHABETICAL = "ORDER_BY_ALPHABETICAL";
 export const SET_FILTER = 'SET_FILTER';
+export const SEARCH_NAME_USER = 'SEARCH_NAME_USER';
