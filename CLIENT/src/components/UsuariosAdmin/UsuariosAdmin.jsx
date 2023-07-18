@@ -1,8 +1,23 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserInfo } from "../../context/ProviderUser";
-// import { Box, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
-import { Box, Menu, MenuButton, MenuList, MenuItem, Table, Thead, Tbody, Tr, Th, Td, Button } from "@chakra-ui/react";
+
+import {
+  Box,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Button,
+} from "@chakra-ui/react";
+import SearchBarAdmin from "../AdminPage/SearchBarAdmin";
+import { useSelector } from "react-redux";
 
 
 export default function UsuariosAdmin() {
@@ -14,20 +29,33 @@ export default function UsuariosAdmin() {
   const [filter, setFilter] = useState("");
   const [userTypeFilter, setUserTypeFilter] = useState(null);
 
+  const filterUser= useSelector((state) => state.users);
+
+
   const handleFilterChange = (filterType) => {
-    setUserTypeFilter(filterType);
+    setUserTypeFilter(filterType === "todos" ? null : filterType);
   };
 
 
+  // const getUsers = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${import.meta.env.VITE_URL_ENDPOINT}/users`
+  //     );
+  //     let fetchedUsers = response.data;
   const getUsers = async () => {
     try {
-      const response = await axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/users`);
+      const response = await axios.get(
+        `${import.meta.env.VITE_URL_ENDPOINT}/users`
+      );
       let fetchedUsers = response.data;
-  
+
       if (userTypeFilter) {
-        fetchedUsers = fetchedUsers.filter((user) => user.role === userTypeFilter);
+        fetchedUsers = fetchedUsers.filter(
+          (user) => user.role === userTypeFilter
+        );
       }
-  
+
       if (orderBy === "atoz") {
         fetchedUsers = fetchedUsers.sort((a, b) =>
           a.name.localeCompare(b.name)
@@ -37,64 +65,68 @@ export default function UsuariosAdmin() {
           b.name.localeCompare(a.name)
         );
       }
-  
+
       return fetchedUsers;
     } catch (error) {
       console.error("Error al obtener los usuarios:", error);
     }
   };
-  
-    const orderByAlphabetical = (order) => {
-      setOrderBy(order);
-    };
-    
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        const fetchedUsers = await getUsers();
-        setUsers(fetchedUsers);
-      };
-      fetchData();
-    }, [orderBy, userTypeFilter]);
-    
 
-    const handleIsActive = async (user) => {
-      try {
-        const updatedUser = { ...user, isActive: !user.isActive };
-        await axios.put(
-          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-          updatedUser
-        );
-        setUsers((prevUsers) =>
-          prevUsers.map((prevUser) =>
-            prevUser.IdUser === user.IdUser ? updatedUser : prevUser
-          )
-        );
-      } catch (error) {
-        console.error(error.message);
-      }
+  const orderByAlphabetical = (order) => {
+    setOrderBy(order);
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const fetchedUsers = await getUsers();
+      setUsers(fetchedUsers);
     };
-    const handleMakeAdmin = async (user) => {
-      try {
-        await axios.put(
-          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-          {
-            ...user,
-            role: "admin",
-          }
-        );
-        setUsers((prevUsers) =>
-          prevUsers.map((prevUser) =>
-            prevUser.IdUser === user.IdUser ? { ...prevUser, role: "admin" } : prevUser
-          )
-        );
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
+    filterUser && filterUser.length > 0 ? setUsers(filterUser) : fetchData();
+  }, [orderBy, userTypeFilter, filterUser]);
+
+  const handleIsActive = async (user) => {
+    try {
+      const updatedUser = { ...user, isActive: !user.isActive };
+      await axios.put(
+        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
+        updatedUser
+      );
+      setUsers((prevUsers) =>
+        prevUsers.map((prevUser) =>
+          prevUser.IdUser === user.IdUser ? updatedUser : prevUser
+        )
+      );
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const handleMakeAdmin = async (user) => {
+    try {
+      await axios.put(
+        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
+        {
+          ...user,
+          role: "admin",
+        }
+      );
+      setUsers((prevUsers) =>
+        prevUsers.map((prevUser) =>
+          prevUser.IdUser === user.IdUser
+            ? { ...prevUser, role: "admin" }
+            : prevUser
+        )
+      );
+    } catch (error) {
+      console.error(error.message);
+
+    }
+  };
+  
 
   return (
     <Box mt={4}>
+      <SearchBarAdmin />
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
@@ -111,11 +143,13 @@ export default function UsuariosAdmin() {
   <Menu>
     <MenuButton as={Button}>Tipo Usuario</MenuButton>
     <MenuList>
+      <MenuItem onClick={() => handleFilterChange("todos")}>Todos</MenuItem>
       <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
       <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
     </MenuList>
   </Menu>
 </Th>
+
             <Th>ESTADO</Th>
             <Th>Acciones</Th>
           </Tr>
@@ -151,12 +185,14 @@ export default function UsuariosAdmin() {
                     Habilitar
                   </Button>
                 )}
-                {user.role !== "admin" && <Button
-                  colorScheme="blue"
-                  onClick={() => handleMakeAdmin(user)}
-                >
-                  Hacer Admin
-                </Button>}
+                {user.role !== "admin" && (
+                  <Button
+                    colorScheme="blue"
+                    onClick={() => handleMakeAdmin(user)}
+                  >
+                    Hacer Admin
+                  </Button>
+                )}
               </Td>
             </Tr>
           ))}

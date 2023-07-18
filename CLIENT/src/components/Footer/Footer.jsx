@@ -15,6 +15,9 @@ import { BiMailSend } from "react-icons/bi";
 import logoImage from "../../assets/image/Logo.png";
 import { Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { sendMailSubscription } from "../../Redux/Action/Index";
 
 const Logo = () => {
   return (
@@ -68,6 +71,13 @@ const ListHeader = ({ children }) => {
 };
 
 export default function Footer() {
+  const dispatch = useDispatch();
+  const [mail, setMail] = useState("");
+
+  const handleClick = () => {
+    dispatch(sendMailSubscription({ email: mail }));
+  };
+
   return (
     <Box
       bg={"#70a57b"}
@@ -129,6 +139,7 @@ export default function Footer() {
                   fontStyle: "italic",
                   fontSize: "xs",
                 }}
+                onChange={(e) => setMail(e.target.value)}
               />
               <IconButton
                 bg={useColorModeValue("green.400", "green.800")}
@@ -138,6 +149,10 @@ export default function Footer() {
                 }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
+                onClick={() => {
+                  handleClick();
+                  console.log(mail);
+                }}
               />
             </Stack>
 

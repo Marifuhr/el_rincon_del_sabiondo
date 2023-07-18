@@ -30,8 +30,7 @@ import {
   FiMenu,
 } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
-
-import SearchBar from "../SearchBar/SearchBar";
+import { useState } from "react";
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
@@ -44,6 +43,8 @@ const LinkItems = [
 
 export default function SidebarWithHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+ 
+ 
 
   return (
     <Box>
@@ -144,7 +145,10 @@ const NavItem = ({ icon, children, route, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
+  
   const { logout } = useAuth0();
+const [input, setInput] = useState("");
+
 
   const handleLogout = () => {
     clearStorageCart();
@@ -153,6 +157,8 @@ const MobileNav = ({ onOpen, ...rest }) => {
     // Hacer logout
     logout({ returnTo: window.location.origin });
   };
+
+ 
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -165,7 +171,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
-      <SearchBar />
+
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
