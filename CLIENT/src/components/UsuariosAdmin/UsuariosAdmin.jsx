@@ -123,54 +123,6 @@ export default function UsuariosAdmin() {
     }
   };
   
-    const orderByAlphabetical = (order) => {
-      setOrderBy(order);
-    };
-    
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        const fetchedUsers = await getUsers();
-        setUsers(fetchedUsers);
-      };
-      fetchData();
-    }, [orderBy, userTypeFilter]);
-    
-
-    const handleIsActive = async (user) => {
-      try {
-        const updatedUser = { ...user, isActive: !user.isActive };
-        await axios.put(
-          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-          updatedUser
-        );
-        setUsers((prevUsers) =>
-          prevUsers.map((prevUser) =>
-            prevUser.IdUser === user.IdUser ? updatedUser : prevUser
-          )
-        );
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-    const handleMakeAdmin = async (user) => {
-      try {
-        await axios.put(
-          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-          {
-            ...user,
-            role: "admin",
-          }
-        );
-        setUsers((prevUsers) =>
-          prevUsers.map((prevUser) =>
-            prevUser.IdUser === user.IdUser ? { ...prevUser, role: "admin" } : prevUser
-          )
-        );
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
 
   return (
     <Box mt={4}>

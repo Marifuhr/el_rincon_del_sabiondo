@@ -236,7 +236,9 @@ const reducer = (state = initialState, action) => {
           ...state,
           users: action.payload,
         };
-      };
+      }
+  }
+};
       
 const createUser = (state = initialState, action) => {
   switch (action.type) {
