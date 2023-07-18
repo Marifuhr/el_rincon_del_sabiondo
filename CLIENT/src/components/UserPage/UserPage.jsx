@@ -18,6 +18,7 @@ import {
   Text,
   useDisclosure,
   Menu,
+  MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -27,7 +28,9 @@ import {
   FiUser,
   FiShoppingCart,
   FiMessageSquare,
+  FiCheckCircle,
   FiMenu,
+  FiBell,
 } from "react-icons/fi";
 
 const LinkItems = [
@@ -63,7 +66,7 @@ export default function SidebarWithHeader() {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        <Outlet />
+        {<Outlet />}
       </Box>
     </Box>
   );
@@ -93,8 +96,8 @@ const SidebarContent = ({ onClose, ...rest }) => {
         />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
-      {LinkItems.map((link, i) => (
-        <NavItem key={i} icon={link.icon} route={link.route}>
+      {LinkItems.map((link) => (
+        <NavItem key={link.name} icon={link.icon} route={link.route}>
           {link.name}
         </NavItem>
       ))}

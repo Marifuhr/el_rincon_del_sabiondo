@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useUserInfo } from "../../context/ProviderUser";
+
 import {
   Box,
   Menu,
@@ -18,7 +19,8 @@ import {
 import SearchBarAdmin from "../AdminPage/SearchBarAdmin";
 import { useSelector } from "react-redux";
 
-function UsuariosAdmin() {
+
+export default function UsuariosAdmin() {
   const { user } = useUserInfo();
   const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
   const [order, setOrder] = useState("");
@@ -26,11 +28,14 @@ function UsuariosAdmin() {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
   const [userTypeFilter, setUserTypeFilter] = useState(null);
+
   const filterUser= useSelector((state) => state.users);
 
+
   const handleFilterChange = (filterType) => {
-    setUserTypeFilter(filterType);
+    setUserTypeFilter(filterType === "todos" ? null : filterType);
   };
+
 
   // const getUsers = async () => {
   //   try {
@@ -114,8 +119,58 @@ function UsuariosAdmin() {
       );
     } catch (error) {
       console.error(error.message);
+
     }
   };
+  
+    const orderByAlphabetical = (order) => {
+      setOrderBy(order);
+    };
+    
+  
+    useEffect(() => {
+      const fetchData = async () => {
+        const fetchedUsers = await getUsers();
+        setUsers(fetchedUsers);
+      };
+      fetchData();
+    }, [orderBy, userTypeFilter]);
+    
+
+    const handleIsActive = async (user) => {
+      try {
+        const updatedUser = { ...user, isActive: !user.isActive };
+        await axios.put(
+          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
+          updatedUser
+        );
+        setUsers((prevUsers) =>
+          prevUsers.map((prevUser) =>
+            prevUser.IdUser === user.IdUser ? updatedUser : prevUser
+          )
+        );
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
+    const handleMakeAdmin = async (user) => {
+      try {
+        await axios.put(
+          `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
+          {
+            ...user,
+            role: "admin",
+          }
+        );
+        setUsers((prevUsers) =>
+          prevUsers.map((prevUser) =>
+            prevUser.IdUser === user.IdUser ? { ...prevUser, role: "admin" } : prevUser
+          )
+        );
+      } catch (error) {
+        console.error(error.message);
+      }
+    };
 
   return (
     <Box mt={4}>
@@ -123,32 +178,25 @@ function UsuariosAdmin() {
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
-            <Th>
-              <Menu>
-                <MenuButton as={Button}>Usuarios</MenuButton>
-                <MenuList>
-                  <MenuItem onClick={() => orderByAlphabetical("atoz")}>
-                    Ordenar A-Z
-                  </MenuItem>
-                  <MenuItem onClick={() => orderByAlphabetical("ztoa")}>
-                    Ordenar Z-A
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </Th>
-            <Th>
-              <Menu>
-                <MenuButton as={Button}>Tipo Usuario</MenuButton>
-                <MenuList>
-                  <MenuItem onClick={() => handleFilterChange("user")}>
-                    User
-                  </MenuItem>
-                  <MenuItem onClick={() => handleFilterChange("admin")}>
-                    Admin
-                  </MenuItem>
-                </MenuList>
-              </Menu>
-            </Th>
+          <Th>
+  <Menu>
+    <MenuButton as={Button}>Usuarios</MenuButton>
+    <MenuList>
+      <MenuItem onClick={() => orderByAlphabetical("atoz")}>Ordenar A-Z</MenuItem>
+      <MenuItem onClick={() => orderByAlphabetical("ztoa")}>Ordenar Z-A</MenuItem>
+    </MenuList>
+  </Menu>
+</Th>
+<Th>
+  <Menu>
+    <MenuButton as={Button}>Tipo Usuario</MenuButton>
+    <MenuList>
+      <MenuItem onClick={() => handleFilterChange("todos")}>Todos</MenuItem>
+      <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
+      <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
+    </MenuList>
+  </Menu>
+</Th>
 
             <Th>ESTADO</Th>
             <Th>Acciones</Th>
@@ -202,4 +250,6 @@ function UsuariosAdmin() {
   );
 }
 
-export default UsuariosAdmin;
+
+
+

@@ -174,7 +174,7 @@ const [input, setInput] = useState("");
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
-      {/* <SearchBarAdmin /> */}
+
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
