@@ -7,6 +7,15 @@ export const useBooksAdmin = () => {
     return useContext(contextBooksAdmin);
 };
 
+export const switchEnabledBook = async (state, IdBook) => {
+    try{
+        const response = await fetch(`${import.meta.env.VITE_URL_ENDPOINT}/books/${IdBook}`);
+        console.log(response);
+    }catch({message}){
+        console.log({error:message});
+    }
+}
+
 //? Data to Reducer
     //? Action Types
     const ADD_BOOKS_ALL = 'ADD_BOOKS_ALL';

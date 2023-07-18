@@ -10,7 +10,7 @@ const PaginatorBooksAdmin = () => {
     };
     
     return (
-        <Box bg="#00000010" borderRadius={20} m={0} p={1} display="flex" gap={1} maxW="500px" w="100%" mx="auto" mt={2} justifyContent="center" flexWrap="wrap">
+        <Box bg="#00000010" borderRadius={20} m={0} p={1} display="flex" gap={1} maxW="500px" w="100%" mx="auto" my={2} justifyContent="center" flexWrap="wrap">
             {
                 new Array(nPaginator).fill("").map((v,i) => (
                     <ButtonPaginator handleChangePage={handleChangePage} active={currentPage === i} page={i+1} key={(Math.random()* i)} />
