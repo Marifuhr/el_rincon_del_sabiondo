@@ -162,7 +162,7 @@ export default function Home() {
   const handleSortClick = () => {
     const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
     const newButtonText =
-      sortOrder === "asc" ? "Precios mayor a menor" : "Precios menor a mayor";
+      sortOrder === "asc" ? "Precios MAYOR a menor" : "Precios MENOR a mayor";
 
     setSortOrder(newSortOrder);
     setButtonText(newButtonText);

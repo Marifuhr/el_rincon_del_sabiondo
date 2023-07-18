@@ -12,7 +12,7 @@ import {
   AccordionPanel,
 } from "@chakra-ui/react";
 import Footer from "../Footer/Footer";
-import ButtonVolver from "../../elements/ButtonVolver";
+
 import partTimeImage from "../../assets/image/PARTTIME.jpg";
 import lecturaInspiracionImage from "../../assets/image/lectura_inspiracion.jpg";
 import { Link } from "react-router-dom";
@@ -20,7 +20,6 @@ import { Link } from "react-router-dom";
 const About = () => {
   return (
     <>
-      <ButtonVolver />
       {/* ====================Mision======================================= */}
       <SimpleGrid
         columns={{
