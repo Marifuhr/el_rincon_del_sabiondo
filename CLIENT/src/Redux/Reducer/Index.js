@@ -11,6 +11,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
   SEARCH_NAME_USER,
@@ -30,7 +31,7 @@ const initialState = {
   search: null,
   category: [],
   filtered: null,
-  filter:"",
+  filter: "",
   filters: {
     category: "",
     price: "",
@@ -88,7 +89,7 @@ const reducer = (state = initialState, action) => {
         users: sortedUsers,
         order: action.payload,
       };
- 
+
     case GET_ALL_BOOKS:
       return {
         ...state,
@@ -163,11 +164,10 @@ const reducer = (state = initialState, action) => {
     case SET_FILTER:
       return {
         ...state,
-        filter: action.filterType
+        filter: action.filterType,
       };
     default:
       return state;
-  
 
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
@@ -196,10 +196,10 @@ const reducer = (state = initialState, action) => {
         ...bookPayload,
         quantity: 1,
       };
-      
+
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-      
+
       return {
         ...state,
         cart_shopping,
@@ -217,12 +217,11 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart,
       };
     }
-    
+
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
-
 
     case SEND_MAIL:
       return {
@@ -230,16 +229,21 @@ const reducer = (state = initialState, action) => {
         infoSend: action.payload,
       };
 
-      
-      case SEARCH_NAME_USER: {
-        return {
-          ...state,
-          users: action.payload,
-        };
-      }
+    case SEND_MAIL_SUBSCRIPTION:
+      return {
+        ...state,
+        infoSend: action.payload,
+      };
+
+    case SEARCH_NAME_USER: {
+      return {
+        ...state,
+        users: action.payload,
+      };
+    }
   }
 };
-      
+
 const createUser = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_USER:
@@ -251,6 +255,5 @@ const createUser = (state = initialState, action) => {
       return state;
   }
 };
-
 
 export default reducer;

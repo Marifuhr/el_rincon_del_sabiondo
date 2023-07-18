@@ -15,6 +15,9 @@ import { BiMailSend } from "react-icons/bi";
 import logoImage from "../../assets/image/Logo.png";
 import { Image } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { sendMailSubscription } from "../../Redux/Action/Index";
 
 const Logo = () => {
   return (
@@ -68,12 +71,17 @@ const ListHeader = ({ children }) => {
 };
 
 export default function Footer() {
+  const dispatch = useDispatch();
+  const [mail, setMail] = useState("");
+
+  const handleClick = () => {
+    dispatch(sendMailSubscription({ email: mail }));
+  };
+
   return (
     <Box
       bg={"#70a57b"}
       color={useColorModeValue("gray.00", "gray.200")}
-      borderRadius={5}
-      m={2}
       boxShadow={"0px 4px 12px rgba(0, 0, 0, 0.8)"}
     >
       <Container as={Stack} maxW={"6xl"} py={3}>
@@ -109,10 +117,10 @@ export default function Footer() {
           </Stack>
           <Stack align={"flex-start"}>
             <ListHeader>Servicios</ListHeader>
-            <Link to="/">Vende con Nosotros</Link>
-            <Link to="/">Terminos y Reglas</Link>
-            <Link to="/">Venta a Instituciones</Link>
-            <Link to="/">Programa de Afiliados</Link>
+            <Link to="/construccion">Vende con Nosotros</Link>
+            <Link to="/construccion">Terminos y Reglas</Link>
+            <Link to="/construccion">Venta a Instituciones</Link>
+            <Link to="/construccion">Programa de Afiliados</Link>
           </Stack>
           <Stack spacing={6} align={"flex-start"}>
             <ListHeader>Mantengase al Día</ListHeader>
@@ -129,6 +137,7 @@ export default function Footer() {
                   fontStyle: "italic",
                   fontSize: "xs",
                 }}
+                onChange={(e) => setMail(e.target.value)}
               />
               <IconButton
                 bg={useColorModeValue("green.400", "green.800")}
@@ -138,6 +147,10 @@ export default function Footer() {
                 }}
                 aria-label="Subscribe"
                 icon={<BiMailSend />}
+                onClick={() => {
+                  handleClick();
+                  console.log(mail);
+                }}
               />
             </Stack>
 

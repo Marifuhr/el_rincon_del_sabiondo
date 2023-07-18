@@ -4,28 +4,30 @@ const routerCategory = require("./routerCategory");
 const routerLanguage = require("./routerLanguage");
 const routerAuthor = require("./routerAuthor");
 
-const routerBulkCreate = require ('./routerBulkCreate')
-const logoutRouter = require('./routerLogout');
-const routerMercadoPago = require('./routerMercadoPago');
+const routerBulkCreate = require("./routerBulkCreate");
+const logoutRouter = require("./routerLogout");
+const routerMercadoPago = require("./routerMercadoPago");
 const routerUsers = require("./routerUsers");
 const routeMail = require("./routeMail");
 const routerReviews = require("./routerReviews");
 const routerSellings = require("./routerSellings");
+const routeMailSubscription = require("./routeMailSubscription");
 
 const bulkCreateBooksHandler = require("../handlers/BulkCreateBooksHandler");
 
 const rootRouter = express.Router();
 //Routes and middlewares
 rootRouter.use("/books", routerBook);
-rootRouter.use('/category', routerCategory);
-rootRouter.use('/language', routerLanguage);
-rootRouter.use('/authors', routerAuthor);
-rootRouter.use('/bulkcreate', routerBulkCreate);
-rootRouter.use('/logout', logoutRouter);
-rootRouter.use('/', routerMercadoPago);
-rootRouter.use('/users', routerUsers);
-rootRouter.use('/reviews', routerReviews)
+rootRouter.use("/category", routerCategory);
+rootRouter.use("/language", routerLanguage);
+rootRouter.use("/authors", routerAuthor);
+rootRouter.use("/bulkcreate", routerBulkCreate);
+rootRouter.use("/logout", logoutRouter);
+rootRouter.use("/", routerMercadoPago);
+rootRouter.use("/users", routerUsers);
+rootRouter.use("/reviews", routerReviews);
 rootRouter.use("/mail", routeMail);
+rootRouter.use("/mailSubscription", routeMailSubscription);
 rootRouter.use("/sellings", routerSellings);
 
 module.exports = rootRouter;

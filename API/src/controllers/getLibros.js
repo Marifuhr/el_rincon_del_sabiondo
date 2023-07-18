@@ -1,4 +1,4 @@
-const {Author, Selling, Review, Book, Category, Country,Language } = require('../db');
+const {Author, User, Selling, Review, Book, Category,Language } = require('../db');
 
 //Controller connect with database to realize sql query
 const getLibros = async () => {
@@ -22,7 +22,13 @@ const getLibros = async () => {
                 attributes: ['language'],
             },
             {
-                model: Review
+                model: Review,
+                include: [
+                    {
+                        model: User,
+                        attributes: ['IdUser', 'isActive']
+                    }
+                ]
             },
             {
                 model: Selling,
