@@ -1,32 +1,121 @@
+@media (max-width: 768px) {
+  .filtrosTodos {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filtrosTodos > div,
+  .filtrosTodos > select,
+  .filtrosTodos > button {
+    flex-basis: 100%;
+    margin-bottom: 10px;
+    font-size: 12px;
+    padding: 8px 16px;
+    min-width: 120px;
+  }
+}
+
+/* --------FILTRO DE CATEGORIA----------- */
+.selectCategory {
+  background-color: #a3c5aa;
+  padding: 4px;
+  border-radius: 10px;
+  overflow: auto;
+  max-height: 100px; /* Ajusta el valor de altura según tus necesidades */
+  width: 28%;
+}
+
+.selectCategory::-webkit-scrollbar {
+  width: 8px; /* Ajusta el ancho del scroll según tus preferencias */
+}
+
+.selectCategory::-webkit-scrollbar-track {
+  background-color: #a3c5aa; /* Ajusta el color del fondo de la barra de scroll */
+  border-radius: 5px;
+}
+
+.selectCategory::-webkit-scrollbar-thumb {
+  background-color: #448f53; /* Ajusta el color del scroll */
+  border-radius: 5px;
+}
+
+.selectCategory::-webkit-scrollbar-thumb:hover {
+  background-color: #448f53; /* Ajusta el color del scroll al pasar el cursor sobre él */
+}
+
+/* -------------FILTRO CATEGORIA */
+.selectPrecio {
+  background-color: #a3c5aa;
+  padding: 4px;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 12%;
+}
+.selectPrecio::-webkit-scrollbar {
+  width: 8px; /* Ajusta el ancho del scroll según tus preferencias */
+}
+
+.selectPrecio::-webkit-scrollbar-track {
+  background-color: #a3c5aa; /* Ajusta el color del fondo de la barra de scroll */
+  border-radius: 5px;
+}
+
+.selectPrecio::-webkit-scrollbar-thumb {
+  background-color: #448f53; /* Ajusta el color del scroll */
+  border-radius: 5px;
+}
+
+.selectPrecio::-webkit-scrollbar-thumb:hover {
+  background-color: #448f53; /* Ajusta el color del scroll al pasar el cursor sobre él */
+}
 
 .homePage {
   width: 100%;
   max-width: 1200px;
-  margin: 50px auto; /* Agrega margen superior e inferior de 20px */
+  margin: 20px auto; /* Agrega margen superior e inferior de 20px */
 }
 
-
-
+/* CANTIDAD DE CARDS POR LINEA */
 .boxCardBooks {
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 5px;
 }
 
+@media (max-width: 1200px) {
+  .boxCardBooks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .boxCardBooks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .boxCardBooks {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+/* -------PAGINADO */
 .pageIndicator {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2px;
-  margin: 20px 0; /* Agrega margen superior e inferior de 20px */
+  margin: 20px 0;
 }
 
 .pageIndicator button {
   background-color: #70a57b; /* Color oscuro */
   color: #fff;
   border: none;
-  box-shadow: 2px 2px white;
+  box-shadow: 2px 2px rgb(109, 112, 108);
   border-radius: 10%;
   padding: 5px 10px;
   cursor: pointer;
@@ -37,23 +126,5 @@
 }
 
 .pageIndicator button.active {
-  background-color: #1d4928;
-}
-
-.scrollToTopButton {
-  position: static;
-  bottom: 20px;
-  left: 20px;
-  transform: translateX(calc(100% - 80px)); /* Mueve el botón al lado contrario */
-  background-color: #70a57b; /* Color oscuro */
-  color: #fff;
-  border: none;
-  box-shadow: 2px 2px white;
-  border-radius: 10%;
-  width: 60px;
-  height: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
+  background-color: #387444;
 }
