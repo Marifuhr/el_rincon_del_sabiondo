@@ -579,7 +579,9 @@ export default function contacto() {
                 </Tooltip>
               </Link>
               <Link
+
                 href="https://linkedin.com/in/maria-rosa-fuhr-78b839201"
+
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
@@ -871,7 +873,9 @@ export default function contacto() {
                 </Tooltip>
               </Link>
               <Link
+
                 href="https://www.linkedin.com/in/mauro-daniel-alasia-25930620/"
+
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
