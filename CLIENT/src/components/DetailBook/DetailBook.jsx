@@ -198,14 +198,14 @@ function DetailBook() {
               <div className="col-lg-8 offset-lg-2">
                 <h2 className="mb-4 text-primary">Reviews</h2>
                 {mostrarTodasReviews
-                  ? book.Reviews.map((review) => (
+                  ? book.Reviews.map((review) => review.User.isActive && (
                       <div key={review.id}>
                         <h4>{review.rate}</h4>
                         <p>{review.description}</p>
                         <hr />
                       </div>
                     ))
-                  : book.Reviews.slice(0, 2).map((review) => (
+                  : book.Reviews.slice(0, 2).map((review) => review.User.isActive && (
                       <div key={review.id}>
                         <h4>{review.rate}</h4>
                         <p>{review.description}</p>
