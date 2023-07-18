@@ -11,6 +11,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
   SEARCH_NAME_USER,
@@ -196,10 +197,10 @@ const reducer = (state = initialState, action) => {
         ...bookPayload,
         quantity: 1,
       };
-      
+
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-      
+
       return {
         ...state,
         cart_shopping,
@@ -217,12 +218,11 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart,
       };
     }
-    
+
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
-
 
     case SEND_MAIL:
       return {
@@ -230,6 +230,14 @@ const reducer = (state = initialState, action) => {
         infoSend: action.payload,
       };
 
+    case SEND_MAIL_SUBSCRIPTION:
+      return {
+        ...state,
+        infoSend: action.payload,
+      };
+
+    default:
+      return { ...state };
       
       case SEARCH_NAME_USER: {
         return {

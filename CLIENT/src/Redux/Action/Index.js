@@ -13,6 +13,7 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
   SEARCH_NAME_USER,
@@ -180,6 +181,21 @@ export function saveProfileChanges(profileData) {
     payload: profileData,
   };
 }
+
+export function sendMailSubscription(data) {
+  return async function (dispatch) {
+    try {
+      const response = await axios.post(`${endpoint}/mailSubscription`, data);
+      const infoSend = response.data;
+      return dispatch({
+        type: SEND_MAIL_SUBSCRIPTION,
+        payload: infoSend,
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  
 export const orderByAlphabet = (order) => {
   return {
     type: ORDER_BY_ALPHABETICAL,
@@ -204,6 +220,7 @@ export const searchNameUser = (name) => {
       return dispatch({
         type: SEARCH_NAME_USER,
         payload: userSearch,
+        
       });
     } catch (error) {
       console.log(error.message);
