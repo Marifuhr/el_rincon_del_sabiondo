@@ -37,6 +37,10 @@ export default function Simple() {
     );
   }, [user.SellingTotals]);
 
+  useEffect(() => {
+    console.log("Compras:", shopping);
+  }, [shopping]);
+
   const handleChange = (field, value) => {
     // Aquí puedes manejar la lógica para actualizar el campo correspondiente en el estado
   };
@@ -197,7 +201,7 @@ export default function Simple() {
         </List>
       </Box>
 
-      <Box>
+        {/*<Box>
         <Text
           fontSize={{ base: "16px", lg: "18px" }}
           color={useColorModeValue("yellow.500", "yellow.300")}
@@ -205,7 +209,7 @@ export default function Simple() {
           textTransform={"uppercase"}
           mb={"4"}
         >
-          Compras realizadas
+          {/* Compras realizadas
         </Text>
 
         <List spacing={2}>
@@ -226,16 +230,12 @@ export default function Simple() {
                     Precio:
                   </Text>{" "}
                   {book.price}
-                </ListItem>
+                </ListItem> 
               </Box>
             ))}
           </ListItem>
         </List>
-      </Box>
+      </Box>*/}
     </Box>
   );
-
 }
-
-
-
