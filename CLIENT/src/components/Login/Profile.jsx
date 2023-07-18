@@ -29,6 +29,7 @@ export const Profile = () => {
           <MenuList>
 
             <MenuItem as={Link} to="/profile">Perfil</MenuItem>
+            <MenuItem as={Link} to="/admin">dashboard</MenuItem>
             <MenuItem onClick={handleLogout} icon={<FiLogOut />} command="⌘L">
 
               Cerrar sesión
