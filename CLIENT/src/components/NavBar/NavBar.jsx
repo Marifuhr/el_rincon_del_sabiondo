@@ -43,71 +43,13 @@ function NavBar() {
       >
         <Flex alignItems="center" justifyContent="space-between" mx="auto">
           <HStack display="flex" spacing={3} alignItems="center">
-            <Box
-              display={{
-                base: "inline-flex",
-                md: "none",
-              }}
-            >
-              <IconButton
-                display={{
-                  base: "flex",
-                  md: "none",
-                }}
-                aria-label="Open menu"
-                fontSize="20px"
-                color="gray.800"
-                _dark={{
-                  color: "inherit",
-                }}
-                variant="ghost"
-                icon={<AiOutlineMenu />}
-                onClick={mobileNav.onOpen}
-              />
-              <VStack
-                pos="absolute"
-                top={0}
-                left={0}
-                right={0}
-                display={mobileNav.isOpen ? "flex" : "none"}
-                flexDirection="column"
-                p={2}
-                pb={4}
-                m={2}
-                bg={bg}
-                spacing={3}
-                rounded="sm"
-                shadow="sm"
-              >
-                <CloseButton
-                  aria-label="Close menu"
-                  justifySelf="self-start"
-                  onClick={mobileNav.onClose}
-                />
-                <Link to="/home">
-                  <Button w="full" variant="ghost" leftIcon={<AiFillHome />}>
-                    Página Principal
-                  </Button>
-                </Link>
-
-                <Button
-                  w="full"
-                  variant="solid"
-                  colorScheme="brand"
-                  leftIcon={<AiOutlineInbox />}
-                >
-                  Promociones
-                </Button>
-              </VStack>
-            </Box>
             <chakra.a
-              href="/"
-              title="Choc Home Page"
+              href="/home"
+              title="Ir a Pagina Principal"
               display="flex"
               alignItems="center"
             >
               <Logo />
-              <VisuallyHidden>Choc</VisuallyHidden>
             </chakra.a>
 
             <HStack
@@ -119,7 +61,7 @@ function NavBar() {
               }}
               position="relative"
             >
-              <Link to="/home">
+              {/* <Link to="/home">
                 <Button
                   variant="boton1"
                   color="black"
@@ -135,7 +77,7 @@ function NavBar() {
                 >
                   Página Principal
                 </Button>
-              </Link>
+              </Link> */}
             </HStack>
           </HStack>
           <HStack
