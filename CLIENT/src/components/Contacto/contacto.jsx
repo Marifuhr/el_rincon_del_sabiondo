@@ -276,7 +276,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:blenda.prg@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -422,7 +422,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:ponce.elizabeth.j@gmil.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -1152,7 +1152,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:Rodrisoyhenry@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -1298,7 +1298,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:bulla.d.david@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
