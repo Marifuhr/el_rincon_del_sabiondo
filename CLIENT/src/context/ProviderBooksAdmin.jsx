@@ -18,16 +18,26 @@ export const useBooksAdmin = () => {
     //? Valores Iniciales
     const initialValues = {
         booksDB:[],
-        booksPageCurrent:[]
+        booksPages:[],
+        filteredBooks:[],
+        currentPage: 0,
+        currentPageBooks:[],
+        numberPerPages: 10,
+        nPaginator: 0,
     }
+
     //? Reducer
     const reducerBooksAdmin = function(state, {action,payload}){
         const actionType = {
             [`${ADD_BOOKS_ALL}`]:() => {
+                const splitBooks = splitArrays(state.numberPerPages,payload);
                 return {
                     ...state,
                     booksDB: payload,
-                    booksPageCurrent: payload.slice(0,10)
+                    booksPages: splitBooks,
+                    nPaginator: splitBooks.length,
+                    currentPageBooks: splitBooks[state.currentPage],
+                    filteredBooks:payload,
                 }
             }
         };
@@ -55,3 +65,16 @@ const ProviderBooksAdmin = ({children}) => {
 }
 
 export default ProviderBooksAdmin
+
+const splitArrays = (numberSplit, array) => {
+    const limitFor = Math.ceil(array.length / numberSplit);
+    let arraySplit = [];
+
+    for(let i = 1; i < limitFor; i++){
+        const rightSideArray = i * numberSplit;
+        const leftSideArray = rightSideArray - numberSplit;
+        arraySplit.push(array.slice(leftSideArray, rightSideArray));
+    }
+
+    return arraySplit;
+}

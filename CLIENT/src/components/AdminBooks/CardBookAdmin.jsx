@@ -1,5 +1,5 @@
 import { Box, Image, Heading, Text, Button, Input, Textarea } from "@chakra-ui/react"
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Link } from 'react-router-dom';
 
 const styleSpan = {
@@ -11,6 +11,7 @@ const CardBookAdmin = ({ image, title, IdBook, languageBook: { language }, price
   const [disabled, setDisabled] = useState(isActive);
   const [editMode, setEditMode] = useState(false);
   const [valuesBook, setValuesBook] = useState({ image, title, price, publisher, numberPages, stock, description });
+  const refUpdateBook = useRef(false);
 
   const handleActiveBook = () => {
     setDisabled(state => !state);
@@ -18,11 +19,24 @@ const CardBookAdmin = ({ image, title, IdBook, languageBook: { language }, price
   const handleEditMode = () => {
     setEditMode(state => !state);
   };
-  const handleValuesBook = ({ target: { value, name } }) => {
+  const handleChangeValuesBook = ({ target: { value, name } }) => {
+    
+    if(!refUpdateBook.current){
+      refUpdateBook.current = true;
+    }
+
     setValuesBook(state => ({
       ...state,
       [name]: [value]
     }))
+  }
+  const handleSubmit = e => {
+    e.preventDefault();
+    //If the values was edited, execute request
+    if(refUpdateBook.current){
+      refUpdateBook.current = false;
+      console.log('editado');
+    }
   }
 
   return (
@@ -31,11 +45,11 @@ const CardBookAdmin = ({ image, title, IdBook, languageBook: { language }, price
         <Image src={image} minW="130px" h="100%" objectFit="cover" maxH={{ base: "150px", md: "100%" }} boxShadow="0 1px 15px rgba(0,0,0,0.2)" />
       </Box>
       <Box display="flex" flexDirection="column" p={2}>
-        <form onSubmit={() => {}}>
+        <form onSubmit={handleSubmit}>
           <Box borderBottom="2px solid #cacaca">
             {
               editMode ?
-                <Input placeholder="Titulo" my={1} pr={4} name="title" onChange={handleValuesBook} value={valuesBook.title} />
+                <Input placeholder="Titulo" my={1} pr={4} name="title" onChange={handleChangeValuesBook} value={valuesBook.title} />
                 : <Link to={`detail/${IdBook}`} replace={true}><Heading p={2} fontSize={20}>{title}</Heading></Link>
             }
             <Text fontSize={10} decoration="underline" m={0}><span style={styleSpan}>Id Book: </span> {IdBook}</Text>
@@ -45,12 +59,12 @@ const CardBookAdmin = ({ image, title, IdBook, languageBook: { language }, price
               <>
                 <Heading pt={2} fontSize={20} textAlign="center">Modificando Libro</Heading>
                 <Box display="flex" gap={1} flexDirection="column" fontSize={15} borderBottom="2px solid gray" pb={2}>
-                  <Textarea fontSize={10} resize="none" >{valuesBook.description}</Textarea>
-                  <Input placeholder="Editorial" name="publisher" onChange={handleValuesBook} value={valuesBook.publisher} />
+                  <Textarea fontSize={10} resize="none" name="description" onChange={handleChangeValuesBook} value={description}/>
+                  <Input placeholder="Editorial" name="publisher" onChange={handleChangeValuesBook} value={valuesBook.publisher} />
                   <Box display="flex" gap={2}>
-                    <Input p={2} type="number" placeholder="precio" name="price" onChange={handleValuesBook} value={valuesBook.price} />
-                    <Input p={2} type="number" placeholder="stock" name="stock" onChange={handleValuesBook} value={valuesBook.stock} />
-                    <Input p={2} type="number" placeholder="Número de Páginas" name="numberPages" onChange={handleValuesBook} value={valuesBook.numberPages} />
+                    <Input p={2} type="number" placeholder="precio" name="price" onChange={handleChangeValuesBook} value={valuesBook.price} />
+                    <Input p={2} type="number" placeholder="stock" name="stock" onChange={handleChangeValuesBook} value={valuesBook.stock} />
+                    <Input p={2} type="number" placeholder="Número de Páginas" name="numberPages" onChange={handleChangeValuesBook} value={valuesBook.numberPages} />
                   </Box>
                   <Button w="min-content" colorScheme="blue" type="submit">Actualizar</Button>
                 </Box>
