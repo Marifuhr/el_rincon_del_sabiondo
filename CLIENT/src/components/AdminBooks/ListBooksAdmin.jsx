@@ -8,7 +8,7 @@ const ListBooksAdmin = () => {
     return (
         <Box display={{base: "flex", xl:"grid"}} gridTemplateColumns="repeat(auto-fill, minmax(500px, 1fr ))" alignItems="stretch" gap={2} flexDirection="column">
             {
-                Boolean(currentPageBooks.length) && currentPageBooks.map((book) => (
+                Boolean(currentPageBooks?.length) && currentPageBooks.map((book) => (
                     <CardBookAdmin {...book} key={book.IdBook} />
                 ))
             }

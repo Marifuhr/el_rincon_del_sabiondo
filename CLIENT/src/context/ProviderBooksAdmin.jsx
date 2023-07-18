@@ -10,11 +10,18 @@ export const useBooksAdmin = () => {
 //? Data to Reducer
     //? Action Types
     const ADD_BOOKS_ALL = 'ADD_BOOKS_ALL';
+    const CHANGE_PAGE = "CHANGE_PAGE";
+
     //? Create Actions
     const addBooks = books => ({
         action: ADD_BOOKS_ALL,
         payload: books
-    })
+    });
+    export const changePage = page => ({
+        action: CHANGE_PAGE,
+        payload: page
+    });
+
     //? Valores Iniciales
     const initialValues = {
         booksDB:[],
@@ -38,6 +45,13 @@ export const useBooksAdmin = () => {
                     nPaginator: splitBooks.length,
                     currentPageBooks: splitBooks[state.currentPage],
                     filteredBooks:payload,
+                }
+            },
+            [`${CHANGE_PAGE}`]: () => {
+                return {
+                    ...state,
+                    currentPage: payload,
+                    currentPageBooks: state.booksPages[payload]
                 }
             }
         };
