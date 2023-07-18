@@ -13,6 +13,9 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  ORDER_BY_ALPHABETICAL,
+  SET_FILTER,
+  SEARCH_NAME_USER,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -143,13 +146,15 @@ export function createUser(userData) {
   };
 }
 
-export async function createSellingTotalDB({IdUser, products}){
-  const lastProducts = products.map(({IdBook}) => IdBook);
+export async function createSellingTotalDB({ IdUser, products }) {
+  const lastProducts = products.map(({ IdBook }) => IdBook);
   console.log(lastProducts);
-  axios.post(`${endpoint}/sellings`,{
-    IdUser,
-    products: lastProducts
-  }).then(console.log);
+  axios
+    .post(`${endpoint}/sellings`, {
+      IdUser,
+      products: lastProducts,
+    })
+    .then(console.log);
 }
 
 export const sendMail = (data) => {
@@ -167,12 +172,41 @@ export const sendMail = (data) => {
   };
 };
 
-
 // actions.js
 
-export function saveProfileChanges(profileData){
+export function saveProfileChanges(profileData) {
   return {
     type: SAVE_PROFILE_CHANGES,
     payload: profileData,
+  };
+}
+export const orderByAlphabet = (order) => {
+  return {
+    type: ORDER_BY_ALPHABETICAL,
+    payload: order,
+  };
+};
+
+export const setFilter = (filterType) => {
+  return {
+    type: SET_FILTER,
+    filterType,
+  };
+};
+
+export const searchNameUser = (name) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`${endpoint}/users?name=${name}`);
+      const user = response.data;
+      const userSearch = user.filter( (user) => user.name.includes(name) );
+      console.log(`Estoy en searchNameUser`, userSearch);
+      return dispatch({
+        type: SEARCH_NAME_USER,
+        payload: userSearch,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 };
