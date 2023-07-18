@@ -91,9 +91,6 @@ function NavBar() {
                 <>
                   <Profile />
                   <Flex flexDirection="column" ml="-3">
-                    <Text fontSize="sm" marginTop="1">
-                      {user && user.name ? user.name : ""}
-                    </Text>
                     <Text marginTop="-3" fontSize="xs" color="gray.600">
                       {user && user.type ? user.type : ""}
                     </Text>
