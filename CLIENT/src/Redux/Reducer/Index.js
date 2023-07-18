@@ -31,7 +31,7 @@ const initialState = {
   search: null,
   category: [],
   filtered: null,
-  filter:"",
+  filter: "",
   filters: {
     category: "",
     price: "",
@@ -89,7 +89,7 @@ const reducer = (state = initialState, action) => {
         users: sortedUsers,
         order: action.payload,
       };
- 
+
     case GET_ALL_BOOKS:
       return {
         ...state,
@@ -164,11 +164,10 @@ const reducer = (state = initialState, action) => {
     case SET_FILTER:
       return {
         ...state,
-        filter: action.filterType
+        filter: action.filterType,
       };
     default:
       return state;
-  
 
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
@@ -236,18 +235,15 @@ const reducer = (state = initialState, action) => {
         infoSend: action.payload,
       };
 
-    default:
-      return { ...state };
-      
-      case SEARCH_NAME_USER: {
-        return {
-          ...state,
-          users: action.payload,
-        };
-      }
+    case SEARCH_NAME_USER: {
+      return {
+        ...state,
+        users: action.payload,
+      };
+    }
   }
 };
-      
+
 const createUser = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_USER:
@@ -259,6 +255,5 @@ const createUser = (state = initialState, action) => {
       return state;
   }
 };
-
 
 export default reducer;
