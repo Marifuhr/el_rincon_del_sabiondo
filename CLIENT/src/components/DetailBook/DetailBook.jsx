@@ -11,6 +11,8 @@ import Loader from "../Loader/Loader";
 import { Button, Flex } from "@chakra-ui/react";
 import { useUserInfo } from "../../context/ProviderUser";
 import CreateReview from "../CreateReview/CreateReview";
+import { StarIcon } from "@chakra-ui/icons";
+
 
 function DetailBook() {
   const { id } = useParams();
@@ -109,6 +111,36 @@ function DetailBook() {
     setMostrarTodasReviews(true);
   };
 
+  const renderStars = (rating) => {
+    const starElements = [];
+    const fullStars = Math.floor(rating);
+    const halfStars = Math.ceil(rating - fullStars);
+    const emptyStars = 5 - fullStars - halfStars;
+
+    // Render full stars
+    for (let i = 0; i < fullStars; i++) {
+      starElements.push(
+        <StarIcon key={`star-full-${i}`} color="teal.500" boxSize={4} />
+      );
+    }
+
+    // Render half stars
+    for (let i = 0; i < halfStars; i++) {
+      starElements.push(
+        <StarIcon key={`star-half-${i}`} color="teal.500" boxSize={4} />
+      );
+    }
+
+    // Render empty stars
+    for (let i = 0; i < emptyStars; i++) {
+      starElements.push(
+        <StarIcon key={`star-empty-${i}`} color="gray.300" boxSize={4} />
+      );
+    }
+
+    return starElements;
+  };
+
   return (
     <div>
       <button className="btn-back">
@@ -198,20 +230,30 @@ function DetailBook() {
               <div className="col-lg-8 offset-lg-2">
                 <h2 className="mb-4 text-primary">Reviews</h2>
                 {mostrarTodasReviews
-                  ? book.Reviews.map((review) => review.User.isActive && (
-                      <div key={review.id}>
-                        <h4>{review.rate}</h4>
-                        <p>{review.description}</p>
-                        <hr />
-                      </div>
-                    ))
-                  : book.Reviews.slice(0, 2).map((review) => review.User.isActive && (
-                      <div key={review.id}>
-                        <h4>{review.rate}</h4>
-                        <p>{review.description}</p>
-                        <hr />
-                      </div>
-                    ))}
+                  ? book.Reviews.map(
+                      (review) =>
+                        review.User.isActive && (
+                          <div key={review.id}>
+                            <Flex alignItems="center">
+                              {renderStars(review.rate)}
+                            </Flex>
+                            <p>{review.description}</p>
+                            <hr />
+                          </div>
+                        )
+                    )
+                  : book.Reviews.slice(0, 2).map(
+                      (review) =>
+                        review.User.isActive && (
+                          <div key={review.id}>
+                            <Flex alignItems="center">
+                              {renderStars(review.rate)}
+                            </Flex>
+                            <p>{review.description}</p>
+                            <hr />
+                          </div>
+                        )
+                    )}
                 {!mostrarTodasReviews && (
                   <Button colorScheme="teal" onClick={handleMostrarTodosClick}>
                     Mostrar todos
