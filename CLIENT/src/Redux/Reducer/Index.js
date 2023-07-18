@@ -12,6 +12,9 @@ import {
   CREATE_USER,
   SEND_MAIL,
   SEND_MAIL_SUBSCRIPTION,
+  ORDER_BY_ALPHABETICAL,
+  SET_FILTER,
+  SEARCH_NAME_USER,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -28,6 +31,7 @@ const initialState = {
   search: null,
   category: [],
   filtered: null,
+  filter:"",
   filters: {
     category: "",
     price: "",
@@ -66,6 +70,26 @@ const filterResultsByCriteria = (filters, resultsToFilter) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ORDER_BY_ALPHABETICAL:
+      const order = action.payload;
+      let sortedUsers = [];
+
+      if (order === "atoz") {
+        sortedUsers = [...state.users].sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+      } else if (order === "ztoa") {
+        sortedUsers = [...state.users].sort((a, b) =>
+          b.name.localeCompare(a.name)
+        );
+      }
+
+      return {
+        ...state,
+        users: sortedUsers,
+        order: action.payload,
+      };
+ 
     case GET_ALL_BOOKS:
       return {
         ...state,
@@ -136,6 +160,16 @@ const reducer = (state = initialState, action) => {
       });
       return { ...state, filtered: filterOrder };
     }
+
+    case SET_FILTER:
+      return {
+        ...state,
+        filter: action.filterType
+      };
+    default:
+      return state;
+  
+
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
       const validateIfExistBook = state.cart_shopping.some(
@@ -204,8 +238,16 @@ const reducer = (state = initialState, action) => {
 
     default:
       return { ...state };
+      
+      case SEARCH_NAME_USER: {
+        return {
+          ...state,
+          users: action.payload,
+        };
+      }
   }
 };
+      
 const createUser = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_USER:
@@ -217,5 +259,6 @@ const createUser = (state = initialState, action) => {
       return state;
   }
 };
+
 
 export default reducer;

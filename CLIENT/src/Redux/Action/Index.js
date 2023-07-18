@@ -14,6 +14,9 @@ import {
   CREATE_USER,
   SEND_MAIL,
   SEND_MAIL_SUBSCRIPTION,
+  ORDER_BY_ALPHABETICAL,
+  SET_FILTER,
+  SEARCH_NAME_USER,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -187,9 +190,40 @@ export function sendMailSubscription(data) {
       return dispatch({
         type: SEND_MAIL_SUBSCRIPTION,
         payload: infoSend,
+        });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+  
+export const orderByAlphabet = (order) => {
+  return {
+    type: ORDER_BY_ALPHABETICAL,
+    payload: order,
+  };
+};
+
+export const setFilter = (filterType) => {
+  return {
+    type: SET_FILTER,
+    filterType,
+  };
+};
+
+export const searchNameUser = (name) => {
+  return async function (dispatch) {
+    try {
+      const response = await axios.get(`${endpoint}/users?name=${name}`);
+      const user = response.data;
+      const userSearch = user.filter( (user) => user.name.includes(name) );
+      console.log(`Estoy en searchNameUser`, userSearch);
+      return dispatch({
+        type: SEARCH_NAME_USER,
+        payload: userSearch,
+        
       });
     } catch (error) {
       console.log(error.message);
     }
   };
-}
+};

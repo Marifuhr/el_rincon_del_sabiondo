@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Container,
@@ -12,12 +13,12 @@ import {
   StackDivider,
   ListItem,
   List,
-  useColorModeValue
+  useColorModeValue,
+  Input,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
 import formatDate from "../../utils/formatDate";
-import { useState, useEffect } from "react";
 
 export default function Simple() {
   const { user } = useUserInfo();
@@ -26,20 +27,26 @@ export default function Simple() {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
-    setReviews(user.Reviews);
+    setReviews(user.Reviews || []);
   }, [user.Reviews]);
 
   useEffect(() => {
-    setShopping(user.SellingTotals);
-    setTotalPrice(user.SellingTotals.reduce((init, {products}) => {
-      const price = eval(products.map(({Book}) => Book.price).toString().replaceAll(',',"+"));
-      return (init + price);
-    },0).toFixed(2));
+    setShopping(user.SellingTotals || []);
+    setTotalPrice(
+      user.SellingTotals?.reduce((total, book) => total + book.price, 0) || 0
+    );
   }, [user.SellingTotals]);
+
+  useEffect(() => {
+    console.log("Compras:", shopping);
+  }, [shopping]);
+
+  const handleChange = (field, value) => {
+    // Aquí puedes manejar la lógica para actualizar el campo correspondiente en el estado
+  };
 
   return (
     <Box>
-      {/* <Container maxW={"4xl"}> */}
       <SimpleGrid
         columns={{ base: 1, md: 2, lg: 2 }}
         spacing={{ base: 2, md: 0 }}
@@ -102,7 +109,7 @@ export default function Simple() {
             </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
-                Actualizacion:
+                Actualización:
               </Text>{" "}
               {formatDate(user.updatedAt)}
             </ListItem>
@@ -126,13 +133,14 @@ export default function Simple() {
             </ListItem>
             <ListItem>
               <Text as={"span"} fontWeight={"bold"}>
-                Codigo Postal:
+                Código Postal:
               </Text>{" "}
               {user.postalCode}
             </ListItem>
           </List>
         </SimpleGrid>
       </Box>
+
       <Box>
         <Text
           fontSize={{ base: "16px", lg: "18px" }}
@@ -145,26 +153,25 @@ export default function Simple() {
         </Text>
 
         <List spacing={2}>
-          <ListItem>
-            <Text as={"span"} fontWeight={"bold"}></Text>{" "}
-            {reviews?.slice(0, 3).map((review) => (
+          {reviews?.slice(0, 3).map((review) => (
+            <ListItem key={review.IdBook}>
               <Box>
-                <ListItem>
-                  <Image
-                    rounded={"md"}
-                    src={review.Book.image}
-                    alt={review.Book.title}
-                    fit={"cover"}
-                    align={"center"}
-                    w={"10%"}
-                    h={{ sm: "100px", lg: "70px" }}
-                  />
-                </ListItem>
+                <Image
+                  rounded={"md"}
+                  src={review.Book?.image}
+                  alt={review.Book?.title}
+                  fit={"cover"}
+                  align={"center"}
+                  w={"10%"}
+                  h={{ sm: "100px", lg: "70px" }}
+                />
+              </Box>
+              <Box>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Nombre del Libro:
                   </Text>{" "}
-                  {review.Book.title}
+                  {review.Book?.title}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
@@ -189,11 +196,12 @@ export default function Simple() {
                 </ListItem>
                 <br />
               </Box>
-            ))}
-          </ListItem>
+            </ListItem>
+          ))}
         </List>
       </Box>
-      <Box>
+
+        {/*<Box>
         <Text
           fontSize={{ base: "16px", lg: "18px" }}
           color={useColorModeValue("yellow.500", "yellow.300")}
@@ -201,7 +209,7 @@ export default function Simple() {
           textTransform={"uppercase"}
           mb={"4"}
         >
-          Compras realizadas
+          {/* Compras realizadas
         </Text>
 
         <List spacing={2}>
@@ -210,24 +218,24 @@ export default function Simple() {
               Total de Libro: {totalPrice}
             </Text>{" "}
             {shopping?.slice(0, 3).map((book) => (
-              <Box>
+              <Box key={book.IdSellingTotal}>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Producto:
                   </Text>{" "}
-                  {book.product}
+                  {book.BookTitle}
                 </ListItem>
                 <ListItem>
                   <Text as={"span"} fontWeight={"bold"}>
                     Precio:
                   </Text>{" "}
                   {book.price}
-                </ListItem>
+                </ListItem> 
               </Box>
             ))}
           </ListItem>
         </List>
-      </Box>
+      </Box>*/}
     </Box>
   );
 }
