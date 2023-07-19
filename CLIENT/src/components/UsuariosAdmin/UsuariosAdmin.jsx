@@ -110,7 +110,7 @@ export default function UsuariosAdmin() {
             ? { ...prevUser, role: "admin" }
             : prevUser
         )
-      )) : (
+      )) : ( 
         setUsers((prevUsers) =>
           prevUsers.map((prevUser) =>
             prevUser.IdUser === user.IdUser
