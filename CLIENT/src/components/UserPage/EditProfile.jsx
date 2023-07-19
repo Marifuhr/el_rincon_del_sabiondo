@@ -18,6 +18,7 @@ import {
 import { useEffect } from "react";
 import { useUserInfo } from "../../context/ProviderUser";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function EditProfile() {
   const { user } = useUserInfo();
@@ -31,7 +32,7 @@ export default function EditProfile() {
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [city, setCity] = useState(null);
-
+const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -68,6 +69,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
   async function handleSubmit(e) {
     e.preventDefault();
 
+
     // Validar campos requeridos
     if (!name || !country || !province || !address || !postalCode || !city ) {
       setUpdateError("Por favor, rellene todos los campos.");
@@ -100,6 +102,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
           setProvince("");
           setCountry("");
           setCity("");
+          navigate(-1);
         }
       } else {
         setUpdateError("An error occurred during the update.");

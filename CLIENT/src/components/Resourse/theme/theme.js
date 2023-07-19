@@ -14,6 +14,36 @@ const theme = extendTheme({
       },
     },
   },
+  components: {
+    Button: {
+      baseStyle: {
+        color: "white",
+        bg: "#70a57b",
+        textDecoration: "none",
+        _hover: {
+          color: "white",
+          transform: "translateY(-2px)",
+          boxShadow: "lg",
+          textDecoration: "none",
+        },
+      },
+      sizes: {
+        sm: {
+          margin: "5px",
+        },
+      },
+    },
+    Link: {
+      baseStyle: {
+        color: "inherit",
+        textDecoration: "underline",
+        _hover: {
+          color: "inherit",
+          textDecoration: "underline",
+        },
+      },
+    },
+  },
 });
 
 export default theme;
