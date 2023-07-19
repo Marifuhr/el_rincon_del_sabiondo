@@ -267,16 +267,11 @@ export default function SignupCard() {
       const { authors, category, ...res } = data;
       const authorsArray = [authors];
       const categoryArray = [category];
+      
       dispatch(
-        createBook({ ...res, authors: authorsArray, category: categoryArray })
+        createBook({ ...res, authors: authorsArray, category: categoryArray, image: book.image })
       );
 
-      //Reset form
-      //    changeMessage("success", `El libro ${data.title} ha sido creado con exito`);
-      //   setBook(initialStateBook);
-      //  }catch(error){
-      //    changeMessage("Error al crear el libro:", error);
-      //  }
       if (res.status === 201) {
         setSuccessMessage(`El libro ${data.title} ha sido creado con exito`);
         setErrorMessage("");
@@ -286,16 +281,6 @@ export default function SignupCard() {
       setSuccessMessage("");
     }
   };
-
-  // const changeMessage = (type, message) => {
-  //   if (type === "success") {
-  //     setSuccessMessage(message);
-  //     setErrorMessage("");
-  //   } else if (type === "error") {
-  //     setSuccessMessage("");
-  //     setErrorMessage(message);
-  //   }
-  // };
 
   const handleImageSelect = async (event) => {
     const file = event.target.files[0];
@@ -311,7 +296,6 @@ export default function SignupCard() {
         );
 
         const imageUrl = response.data.secure_url;
-
         setBook((prevState) => ({
           ...prevState,
           image: imageUrl,
@@ -376,8 +360,8 @@ export default function SignupCard() {
                   <FormLabel>Autor</FormLabel>
                   <Input
                     type="text"
-                    name="author"
-                    {...register("author", {
+                    name="authors"
+                    {...register("authors", {
                       required: "El autor es obligatorio",
                       maxLength: {
                         value: 50,
@@ -412,17 +396,16 @@ export default function SignupCard() {
                       _active={{ borderColor: "gray.500" }}
                       _focus={{ boxShadow: "outline" }}
                     >
-                      <Input
+                      <input
                         type="file"
                         id="image"
                         name="image"
                         accept="image/*"
-                        onChange={handleImageSelect}
                         {...register("image", {
                           required: "La imagen es obligatoria",
+                          onChange: handleImageSelect
                         })}
-                        style={{ display: "none" }}
-                      />
+                        style={{ display: "none" }} />
                       Seleccione una imagen
                     </Button>
                   </Box>
@@ -432,12 +415,12 @@ export default function SignupCard() {
                 </FormControl>
               </Box>
               <Box>
-                <FormControl isInvalid={errors.lenguage}>
+                <FormControl isInvalid={errors.language}>
                   <FormLabel>Idioma</FormLabel>
                   <Input
                     type="text"
-                    name="lenguage"
-                    {...register("lenguage", {
+                    name="language"
+                    {...register("language", {
                       required: "El lenguaje es obligatorio",
                       maxLength: {
                         value: 2,
@@ -447,7 +430,7 @@ export default function SignupCard() {
                     })}
                   />
                   <FormErrorMessage>
-                    {errors.lenguage && errors.lenguage.message}
+                    {errors.language && errors.language.message}
                   </FormErrorMessage>
                 </FormControl>
               </Box>

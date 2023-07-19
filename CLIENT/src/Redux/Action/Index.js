@@ -98,6 +98,7 @@ export const createBook = (book) => {
     try {
       const response = await axios.post(`${endpoint}/books`, book);
       const newBook = response.data;
+      console.log(newBook);
       return dispatch({
         type: CREATE_BOOK,
         payload: newBook,
