@@ -21,6 +21,7 @@ export const Profile = () => {
     clearStorageCart();
     // Hacer logout
     logout({ returnTo: window.location.origin });
+
   };
 
   return (
@@ -63,7 +64,7 @@ export const Profile = () => {
 
             <MenuItem as={Link} to="/profile">Perfil</MenuItem>
             <MenuItem as={Link} to="/admin">dashboard</MenuItem>
-            <MenuItem onClick={handleLogout} icon={<FiLogOut />} command="⌘L">
+            <MenuItem onClick={handleLogout} icon={<FiLogOut />} >
 
               Cerrar sesión
             </MenuItem>
