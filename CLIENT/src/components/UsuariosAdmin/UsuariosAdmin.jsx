@@ -65,7 +65,7 @@ export default function UsuariosAdmin() {
 
       return fetchedUsers;
     } catch (error) {
-      console.error("Error al obtener los usuarios:", error); 
+      console.error("Error al obtener los usuarios:", error);
     }
   };
 
