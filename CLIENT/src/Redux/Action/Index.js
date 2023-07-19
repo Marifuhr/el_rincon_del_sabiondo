@@ -18,6 +18,8 @@ import {
   SET_FILTER,
   SEARCH_NAME_USER,
   SAVE_PROFILE_CHANGES,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from "./Actions.types.js";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
@@ -132,6 +134,23 @@ export function clearShoppingCart() {
     type: CLEAR_SHOPPING_CART,
   };
 }
+
+// Acción para aumentar la cantidad de libros en el carrito
+export const increaseQuantity = (id) => {
+  return {
+    type: INCREASE_QUANTITY,
+    payload: id
+  };
+};
+
+// Acción para disminuir la cantidad de libros en el carrito
+export const decreaseQuantity = (id) => {
+  return {
+    type: DECREASE_QUANTITY,
+    payload: id
+  };
+};
+
 
 export function addShoopingCartStorage(cart) {
   localStorage.setItem(TOKEN_STORAGE_CART, JSON.stringify(cart));
