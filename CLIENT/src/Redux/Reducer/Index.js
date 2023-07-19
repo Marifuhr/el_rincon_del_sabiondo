@@ -15,6 +15,8 @@ import {
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
   SEARCH_NAME_USER,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -35,6 +37,7 @@ const initialState = {
   filters: {
     category: "",
     price: "",
+    cart_shopping: [],
   },
   cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
 };
@@ -222,6 +225,35 @@ const reducer = (state = initialState, action) => {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
+
+    case INCREASE_QUANTITY:
+      return {
+        ...state,
+        cart_shopping: state.cart_shopping.map((book) => {
+          if (book.IdBook === action.payload) {
+            return {
+              ...book,
+              quantity: book.quantity + 1
+            };
+          }
+          return book;
+        })
+      };
+    case DECREASE_QUANTITY:
+      return {
+        ...state,
+        cart_shopping: state.cart_shopping.map((book) => {
+          if (book.IdBook === action.payload && book.quantity > 1) {
+            return {
+              ...book,
+              quantity: book.quantity - 1
+            };
+          }
+          return book;
+        })
+      };
+    // ...otros casos de acción para el carrito
+
 
     case SEND_MAIL:
       return {

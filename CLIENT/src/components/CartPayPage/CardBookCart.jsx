@@ -1,17 +1,20 @@
-import { Box, Text, Image, Flex, Stack } from '@chakra-ui/react'
+import { Box, Text, Image, Flex, Stack, Button } from '@chakra-ui/react'
 import React from 'react'
 import ButtonDeleteBookCart from '../ShoppingCart/ButtonDeleteBookCart';
 import { Link } from 'react-router-dom';
-import ButtonAddBookCart from '../ShoppingCart/ButtonAddBookCart';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { increaseQuantity, decreaseQuantity } from '../../Redux/Action/Index';
 
-const CardBookCart = ({image, title, description, IdBook, price, quantity}) => {
+const CardBookCart = ({ image, title, description, IdBook, price, quantity }) => {
+  const dispatch = useDispatch();
 
-    const book = useSelector(({cart_shopping}) => {
-        return cart_shopping.find(({IdBook:Id}) => {
-            return Id === IdBook
-        })
-    });
+  const handleIncreaseQuantity = (id) => {
+    dispatch(increaseQuantity(id));
+  };
+
+  const handleDecreaseQuantity = (id) => {
+    dispatch(decreaseQuantity(id));
+  };
 
     return (
         <Stack position="relative" maxH={{base:'100%', md:'300px'}} bg="rgba(0,0,0,0.1)" borderRadius={6} overflow="hidden" my={2}>
@@ -34,16 +37,21 @@ const CardBookCart = ({image, title, description, IdBook, price, quantity}) => {
                             <span style={{color:'#163e1e'}}>{quantity}</span>
                         </Box>
                     </Flex>
-                    <Box maxW="sm" my={2} py={1} width="min-content" bg="#70a57b" whiteSpace="nowrap" fontWeight="bold" borderRadius={3} px={4} boxShadow="0 1px 5px rgba(0,0,0,0.3)">
                         <span>Total: </span>
                         <span style={{color:'#ededed'}}>{Number(price * quantity).toFixed(2)}</span>
                     </Box>
+                    <Box maxW="sm" my={2} py={1} width="min-content" bg="#70a57b" whiteSpace="nowrap" fontWeight="bold" borderRadius={3} px={4} boxShadow="0 1px 5px rgba(0,0,0,0.3)">
                     <Box py={2}>
                         <ButtonDeleteBookCart IdBook={IdBook} />
                     </Box>
+                        <Box py={2}>
+         
+          <Button onClick={() => handleIncreaseQuantity(IdBook)}>+</Button>
+          <Button onClick={() => handleDecreaseQuantity(IdBook)}>-</Button>
+        </Box>
                 </Box>
             </Flex>
-            <ButtonAddBookCart book={book} attributesStyles={{position:"absolute", top:"2", right:"4"}}/>
+            
         </Stack>
     )
 }
