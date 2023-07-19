@@ -199,8 +199,11 @@ export const searchNameUser = (name) => {
     try {
       const response = await axios.get(`${endpoint}/users?name=${name}`);
       const user = response.data;
-      const userSearch = user.filter( (user) => user.name.includes(name) );
-      console.log(`Estoy en searchNameUser`, userSearch);
+
+      const lowercaseName = name.toLowerCase(); 
+      const lowercaseUser = user.map(user => ({ ...user, name: user.name.toLowerCase() })); 
+      const userSearch = lowercaseUser.filter((user) => user.name.includes(lowercaseName)); 
+      
       return dispatch({
         type: SEARCH_NAME_USER,
         payload: userSearch,
