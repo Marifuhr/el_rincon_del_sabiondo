@@ -1,21 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
-  Container,
   Stack,
   Text,
   Image,
   Flex,
-  VStack,
   Button,
   Heading,
-  SimpleGrid,
-  StackDivider,
   ListItem,
   List,
   useColorModeValue,
-  Input,
   Avatar,
   Center,
 } from "@chakra-ui/react";
@@ -39,14 +34,6 @@ export default function Simple() {
       user.SellingTotals?.reduce((total, book) => total + book.price, 0) || 0
     );
   }, [user.SellingTotals]);
-
-  useEffect(() => {
-    console.log("Compras:", shopping);
-  }, [shopping]);
-
-  const handleChange = (field, value) => {
-    // Aquí puedes manejar la lógica para actualizar el campo correspondiente en el estado
-  };
 
   return (
     <Box>
