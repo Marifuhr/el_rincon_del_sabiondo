@@ -13,17 +13,12 @@ function checkBooksValuesOrId (books = []){
     };
 };
 
-function parsedIdProducts(products){
-    return products.map(p => {
-        const typeId = typeof p;
-        const typeValue = {
-            string: () => p,
-            object: () => p.IdBook
-        };
-    
-        return typeValue[typeId]();
-    })
-};
+function parsedIdProducts(products) {
+    return products.map(p => ({
+      IdProduct: p.IdBook,
+      quantity: p.quantity
+    }));
+  }
 
 module.exports = {
     parsedIdProducts,
