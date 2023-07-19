@@ -136,7 +136,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Los comentarios que realizados
+          Mis comentarios:
         </chakra.h1>
       </Box>
       <SimpleGrid
