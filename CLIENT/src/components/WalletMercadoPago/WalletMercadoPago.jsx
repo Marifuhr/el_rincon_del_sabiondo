@@ -48,8 +48,7 @@ function WalletMercadoPago({ products }) {
   const handleProfile = () => {
     navigate("/profile/myProfile");
   };
-  console.log(info);
-  console.log(userComplete);
+  
   return (
     <>
       {isAuthenticated ? (

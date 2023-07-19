@@ -277,7 +277,7 @@ export default function SignupCard() {
       //  }catch(error){
       //    changeMessage("Error al crear el libro:", error);
       //  }
-      if (response.status === 201) {
+      if (res.status === 201) {
         setSuccessMessage(`El libro ${data.title} ha sido creado con exito`);
         setErrorMessage("");
       }
