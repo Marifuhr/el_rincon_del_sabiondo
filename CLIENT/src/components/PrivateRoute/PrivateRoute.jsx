@@ -19,7 +19,7 @@ const PrivateRoute = ({ children }) => {
     }, [user]);
 
     return (
-        !isLoading && (user ?
+        !isLoading && user && (user.role === 'admin' ?
             children
             : <Navigate to='/' replace={true} />)
     )

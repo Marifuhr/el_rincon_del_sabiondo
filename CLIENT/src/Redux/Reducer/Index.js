@@ -182,7 +182,9 @@ const reducer = (state = initialState, action) => {
         const mapedBooks = state.cart_shopping.map((book) => {
           const finalBook = book;
           if (book.IdBook === bookPayload.IdBook) {
-            finalBook.quantity += 1;
+            bookPayload.stock > finalBook.quantity
+              ? (finalBook.quantity += 1)
+              : finalBook.quantity;
           }
           return book;
         });
@@ -200,8 +202,14 @@ const reducer = (state = initialState, action) => {
         quantity: 1,
       };
 
-      const cart_shopping = [...state.cart_shopping, parsedBook];
-      addShoopingCartStorage(cart_shopping);
+      let cart_shopping = [...state.cart_shopping];
+
+      if (bookPayload.stock > 0) {
+        cart_shopping = [...state.cart_shopping, parsedBook];
+        addShoopingCartStorage(cart_shopping);
+      } else {
+        addShoopingCartStorage(cart_shopping);
+      }
 
       return {
         ...state,
@@ -231,13 +239,20 @@ const reducer = (state = initialState, action) => {
         ...state,
         cart_shopping: state.cart_shopping.map((book) => {
           if (book.IdBook === action.payload) {
-            return {
-              ...book,
-              quantity: book.quantity + 1
-            };
+            if (book.stock > book.quantity) {
+              return {
+                ...book,
+                quantity: book.quantity + 1,
+              };
+            } else {
+              return {
+                ...book,
+                quantity: book.quantity,
+              };
+            }
           }
           return book;
-        })
+        }),
       };
     case DECREASE_QUANTITY:
       return {
@@ -246,14 +261,13 @@ const reducer = (state = initialState, action) => {
           if (book.IdBook === action.payload && book.quantity > 1) {
             return {
               ...book,
-              quantity: book.quantity - 1
+              quantity: book.quantity - 1,
             };
           }
           return book;
-        })
+        }),
       };
     // ...otros casos de acción para el carrito
-
 
     case SEND_MAIL:
       return {
