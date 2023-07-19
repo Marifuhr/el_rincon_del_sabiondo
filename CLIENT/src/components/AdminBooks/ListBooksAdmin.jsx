@@ -17,14 +17,6 @@ const ListBooksAdmin = () => {
         dispatch(updatedBook(book));
     };
 
-    const switchActiveBook = async (state, IdBook) => {
-        const dataToUpdate = {
-            isActive: state
-        }
-        const response = await axios.put(`${import.meta.env.VITE_URL_ENDPOINT}/books/${IdBook}`, dataToUpdate);
-        return response.data;
-    }
-
     return (
         <Box display={{base: "flex", xl:"grid"}} gridTemplateColumns="repeat(auto-fill, minmax(500px, 1fr ))" alignItems="stretch" gap={2} flexDirection="column">
             {
@@ -33,7 +25,6 @@ const ListBooksAdmin = () => {
                         updatedSuccesfullBook={updatedSuccesfullBook}
                         editBook={editBook}
                         {...book}
-                        switchActiveBook={switchActiveBook}
                         key={book.IdBook}
                     />
                 ))
