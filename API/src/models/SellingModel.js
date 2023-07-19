@@ -18,7 +18,7 @@ module.exports = function(database){
         quantity: {
             type: DataTypes.INTEGER,
             allowNull: false,
-            //defaultValue: 1,
+            defaultValue: 1,
             validate: {
               isInt: {
                 msg: "Quantity must be an integer.",
