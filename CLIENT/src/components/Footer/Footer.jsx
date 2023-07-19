@@ -76,6 +76,7 @@ export default function Footer() {
 
   const handleClick = () => {
     dispatch(sendMailSubscription({ email: mail }));
+    setMail("");
   };
 
   return (
@@ -124,35 +125,39 @@ export default function Footer() {
           </Stack>
           <Stack spacing={6} align={"flex-start"}>
             <ListHeader>Mantengase al Día</ListHeader>
-            <Stack direction={"row"} spacing={6}>
-              <Input
-                placeholder={"Su dirección de Correo Electrónico"}
-                bg={useColorModeValue("blackAlpha.300", "whiteAlpha.100")}
-                border={0}
-                _focus={{
-                  bg: "whiteAlpha.300",
-                }}
-                _placeholder={{
-                  color: useColorModeValue("gray.600", "gray.400"),
-                  fontStyle: "italic",
-                  fontSize: "xs",
-                }}
-                onChange={(e) => setMail(e.target.value)}
-              />
-              <IconButton
-                bg={useColorModeValue("green.400", "green.800")}
-                color={useColorModeValue("white", "gray.800")}
-                _hover={{
-                  bg: "green.600",
-                }}
-                aria-label="Subscribe"
-                icon={<BiMailSend />}
-                onClick={() => {
-                  handleClick();
-                  console.log(mail);
-                }}
-              />
-            </Stack>
+            <form action="">
+              <Stack direction={"row"} spacing={6}>
+                <Input
+                  placeholder={"Su dirección de Correo Electrónico"}
+                  bg={useColorModeValue("blackAlpha.300", "whiteAlpha.100")}
+                  border={0}
+                  _focus={{
+                    bg: "whiteAlpha.300",
+                  }}
+                  _placeholder={{
+                    color: useColorModeValue("gray.600", "gray.400"),
+                    fontStyle: "italic",
+                    fontSize: "xs",
+                  }}
+                  onChange={(e) => setMail(e.target.value)}
+                  value={mail}
+                />
+                <IconButton
+                  bg={useColorModeValue("green.400", "green.800")}
+                  color={useColorModeValue("white", "gray.800")}
+                  _hover={{
+                    bg: "green.600",
+                  }}
+                  aria-label="Subscribe"
+                  icon={<BiMailSend />}
+                  onClick={() => {
+                    handleClick();
+                    console.log(mail);
+                    setMail("");
+                  }}
+                />
+              </Stack>
+            </form>
 
             <Text fontSize={"sm"} fontWeight={"bold"}>
               © 2023 El Rincon del Sabiondo. Todos los Derechos Reservados
