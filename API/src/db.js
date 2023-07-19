@@ -15,7 +15,7 @@ const gistUrlDB = `postgres://${DB_USER_CLOUD}:${DB_PASSWORD_CLOUD}@${DB_HOST_CL
 //const gistUrlDB = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`
 const db = new Sequelize(gistUrlDB,{logging:false});
 
-//Executa todos los modelos en Modelo
+//Executa todos los modelos en Modelo 
 const pathModels = path.join(__dirname + '/models/');
 fs.readdirSync(pathModels).forEach(file => {
     if(file === 'relationsModels.js') return;
