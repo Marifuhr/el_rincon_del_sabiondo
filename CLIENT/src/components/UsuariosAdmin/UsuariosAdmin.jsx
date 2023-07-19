@@ -99,29 +99,18 @@ export default function UsuariosAdmin() {
   };
 
   const handleMakeAdmin = async (user) => {
+    const params = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
     try {
       await axios.put(
-        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-        user.role ==! 'admin' ? (
-          {
-            ...user,
-            role: "admin",
-          }
-        ) : (
-          {
-            ...user,
-            role: "user",
-          }
-        )
-      );
-      user.role ==! 'admin' ? (
+        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);
+      user.role !== 'admin' ? (
       setUsers((prevUsers) =>
         prevUsers.map((prevUser) =>
           prevUser.IdUser === user.IdUser
             ? { ...prevUser, role: "admin" }
             : prevUser
         )
-      )) : (
+      )) : ( 
         setUsers((prevUsers) =>
           prevUsers.map((prevUser) =>
             prevUser.IdUser === user.IdUser
