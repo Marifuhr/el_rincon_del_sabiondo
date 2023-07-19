@@ -11,8 +11,8 @@ const {
     DB_PORT_CLOUD,DB_HOST, DB_PASSWORD, DB_USER
 } = process.env;
 
-// const gistUrlDB = `postgres://${DB_USER_CLOUD}:${DB_PASSWORD_CLOUD}@${DB_HOST_CLOUD}:${DB_PORT_CLOUD}/${DB_NAME_CLOUD}`;
-const gistUrlDB = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`
+const gistUrlDB = `postgres://${DB_USER_CLOUD}:${DB_PASSWORD_CLOUD}@${DB_HOST_CLOUD}:${DB_PORT_CLOUD}/${DB_NAME_CLOUD}`;
+//const gistUrlDB = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/videogames`
 const db = new Sequelize(gistUrlDB,{logging:false});
 
 //Executa todos los modelos en Modelo 
