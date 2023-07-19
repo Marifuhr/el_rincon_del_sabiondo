@@ -35,7 +35,7 @@ export const Profile = () => {
               borderRadius: "full",
               overflow: "hidden",
             }}
-            onClick={() => console.log("Imagen clickeada")} // Puedes agregar aquí la lógica que desees al hacer clic en la imagen
+            onClick={() => {}} // Puedes agregar aquí la lógica que desees al hacer clic en la imagen
           >
             <Image
               src={user.picture}

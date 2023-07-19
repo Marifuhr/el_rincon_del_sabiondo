@@ -9,8 +9,7 @@ export const useBooksAdmin = () => {
 
 export const switchEnabledBook = async (state, IdBook) => {
     try{
-        const response = await fetch(`${import.meta.env.VITE_URL_ENDPOINT}/books/${IdBook}`);
-        console.log(response);
+        console.log('Habilitando / deshabilitando');
     }catch({message}){
         console.log({error:message});
     }
@@ -20,15 +19,22 @@ export const switchEnabledBook = async (state, IdBook) => {
     //? Action Types
     const ADD_BOOKS_ALL = 'ADD_BOOKS_ALL';
     const CHANGE_PAGE = "CHANGE_PAGE";
+    const UPDATE_BOOK = "UPDATE_BOOK";
 
     //? Create Actions
     const addBooks = books => ({
         action: ADD_BOOKS_ALL,
         payload: books
     });
+    
     export const changePage = page => ({
         action: CHANGE_PAGE,
         payload: page
+    });
+    
+    export const updatedBook = book => ({
+        action: UPDATE_BOOK,
+        payload: book
     });
 
     //? Valores Iniciales
@@ -62,6 +68,17 @@ export const switchEnabledBook = async (state, IdBook) => {
                     currentPage: payload,
                     currentPageBooks: state.booksPages[payload]
                 }
+            },
+            [`${UPDATE_BOOK}`]: () => {
+                const newCurrentPageBooks = modifiedBookArray(payload, state.currentPageBooks);
+                const newBooksDB = modifiedBookArray(payload, state.booksDB);
+                const newSplitBooks = splitArrays(state.numberPerPages,newBooksDB);
+                return {
+                    ...state,
+                    currentPageBooks: newCurrentPageBooks,
+                    booksDB: newBooksDB,
+                    booksPages: newSplitBooks
+                }
             }
         };
         return actionType[action] ? actionType[action]() : state
@@ -70,10 +87,8 @@ export const switchEnabledBook = async (state, IdBook) => {
 const ProviderBooksAdmin = ({children}) => {
     const [ values, dispatch ] = useReducer(reducerBooksAdmin, initialValues);
 
-    const endpointBack = import.meta.env.VITE_URL_ENDPOINT;
-
     useEffect(() => {
-        axios.get(`${endpointBack}/books`).then(data => {
+        axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/books`).then(data => {
             dispatch(addBooks(data.data.books));
         });
     },[]);
@@ -101,3 +116,12 @@ const splitArrays = (numberSplit, array) => {
 
     return arraySplit;
 }
+
+const modifiedBookArray = (bookModified, array) => {
+    return array.map((book) => {
+        if(book.IdBook === bookModified.IdBook){
+            return {...book, ...bookModified};
+        }
+        return book;
+    });
+};
