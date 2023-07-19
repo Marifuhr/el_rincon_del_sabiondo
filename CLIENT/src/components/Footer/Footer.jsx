@@ -10,7 +10,6 @@ import {
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import logoImage from "../../assets/image/Logo.png";
 import { Image } from "@chakra-ui/react";
@@ -35,32 +34,6 @@ const Logo = () => {
   );
 };
 
-const SocialButton = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { children, label, href } = props;
-  return (
-    <chakra.button
-      bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
-      rounded={"full"}
-      w={8}
-      h={8}
-      cursor={"pointer"}
-      as={"a"}
-      href={href}
-      display={"inline-flex"}
-      alignItems={"center"}
-      justifyContent={"center"}
-      transition={"background 0.3s ease"}
-      _hover={{
-        bg: useColorModeValue("blackAlpha.200", "whiteAlpha.200"),
-      }}
-    >
-      <VisuallyHidden>{label}</VisuallyHidden>
-      {children}
-    </chakra.button>
-  );
-};
-
 // eslint-disable-next-line react/prop-types
 const ListHeader = ({ children }) => {
   return (
@@ -76,6 +49,7 @@ export default function Footer() {
 
   const handleClick = () => {
     dispatch(sendMailSubscription({ email: mail }));
+    setMail("");
   };
 
   return (
@@ -93,20 +67,6 @@ export default function Footer() {
             <Box mt={4}>
               <Logo color={useColorModeValue("gray.700", "white")} />
             </Box>
-            <Stack direction={"row"} spacing={6} mt={8} mb={2}>
-              <SocialButton label={"Twitter"} href={"https://twitter.com/"}>
-                <FaTwitter />
-              </SocialButton>
-              <SocialButton label={"YouTube"} href={"https://www.youtube.com/"}>
-                <FaYoutube />
-              </SocialButton>
-              <SocialButton
-                label={"Instagram"}
-                href={"https://www.instagram.com/"}
-              >
-                <FaInstagram />
-              </SocialButton>
-            </Stack>
           </Stack>
 
           <Stack align={"flex-start"}>
@@ -124,35 +84,39 @@ export default function Footer() {
           </Stack>
           <Stack spacing={6} align={"flex-start"}>
             <ListHeader>Mantengase al Día</ListHeader>
-            <Stack direction={"row"} spacing={6}>
-              <Input
-                placeholder={"Su dirección de Correo Electrónico"}
-                bg={useColorModeValue("blackAlpha.300", "whiteAlpha.100")}
-                border={0}
-                _focus={{
-                  bg: "whiteAlpha.300",
-                }}
-                _placeholder={{
-                  color: useColorModeValue("gray.600", "gray.400"),
-                  fontStyle: "italic",
-                  fontSize: "xs",
-                }}
-                onChange={(e) => setMail(e.target.value)}
-              />
-              <IconButton
-                bg={useColorModeValue("green.400", "green.800")}
-                color={useColorModeValue("white", "gray.800")}
-                _hover={{
-                  bg: "green.600",
-                }}
-                aria-label="Subscribe"
-                icon={<BiMailSend />}
-                onClick={() => {
-                  handleClick();
-                  console.log(mail);
-                }}
-              />
-            </Stack>
+            <form action="">
+              <Stack direction={"row"} spacing={6}>
+                <Input
+                  placeholder={"Su dirección de Correo Electrónico"}
+                  bg={useColorModeValue("blackAlpha.300", "whiteAlpha.100")}
+                  border={0}
+                  _focus={{
+                    bg: "whiteAlpha.300",
+                  }}
+                  _placeholder={{
+                    color: useColorModeValue("gray.600", "gray.400"),
+                    fontStyle: "italic",
+                    fontSize: "xs",
+                  }}
+                  onChange={(e) => setMail(e.target.value)}
+                  value={mail}
+                />
+                <IconButton
+                  bg={useColorModeValue("green.400", "green.800")}
+                  color={useColorModeValue("white", "gray.800")}
+                  _hover={{
+                    bg: "green.600",
+                  }}
+                  aria-label="Subscribe"
+                  icon={<BiMailSend />}
+                  onClick={() => {
+                    handleClick();
+                    console.log(mail);
+                    setMail("");
+                  }}
+                />
+              </Stack>
+            </form>
 
             <Text fontSize={"sm"} fontWeight={"bold"}>
               © 2023 El Rincon del Sabiondo. Todos los Derechos Reservados
