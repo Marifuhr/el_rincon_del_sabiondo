@@ -4,7 +4,7 @@ import { getDetailBooks } from "../../Redux/Action/Index";
 import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import ButtonVolver from "../../elements/ButtonVolver";
-import WalletMercadoPago from "../WalletMercadoPago/WalletMercadoPago";
+
 import ButtonAddBookCart from "../ShoppingCart/ButtonAddBookCart";
 import Loader from "../Loader/Loader";
 // import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
@@ -163,7 +163,7 @@ function DetailBook() {
                     <br />
                     <h3 className="h4 mb-0">Libro:{book.title}</h3>
                   </div>
-                  <WalletMercadoPago products={products} />
+             
                 </div>
               </div>
               <ButtonAddBookCart
