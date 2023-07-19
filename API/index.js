@@ -40,6 +40,6 @@ db.sync({alter:true}).then(() => {
     //execute server
     server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
-        //bulk();
+        bulk();
     })
 });
