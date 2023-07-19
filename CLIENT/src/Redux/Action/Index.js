@@ -169,12 +169,12 @@ export function createUser(userData) {
 }
 
 export async function createSellingTotalDB({ IdUser, products }) {
-  const lastProducts = products.map(({ IdBook }) => IdBook);
-  console.log(lastProducts);
+  //const lastProducts = products.map(({ IdBook }) => IdBook);
+  //console.log(lastProducts);
   axios
     .post(`${endpoint}/sellings`, {
       IdUser,
-      products: lastProducts,
+      products,
     })
     .then(console.log);
 }

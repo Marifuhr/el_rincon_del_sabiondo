@@ -84,7 +84,10 @@ export default function Home() {
         //console.log(cartStorage.current);
         createSellingTotalDB({
           IdUser: user.IdUser,
-          products: cartStorage.current,
+          products: cartStorage.current.map(item => ({
+            IdBook: item.IdBook,
+            quantity: item.quantity
+          })),
         });
         // EL MAIL DE MAUROELDEMOLEDOR VA ACÁ!!!! :D
         let products = [];
