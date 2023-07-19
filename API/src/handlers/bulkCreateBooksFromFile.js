@@ -10,7 +10,7 @@ async function bulkCreateBooksFromFile() {
     const jsonData = fs.readFileSync(file, 'utf8');
     const books = [
       {
-        "title": "Manual de edición académica",
+        "title": "Manual de edición académica de los Andes",
         "authors": [
           "Jorge Enrique Beltrán"
         ],
@@ -3685,6 +3685,7 @@ async function bulkCreateBooksFromFile() {
           //asigno stock random entre 1 y 9
           book.stock = Math.floor(Math.random() * 10);
         }
+        //console.log('entre')
         const createdBook = await Book.create(book);
         console.log('Libro creado:', createdBook);
 
@@ -3737,7 +3738,10 @@ async function bulkCreateBooksFromFile() {
       } else if (foundBook.stock === 0) {
         const newStock = Math.floor(Math.random() * 10) + 1;
         foundBook.stock = newStock
-        await foundBook.save();
+        await Book.update(
+          { stock: newStock }, 
+          { where: { id: foundBook.id } } 
+        );        
         console.log('El libro ya existe, se ha actualizado el stock:', foundBook.title, 'Nuevo stock:', newStock);
       } else {
         console.log('El libro ya existe');

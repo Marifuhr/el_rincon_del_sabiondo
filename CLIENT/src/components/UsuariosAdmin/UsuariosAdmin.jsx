@@ -103,6 +103,7 @@ export default function UsuariosAdmin() {
     try {
       await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);
+
       user.role !== 'admin' ? (
       setUsers((prevUsers) =>
         prevUsers.map((prevUser) =>
