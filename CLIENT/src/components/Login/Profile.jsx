@@ -19,9 +19,6 @@ export const Profile = () => {
 
   const isAdmin = user && user.role === "admin";
 
-  console.log(user); // Verificar la información del usuario en la consola
-  console.log(user?.role); // Verificar el rol del usuario en la consola
-
   return (
     isAuthenticated && user && (
       <div className={styles.profile_zlksadaskj}>

@@ -18,7 +18,6 @@ import {
   Text,
   useDisclosure,
   Menu,
-  MenuButton,
   MenuDivider,
   MenuItem,
   MenuList,
@@ -26,20 +25,18 @@ import {
 import {
   FiHome,
   FiUser,
-  FiShoppingCart,
   FiSmile,
   FiEdit2,
-  FiCheckCircle,
   FiMenu,
-  FiBell,
 } from "react-icons/fi";
-import SearchBarAdmin from "./SearchBarAdmin";
+import { TbBooks } from "react-icons/tb";
 import { useState } from "react";
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
   { name: "Editar Perfil", icon: FiUser, route: "/admin/myProfile" },
   { name: "Usuarios", icon: FiSmile, route: "/admin/usuariosAdmin" },
+  { name: "Administrar Libros", icon: TbBooks, route: "/admin/books" },
   { name: "Agregar Libros", icon: FiEdit2, route: "/admin/create" },
   // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
@@ -71,7 +68,7 @@ export default function SidebarWithHeader() {
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
       <Box ml={{ base: 0, md: 60 }} p="4">
-        {<Outlet />}
+        <Outlet />
       </Box>
     </Box>
   );

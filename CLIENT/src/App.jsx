@@ -22,7 +22,10 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import MyReviews from "./components/UserPage/MyReviews";
 import AdminPage from "./components/AdminPage/AdminPage";
 import UsuariosAdmin from "./components/UsuariosAdmin/UsuariosAdmin";
+import AdminBooks from "./components/AdminBooks/AdminBooks";
+import ProviderBooksAdmin from "./context/ProviderBooksAdmin";
 import Construccion from "./components/Footer/Construccion";
+
 export default function App() {
   const location = useLocation();
   const hideNavBarRoutes = [
@@ -35,6 +38,7 @@ export default function App() {
     "/admin/myProfile",
     "/admin/usuariosAdmin",
     "/admin/create",
+    "/admin/books",
   ];
   return (
     <div className="App">
@@ -62,9 +66,14 @@ export default function App() {
           {/* <Route path="billing" element={< />} />  */}
         </Route>
 
-        <Route path="/admin" element={<AdminPage />}>
+        <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}>
           <Route path="myProfile" element={<EditProfileAdmin />} />
           <Route path="usuariosAdmin" element={<UsuariosAdmin />} />
+          <Route path="books" element={(
+            <ProviderBooksAdmin>
+              <AdminBooks />
+            </ProviderBooksAdmin>
+          )} />
           <Route path="create" element={<FormCreate />} />
         </Route>
 
