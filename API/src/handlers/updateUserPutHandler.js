@@ -6,13 +6,13 @@ module.exports = async function (req, res) {
         const { name, email, picture, isActive, role, address, province, postalCode, country, city } = req.body;
 
         //Filter field by empty values
-        const filterEmptyValues = Object.entries({ name, city, email, picture, role, address, province, postalCode, country }).filter( ([k,v]) => {
+        const filterEmptyValues = Object.entries({ name, city, email, picture, role, address, province, isActive, postalCode, country }).filter( ([k,v]) => {
             if(k === 'isActive'){
                 return isActive?.toString() || false;
             }
             return v
         });
-
+        
         if(!filterEmptyValues.length) throw new Error('No tienes valores válidos para actualizar un usuario');
 
         const dataToUpdate = Object.fromEntries(filterEmptyValues);

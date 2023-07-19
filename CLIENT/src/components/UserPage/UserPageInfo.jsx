@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Box,
-  Container,
   Stack,
   Text,
   Image,
   Flex,
-  VStack,
   Button,
   Heading,
-  SimpleGrid,
-  StackDivider,
   ListItem,
   List,
   useColorModeValue,
-  Input,
+  Avatar,
+  Center,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
@@ -37,109 +35,103 @@ export default function Simple() {
     );
   }, [user.SellingTotals]);
 
-  useEffect(() => {
-    console.log("Compras:", shopping);
-  }, [shopping]);
-
-  const handleChange = (field, value) => {
-    // Aquí puedes manejar la lógica para actualizar el campo correspondiente en el estado
-  };
-
   return (
     <Box>
-      <SimpleGrid
-        columns={{ base: 1, md: 2, lg: 2 }}
-        spacing={{ base: 2, md: 0 }}
-        py={{ base: 18, md: 24 }}
-      >
-        <Flex>
-          <Image
-            rounded={"md"}
+      <Center py={6}>
+      <Box
+        maxW={'350px'}
+        w={'full'}
+        bg={useColorModeValue('white', 'gray.800')}
+        boxShadow={'2xl'}
+        rounded={'md'}
+        overflow={'hidden'}>
+        <Image
+          h={'120px'}
+          w={'full'}
+          src={
+            'https://images.unsplash.com/photo-1612865547334-09cb8cb455da?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80'
+          }
+          objectFit={'cover'}
+        />
+        <Flex justify={'center'} mt={-12}>
+          <Avatar
+            size={'xl'}
             src={user.picture}
-            alt={user.name}
-            fit={"cover"}
-            align={"center"}
-            w={"70%"}
-            h={{ sm: "300px", lg: "300px" }}
+            alt={'Author'}
+            css={{
+              border: '2px solid white',
+            }}
           />
         </Flex>
-        <Stack spacing={{ base: 6, md: 1 }}>
-          <Box as={"header"}>
-            <Heading
-              lineHeight={5.9}
-              fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-            >
-              {user.name}
+
+        <Box p={6}>
+          <Stack spacing={0} align={'center'} mb={5}>
+            <Heading fontSize={'2xl'} fontWeight={500} fontFamily={'body'}>
+            {user.name}
             </Heading>
-          </Box>
-        </Stack>
-      </SimpleGrid>
+            <Text color={'gray.500'}>{user.role}</Text>
+          </Stack>
 
-      <Box>
-        <Text
-          fontSize={{ base: "16px", lg: "18px" }}
-          color={useColorModeValue("yellow.500", "yellow.300")}
-          fontWeight={"500"}
-          textTransform={"uppercase"}
-          mb={"4"}
-        >
-          Datos
-        </Text>
-
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
-          <List spacing={2}>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Rol:
-              </Text>{" "}
-              {user.role}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Id:
-              </Text>{" "}
-              {user.IdUser}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Email:
-              </Text>{" "}
+          <Stack direction={'row'} justify={'center'} spacing={6}>
+            <Stack spacing={0} align={'left'}>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Email:
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Pais:
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Provincia:
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Dirección:
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Código Postal:
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              Actualización:
+              </Text>
+            </Stack>
+            <Stack spacing={0} align={'center'}>
+              <Text fontSize={'sm'} color={'gray.500'}>
               {user.email}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Actualización:
-              </Text>{" "}
-              {formatDate(user.updatedAt)}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                País:
-              </Text>{" "}
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
               {user.country}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Provincia:
-              </Text>{" "}
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
               {user.province}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Dirección:
-              </Text>{" "}
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
               {user.address}
-            </ListItem>
-            <ListItem>
-              <Text as={"span"} fontWeight={"bold"}>
-                Código Postal:
-              </Text>{" "}
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
               {user.postalCode}
-            </ListItem>
-          </List>
-        </SimpleGrid>
+              </Text>
+              <Text fontSize={'sm'} color={'gray.500'}>
+              {formatDate(user.updatedAt)}
+              </Text>
+            </Stack>
+          </Stack>
+          <Link to={`/profile/myProfile`}>
+            <Button
+              w={'full'}
+              mt={8}
+              bg={useColorModeValue('#151f21', 'gray.900')}
+              color={'white'}
+              rounded={'md'}
+              _hover={{
+                transform: 'translateY(-2px)',
+                boxShadow: 'lg',
+              }}>
+              Editar
+            </Button>
+          </Link>
+        </Box>
       </Box>
+    </Center>
+
 
       <Box>
         <Text
@@ -201,41 +193,6 @@ export default function Simple() {
         </List>
       </Box>
 
-        {/*<Box>
-        <Text
-          fontSize={{ base: "16px", lg: "18px" }}
-          color={useColorModeValue("yellow.500", "yellow.300")}
-          fontWeight={"500"}
-          textTransform={"uppercase"}
-          mb={"4"}
-        >
-          {/* Compras realizadas
-        </Text>
-
-        <List spacing={2}>
-          <ListItem>
-            <Text as={"span"} fontWeight={"bold"}>
-              Total de Libro: {totalPrice}
-            </Text>{" "}
-            {shopping?.slice(0, 3).map((book) => (
-              <Box key={book.IdSellingTotal}>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Producto:
-                  </Text>{" "}
-                  {book.BookTitle}
-                </ListItem>
-                <ListItem>
-                  <Text as={"span"} fontWeight={"bold"}>
-                    Precio:
-                  </Text>{" "}
-                  {book.price}
-                </ListItem> 
-              </Box>
-            ))}
-          </ListItem>
-        </List>
-      </Box>*/}
     </Box>
   );
 }

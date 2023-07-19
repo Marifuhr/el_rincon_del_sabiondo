@@ -11,9 +11,12 @@ import {
   CLEAR_SHOPPING_CART,
   CREATE_USER,
   SEND_MAIL,
+  SEND_MAIL_SUBSCRIPTION,
   ORDER_BY_ALPHABETICAL,
   SET_FILTER,
   SEARCH_NAME_USER,
+  INCREASE_QUANTITY,
+  DECREASE_QUANTITY,
 } from "../Action/Actions.types.js";
 import { addShoopingCartStorage } from "../Action/Index.js";
 
@@ -30,10 +33,11 @@ const initialState = {
   search: null,
   category: [],
   filtered: null,
-  filter:"",
+  filter: "",
   filters: {
     category: "",
     price: "",
+    cart_shopping: [],
   },
   cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
 };
@@ -88,7 +92,7 @@ const reducer = (state = initialState, action) => {
         users: sortedUsers,
         order: action.payload,
       };
- 
+
     case GET_ALL_BOOKS:
       return {
         ...state,
@@ -163,11 +167,10 @@ const reducer = (state = initialState, action) => {
     case SET_FILTER:
       return {
         ...state,
-        filter: action.filterType
+        filter: action.filterType,
       };
     default:
       return state;
-  
 
     case ADD_BOOK_SHOPPING_CART: {
       const bookPayload = action.payload;
@@ -196,10 +199,10 @@ const reducer = (state = initialState, action) => {
         ...bookPayload,
         quantity: 1,
       };
-      
+
       const cart_shopping = [...state.cart_shopping, parsedBook];
       addShoopingCartStorage(cart_shopping);
-      
+
       return {
         ...state,
         cart_shopping,
@@ -217,11 +220,39 @@ const reducer = (state = initialState, action) => {
         cart_shopping: lastCart,
       };
     }
-    
+
     case CLEAR_SHOPPING_CART: {
       addShoopingCartStorage([]);
       return { ...state, cart_shopping: [] };
     }
+
+    case INCREASE_QUANTITY:
+      return {
+        ...state,
+        cart_shopping: state.cart_shopping.map((book) => {
+          if (book.IdBook === action.payload) {
+            return {
+              ...book,
+              quantity: book.quantity + 1
+            };
+          }
+          return book;
+        })
+      };
+    case DECREASE_QUANTITY:
+      return {
+        ...state,
+        cart_shopping: state.cart_shopping.map((book) => {
+          if (book.IdBook === action.payload && book.quantity > 1) {
+            return {
+              ...book,
+              quantity: book.quantity - 1
+            };
+          }
+          return book;
+        })
+      };
+    // ...otros casos de acción para el carrito
 
 
     case SEND_MAIL:
@@ -230,16 +261,21 @@ const reducer = (state = initialState, action) => {
         infoSend: action.payload,
       };
 
-      
-      case SEARCH_NAME_USER: {
-        return {
-          ...state,
-          users: action.payload,
-        };
-      }
+    case SEND_MAIL_SUBSCRIPTION:
+      return {
+        ...state,
+        infoSend: action.payload,
+      };
+
+    case SEARCH_NAME_USER: {
+      return {
+        ...state,
+        users: action.payload,
+      };
+    }
   }
 };
-      
+
 const createUser = (state = initialState, action) => {
   switch (action.type) {
     case CREATE_USER:
@@ -251,6 +287,5 @@ const createUser = (state = initialState, action) => {
       return state;
   }
 };
-
 
 export default reducer;
