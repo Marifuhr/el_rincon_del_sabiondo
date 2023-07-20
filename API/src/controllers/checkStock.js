@@ -12,6 +12,6 @@ module.exports = async function({products}){
       }
     }
   } catch (error) {
-    res.json({error: error.message});
+    throw new Error(error);
   }
 }
