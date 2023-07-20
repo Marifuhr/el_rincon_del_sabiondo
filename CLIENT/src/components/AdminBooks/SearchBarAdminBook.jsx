@@ -1,14 +1,11 @@
 import { Input } from "@chakra-ui/react"
-import { useState } from "react";
 import { filterBooks, useBooksAdmin } from "../../context/ProviderBooksAdmin";
 
 const SearchBarAdminBook = () => {
-    const [ searchBarValue, setSearchBarValue ] = useState();
-    const [,dispatch] = useBooksAdmin();
+    const [values,dispatch] = useBooksAdmin();
 
     const handleSearch = ({target:{value}}) => {
         dispatch(filterBooks({title: value}))
-        setSearchBarValue(value);
     };
 
     return (
@@ -18,7 +15,7 @@ const SearchBarAdminBook = () => {
             bg="white"
             mx="auto"
             maxW="400px"
-            value={searchBarValue}
+            value={values.dataToFilterBooks.title}
             onChange={handleSearch}
         />
     )

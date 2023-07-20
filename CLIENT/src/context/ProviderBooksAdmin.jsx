@@ -1,5 +1,6 @@
 import axios from "axios";
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useState } from "react";
+import Loader from "../components/Loader/Loader";
 
 //! Context and Hook Context
 const contextBooksAdmin = createContext();
@@ -13,6 +14,22 @@ export const useBooksAdmin = () => {
     const CHANGE_PAGE = "CHANGE_PAGE";
     const UPDATE_BOOK = "UPDATE_BOOK";
     const FILTER_BOOKS = "FILTER_BOOKS";
+
+    //? Valores Iniciales
+    const initialFilters = {
+        title:""
+    };
+
+    const initialValues = {
+        booksDB:[],
+        booksPages:[],
+        filteredBooks:[],
+        dataToFilterBooks:initialFilters,
+        currentPage: 0,
+        currentPageBooks:[],
+        numberPerPages: 10,
+        nPaginator: 0,
+    };
 
     //? Create Actions
     const addBooks = books => ({
@@ -35,17 +52,10 @@ export const useBooksAdmin = () => {
         payload: paramSearch
     });
 
-    //? Valores Iniciales
-    const initialValues = {
-        booksDB:[],
-        booksPages:[],
-        filteredBooks:[],
-        dataToFilterBooks:{},
-        currentPage: 0,
-        currentPageBooks:[],
-        numberPerPages: 10,
-        nPaginator: 0,
-    }
+    export const clearFilter = () => ({
+        action: FILTER_BOOKS,
+        payload: initialFilters
+    });
 
     //? Reducer
     const reducerBooksAdmin = function(state, {action,payload}){
@@ -83,7 +93,6 @@ export const useBooksAdmin = () => {
                 const newDataToFilterBooks = {...state.dataToFilterBooks, ...payload};
                 const booksFilter = filterBooksByData(newDataToFilterBooks, state.booksDB);
                 const splitBooks = splitArrays(state.numberPerPages, booksFilter);
-                console.log({booksFilter, splitBooks, newDataToFilterBooks});
                 return {
                     ...state,
                     dataToFilterBooks: newDataToFilterBooks,
@@ -92,24 +101,28 @@ export const useBooksAdmin = () => {
                     currentPage: 0,
                     currentPageBooks: splitBooks[0]
                 }
-            }
+            },
         };
         return actionType[action] ? actionType[action]() : state
     };
 
 const ProviderBooksAdmin = ({children}) => {
     const [ values, dispatch ] = useReducer(reducerBooksAdmin, initialValues);
+    const [ isLoading, setIsLoading ] = useState(true);
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_URL_ENDPOINT}/books`).then(data => {
             dispatch(addBooks(data.data.books));
+            setIsLoading(false);
         });
     },[]);
 
     return (
         <contextBooksAdmin.Provider value={[values, dispatch]}>
             {
-                children
+                isLoading ? 
+                    <Loader />
+                : children
             }
         </contextBooksAdmin.Provider>
     )
