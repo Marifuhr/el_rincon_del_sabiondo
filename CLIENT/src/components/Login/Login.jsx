@@ -18,7 +18,7 @@ export const LoginButton = () => {
         }}
         onClick={() => loginWithRedirect()}
       >
-        Iniciar Sección
+        Iniciar Sesión
       </Button>
     </Box>
   );
