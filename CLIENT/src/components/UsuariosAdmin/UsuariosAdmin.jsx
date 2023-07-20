@@ -84,9 +84,10 @@ export default function UsuariosAdmin() {
   const handleIsActive = async (user) => {
     try {
       const updatedUser = { ...user, isActive: !user.isActive };
+      const params = { IdUser : user.IdUser, isActive: !user.isActive }
       await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-        updatedUser
+        params
       );
       setUsers((prevUsers) =>
         prevUsers.map((prevUser) =>
@@ -99,27 +100,18 @@ export default function UsuariosAdmin() {
   };
 
   const handleMakeAdmin = async (user) => {
-    const params = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
-    try {
+    const updatedUser = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
+    const params = { IdUser : user.IdUser, role: user.role !== 'admin' ? "admin" : "user" }
+        try {
       await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);
-
-      user.role !== 'admin' ? (
-      setUsers((prevUsers) =>
+        setUsers((prevUsers) =>
         prevUsers.map((prevUser) =>
           prevUser.IdUser === user.IdUser
-            ? { ...prevUser, role: "admin" }
+            ? updatedUser
             : prevUser
         )
-      )) : ( 
-        setUsers((prevUsers) =>
-          prevUsers.map((prevUser) =>
-            prevUser.IdUser === user.IdUser
-              ? { ...prevUser, role: "user" }
-              : prevUser
-          )
-        )
-      )
+        );
     } catch (error) {
       console.error(error.message);
     }
@@ -176,7 +168,7 @@ export default function UsuariosAdmin() {
                 />
                 {user.name}
               </Td>
-              <Td>{user.role}</Td>
+              <Td>{user.role}</Td> 
               <Td>{user.isActive ? "Activo" : "Inactivo"} </Td>
               <Td>
                 {user.isActive ? (
