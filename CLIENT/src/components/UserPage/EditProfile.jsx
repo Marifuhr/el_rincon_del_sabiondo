@@ -105,12 +105,12 @@ const uploadImageToCloudinary = async (imageUrl) => {
           navigate(-1);
         }
       } else {
-        setUpdateError("An error occurred during the update.");
+        setUpdateError(response.data.error);
         setUpdateSuccess(false);
       }
     } catch (error) {
       console.error("Error updating user:", error);
-      setUpdateError("An error occurred during the update.");
+      setUpdateError(error.response.data.error);
       setUpdateSuccess(false);
     }
   }
