@@ -1,8 +1,10 @@
+import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import logo from "../../assets/image/Logo.png";
 import { Profile } from "../Login/Profile";
 import { useAuth0 } from "@auth0/auth0-react";
 import { clearStorageCart } from "../../Redux/Action/Index";
+import Footer from "../Footer/Footer";
 import {
   Box,
   CloseButton,
@@ -11,7 +13,6 @@ import {
   Icon,
   useColorModeValue,
   IconButton,
-  // Link,
   Image,
   Drawer,
   DrawerContent,
@@ -22,15 +23,8 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
-import {
-  FiHome,
-  FiUser,
-  FiSmile,
-  FiEdit2,
-  FiMenu,
-} from "react-icons/fi";
+import { FiHome, FiUser, FiSmile, FiEdit2, FiMenu } from "react-icons/fi";
 import { TbBooks } from "react-icons/tb";
-import { useState } from "react";
 
 const LinkItems = [
   { name: "Inicio", icon: FiHome, route: "/home" },
@@ -38,20 +32,14 @@ const LinkItems = [
   { name: "Usuarios", icon: FiSmile, route: "/admin/usuariosAdmin" },
   { name: "Administrar Libros", icon: TbBooks, route: "/admin/books" },
   { name: "Agregar Libros", icon: FiEdit2, route: "/admin/create" },
-  // { name: "Facturas", icon: FiCheckCircle, route: "/profile/billing" },
 ];
 
 export default function SidebarWithHeader() {
   const { isOpen, onOpen, onClose } = useDisclosure();
- 
- 
 
   return (
     <Box>
-      <SidebarContent
-        onClose={() => onClose}
-        display={{ base: "none", md: "block" }}
-      />
+      <SidebarContent onClose={() => onClose} display={{ base: "none", md: "block" }} />
       <Drawer
         autoFocus={false}
         isOpen={isOpen}
@@ -67,9 +55,12 @@ export default function SidebarWithHeader() {
       </Drawer>
       {/* mobilenav */}
       <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
+      <Box ml={{ base: 0, md: 60 }} p="4" pb="6"> {/* Añade pb="6" para dar espacio al Footer */}
+      
         <Outlet />
+        <Footer />
       </Box>
+      
     </Box>
   );
 }
@@ -90,12 +81,7 @@ const SidebarContent = ({ onClose, ...rest }) => {
         {/* <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
           Logo
         </Text> */}
-        <Image
-          boxSize="70px"
-          objectFit="cover"
-          src={logo}
-          alt="El Rincón del Sabiondo"
-        />
+        <Image boxSize="70px" objectFit="cover" src={logo} alt="El Rincón del Sabiondo" />
         <CloseButton display={{ base: "flex", md: "none" }} onClick={onClose} />
       </Flex>
       {LinkItems.map((link) => (
@@ -145,10 +131,8 @@ const NavItem = ({ icon, children, route, ...rest }) => {
 };
 
 const MobileNav = ({ onOpen, ...rest }) => {
-  
   const { logout } = useAuth0();
-const [input, setInput] = useState("");
-
+  const [input, setInput] = useState("");
 
   const handleLogout = () => {
     clearStorageCart();
@@ -158,7 +142,6 @@ const [input, setInput] = useState("");
     logout({ returnTo: window.location.origin });
   };
 
- 
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -171,7 +154,6 @@ const [input, setInput] = useState("");
       justifyContent={{ base: "space-between", md: "flex-end" }}
       {...rest}
     >
-
       <IconButton
         display={{ base: "flex", md: "none" }}
         onClick={onOpen}
@@ -204,7 +186,7 @@ const [input, setInput] = useState("");
               borderColor={useColorModeValue("gray.200", "gray.700")}
             >
               {/* <MenuItem>Profile</MenuItem>
-              <MenuItem>Settings</MenuItem>*/}
+              <MenuItem>Settings</MenuItem> */}
               <MenuItem as={Link} to="/profile">
                 Perfil
               </MenuItem>
