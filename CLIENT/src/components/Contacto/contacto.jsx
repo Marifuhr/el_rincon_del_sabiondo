@@ -25,6 +25,7 @@ import peruImage from "../../assets/image/peru.png";
 import argentinaImage from "../../assets/image/argentina.png";
 import venezuelaImage from "../../assets/image/venezuela.png";
 import armandoImage from "../../assets/image/armando.png";
+import colombia from "../../assets/image/colombia.png";
 
 export default function contacto() {
   return (
@@ -1293,7 +1294,7 @@ export default function contacto() {
                 justifyContent={"center"}
               >
                 Colombia
-                <img src={peruImage} width={"50px"} height={"50px"}></img>
+                <img src={colombia} width={"80px"} height={"20px"}></img>
               </Text>
             </HStack>
             <HStack
