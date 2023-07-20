@@ -32,7 +32,7 @@ export default function EditProfile() {
   const [updateSuccess, setUpdateSuccess] = useState(false);
   const [updateError, setUpdateError] = useState(null);
   const [city, setCity] = useState(null);
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
   useEffect(() => {
@@ -50,28 +50,27 @@ const navigate = useNavigate();
   }, [user]);
 
   // Función para cargar la imagen en Cloudinary
-const uploadImageToCloudinary = async (imageUrl) => {
-  try {
-    const formData = new FormData();
-    formData.append("file", imageUrl);
-    formData.append("upload_preset", "srpd9jzh");
-    const response = await axios.post(
-      `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
-      formData
-    );
-    const cloudinaryImageUrl = response.data.secure_url;
-    setPicture(cloudinaryImageUrl);
-  } catch (error) {
-    console.error("Error al cargar la imagen a Cloudinary:", error);
-  }
-};
+  const uploadImageToCloudinary = async (imageUrl) => {
+    try {
+      const formData = new FormData();
+      formData.append("file", imageUrl);
+      formData.append("upload_preset", "srpd9jzh");
+      const response = await axios.post(
+        `https://api.cloudinary.com/v1_1/djbpbygx4/image/upload`,
+        formData
+      );
+      const cloudinaryImageUrl = response.data.secure_url;
+      setPicture(cloudinaryImageUrl);
+    } catch (error) {
+      console.error("Error al cargar la imagen a Cloudinary:", error);
+    }
+  };
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-
     // Validar campos requeridos
-    if (!name || !country || !province || !address || !postalCode || !city ) {
+    if (!name || !country || !province || !address || !postalCode || !city) {
       setUpdateError("Por favor, rellene todos los campos.");
       setUpdateSuccess(false);
       return;
@@ -86,7 +85,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
           province: province,
           postalCode: postalCode,
           country: country,
-          city: city
+          city: city,
         }
       );
 
@@ -105,12 +104,12 @@ const uploadImageToCloudinary = async (imageUrl) => {
           navigate(-1);
         }
       } else {
-        setUpdateError("An error occurred during the update.");
+        setUpdateError(response.data.error);
         setUpdateSuccess(false);
       }
     } catch (error) {
       console.error("Error updating user:", error);
-      setUpdateError("An error occurred during the update.");
+      setUpdateError(error.response.data.error);
       setUpdateSuccess(false);
     }
   }
