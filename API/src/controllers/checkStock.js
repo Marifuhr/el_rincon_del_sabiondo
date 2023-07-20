@@ -1,6 +1,6 @@
 const { Book } = require('../db');
 
-module.exports = async function({products}){
+module.exports = async function(products){
   try {
     for (let product of products) {
       const { IdBook, quantity } = product;
