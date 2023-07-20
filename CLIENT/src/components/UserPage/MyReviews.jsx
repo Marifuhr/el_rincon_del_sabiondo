@@ -10,9 +10,11 @@ import {
   Icon,
   SimpleGrid,
   useColorModeValue,
+  Button,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
+import { useState } from "react";
 //import { useState, useEffect } from "react";
 
 function TestimonialCard({ review }) {
@@ -78,7 +80,7 @@ function TestimonialCard({ review }) {
           fontSize={"15px"}
           pb={4}
         >
-          {review.description}
+          {review.description} l
         </chakra.p>
         <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={14}>
           {review.Book.title}
@@ -89,15 +91,13 @@ function TestimonialCard({ review }) {
           >
             {" "}
             -{" "}
-            
-              {[1, 2, 3, 4, 5].map((value) => (
-                <StarIcon
-                  key={value}
-                  boxSize={3}
-                  color={value <= review.rate ? "yellow.500" : "gray.300"}
-                />
-              ))}
-           
+            {[1, 2, 3, 4, 5].map((value) => (
+              <StarIcon
+                key={value}
+                boxSize={3}
+                color={value <= review.rate ? "yellow.500" : "gray.300"}
+              />
+            ))}
           </chakra.span>
         </chakra.p>
       </Flex>
@@ -107,6 +107,12 @@ function TestimonialCard({ review }) {
 
 export default function GridBlurredBackdrop() {
   const { user } = useUserInfo();
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const firstThreeReviews = user?.Reviews?.slice(0, 3) || [];
+
+  const handleMostrarTodosClick = () => {
+    setShowAllReviews(true);
+  };
 
   return (
     <Flex
@@ -136,7 +142,7 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Los comentarios que realizados
+          Los comentarios que has realizados
         </chakra.h1>
       </Box>
       <SimpleGrid
@@ -148,9 +154,20 @@ export default function GridBlurredBackdrop() {
         mx={"auto"}
         marginLeft={{ base: "0", xl: "20" }}
       >
-        {user?.Reviews?.map((review, index) => (
-          <TestimonialCard key={index} review={review} />
-        ))}
+        {showAllReviews
+          ? user?.Reviews?.map((review, index) => (
+              <TestimonialCard key={index} review={review} />
+            ))
+          : firstThreeReviews.map((review, index) => (
+              <TestimonialCard key={index} review={review} />
+            ))}
+        {!showAllReviews && user?.Reviews?.length > 3 && (
+          <Box width="full" textAlign="center">
+            <Button colorScheme="teal" onClick={handleMostrarTodosClick}>
+              Ver todas
+            </Button>
+          </Box>
+        )}
       </SimpleGrid>
     </Flex>
   );
