@@ -14,6 +14,7 @@ export const Profile = () => {
     clearStorageCart();
     // Hacer logout
     logout({ returnTo: window.location.origin });
+
   };
 
   const isAdmin = user && user.role === "admin";
@@ -36,7 +37,7 @@ export const Profile = () => {
               Perfil
             </MenuItem>
             {isAdmin && <MenuItem as={Link} to="/admin/usuariosAdmin">dashboard</MenuItem>}
-            <MenuItem onClick={handleLogout} icon={<FiLogOut />} command="⌘L">
+            <MenuItem onClick={handleLogout} icon={<FiLogOut />} >
               Cerrar sesión
             </MenuItem>
           </MenuList>

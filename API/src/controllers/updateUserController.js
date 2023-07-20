@@ -74,6 +74,7 @@ module.exports = async function ({ id_user, dataToUpdate }) {
     throw new Error(`El usuario que intentas actualizar no existe`);
 
   //Si ya existe lo actualiza
+  //console.log(dataToUpdate)
   const user = await findUser.update(dataToUpdate);
 
   return user;

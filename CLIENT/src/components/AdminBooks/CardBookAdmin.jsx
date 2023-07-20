@@ -9,7 +9,7 @@ const styleSpan = {
 };
 
 const CardBookAdmin = (bookProps) => {
-  const { editBook, updatedSuccesfullBook, image, title, IdBook, languageBook: { language }, price, publisher, numberPages, stock, isActive, description } = bookProps;
+  const { editBook, updatedSuccesfullBook, switchActiveBook, image, title, IdBook, languageBook: { language }, price, publisher, numberPages, stock, isActive, description } = bookProps;
 
   const [disabled, setDisabled] = useState(isActive);
   const [editMode, setEditMode] = useState(false);
@@ -17,8 +17,10 @@ const CardBookAdmin = (bookProps) => {
   const [message, setMessage] = useState({active: false, message:null, type:null});
   const refUpdateBook = useRef(false);
 
-  const handleActiveBook = () => {
-    setDisabled(state => !state);
+  const handleActiveBook = async () => {
+    const book = await switchActiveBook(!disabled, IdBook);
+    updatedSuccesfullBook(book);
+    setDisabled(state => !state );
   };
   
   const handleEditMode = () => {
@@ -90,7 +92,7 @@ const CardBookAdmin = (bookProps) => {
             {
               editMode ?
                 <Input placeholder="Titulo" my={1} pr={4} name="title" onChange={handleChangeValuesBook} value={valuesBook.title} />
-                : <Link to={`detail/${IdBook}`} replace={true}><Heading p={2} fontSize={20}>{title}</Heading></Link>
+                : <Link to={`/detail/${IdBook}`} ><Heading p={2} fontSize={20}>{title}</Heading></Link>
             }
             <Text fontSize={10} decoration="underline" m={0}><span style={styleSpan}>Id Book: </span> {IdBook}</Text>
           </Box>
@@ -137,7 +139,7 @@ const CardBookAdmin = (bookProps) => {
           }
           <Box py={2} display="flex" gap={1}>
             <Button m={0} w="min-content" onClick={handleEditMode} colorScheme={editMode ? "red" : "twitter"}>{editMode ? "Cancelar" : "Editar"}</Button>
-            <Button m={0} onClick={handleActiveBook} colorScheme={disabled ? "yellow" : "linkedin"}>{disabled ? "Deshabilitar" : "Habilitar" }</Button>
+            <Button m={0} onClick={handleActiveBook} colorScheme={disabled ? "yellow" : "green"}>{disabled ? "Deshabilitar" : "Habilitar" }</Button>
           </Box>
         </form>
       </Box>

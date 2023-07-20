@@ -19,7 +19,6 @@ import {
 import SearchBarAdmin from "../AdminPage/SearchBarAdmin";
 import { useSelector } from "react-redux";
 
-
 export default function UsuariosAdmin() {
   const { user } = useUserInfo();
   const customerId = user ? user.customerId : null; // Obtener el customerId del usuario del contexto
@@ -29,13 +28,11 @@ export default function UsuariosAdmin() {
   const [filter, setFilter] = useState("");
   const [userTypeFilter, setUserTypeFilter] = useState(null);
 
-  const filterUser= useSelector((state) => state.users);
-
+  const filterUser = useSelector((state) => state.users);
 
   const handleFilterChange = (filterType) => {
     setUserTypeFilter(filterType === "todos" ? null : filterType);
   };
-
 
   // const getUsers = async () => {
   //   try {
@@ -102,27 +99,31 @@ export default function UsuariosAdmin() {
   };
 
   const handleMakeAdmin = async (user) => {
+    const params = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
     try {
       await axios.put(
-        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`,
-        {
-          ...user,
-          role: "admin",
-        }
-      );
+        `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);
+
+      user.role !== 'admin' ? (
       setUsers((prevUsers) =>
         prevUsers.map((prevUser) =>
           prevUser.IdUser === user.IdUser
             ? { ...prevUser, role: "admin" }
             : prevUser
         )
-      );
+      )) : ( 
+        setUsers((prevUsers) =>
+          prevUsers.map((prevUser) =>
+            prevUser.IdUser === user.IdUser
+              ? { ...prevUser, role: "user" }
+              : prevUser
+          )
+        )
+      )
     } catch (error) {
       console.error(error.message);
-
     }
   };
-  
 
   return (
     <Box mt={4}>
@@ -130,25 +131,35 @@ export default function UsuariosAdmin() {
       <Table variant="striped" colorScheme="gray">
         <Thead>
           <Tr>
-          <Th>
-  <Menu>
-    <MenuButton as={Button}>Usuarios</MenuButton>
-    <MenuList>
-      <MenuItem onClick={() => orderByAlphabetical("atoz")}>Ordenar A-Z</MenuItem>
-      <MenuItem onClick={() => orderByAlphabetical("ztoa")}>Ordenar Z-A</MenuItem>
-    </MenuList>
-  </Menu>
-</Th>
-<Th>
-  <Menu>
-    <MenuButton as={Button}>Tipo Usuario</MenuButton>
-    <MenuList>
-      <MenuItem onClick={() => handleFilterChange("todos")}>Todos</MenuItem>
-      <MenuItem onClick={() => handleFilterChange("user")}>User</MenuItem>
-      <MenuItem onClick={() => handleFilterChange("admin")}>Admin</MenuItem>
-    </MenuList>
-  </Menu>
-</Th>
+            <Th>
+              <Menu>
+                <MenuButton as={Button}>Usuarios</MenuButton>
+                <MenuList>
+                  <MenuItem onClick={() => orderByAlphabetical("atoz")}>
+                    Ordenar A-Z
+                  </MenuItem>
+                  <MenuItem onClick={() => orderByAlphabetical("ztoa")}>
+                    Ordenar Z-A
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </Th>
+            <Th>
+              <Menu>
+                <MenuButton as={Button}>Tipo Usuario</MenuButton>
+                <MenuList>
+                  <MenuItem onClick={() => handleFilterChange("todos")}>
+                    Todos
+                  </MenuItem>
+                  <MenuItem onClick={() => handleFilterChange("user")}>
+                    User
+                  </MenuItem>
+                  <MenuItem onClick={() => handleFilterChange("admin")}>
+                    Admin
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+            </Th>
 
             <Th>ESTADO</Th>
             <Th>Acciones</Th>
@@ -185,12 +196,19 @@ export default function UsuariosAdmin() {
                     Habilitar
                   </Button>
                 )}
-                {user.role !== "admin" && (
+                {user.role !== "admin" ? (
                   <Button
                     colorScheme="blue"
                     onClick={() => handleMakeAdmin(user)}
                   >
                     Hacer Admin
+                  </Button>
+                ) : (
+                  <Button
+                    colorScheme="red"
+                    onClick={() => handleMakeAdmin(user)}
+                  >
+                    Quitar Admin
                   </Button>
                 )}
               </Td>
@@ -201,7 +219,3 @@ export default function UsuariosAdmin() {
     </Box>
   );
 }
-
-
-
-
