@@ -1,5 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import React from 'react'
 import { ColorRing } from 'react-loader-spinner'
 
 const Loader = ({mode="basic"}) => {

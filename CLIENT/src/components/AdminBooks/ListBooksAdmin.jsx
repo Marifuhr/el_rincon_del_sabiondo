@@ -1,5 +1,5 @@
-import { Box } from "@chakra-ui/react";
-import { updatedBook, useBooksAdmin } from "../../context/ProviderBooksAdmin"
+import { Box, Button, Heading } from "@chakra-ui/react";
+import { clearFilter, updatedBook, useBooksAdmin } from "../../context/ProviderBooksAdmin"
 import CardBookAdmin from "./CardBookAdmin";
 import axios from "axios";
 
@@ -23,12 +23,12 @@ const ListBooksAdmin = () => {
         }
         const response = await axios.put(`${import.meta.env.VITE_URL_ENDPOINT}/books/${IdBook}`, dataToUpdate);
         return response.data;
-    }
+    };
 
     return (
         <Box display={{base: "flex", xl:"grid"}} gridTemplateColumns="repeat(auto-fill, minmax(500px, 1fr ))" alignItems="stretch" gap={2} flexDirection="column">
             {
-                Boolean(currentPageBooks?.length) && currentPageBooks.map((book) => (
+                currentPageBooks?.length ? currentPageBooks.map((book) => (
                     <CardBookAdmin
                         updatedSuccesfullBook={updatedSuccesfullBook}
                         editBook={editBook}
@@ -36,7 +36,10 @@ const ListBooksAdmin = () => {
                         switchActiveBook={switchActiveBook}
                         key={book.IdBook}
                     />
-                ))
+                )) : (<Box p={4} textAlign="center">
+                        <Heading fontSize={30}>No hay libros con tu busqueda</Heading>
+                        <Button colorScheme="red" onClick={() => dispatch(clearFilter())}>Limpiar Busqueda</Button>
+                    </Box>)
             }
         </Box>
     )
