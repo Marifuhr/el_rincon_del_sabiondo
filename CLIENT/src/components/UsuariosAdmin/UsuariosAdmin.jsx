@@ -99,7 +99,7 @@ export default function UsuariosAdmin() {
   };
 
   const handleMakeAdmin = async (user) => {
-    const params = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
+    const params = user.role !== 'admin' ? ({role: "admin",}) : ({role: "user",});
     try {
       await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);

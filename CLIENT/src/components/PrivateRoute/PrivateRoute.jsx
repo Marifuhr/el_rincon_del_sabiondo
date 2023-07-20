@@ -2,7 +2,7 @@ import { Navigate } from 'react-router-dom';
 import { useUserInfo } from '../../context/ProviderUser';
 import { useEffect, useRef, useState } from 'react';
 
-const PrivateRoute = ({ children }) => {
+const PrivateRoute = ({ children, mode = "" }) => {
     const { user } = useUserInfo();
     const [isLoading, setIsLoading] = useState(true);
     const timeout = useRef();
@@ -19,8 +19,14 @@ const PrivateRoute = ({ children }) => {
     }, [user]);
 
     return (
-        !isLoading && user && (user.role === 'admin' ?
-            children
+        !isLoading && (user ?
+            (
+                mode === "admin" ?
+                    user.role === 'admin' ?
+                        children
+                        : <Navigate to='/' replace={true} />
+                    : children
+            )
             : <Navigate to='/' replace={true} />)
     )
 }
