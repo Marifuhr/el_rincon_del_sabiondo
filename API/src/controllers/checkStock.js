@@ -13,5 +13,5 @@ module.exports = async function(products){
     }
   } catch (error) {
     throw new Error(error);
-  }
+  } 
 }
