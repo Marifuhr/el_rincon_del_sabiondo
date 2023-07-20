@@ -108,7 +108,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
     } catch (error) {
       console.error("Error updating user:", error);
       setUpdateError(error.response.data.error);
-      setUpdateSuccess(false);
+      setUpdateSuccess(false); 
     }
   }
 

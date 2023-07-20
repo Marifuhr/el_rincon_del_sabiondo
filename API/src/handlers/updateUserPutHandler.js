@@ -26,4 +26,4 @@ module.exports = async function (req, res) {
         //console.log(error)
         res.status(500).json({ error: error.message })
     }
-}
+} 

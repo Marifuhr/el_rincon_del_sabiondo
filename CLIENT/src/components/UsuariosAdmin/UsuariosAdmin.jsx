@@ -175,7 +175,7 @@ export default function UsuariosAdmin() {
                   <Button
                     colorScheme="red"
                     onClick={() => handleIsActive(user)}
-                    mr={2}
+                    mr={2} 
                   >
                     Deshabilitar
                   </Button>

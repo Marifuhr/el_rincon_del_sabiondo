@@ -83,4 +83,4 @@ module.exports = async function ({ id_user, dataToUpdate }) {
   const user = await findUser.update(dataToUpdate);
 
   return user;
-};
+}; 

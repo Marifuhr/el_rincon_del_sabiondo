@@ -181,7 +181,7 @@ const uploadImageToCloudinary = async (imageUrl) => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-            />
+            /> 
           </FormControl>
           <FormControl id={user.country} isRequired>
             <FormLabel>Country</FormLabel>
