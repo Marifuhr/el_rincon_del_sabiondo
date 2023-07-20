@@ -29,11 +29,11 @@ function TestimonialCard({ review }) {
     <Flex
       boxShadow={"lg"}
       maxW={"800px"}
-      direction={{ base: "column-reverse", md: "row" }}
+      direction={{ base: "column", md: "row" }}
       width={"full"}
       rounded={"xl"}
       p={6}
-      justifyContent={"space-between"}
+      justifyContent={"flex-start"}
       position={"relative"}
       bg={useColorModeValue("white", "gray.800")}
       _after={{
@@ -66,23 +66,34 @@ function TestimonialCard({ review }) {
         src={review.Book.image}
         height={"80px"}
         width={"80px"}
-        alignSelf={"center"}
+        alignSelf={"flex-start"}
+        justifyContent={"flex-start"}
         m={{ base: "0 0 35px 0", md: "0 0 0 50px" }}
       />
       <Flex
         direction={"column"}
         textAlign={"left"}
         justifyContent={"space-between"}
+        alignItems={"flex-start"}
+        flex={1}
+        ml={{ base: 2, md: 4 }}
       >
         <chakra.p
           fontFamily={"Inter"}
           fontWeight={"medium"}
           fontSize={"15px"}
+          width={{ base: "100%", md: "80%" }}
           pb={4}
         >
-          {review.description} l
+          {review.description}
         </chakra.p>
-        <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={14}>
+        <chakra.p
+          fontFamily={"Work Sans"}
+          fontWeight={"bold"}
+          fontSize={14}
+          width={{ base: "100%", md: "80%" }}
+          pb={4}
+        >
           {review.Book.title}
           <chakra.span
             fontFamily={"Inter"}
