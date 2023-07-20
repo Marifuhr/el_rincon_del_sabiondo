@@ -92,7 +92,7 @@ const CardBookAdmin = (bookProps) => {
             {
               editMode ?
                 <Input placeholder="Titulo" my={1} pr={4} name="title" onChange={handleChangeValuesBook} value={valuesBook.title} />
-                : <Link to={`detail/${IdBook}`} replace={true}><Heading p={2} fontSize={20}>{title}</Heading></Link>
+                : <Link to={`/detail/${IdBook}`} ><Heading p={2} fontSize={20}>{title}</Heading></Link>
             }
             <Text fontSize={10} decoration="underline" m={0}><span style={styleSpan}>Id Book: </span> {IdBook}</Text>
           </Box>
