@@ -272,13 +272,13 @@ export default function SignupCard() {
         createBook({ ...res, authors: authorsArray, category: categoryArray, image: book.image })
       );
 
-      if (res.status === 201) {
+      if (createBook) {
         setSuccessMessage(`El libro ${data.title} ha sido creado con exito`);
-        setErrorMessage("");
-      }
+        //setErrorMessage("");
+      } 
     } catch (error) {
       setErrorMessage(`Error al crear el libro: ${data.title}`, error);
-      setSuccessMessage("");
+      //setSuccessMessage("");
     }
   };
 
@@ -356,7 +356,7 @@ export default function SignupCard() {
                 </FormControl>
               </Box>
               <Box>
-                <FormControl isInvalid={errors.author}>
+                <FormControl isInvalid={errors.authors}>
                   <FormLabel>Autor</FormLabel>
                   <Input
                     type="text"
@@ -371,7 +371,7 @@ export default function SignupCard() {
                     })}
                   />
                   <FormErrorMessage>
-                    {errors.author && errors.author.message}
+                    {errors.authors && errors.authors.message}
                   </FormErrorMessage>
                 </FormControl>
               </Box>

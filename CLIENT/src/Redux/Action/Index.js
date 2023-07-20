@@ -231,13 +231,16 @@ export const setFilter = (filterType) => {
   };
 };
 
+
 export const searchNameUser = (name) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${endpoint}/users?name=${name}`);
-      const user = response.data;
-      const userSearch = user.filter((user) => user.name.includes(name));
-      console.log(`Estoy en searchNameUser`, userSearch);
+      const response = await axios.get(`${endpoint}/users`);
+      const users = response.data;
+      
+      const lowercaseName = name.toLowerCase();
+      const userSearch = users.filter(user => user.name.toLowerCase().includes(lowercaseName));
+      
       return dispatch({
         type: SEARCH_NAME_USER,
         payload: userSearch,
@@ -246,4 +249,4 @@ export const searchNameUser = (name) => {
       console.log(error.message);
     }
   };
-};
+}; 

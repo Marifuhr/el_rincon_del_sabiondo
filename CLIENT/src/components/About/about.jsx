@@ -90,12 +90,8 @@ const About = () => {
             En El Rincón del Sabiondo, somos un grupo de apasionados estudiantes
             de HENRY que comparten un amor por la lectura y la programación. Nos
             hemos unido para crear una experiencia de compra en línea única para
-            los amantes de los libros de todo el mundo. Desde los clásicos
-            atemporales hasta los éxitos de ventas más recientes, nuestra
-            selección de títulos es curada cuidadosamente para ofrecer algo para
-            todos los gustos. Nos esforzamos por brindar un excelente servicio
-            al cliente y una experiencia de compra sin problemas. ¡Gracias por
-            elegirnos para satisfacer sus necesidades de lectura!
+            los amantes de los libros de todo el mundo. 
+           
           </chakra.p>
           <Link to="/contacto">
             <Button variant="boton1">Conócenos</Button>
@@ -192,14 +188,7 @@ const About = () => {
             mundial, ofreciendo la mejor selección de títulos, precios
             competitivos y un servicio excepcional. Nos esforzamos por ser una
             app líder en innovación y tecnología, brindando una experiencia de
-            compra en línea fácil y cómoda para nuestros clientes. Aspiramos a
-            ser reconocidos como un actor clave en la promoción de la lectura y
-            la educación, y en la difusión de la cultura en todo el mundo.
-            Nuestro objetivo es ser una empresa responsable y sostenible,
-            comprometida con la protección del medio ambiente y la promoción de
-            valores éticos y sociales. Creemos que los libros pueden cambiar
-            vidas, y estamos dedicados a hacer que la lectura sea accesible y
-            agradable para todos.
+            compra en línea fácil y cómoda para nuestros clientes. 
           </chakra.p>
           <Link to="/home">
             <Button border={"1px"} variant="boton1">
@@ -223,9 +212,9 @@ const About = () => {
             alt="hojas de un libro abierto"
             fit="cover"
             w="full"
-            p={4}
+            p={15}
             h={{
-              base: 64,
+              base: 50,
               md: "full",
             }}
             loading="lazy"
@@ -245,29 +234,12 @@ const About = () => {
           py={5}
           zIndex={3}
         >
-          <chakra.span
-            mb={4}
-            fontSize={{
-              base: "2xl",
-              md: "2xl",
-              lg: "3xl",
-            }}
-            fontWeight="bold"
-            color="#70a57b"
-            _dark={{
-              color: "gray.300",
-            }}
-            lineHeight="shorter"
-            textShadow="2px 2px 3px rgba(0, 0, 0, 0.5)"
-          >
-            En el Rincon del Sabiondo . . .
-          </chakra.span>
           <chakra.h1
             mb={4}
             fontSize={{
-              base: "4xl",
-              md: "4xl",
-              lg: "5xl",
+              base: "2Xl",
+              md: "2xl",
+              lg: "4xl",
             }}
             fontWeight="bold"
             color="#70a57b"

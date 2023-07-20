@@ -81,6 +81,7 @@ async function bulkCreateBooksFromFile() {
       {
         title: "PIC CIRCULAR L",
         authors: [
+
           "Organización de las Naciones Unidas para la Alimentación y la Agricultura",
           "Programa de las Naciones Unidas para el Medio Ambiente",
         ],
@@ -3317,6 +3318,7 @@ async function bulkCreateBooksFromFile() {
           //asigno stock random entre 1 y 9
           book.stock = Math.floor(Math.random() * 10);
         }
+        //console.log('entre')
         const createdBook = await Book.create(book);
         console.log("Libro creado:", createdBook);
 
@@ -3383,6 +3385,7 @@ async function bulkCreateBooksFromFile() {
           "Nuevo stock:",
           newStock
         );
+
       } else {
         console.log("El libro ya existe");
       }
