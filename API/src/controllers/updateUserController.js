@@ -14,43 +14,46 @@ const errorFieldsToUpdate = {
 };
 
 const validationsAttributes = {
-    role: rol => {
-        const roles = ['user', 'moderator', 'admin', 'superuser'];
-        return roles.includes(rol);
-    },
-    picture: (image) => {
-        const erValidateUrl = /^(https?:\/\/)?(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i;
-	    return !!erValidateUrl.test(image);
-    },
-    name: nameString => {
-        const l = nameString.length;
-        return l >= 5 && l <= 50
-    },
-    isActive: stateUser => [true,false].includes(stateUser),
-    email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
-    address: addressString => {
-        const l = addressString.trim().length;
-        return l >= 5 && l <= 100
-    },
-    province: provinceString =>{
-        const l = provinceString.trim().length;
-        return l >= 5 && l <= 50
-    },
-    postalCode: postalCodeString => {
-        const l = postalCodeString.toString().trim().length;
-        return l >= 4 && l <= 10
-    },
-    country: countryString => {
-        const l = countryString.trim().length;
-        return l >= 4 && l <= 50
-    },
-    city: cityString => {
-        const l = cityString.trim().length;
-        return l >= 5 && l <= 50
-    }
+  role: (rol) => {
+    const roles = ["user", "moderator", "admin", "superuser"];
+    return roles.includes(rol);
+  },
+  picture: (image) => {
+    const erValidateUrl =
+      /^(https?:\/\/)?(([a-z\d]([a-z\d-]*[a-z\d])*)\.)+[a-z]{2,}(\/[-a-z\d%_.~+]*)*(\?[;&a-z\d%_.~+=-]*)?(#[-a-z\d_]*)?$/i;
+    return !!erValidateUrl.test(image);
+  },
+  name: (nameString) => {
+    const l = nameString.length;
+    return l >= 5 && l <= 50;
+  },
+  //isActive: stateUser => [true,false].includes(stateUser),
+  email: (emailToValidate) =>
+    /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
+  address: (addressString) => {
+    const l = addressString.trim().length;
+    return l >= 5 && l <= 100;
+  },
+  province: (provinceString) => {
+    const l = provinceString.trim().length;
+    return l >= 5 && l <= 50;
+  },
+  postalCode: (postalCodeString) => {
+    const l = postalCodeString.toString().trim().length;
+    return l >= 4 && l <= 10;
+  },
+  country: (countryString) => {
+    const l = countryString.trim().length;
+    return l >= 4 && l <= 50;
+  },
+  city: (cityString) => {
+    const l = cityString.trim().length;
+    return l >= 5 && l <= 50;
+  },
 };
 
 module.exports = async function ({ id_user, dataToUpdate }) {
+  //console.log('entré a updateUserController')
   //Validate query values
   for (let [fieldKey, fieldValue] of Object.entries(dataToUpdate)) {
     //Get function to field validate
@@ -60,6 +63,7 @@ module.exports = async function ({ id_user, dataToUpdate }) {
     //Execute function to field validate
     const validateValueField = validationForField(fieldValue);
     if (!validateValueField) {
+      //console.log(`errorFieldsToUpdate[${fieldKey}]`);
       throw new Error(errorFieldsToUpdate[fieldKey]);
     }
   }
@@ -68,7 +72,8 @@ module.exports = async function ({ id_user, dataToUpdate }) {
   const findUser = await User.findOne({
     where: { IdUser: id_user },
   });
-
+  // console.log(id_user)
+  // console.log(dataToUpdate)
   //Si el usuario no existe
   if (!findUser)
     throw new Error(`El usuario que intentas actualizar no existe`);
