@@ -307,6 +307,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+
       <div style={{ marginTop: "20px" }}>
       <div className={styles.homePage}>
         <div className={styles.pageIndicator}>
@@ -332,8 +333,9 @@ export default function Home() {
             <BsArrowRightCircleFill />
           </button>
         </div>
+
         <Footer />
-      </div>
+      </div> 
     </div>
     </div>
   );
