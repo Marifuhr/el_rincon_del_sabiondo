@@ -307,9 +307,37 @@ export default function Home() {
           </Button>
         </div>
       </div>
-       <div style={{ marginTop: "20px" }}>
+
+      <div style={{ marginTop: "20px" }}>
+      <div className={styles.homePage}>
+        <div className={styles.pageIndicator}>
+          <button
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            <BsArrowLeftCircleFill />
+          </button>
+          {new Array(totalPages).fill("").map((_, index) => (
+            <button
+              className={currentPage === index + 1 ? styles.active : ""}
+              onClick={() => handlePageChange(index + 1)}
+              key={index}
+            >
+              {index + 1}
+            </button>
+          ))}
+          <button
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            <BsArrowRightCircleFill />
+          </button>
+        </div>
+
         <Footer />
       </div> 
     </div>
+    </div>
   );
-}
+};
+
