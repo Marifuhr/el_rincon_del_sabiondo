@@ -124,6 +124,10 @@ export default function Home() {
     ? (renderBooks = resultados)
     : (renderBooks = allBooks);
 
+    renderBooks = renderBooks.filter(
+      (book) => { return book.isActive }
+    )
+
   const totalPages = Math.ceil(renderBooks.length / booksPerPage);
   const books = renderBooks.slice(
     (currentPage - 1) * booksPerPage,
