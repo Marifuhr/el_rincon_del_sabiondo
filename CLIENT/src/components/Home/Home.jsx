@@ -217,20 +217,20 @@ export default function Home() {
       <div
         className={styles.filtrosTodos}
         style={{
-          backgroundColor: "#70a57b",
+          // backgroundColor: "#70a57b",
           display: "flex",
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "center",
           gap: "15px",
           padding: "10px 0px 20px 0px",
-          boxShadow:
-            "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
+          // boxShadow:
+           // "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
         }}
       >
-        <div style={{ width: "30%" }}>
+        {/* <div style={{ width: "30%" }}>
           <SearchBar />
-        </div>
+        </div> */}
 
         <select
           className={styles.selectCategory}
