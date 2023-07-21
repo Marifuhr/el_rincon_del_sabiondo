@@ -63,6 +63,7 @@ export default function Home() {
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const suscription = useSelector((state) => state.infoSend);
+  const hasShownSubscriptionAlert = useRef(false);
   const [modalSuscription, setModalSuscription] = useState(false);
 
   const handlePageChange = (pageNumber) => {
@@ -88,8 +89,21 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (suscription) setModalSuscription(true);
-  }, [suscription]);
+    // Display subscription modal when `suscription` changes
+    setModalSuscription(true);
+  }, [suscription])
+
+  useEffect(() => {
+    // Check if the subscription alert has been shown before
+    const alertShown = JSON.parse(localStorage.getItem("subscriptionAlertShown"));
+    if (alertShown) {
+      // If the alert has been shown before, set the state to false to hide it
+      setModalSuscription(false);
+    } else {
+      // If the alert hasn't been shown before, set the state to true to show it
+      setModalSuscription(true);
+    }
+  }, []);
 
   useEffect(() => {
     if (user) {
@@ -148,6 +162,12 @@ export default function Home() {
     (currentPage - 1) * booksPerPage,
     currentPage * booksPerPage
   );
+
+  const handleSubscriptionAlertClose = () => {
+    setModalSuscription(false);
+    // Save in localStorage that the alert has been shown, so it won't be shown again
+    localStorage.setItem("subscriptionAlertShown", JSON.stringify(true));
+  };
 
   const handleScrollToTop = () => {
     window.scrollTo({
@@ -335,7 +355,7 @@ export default function Home() {
         {suscription && modalSuscription && (
           <Modal
             isOpen={modalSuscription}
-            onClose={() => setModalSuscription(false)}
+            onClose={handleSubscriptionAlertClose}
           >
             <ModalOverlay />
             <ModalContent>
@@ -349,7 +369,7 @@ export default function Home() {
               <ModalFooter>
                 <Button
                   colorScheme="teal"
-                  onClick={() => setModalSuscription(false)}
+                  onClick={handleSubscriptionAlertClose}
                 >
                   Cerrar
                 </Button>
