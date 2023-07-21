@@ -23,10 +23,10 @@ async function routeMailSubscriptionHandler(req, res) {
     transporter.sendMail(mailOptions, (err, info) => {
       if (err) {
         console.log(err);
-        res.status(500).json({ error: "Error al enviar el correo" });
+        return res.status(500).json({ error: "Error al enviar el correo" });
       }
-      console.log("Mensaje enviado: %s", info.mensaje);
-      console.log("Url del mensaje: %s", nodemailer.getTestMessageUrl(info));
+      // console.log("Mensaje enviado: %s", info.mensaje);
+      // console.log("Url del mensaje: %s", nodemailer.getTestMessageUrl(info));
       res.json({ message: "Correo enviado exitosamente" });
     });
   } catch (error) {
