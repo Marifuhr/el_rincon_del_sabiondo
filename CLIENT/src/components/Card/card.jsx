@@ -31,12 +31,7 @@ function Cards({ props }) {
     }
   };
 
-  // const buttonStyles = {
-  //   zIndex: 1,
-  //   top: -8,
-  //   right: -2,
-  //   position: "absolute",
-  // };
+
 
   const primaryColor = useColorModeValue("brand.primary", "brand.secondary");
   const isBookOutOfStock = props.stock === 0;
@@ -95,8 +90,8 @@ function Cards({ props }) {
               direction={"row"}
               align={"center"}
               justify={"center"}
-              bg={"red"}
-              p={2}
+              bg={"gray"}
+              p={1}
               rounded={"sm"}
               mt={2}
               w={"100%"}
@@ -104,7 +99,7 @@ function Cards({ props }) {
                 "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
               }
             >
-              <Text fontWeight={800} fontSize={"xl"} mb={0} color={"white"}>
+              <Text fontWeight={600} fontSize={"xl"} mb={0} color={"white"}>
                 AGOTADO
               </Text>
             </Stack>

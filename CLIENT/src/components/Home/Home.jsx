@@ -119,7 +119,7 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentPage(1);
-    if (filteredBooks.length === 0) setIsModalOpen(true); 
+    if (filteredBooks && filteredBooks.length === 0) setIsModalOpen(true); 
   }, [resultados, filteredBooks]);
 
   let renderBooks = [];
@@ -296,7 +296,7 @@ export default function Home() {
       </div>
 
       {/* Show the modal if there are no books to display */}
-      {filteredBooks.length === 0 && (
+      {filteredBooks && filteredBooks.length === 0 && (
         <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <ModalOverlay />
           <ModalContent>
