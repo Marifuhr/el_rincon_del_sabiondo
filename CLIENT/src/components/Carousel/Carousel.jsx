@@ -2,7 +2,7 @@ import { Box, Flex, HStack, Image, Stack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import image1 from "../../assets/carousel_imagen/Carrusel10.jpg";
 import image2 from "../../assets/carousel_imagen/Carrusel9.jpg";
-import image3 from "../../assets/carousel_imagen/Carrusel8.jpg";
+import image3 from "../../assets/carousel_imagen/carrusel8.jpg";
 import image4 from "../../assets/carousel_imagen/Carrusel6.jpg";
 import image5 from "../../assets/carousel_imagen/Carrusel4.png";
 import logo1 from "../../assets/image/Logo.png";
