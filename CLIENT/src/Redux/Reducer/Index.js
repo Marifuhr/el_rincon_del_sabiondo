@@ -274,7 +274,7 @@ const reducer = (state = initialState, action) => {
     case SEND_MAIL:
       return {
         ...state,
-        infoSend: action.payload,
+        infoSend1: action.payload,
       };
 
     case SEND_MAIL_SUBSCRIPTION:
