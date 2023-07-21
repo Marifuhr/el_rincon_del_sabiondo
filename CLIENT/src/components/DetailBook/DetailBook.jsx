@@ -12,6 +12,7 @@ import { Button, Flex } from "@chakra-ui/react";
 import { useUserInfo } from "../../context/ProviderUser";
 import CreateReview from "../CreateReview/CreateReview";
 import { StarIcon } from "@chakra-ui/icons";
+import { GET_DETAIL_BOOKS } from "../../Redux/Action/Actions.types";
 
 function DetailBook() {
   const { id } = useParams();
@@ -34,6 +35,12 @@ function DetailBook() {
 
   useEffect(() => {
     dispatch(getDetailBooks(id));
+    return () => {
+      dispatch({
+        type:GET_DETAIL_BOOKS,
+        payload: []
+      })
+    }
   }, [dispatch, id]);
 
   useEffect(() => {
