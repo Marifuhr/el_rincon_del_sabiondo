@@ -1,6 +1,6 @@
 const { Book } = require('../db');
 
-module.exports = async function({products}){
+module.exports = async function(products){
   try {
     for (let product of products) {
       const { IdBook, quantity } = product;
@@ -12,6 +12,6 @@ module.exports = async function({products}){
       }
     }
   } catch (error) {
-    res.json({error: error.message});
+    throw new Error(error);
   }
 }

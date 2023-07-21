@@ -16,12 +16,12 @@ module.exports = async function (req, res) {
         if(!filterEmptyValues.length) throw new Error('No tienes valores válidos para actualizar un usuario');
 
         const dataToUpdate = Object.fromEntries(filterEmptyValues);
-        dataToUpdate.isActive = isActive;
+        //dataToUpdate.isActive = isActive;
         const updatedUser = await updateUserController({id_user,dataToUpdate});
 
         //Response to cient
         res.json(updatedUser);
-    } catch ({ message }) {
-        res.json({ error: message })
+    } catch (error) {
+        res.json({ error: error.message })
     }
 }

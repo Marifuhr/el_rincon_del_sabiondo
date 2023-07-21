@@ -39,6 +39,7 @@ function Cards({ props }) {
   // };
 
   const primaryColor = useColorModeValue("brand.primary", "brand.secondary");
+  const isBookOutOfStock = props.stock === 0;
 
   return (
     <Center py={10}>
@@ -89,23 +90,43 @@ function Cards({ props }) {
             {props.title}
           </Heading>
 
-          <Stack
-            direction={"row"}
-            align={"center"}
-            justify={"center"}
-            bg={"brand.secondary"}
-            p={2}
-            rounded={"sm"}
-            mt={2}
-            w={"100%"}
-            boxShadow={
-              "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
-            }
-          >
-            <Text fontWeight={800} fontSize={"xl"} mb={0}>
-              ${props.price}
-            </Text>
-          </Stack>
+          {isBookOutOfStock ? ( // Mostrar "AGOTADO" si el libro está fuera de stock
+            <Stack
+              direction={"row"}
+              align={"center"}
+              justify={"center"}
+              bg={"red"}
+              p={2}
+              rounded={"sm"}
+              mt={2}
+              w={"100%"}
+              boxShadow={
+                "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
+              }
+            >
+              <Text fontWeight={800} fontSize={"xl"} mb={0} color={"white"}>
+                AGOTADO
+              </Text>
+            </Stack>
+          ) : (
+            <Stack
+              direction={"row"}
+              align={"center"}
+              justify={"center"}
+              bg={"brand.secondary"}
+              p={2}
+              rounded={"sm"}
+              mt={2}
+              w={"100%"}
+              boxShadow={
+                "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset"
+              }
+            >
+              <Text fontWeight={800} fontSize={"xl"} mb={0}>
+                ${props.price}
+              </Text>
+            </Stack>
+          )}
         </Stack>
         {/* <ButtonAddBookCart attributesStyles={buttonStyles} book={props} /> */}
 

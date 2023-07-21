@@ -13,7 +13,6 @@ import { useUserInfo } from "../../context/ProviderUser";
 import CreateReview from "../CreateReview/CreateReview";
 import { StarIcon } from "@chakra-ui/icons";
 
-
 function DetailBook() {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -163,7 +162,6 @@ function DetailBook() {
                     <br />
                     <h3 className="h4 mb-0">Libro:{book.title}</h3>
                   </div>
-             
                 </div>
               </div>
               <ButtonAddBookCart
@@ -254,7 +252,7 @@ function DetailBook() {
                           </div>
                         )
                     )}
-                {!mostrarTodasReviews && (
+                {book.Reviews.length > 2 && !mostrarTodasReviews && (
                   <Button colorScheme="teal" onClick={handleMostrarTodosClick}>
                     Mostrar todos
                   </Button>
