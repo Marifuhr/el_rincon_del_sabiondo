@@ -100,12 +100,14 @@ export default function UsuariosAdmin() {
   };
 
   const handleMakeAdmin = async (user) => {
+
     const updatedUser = user.role !== 'admin' ? ({...user, role: "admin",}) : ({...user, role: "user",});
     const params = { IdUser : user.IdUser, role: user.role !== 'admin' ? "admin" : "user" }
         try {
       await axios.put(
         `${import.meta.env.VITE_URL_ENDPOINT}/users/${user.IdUser}`, params);
         setUsers((prevUsers) =>
+
         prevUsers.map((prevUser) =>
           prevUser.IdUser === user.IdUser
             ? updatedUser
