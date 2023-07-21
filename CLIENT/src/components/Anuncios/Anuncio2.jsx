@@ -10,7 +10,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import imagelanding from "../../assets/image/imagen_landing1.jpg";
-import Logo2 from "../../assets/image/logo2.png";
+import Logo2 from "../../assets/image/Logo2.png";
 import "animate.css";
 import { Link } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
