@@ -52,30 +52,35 @@ export default function Anuncio3() {
               en un solo Rincon!
             </Text>
           </Heading>
-          <Text color={"gray.800"} fontFamily={""} fontWeight={500}
-          fontSize={"20px"}>
+          <Text
+            color={"gray.800"}
+            fontFamily={""}
+            fontWeight={500}
+            fontSize={"20px"}
+          >
             Aquí podrás encontrar una gran variedad de títulos de diferentes
             categorías, desde bestsellers hasta clásicos.
             <br />
-            ¡Explora nuestra
-            amplia selección de libros y encuentra tu próxima gran lectura!
+            ¡Explora nuestra amplia selección de libros y encuentra tu próxima
+            gran lectura!
           </Text>
           <Stack
             spacing={{ base: 4, sm: 6 }}
             direction={{ base: "column", sm: "row" }}
           >
             <Link to="/home">
-            <Button
-              rounded={"full"}
-              size={"lg"}
-              fontWeight={"normal"}
-              px={6}
-              colorScheme={"red"}
-              bg={"brand.tertiary"}
-              _hover={{ bg: "brand.secondary" }}
-            >
-              Ir a Pagina Principal
-            </Button></Link>
+              <Button
+                rounded={"full"}
+                size={"lg"}
+                fontWeight={"normal"}
+                px={6}
+                colorScheme={"red"}
+                bg={"brand.tertiary"}
+                _hover={{ bg: "brand.secondary" }}
+              >
+                Ir a Pagina Principal
+              </Button>
+            </Link>
             {/* <Button rounded={"full"} size={"lg"} fontWeight={"normal"} px={6}>
               How It Works
             </Button> */}
@@ -90,13 +95,19 @@ export default function Anuncio3() {
         >
           <Box
             position={"relative"}
-            height={"300px"}
+            height={"610px"}
             rounded={"2xl"}
             boxShadow={"2xl"}
             width={"full"}
             overflow={"hidden"}
           >
-            <Image alt={"Hero Image"} src={imagen1} />
+            <Image
+              alt={"Hero Image"}
+              src={imagen1}
+              objectFit={"cover"}
+              height={"100%"}
+              width={"100%"}
+            />
           </Box>
         </Flex>
       </Stack>

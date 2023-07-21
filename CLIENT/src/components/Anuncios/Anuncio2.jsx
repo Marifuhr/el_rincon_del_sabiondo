@@ -23,7 +23,7 @@ export default function Anuncio2() {
   const handleScroll = () => {
     const currentPosition = window.pageYOffset;
     window.scrollTo({
-      top: currentPosition + 600,
+      top: currentPosition + 750,
       behavior: "smooth",
     });
   };
@@ -31,8 +31,8 @@ export default function Anuncio2() {
   return (
     <chakra.header>
       <Box
-        w="full"
-        h="100vh"
+        w={["100%", "100%", "100%"]}
+        h= {["50vh", "75vh", "100vh"]}
         backgroundImage={imagelanding}
         bgPos="center"
         bgSize="cover"
@@ -94,7 +94,7 @@ export default function Anuncio2() {
       </Box>
       <Box
         position="absolute"
-        bottom="1500px"
+        bottom="1750px"
         left="50%"
         transform="translateX(-50%)"
         textAlign="center"
@@ -116,8 +116,8 @@ export default function Anuncio2() {
       </Box>
       <Box
         position="absolute"
-        bottom="900px"
-        left="50%"
+        bottom="980px"
+        left="49%"
         transform="translateX(-50%)"
         textAlign="center"
         width="100%"
