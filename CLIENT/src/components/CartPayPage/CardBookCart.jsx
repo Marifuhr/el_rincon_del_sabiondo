@@ -144,7 +144,8 @@ const CardBookCart = ({
                   <NumberInput
                     size="xs"
                     maxW={12}
-                    defaultValue={quantity}
+                    
+                    value={quantity}
                     min={1}
                   >
                     <NumberInputField />
