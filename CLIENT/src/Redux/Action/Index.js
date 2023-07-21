@@ -54,14 +54,33 @@ export const getDetailBooks = (id) => {
   };
 };
 
+// export const searchNameBooks = (title) => {
+//   return async function (dispatch) {
+//     try {
+//       const response = await axios.get(`${endpoint}/books?title=${title}`);
+//       const books = response.data.books;
+//       return dispatch({
+//         type: SEARCH_NAME_BOOK,
+//         payload: books,
+//       });
+//     } catch (error) {
+//       console.log(error.message);
+//     }
+//   };
+// };
 export const searchNameBooks = (title) => {
-  return async function (dispatch) {
+  return async function (dispatch, getState) {
     try {
-      const response = await axios.get(`${endpoint}/books?title=${title}`);
-      const books = response.data.books;
+      const { allBooks } = getState();
+      const lowercaseTitle = title.toLowerCase();
+
+      const filteredBooks = allBooks.filter(
+        (book) => book.title.toLowerCase().includes(lowercaseTitle)
+      );
+
       return dispatch({
         type: SEARCH_NAME_BOOK,
-        payload: books,
+        payload: filteredBooks,
       });
     } catch (error) {
       console.log(error.message);
@@ -183,10 +202,10 @@ export const sendMail = (data) => {
   return async function (dispatch) {
     try {
       const response = await axios.post(`${endpoint}/mail`, data);
-      const infoSend = response.data;
+      const infoSend1 = response.data;
       return dispatch({
         type: SEND_MAIL,
-        payload: infoSend,
+        payload: infoSend1,
       });
     } catch (error) {
       console.log(error.message);
