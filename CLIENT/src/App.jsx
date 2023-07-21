@@ -31,7 +31,7 @@ export default function App() {
   const hideNavBarRoutes = [
     "/profile",
     "/profile/myProfile",
-
+      "/",
     "/profile/myReviews",
     "/profile/billing",
     "/admin",
