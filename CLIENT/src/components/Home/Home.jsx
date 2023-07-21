@@ -19,8 +19,16 @@ import { useUserInfo } from "../../context/ProviderUser";
 import { TOKEN_STORAGE_CART } from "../../Redux/Action/Actions.types";
 import { Box, Button } from "@chakra-ui/react";
 import { FaArrowUp } from "react-icons/fa";
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Alert, AlertIcon, } from "@chakra-ui/react";
-
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Alert,
+  AlertIcon,
+} from "@chakra-ui/react";
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
@@ -54,7 +62,8 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const suscription = useSelector((state) => state.infoSend);
+  const [modalSuscription, setModalSuscription] = useState(false);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -79,6 +88,10 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    if (suscription) setModalSuscription(true);
+  }, [suscription]);
+
+  useEffect(() => {
     if (user) {
       if (
         paymentId !== null &&
@@ -88,9 +101,9 @@ export default function Home() {
         //console.log(cartStorage.current);
         createSellingTotalDB({
           IdUser: user.IdUser,
-          products: cartStorage.current.map(item => ({
+          products: cartStorage.current.map((item) => ({
             IdBook: item.IdBook,
-            quantity: item.quantity
+            quantity: item.quantity,
           })),
         });
         // EL MAIL DE MAUROELDEMOLEDOR VA ACÁ!!!! :D
@@ -119,6 +132,7 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentPage(1);
+
     if (filteredBooks && filteredBooks.length === 0) setIsModalOpen(true); 
   }, [resultados, filteredBooks]);
 
@@ -291,31 +305,58 @@ export default function Home() {
           ) : null}
         </div>
         <div className={styles.boxCardBooks}>
-        {books &&
-          books.map((book) => <Card key={book.IdBook} props={book} />)}
-      </div>
+          {books &&
+            books.map((book) => <Card key={book.IdBook} props={book} />)}
+        </div>
 
-      {/* Show the modal if there are no books to display */}
-      {filteredBooks && filteredBooks.length === 0 && (
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>No se han encontrado libros</ModalHeader>
-            <ModalBody>
-              <Alert status="warning" variant="subtle" mb={4}>
-                <AlertIcon />
-                No se han encontrado libros con esas opciones.
-              </Alert>
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="teal" onClick={() => setIsModalOpen(false)}>
-                Cerrar
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      )}
 
+        {filteredBooks && filteredBooks.length === 0 && (
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>No se han encontrado libros</ModalHeader>
+              <ModalBody>
+                <Alert status="warning" variant="subtle" mb={4}>
+                  <AlertIcon />
+                  No se han encontrado libros con esas opciones.
+                </Alert>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  colorScheme="teal"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cerrar
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        )}
+        {suscription && modalSuscription && (
+          <Modal
+            isOpen={modalSuscription}
+            onClose={() => setModalSuscription(false)}
+          >
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>Gracias por suscribirte!!</ModalHeader>
+              <ModalBody>
+                <Alert status="warning" variant="subtle" mb={4}>
+                  <AlertIcon />
+                  Te hemos enviado un correo de bienvenida.
+                </Alert>
+              </ModalBody>
+              <ModalFooter>
+                <Button
+                  colorScheme="teal"
+                  onClick={() => setModalSuscription(false)}
+                >
+                  Cerrar
+                </Button>
+              </ModalFooter>
+            </ModalContent>
+          </Modal>
+        )}
 
         <div
           style={{ position: "fixed", right: "0", bottom: "0", margin: "20px" }}
@@ -336,35 +377,34 @@ export default function Home() {
       </div>
 
       <div style={{ marginTop: "20px" }}>
-      <div className={styles.homePage}>
-        <div className={styles.pageIndicator}>
-          <button
-            disabled={currentPage === 1}
-            onClick={() => handlePageChange(currentPage - 1)}
-          >
-            <BsArrowLeftCircleFill />
-          </button>
-          {new Array(totalPages).fill("").map((_, index) => (
+        <div className={styles.homePage}>
+          <div className={styles.pageIndicator}>
             <button
-              className={currentPage === index + 1 ? styles.active : ""}
-              onClick={() => handlePageChange(index + 1)}
-              key={index}
+              disabled={currentPage === 1}
+              onClick={() => handlePageChange(currentPage - 1)}
             >
-              {index + 1}
+              <BsArrowLeftCircleFill />
             </button>
-          ))}
-          <button
-            disabled={currentPage === totalPages}
-            onClick={() => handlePageChange(currentPage + 1)}
-          >
-            <BsArrowRightCircleFill />
-          </button>
-        </div>
+            {new Array(totalPages).fill("").map((_, index) => (
+              <button
+                className={currentPage === index + 1 ? styles.active : ""}
+                onClick={() => handlePageChange(index + 1)}
+                key={index}
+              >
+                {index + 1}
+              </button>
+            ))}
+            <button
+              disabled={currentPage === totalPages}
+              onClick={() => handlePageChange(currentPage + 1)}
+            >
+              <BsArrowRightCircleFill />
+            </button>
+          </div>
 
-        <Footer />
-      </div> 
-    </div>
+          <Footer />
+        </div>
+      </div>
     </div>
   );
-};
-
+}

@@ -40,7 +40,9 @@ const initialState = {
     cart_shopping: [],
   },
   cart_shopping: JSON.parse(localStorage.getItem(TOKEN_STORAGE_CART)) || [],
+  infoSend: null,
 };
+
 
 const filterResultsByCriteria = (filters, resultsToFilter) => {
   let filterResults = resultsToFilter;
@@ -286,7 +288,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    }
+    };
   }
 };
 
