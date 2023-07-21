@@ -19,6 +19,8 @@ import { useEffect } from "react";
 import { useUserInfo } from "../../context/ProviderUser";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
 
 export default function EditProfile() {
   const { user } = useUserInfo();
@@ -257,6 +259,7 @@ export default function EditProfile() {
             </Alert>
           )}
           <Stack spacing={6} direction={["column", "row"]}>
+          <Link to={`/profile`}>
             <Button
               bg={"red.400"}
               color={"white"}
@@ -266,11 +269,12 @@ export default function EditProfile() {
               }}
               onClick={() => {
                 setName(null);
-                setPicture(null);
+                setPicture(user.picture);
               }}
             >
               Cancel
             </Button>
+            </Link>
             <Button
               bg={"blue.400"}
               color={"white"}
