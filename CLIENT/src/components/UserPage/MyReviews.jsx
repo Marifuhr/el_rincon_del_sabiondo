@@ -10,9 +10,11 @@ import {
   Icon,
   SimpleGrid,
   useColorModeValue,
+  Button,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import { useUserInfo } from "../../context/ProviderUser";
+import { useState } from "react";
 //import { useState, useEffect } from "react";
 
 function TestimonialCard({ review }) {
@@ -27,11 +29,11 @@ function TestimonialCard({ review }) {
     <Flex
       boxShadow={"lg"}
       maxW={"800px"}
-      direction={{ base: "column-reverse", md: "row" }}
+      direction={{ base: "column", md: "row" }}
       width={"full"}
       rounded={"xl"}
       p={6}
-      justifyContent={"space-between"}
+      justifyContent={"flex-start"}
       position={"relative"}
       bg={useColorModeValue("white", "gray.800")}
       _after={{
@@ -64,23 +66,34 @@ function TestimonialCard({ review }) {
         src={review.Book.image}
         height={"80px"}
         width={"80px"}
-        alignSelf={"center"}
+        alignSelf={"flex-start"}
+        justifyContent={"flex-start"}
         m={{ base: "0 0 35px 0", md: "0 0 0 50px" }}
       />
       <Flex
         direction={"column"}
         textAlign={"left"}
         justifyContent={"space-between"}
+        alignItems={"flex-start"}
+        flex={1}
+        ml={{ base: 2, md: 4 }}
       >
         <chakra.p
           fontFamily={"Inter"}
           fontWeight={"medium"}
           fontSize={"15px"}
+          width={{ base: "100%", md: "80%" }}
           pb={4}
         >
           {review.description}
         </chakra.p>
-        <chakra.p fontFamily={"Work Sans"} fontWeight={"bold"} fontSize={14}>
+        <chakra.p
+          fontFamily={"Work Sans"}
+          fontWeight={"bold"}
+          fontSize={14}
+          width={{ base: "100%", md: "80%" }}
+          pb={4}
+        >
           {review.Book.title}
           <chakra.span
             fontFamily={"Inter"}
@@ -89,15 +102,13 @@ function TestimonialCard({ review }) {
           >
             {" "}
             -{" "}
-            
-              {[1, 2, 3, 4, 5].map((value) => (
-                <StarIcon
-                  key={value}
-                  boxSize={3}
-                  color={value <= review.rate ? "yellow.500" : "gray.300"}
-                />
-              ))}
-           
+            {[1, 2, 3, 4, 5].map((value) => (
+              <StarIcon
+                key={value}
+                boxSize={3}
+                color={value <= review.rate ? "yellow.500" : "gray.300"}
+              />
+            ))}
           </chakra.span>
         </chakra.p>
       </Flex>
@@ -107,6 +118,12 @@ function TestimonialCard({ review }) {
 
 export default function GridBlurredBackdrop() {
   const { user } = useUserInfo();
+  const [showAllReviews, setShowAllReviews] = useState(false);
+  const firstThreeReviews = user?.Reviews?.slice(0, 3) || [];
+
+  const handleMostrarTodosClick = () => {
+    setShowAllReviews(true);
+  };
 
   return (
     <Flex
@@ -136,7 +153,9 @@ export default function GridBlurredBackdrop() {
           fontWeight={"bold"}
           color={useColorModeValue("gray.700", "gray.50")}
         >
-          Los comentarios que realizados
+
+          Mis comentarios:
+
         </chakra.h1>
       </Box>
       <SimpleGrid
@@ -148,9 +167,20 @@ export default function GridBlurredBackdrop() {
         mx={"auto"}
         marginLeft={{ base: "0", xl: "20" }}
       >
-        {user?.Reviews?.map((review, index) => (
-          <TestimonialCard key={index} review={review} />
-        ))}
+        {showAllReviews
+          ? user?.Reviews?.map((review, index) => (
+              <TestimonialCard key={index} review={review} />
+            ))
+          : firstThreeReviews.map((review, index) => (
+              <TestimonialCard key={index} review={review} />
+            ))}
+        {!showAllReviews && user?.Reviews?.length > 3 && (
+          <Box width="full" textAlign="center">
+            <Button colorScheme="teal" onClick={handleMostrarTodosClick}>
+              Ver todas
+            </Button>
+          </Box>
+        )}
       </SimpleGrid>
     </Flex>
   );

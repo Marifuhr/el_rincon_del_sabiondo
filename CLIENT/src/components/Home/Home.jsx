@@ -19,6 +19,8 @@ import { useUserInfo } from "../../context/ProviderUser";
 import { TOKEN_STORAGE_CART } from "../../Redux/Action/Actions.types";
 import { Box, Button } from "@chakra-ui/react";
 import { FaArrowUp } from "react-icons/fa";
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Alert, AlertIcon, } from "@chakra-ui/react";
+
 
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
@@ -51,6 +53,8 @@ export default function Home() {
   const [priceValue, setPriceValue] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [buttonText, setButtonText] = useState("Precios menor a mayor");
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -115,6 +119,7 @@ export default function Home() {
 
   useEffect(() => {
     setCurrentPage(1);
+    if (filteredBooks.length === 0) setIsModalOpen(true); 
   }, [resultados, filteredBooks]);
 
   let renderBooks = [];
@@ -286,9 +291,31 @@ export default function Home() {
           ) : null}
         </div>
         <div className={styles.boxCardBooks}>
-          {books &&
-            books.map((book) => <Card key={book.IdBook} props={book} />)}
-        </div>
+        {books &&
+          books.map((book) => <Card key={book.IdBook} props={book} />)}
+      </div>
+
+      {/* Show the modal if there are no books to display */}
+      {filteredBooks.length === 0 && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>No se han encontrado libros</ModalHeader>
+            <ModalBody>
+              <Alert status="warning" variant="subtle" mb={4}>
+                <AlertIcon />
+                No se han encontrado libros con esas opciones.
+              </Alert>
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme="teal" onClick={() => setIsModalOpen(false)}>
+                Cerrar
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      )}
+
 
         <div
           style={{ position: "fixed", right: "0", bottom: "0", margin: "20px" }}

@@ -26,7 +26,7 @@ const validationsAttributes = {
         const l = nameString.length;
         return l >= 5 && l <= 50
     },
-    isActive: stateUser => [true,false].includes(stateUser),
+    //isActive: stateUser => [true,false].includes(stateUser),
     email: emailToValidate => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(emailToValidate),
     address: addressString => {
         const l = addressString.trim().length;
