@@ -6,7 +6,7 @@ import {
   VStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import image1 from "../../assets/carousel_imagen/carrusel11.jpg";
+import image1 from "../../assets/carousel_imagen/Carrusel11.jpg";
 
 export default function Anuncio1() {
   return (
