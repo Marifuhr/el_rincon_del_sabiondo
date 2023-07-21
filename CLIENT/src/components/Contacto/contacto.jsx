@@ -26,6 +26,7 @@ import argentinaImage from "../../assets/image/argentina.png";
 import venezuelaImage from "../../assets/image/venezuela.png";
 import armandoImage from "../../assets/image/armando.png";
 import colombia from "../../assets/image/colombia.png";
+import MauroM from "../../assets/image/MauroM.jpg"
 
 export default function contacto() {
   return (
@@ -277,7 +278,7 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:blenda.prg@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
@@ -931,7 +932,7 @@ export default function contacto() {
             alignItems="left"
           >
             <Image
-              src="https://photos.app.goo.gl/WbCfKKk5mPqx7AU78"
+              src={MauroM}
               alt="Profile Picture"
               borderRadius="full"
               boxSize="150px"
@@ -1016,13 +1017,13 @@ export default function contacto() {
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/Maurocmg" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://www.linkedin.com/in/mauro-melgarejo-78849596"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
@@ -1157,18 +1158,19 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:rodrisoyhenry@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/rodri720" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="https://www.linkedin.com/in/
+                rodrigo-bonetto-75331b265"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
@@ -1294,7 +1296,7 @@ export default function contacto() {
                 justifyContent={"center"}
               >
                 Colombia
-                <img src={colombia} width={"80px"} height={"20px"}></img>
+                <img src={colombia} width={"50px"} height={"50px"}></img>
               </Text>
             </HStack>
             <HStack
@@ -1303,18 +1305,18 @@ export default function contacto() {
               alignItems="center"
               justifyContent="center"
             >
-              <Link href="mailto:correo@example.com" isExternal>
+              <Link href="mailto:bulla.d.david@gmail.com" isExternal>
                 <Tooltip label="Enviar correo electrónico" placement="top">
                   <FaEnvelope size={30} className="social-icon" />
                 </Tooltip>
               </Link>
-              <Link href="https://github.com/tu_usuario_github" isExternal>
+              <Link href="https://github.com/daprionil" isExternal>
                 <Tooltip label="Visitar GitHub" placement="top">
                   <FaGithub size={30} className="social-icon" />
                 </Tooltip>
               </Link>
               <Link
-                href="https://www.linkedin.com/in/tu_perfil_linkedin"
+                href="http://www.linkedin.com/in/david-santiago-bulla-díaz-b5829a250"
                 isExternal
               >
                 <Tooltip label="Visitar LinkedIn" placement="top">
