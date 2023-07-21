@@ -66,7 +66,7 @@ export default function App() {
           {/* <Route path="billing" element={< />} />  */}
         </Route>
 
-        <Route path="/admin" element={<PrivateRoute><AdminPage /></PrivateRoute>}>
+        <Route path="/admin" element={<PrivateRoute mode="admin"><AdminPage /></PrivateRoute>}>
           <Route path="myProfile" element={<EditProfileAdmin />} />
           <Route path="usuariosAdmin" element={<UsuariosAdmin />} />
           <Route path="books" element={(
