@@ -148,8 +148,8 @@ const reducer = (state = initialState, action) => {
       state.filtered
         ? (filterOrder = [...state.filtered])
         : state.search
-        ? (filterOrder = [...state.search])
-        : (filterOrder = [...state.allBooks]);
+          ? (filterOrder = [...state.search])
+          : (filterOrder = [...state.allBooks]);
 
       filterOrder.sort((bookA, bookB) => {
         const priceA = parseFloat(bookA.price);
@@ -236,39 +236,51 @@ const reducer = (state = initialState, action) => {
       return { ...state, cart_shopping: [] };
     }
 
-    case INCREASE_QUANTITY:
-      return {
-        ...state,
-        cart_shopping: state.cart_shopping.map((book) => {
-          if (book.IdBook === action.payload) {
-            if (book.stock > book.quantity) {
-              return {
-                ...book,
-                quantity: book.quantity + 1,
-              };
-            } else {
-              return {
-                ...book,
-                quantity: book.quantity,
-              };
-            }
-          }
-          return book;
-        }),
-      };
-    case DECREASE_QUANTITY:
-      return {
-        ...state,
-        cart_shopping: state.cart_shopping.map((book) => {
-          if (book.IdBook === action.payload && book.quantity > 1) {
+    case INCREASE_QUANTITY:{
+      const lastCart = state.cart_shopping.map((book) => {
+        if (book.IdBook === action.payload) {
+          if (book.stock > book.quantity) {
             return {
               ...book,
-              quantity: book.quantity - 1,
-            };
+              quantity: book.quantity + 1,
+            }
+          } else {
+            return {
+              ...book,
+              quantity: book.quantity,
+            }
           }
-          return book;
-        }),
+        }
+        return book;
+      });
+
+      addShoopingCartStorage(lastCart);
+      
+      return {
+        ...state,
+        cart_shopping: lastCart,
       };
+    }
+      
+      
+    case DECREASE_QUANTITY:{
+      const lastCart = state.cart_shopping.map((book) => {
+        if (book.IdBook === action.payload && book.quantity > 1) {
+          return {
+            ...book,
+            quantity: book.quantity - 1,
+          };
+        }
+        return book;
+      });
+
+      addShoopingCartStorage(lastCart);
+
+      return {
+        ...state,
+        cart_shopping: lastCart,
+      };
+    }
     // ...otros casos de acción para el carrito
 
     case SEND_MAIL:
@@ -288,7 +300,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: action.payload,
       };
-    };
+    }
   }
 };
 
