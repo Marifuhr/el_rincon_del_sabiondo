@@ -128,3 +128,7 @@
 .pageIndicator button.active {
   background-color: #387444;
 }
+
+button[disabled] {
+  display: none;
+}
