@@ -30,6 +30,7 @@ import {
   AlertIcon,
 } from "@chakra-ui/react";
 
+
 const endpoint = import.meta.env.VITE_URL_ENDPOINT;
 const initialFilters = {
   category: "",
@@ -66,6 +67,7 @@ export default function Home() {
   const hasShownSubscriptionAlert = useRef(false);
   const [modalSuscription, setModalSuscription] = useState(false);
 
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -74,6 +76,7 @@ export default function Home() {
     dispatch(filterResults(initialFilters));
     setCategoryValue("");
     setPriceValue("");
+ 
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -227,6 +230,7 @@ export default function Home() {
           justifyContent: "center",
           gap: "15px",
           padding: "10px 0px 20px 0px",
+          marginTop: "130px",
           // boxShadow:
            // "rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset",
         }}
