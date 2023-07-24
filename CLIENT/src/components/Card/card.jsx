@@ -55,9 +55,10 @@ function Cards({ props }) {
           <Box rounded={"xlg"} mt={-12} pos={"relative"} height={"200px"}>
             <Image
               rounded="lg"
-              width="110%"
-              height="110%"
+              width="150px"
+              height="210px"
               objectFit="contain"
+               ml={"25px"}
               src={props.image}
               alt="Book Cover"
               _hover={{
@@ -70,7 +71,7 @@ function Cards({ props }) {
         </Link>
         <Stack pt={5} align={"center"}>
           <Text color={"gray.500"} fontSize={"sm"} textTransform={"uppercase"}>
-            {props.Authors[0].name}
+            {`${props.Authors[0].name.slice(0, 20)}...`}
           </Text>
           <Heading
             fontSize={"md"}
@@ -82,7 +83,7 @@ function Cards({ props }) {
             textOverflow="clip"
             maxWidth="100%"
           >
-            {props.title}
+            {`${props.title.slice(0, 20)}...`}
           </Heading>
 
           {isBookOutOfStock ? ( // Mostrar "AGOTADO" si el libro está fuera de stock
