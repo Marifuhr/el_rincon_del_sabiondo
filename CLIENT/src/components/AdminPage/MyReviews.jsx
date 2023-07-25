@@ -14,7 +14,7 @@ import { useState, useEffect } from "react";
 
  function TestimonialCard() {
    const { user } = useUserInfo();
-   console.log(user);
+   
 
   return (
     <Flex
@@ -90,7 +90,7 @@ import { useState, useEffect } from "react";
 }
 
 export default function GridBlurredBackdrop(props) {
-  console.log(props)
+ 
    const [reviews, setReviews] = useState([]);
 
    useEffect(() => {

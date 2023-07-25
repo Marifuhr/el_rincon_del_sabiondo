@@ -56,14 +56,14 @@ const CreateReview = () => {
 
       if (response.status === 200) {
         setSuccessMessage("Review Creada");
-        console.log(response.data);
+       
         // Limpiar los campos después de la respuesta exitosa
         setDescription('');
         setRate(0);
         navigate(0);
 
       } else {
-        console.log(response.data);
+        
       }
     } catch (error) {
       console.error(error);

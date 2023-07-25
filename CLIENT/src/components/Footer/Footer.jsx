@@ -111,7 +111,6 @@ export default function Footer() {
                   icon={<BiMailSend />}
                   onClick={() => {
                     handleClick();
-                    console.log(mail);
                     setMail("");
                   }}
                 />

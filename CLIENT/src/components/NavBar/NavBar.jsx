@@ -46,7 +46,7 @@ function NavBar() {
       shadow="md"
       position="fixed" // Agregar el estilo de posición fija
       top={0} // Ajustar la posición superior según sea necesario
-      zIndex={1} // Ajustar el índice de apilamiento según sea necesario
+      zIndex={100} // Ajustar el índice de apilamiento según sea necesario
     >
       <Flex
         alignItems="center"

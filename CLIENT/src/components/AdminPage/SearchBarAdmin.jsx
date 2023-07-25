@@ -6,7 +6,7 @@ import styles from "../SearchBar/SearchBar.module.css";
 export default function SearchBarAdmin() {
   const dispatch = useDispatch();
   const [input, setInput] = useState("");
-//console.log(input)
+
   const handleChange = (e) => {
     e.preventDefault();
     setInput(e.target.value);
@@ -18,7 +18,7 @@ export default function SearchBarAdmin() {
     if (input) {
       dispatch(searchNameUser(input));
     }
-    console.log(input);
+    
     
   };
 

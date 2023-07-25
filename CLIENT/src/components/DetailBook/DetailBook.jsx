@@ -54,7 +54,7 @@ function DetailBook() {
     if (reviews) {
       setUserReview(mapReviews(reviews, user));
     }
-    console.log(userReview);
+    
   }, [book, userBuy]);
 
   const author =
@@ -72,18 +72,18 @@ function DetailBook() {
         `${import.meta.env.VITE_URL_ENDPOINT}/sellings/`
       );
       const sellings = response.data.sellingsTotals;
-      console.log(sellings);
+      
       const usersellings = sellings?.filter((selling) => {
         return selling.IdUser === user.IdUser;
       });
-      console.log(usersellings);
+      
       const productbuy = usersellings.filter((selling) => {
         const products = selling.products.filter((product) => {
           return product.IdProduct === id;
         });
         return products.length > 0;
       });
-      console.log(productbuy);
+      
       setUserBuy(productbuy.length > 0);
     }
   };
