@@ -26,13 +26,6 @@ function DetailBook() {
   const [reviews, setReviews] = useState(null);
   const [mostrarTodasReviews, setMostrarTodasReviews] = useState(false);
 
-  // useEffect(() => {
-  //   dispatch({
-  //     type: GET_DETAIL_BOOKS,
-  //     payload: {},
-  //   });
-  // }, []);
-
   useEffect(() => {
     dispatch(getDetailBooks(id));
     return () => {
@@ -95,20 +88,10 @@ function DetailBook() {
     }
   };
 
-  // async function getReviews(id) {
-  //   try {
-  //     const response = await axios.get(
-  //       `${import.meta.env.VITE_URL_ENDPOINT}/books/${id}`
-  //     );
-  //     setReviews(response.data.);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
 
-  function mapReviews(reviews, user) {
+  function mapReviews(reviews) {
     const filteredReviews = reviews.filter((review) => {
-      return review.IdUser === user.IdUser;
+      return review.IdUser;
     });
     return filteredReviews.length > 0 || false;
   }
