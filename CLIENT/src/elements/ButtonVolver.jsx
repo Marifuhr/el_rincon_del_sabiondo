@@ -12,7 +12,8 @@ function ButtonVolver() {
       as={ChakraLink}
       to="/home"
       className="btn-back"
-      margin={"10px "}
+      marginTop={"150px "}
+      marginBottom={"10px"}
     >
       Volver
     </Button>
