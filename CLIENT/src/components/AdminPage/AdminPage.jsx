@@ -136,7 +136,7 @@ const MobileNav = ({ onOpen, ...rest }) => {
 
   const handleLogout = () => {
     clearStorageCart();
-    console.log("Realizando acciones antes de hacer logout...");
+   
 
     // Hacer logout
     logout({ returnTo: window.location.origin });
