@@ -14,16 +14,10 @@ import {
   import { StarIcon } from "@chakra-ui/icons";
   import { useUserInfo } from "../../context/ProviderUser";
   import { useState } from "react";
-  //import { useState, useEffect } from "react";
+
   
  export default function TestimonialCard({ review }) {
-    //  const { user } = useUserInfo();
-    //  const [reviews, setReviews] = useState([]);
-  
-    //  useEffect(() => {
-    //    setReviews(user.Reviews);
-    //  }, [user.Reviews]);
-  
+   
     return (
       <Flex
         boxShadow={"lg"}

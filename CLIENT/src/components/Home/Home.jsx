@@ -85,7 +85,7 @@ export default function Home() {
         const categories = response.data.categories;
         setOptions(categories);
       } catch ({ message }) {
-        console.log(message);
+      
       }
     };
     fetchData();
@@ -115,7 +115,7 @@ export default function Home() {
         status === "approved" &&
         cartStorage.current.length
       ) {
-        //console.log(cartStorage.current);
+       
         createSellingTotalDB({
           IdUser: user.IdUser,
           products: cartStorage.current.map((item) => ({
