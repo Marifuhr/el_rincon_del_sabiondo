@@ -23,9 +23,10 @@ const About = () => {
       {/* ====================Mision======================================= */}
       <SimpleGrid
         columns={{
-          base: 1,
-          md: 2,
+          base: "1",
+          md: "2",
         }}
+        mt={40}
         spacing={0}
       >
         <Flex bg="brand.400">
@@ -42,6 +43,7 @@ const About = () => {
             bg="gray.100"
             loading="lazy"
             opacity={0.4}
+            
           />
         </Flex>
         <Flex
