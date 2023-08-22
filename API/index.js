@@ -36,10 +36,10 @@ server.use(cors());
 server.use(rootRouter);
 
 //sincronizando base de datos con la DB_CLOUD
-db.sync({alter:true}).then(() => {
+db.sync({force:true}).then(() => {
     //execute server
     server.listen(port, () => {
         console.log(`servidor corriendo en: ${port}`);
-        //bulk();
+        bulk();
     })
 });
